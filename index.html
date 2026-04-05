@@ -817,6 +817,186 @@
       font-variant-numeric: tabular-nums;
     }
 
+    /* ========== 置頂戰略儀表板 ========== */
+    .strategy-dashboard {
+      margin-bottom: 1.25rem;
+      padding: 1.25rem 1.35rem;
+      background: linear-gradient(135deg, var(--navy) 0%, #123056 50%, #0d2848 100%);
+      border-radius: 14px;
+      border: 3px solid var(--mustard);
+      box-shadow: 0 12px 40px rgba(10, 34, 64, 0.25);
+    }
+
+    .strategy-dashboard h2 {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      color: var(--mustard);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .strategy-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+
+    .strategy-card {
+      background: rgba(255, 255, 255, 0.96);
+      border-radius: 10px;
+      padding: 1rem 1.1rem;
+      border-left: 4px solid var(--mustard);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    }
+
+    .strategy-card h3 {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--navy);
+      margin-bottom: 0.45rem;
+    }
+
+    .strategy-card p {
+      font-size: 0.88rem;
+      color: var(--text);
+      line-height: 1.55;
+    }
+
+    .strategy-card .tag {
+      display: inline-block;
+      margin-top: 0.5rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      background: var(--mustard);
+      color: var(--navy);
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+    }
+
+    /* 長篇閱讀滾動區（模考／練習） */
+    .reading-scroll-passage {
+      max-height: 400px;
+      overflow-y: auto;
+      padding: 1rem 1.15rem;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--mustard);
+      border-radius: 0 8px 8px 0;
+      font-size: 0.92rem;
+      line-height: 1.7;
+      color: var(--text);
+    }
+
+    .reading-scroll-passage::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .reading-scroll-passage::-webkit-scrollbar-thumb {
+      background: var(--navy);
+      border-radius: 4px;
+    }
+
+    /* 影音資源網格 */
+    .video-hub-intro {
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .video-hub-section {
+      margin-bottom: 1.75rem;
+    }
+
+    .video-hub-section h4 {
+      font-family: var(--font-display);
+      color: var(--navy);
+      font-size: 1rem;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.35rem;
+      border-bottom: 2px solid var(--mustard);
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 0.85rem;
+    }
+
+    .video-card {
+      display: block;
+      padding: 1rem;
+      background: linear-gradient(180deg, #fff 0%, #f7f9fc 100%);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      text-decoration: none;
+      color: var(--navy);
+      transition: transform 0.15s, box-shadow 0.2s, border-color 0.2s;
+      box-shadow: 0 2px 10px rgba(10, 34, 64, 0.06);
+    }
+
+    .video-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--mustard);
+      box-shadow: 0 8px 24px rgba(253, 184, 19, 0.25);
+    }
+
+    .video-card .vc-title {
+      font-weight: 700;
+      font-size: 0.9rem;
+      line-height: 1.4;
+      margin-bottom: 0.35rem;
+    }
+
+    .video-card .vc-link {
+      font-size: 0.75rem;
+      color: var(--muted);
+      word-break: break-all;
+    }
+
+    .vocab-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .vocab-toolbar select {
+      padding: 0.5rem 0.75rem;
+      border-radius: 8px;
+      border: 2px solid var(--navy);
+      font-size: 0.88rem;
+      font-family: inherit;
+      background: var(--white);
+      min-width: 220px;
+    }
+
+    .ets-feedback-box {
+      margin-top: 1.25rem;
+      padding: 1rem 1.15rem;
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font-size: 0.88rem;
+      line-height: 1.65;
+      color: var(--text);
+    }
+
+    .ets-feedback-box h4 {
+      color: var(--navy);
+      font-size: 0.95rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .ets-feedback-box ul {
+      margin: 0.5rem 0 0 1.1rem;
+    }
+
     /* ========== Responsive ========== */
     @media (max-width: 900px) {
       .app {
@@ -844,7 +1024,7 @@
           Varsity Lingo
           <span class="logo-sub">Ivy League Learning Hub</span>
         </div>
-        <div class="nav-label">六大主目錄</div>
+        <div class="nav-label">語言與模式</div>
         <ul class="nav-list">
           <li>
             <button type="button" class="nav-item active" data-mode="lang" data-lang="en" aria-pressed="true">
@@ -873,7 +1053,7 @@
           </li>
           <li>
             <button type="button" class="nav-item" data-mode="exam" data-lang="" aria-pressed="false">
-              <span class="nav-icon" aria-hidden="true">🎓</span> 資管考研
+              <span class="nav-icon" aria-hidden="true">🎓</span> 考研專區
             </button>
           </li>
         </ul>
@@ -886,6 +1066,28 @@
         <p class="main-desc" id="mainDesc">美式常春藤風格學習儀表板 — 單字、文法、閱讀、聽力、口說、寫作一站整合。</p>
       </header>
 
+      <!-- 置頂戰略計畫（兩種模式皆顯示，強化目標感） -->
+      <section class="strategy-dashboard" aria-label="戰略儀表板">
+        <h2>📌 戰略儀表板 · Study Command Center</h2>
+        <div class="strategy-grid">
+          <article class="strategy-card">
+            <h3>總目標 · North Star</h3>
+            <p>大四推甄前<strong>托福突破 90 分</strong>，並爭取<strong>美國或日本雙聯學位</strong>，以國際視野銜接研究所與職涯。</p>
+            <span class="tag">TOEFL 90+</span>
+          </article>
+          <article class="strategy-card">
+            <h3>語言階段 · Language Stack</h3>
+            <p>日文、韓文、西班牙文、德文同步推進至<strong>A2／B1 實用溝通</strong>，搭配檢定題型與長篇模考，建立可遷移的閱聽策略。</p>
+            <span class="tag">A2 → B1</span>
+          </article>
+          <article class="strategy-card">
+            <h3>專業戰線 · Grad Track</h3>
+            <p><strong>資管所考研</strong>：MIS 觀念、資料庫、申論與演算法／SQL 並進，與語言能力形成「雙引擎」備戰節奏。</p>
+            <span class="tag">MIS 考研</span>
+          </article>
+        </div>
+      </section>
+
       <div class="tabs-wrap">
         <!-- 語言模式 Tabs -->
         <div class="tabs-bar" id="tabsLang" role="tablist">
@@ -895,6 +1097,7 @@
           <button type="button" class="tab-btn" role="tab" data-panel="listening" aria-selected="false">聽力</button>
           <button type="button" class="tab-btn" role="tab" data-panel="speaking" aria-selected="false">口說</button>
           <button type="button" class="tab-btn" role="tab" data-panel="writing" aria-selected="false">寫作</button>
+          <button type="button" class="tab-btn" role="tab" data-panel="video-hub" aria-selected="false">影音學習</button>
           <button type="button" class="tab-btn tab-mock-exam" role="tab" data-panel="mock-exam" aria-selected="false">🏆 全真模考</button>
         </div>
         <!-- 考研模式 Tabs -->
@@ -907,8 +1110,12 @@
         <div class="panel-area" id="panelArea">
           <!-- ===== 語言：單字 ===== -->
           <section class="panel active" id="panel-vocab" role="tabpanel">
-            <h3>單字庫 — 3D 翻轉閃卡</h3>
-            <p class="hint">點擊卡片翻面；使用按鈕切換 JSON 資料列中的下一張。</p>
+            <h3>單字庫 — 百詞斬式詞書 × 3D 翻轉閃卡</h3>
+            <div class="vocab-toolbar">
+              <label class="lbl" for="vocabBookSelect" style="margin:0;">詞書分類</label>
+              <select id="vocabBookSelect" aria-label="選擇詞書"></select>
+            </div>
+            <p class="hint">點擊卡片翻面；依詞書分類動態載入詞條，可用按鈕切換上一張／下一張。</p>
             <div class="flash-scene">
               <div class="flash-card-wrap">
                 <div class="flash-card" id="vocabFlashCard" tabindex="0" aria-label="單字閃卡，點擊翻面">
@@ -943,7 +1150,7 @@
             <h3>閱讀實戰</h3>
             <p class="quiz-nav-hint" id="readingNavHint">—</p>
             <div class="panel-block">
-              <div class="reading-passage" id="readingPassage">—</div>
+              <div class="reading-scroll-passage" id="readingPassage">—</div>
             </div>
             <div class="panel-block">
               <label class="lbl">理解測驗</label>
@@ -1024,8 +1231,8 @@
             <div id="mockViewWelcome">
               <div class="mock-welcome">
                 <span class="mock-badge">FULL MOCK EXAM</span>
-                <h2>TOEFL 模擬測驗</h2>
-                <p class="hint">閱讀 → 聽力 → 口說 → 寫作，依序完成後將顯示預估總分與 CEFR。</p>
+                <h2 id="mockWelcomeTitle">全真長篇模考</h2>
+                <p class="hint" id="mockWelcomeSub">閱讀（長文捲動）→ 聽力（2+ 分鐘 TTS + 筆記）→ 口說 → 寫作。依側欄語系載入對應題本。</p>
                 <button type="button" class="btn-start-exam" id="mockStartBtn">Start Exam</button>
               </div>
             </div>
@@ -1042,8 +1249,8 @@
               <!-- Step1 閱讀 -->
               <div id="mockStepReading">
                 <div class="wizard-step-title">Step 1：閱讀測驗</div>
-                <p class="mock-reading-hint">請依序作答，每題按 Next 進入下一題（共 3 題）。</p>
-                <div class="reading-passage" id="mockReadingPassage"></div>
+                <p class="mock-reading-hint">長篇文章請於框內捲動閱讀；共 3 題，逐題作答後按 Next。</p>
+                <div class="reading-scroll-passage" id="mockReadingPassage"></div>
                 <p id="mockReadingQ" style="margin: 1rem 0 0.5rem; font-weight: 600;"></p>
                 <div class="mcq-options" id="mockReadingOpts"></div>
                 <div class="btn-row">
@@ -1053,13 +1260,17 @@
               <!-- Step2 聽力 -->
               <div id="mockStepListening" class="mock-hidden">
                 <div class="wizard-step-title">Step 2：聽力測驗</div>
-                <p class="hint">先播放音檔（TTS），再回答 2 題選擇題。</p>
+                <p class="hint">長篇聽力（約 2+ 分鐘 TTS，語速 0.9、高品質語音）。播放時可邊聽邊於下方筆記。</p>
                 <div class="player-card">
                   <div class="player-row">
                     <button type="button" class="play-toggle" id="mockListenPlay" aria-label="播放聽力">▶</button>
-                    <span style="font-size:0.85rem;opacity:0.9;">播放完畢後請作答</span>
+                    <span style="font-size:0.85rem;opacity:0.9;">全程約 2 分鐘以上 · 播畢後作答</span>
                   </div>
-                  <div class="tts-text-box" id="mockListenScriptHint" style="font-size:0.8rem;">音訊播放中…</div>
+                  <div class="tts-text-box" id="mockListenScriptHint" style="font-size:0.8rem;">請按播放開始（考試中不顯示全文稿）。</div>
+                </div>
+                <div class="panel-block" style="margin-top:1rem;">
+                  <label class="lbl" for="mockListenNotes">Note-taking（邊聽邊記）</label>
+                  <textarea id="mockListenNotes" class="input-area" rows="6" placeholder="關鍵字、數字、流程…"></textarea>
                 </div>
                 <div id="mockListenQuizWrap" class="mock-hidden" style="margin-top:1rem;">
                   <p id="mockListenQ1" style="font-weight:600;"></p>
@@ -1111,10 +1322,18 @@
               <div class="radar-wrap">
                 <svg class="radar-svg" id="mockRadarSvg" viewBox="0 0 200 200" aria-label="能力雷達圖"></svg>
               </div>
+              <div class="ets-feedback-box" id="mockEtsFeedback"></div>
               <div class="btn-row">
                 <button type="button" class="btn btn-outline" id="mockRestartBtn">返回模考首頁</button>
               </div>
             </div>
+          </section>
+
+          <!-- ===== 影音學習 · B 站資源（資料由 JS 陣列渲染） ===== -->
+          <section class="panel" id="panel-video-hub" role="tabpanel">
+            <h3>影音學習資源庫</h3>
+            <p class="video-hub-intro">以下為精選 Bilibili 資源連結，點擊卡片於新分頁開啟。內容版權歸原上傳者所有。</p>
+            <div id="videoHubRoot"></div>
           </section>
 
           <!-- ===== 語言：寫作 ===== -->
@@ -1269,6 +1488,35 @@ ORDER BY avg_score DESC;"></textarea>
         }
         speakNext();
       },
+      /** 全真模考聽力：固定語速 0.9、pitch 1.0，高品質語音 + 分段停頓 */
+      speakExamChunks(text, langKey, onEnd) {
+        const self = this;
+        this.speech.cancel();
+        const chunks = this.splitForPauses(text);
+        if (!chunks.length) {
+          if (typeof onEnd === "function") onEnd();
+          return;
+        }
+        const EXAM_RATE = 0.9;
+        let i = 0;
+        function speakNext() {
+          if (i >= chunks.length) {
+            if (typeof onEnd === "function") onEnd();
+            return;
+          }
+          const u = new SpeechSynthesisUtterance(chunks[i]);
+          u.voice = self.pickVoice(langKey);
+          u.rate = Math.min(1.05, Math.max(0.75, EXAM_RATE));
+          u.pitch = 1.0;
+          u.lang = u.voice ? u.voice.lang : langKey === "en" ? "en-US" : "";
+          u.onend = function () {
+            i++;
+            setTimeout(speakNext, /[\.\!\?。！？]$/.test(chunks[i - 1]) ? 320 : 150);
+          };
+          self.speech.speak(u);
+        }
+        speakNext();
+      },
       speakPlain(text, langKey, rateMul) {
         const self = this;
         this.speech.cancel();
@@ -1291,11 +1539,6 @@ ORDER BY avg_score DESC;"></textarea>
       en: {
         label: "🇺🇸 英文特訓",
         desc: "美式常春藤風格學習儀表板 — 單字、文法、閱讀、聽力、口說、寫作一站整合。",
-        vocab: [
-          { front: "Ubiquitous", back: "無所不在的；普遍存在的 (adj.)" },
-          { front: "Pragmatic", back: "務實的；重實效的 (adj.)" },
-          { front: "Eloquent", back: "雄辯的；有說服力的 (adj.)" }
-        ],
         grammarQuestions: [
           {
             q: "Choose the correct form: By next year, she _______ here for a decade.",
@@ -1404,11 +1647,6 @@ ORDER BY avg_score DESC;"></textarea>
       ja: {
         label: "🇯🇵 日文特訓",
         desc: "JLPT 思維 × 常春藤式規律練習 — 聽說讀寫整合。",
-        vocab: [
-          { front: "根気強い（ねづよい）", back: "有耐性的、堅持不懈的" },
-          { front: "言い換える", back: "換句話說、改寫（動詞）" },
-          { front: "着手する", back: "著手、開始進行（サ变动詞）" }
-        ],
         grammarQuestions: [
           {
             q: "次の空欄に最も適切なものを選べ：彼は来週までにレポートを _____ 予定だ。",
@@ -1517,11 +1755,6 @@ ORDER BY avg_score DESC;"></textarea>
       ko: {
         label: "🇰🇷 韓文特訓",
         desc: "TOPIK 實戰 × 系統化單字與聽讀整合。",
-        vocab: [
-          { front: "꾸준하다", back: "持續的、堅持不懈的（形容詞）" },
-          { front: "복습하다", back: "複習（動詞）" },
-          { front: "어휘", back: "詞彙（名詞）" }
-        ],
         grammarQuestions: [
           {
             q: "빈칸에 가장 알맞은 것을 고르시오: 나는 어제 책을 _____ .",
@@ -1630,11 +1863,6 @@ ORDER BY avg_score DESC;"></textarea>
       es: {
         label: "🇪🇸 西文特訓",
         desc: "DELE 取向 — 閱讀、聽力與口說整合訓練。",
-        vocab: [
-          { front: "Persistente", back: "堅持不懈的 (adj.)" },
-          { front: "Meta", back: "目標 (f.)" },
-          { front: "Repasar", back: "複習（動詞）" }
-        ],
         grammarQuestions: [
           {
             q: "Elige la opción correcta: Mañana _______ a la biblioteca.",
@@ -1743,11 +1971,6 @@ ORDER BY avg_score DESC;"></textarea>
       de: {
         label: "🇩🇪 德文特訓",
         desc: "Goethe 取向 — 文法、閱讀與聽寫並重。",
-        vocab: [
-          { front: "die Ausdauer", back: "耐力、恆心（陰性名詞）" },
-          { front: "wiederholen", back: "複習、重複（動詞）" },
-          { front: "die Routine", back: "例行公事、習慣（陰性名詞）" }
-        ],
         grammarQuestions: [
           {
             q: "Wähle die richtige Form: Wenn ich Zeit _____, lese ich jeden Tag ein Kapitel.",
@@ -1855,72 +2078,444 @@ ORDER BY avg_score DESC;"></textarea>
       }
     };
 
-    /** TOEFL 全真模考題庫（與一般練習分離） */
-    const MOCK_EXAM = {
-      reading: [
-        {
-          passage: "Campus sustainability programs often combine energy retrofits with student-led education. A measurable outcome is lower electricity use per square foot, but social outcomes—like increased environmental literacy—are harder to quantify yet equally important for long-term change.",
-          q: "What does the author imply about social outcomes?",
-          options: [
-            { v: "A", text: "They are irrelevant to sustainability." },
-            { v: "B", text: "They are difficult to measure but important." },
-            { v: "C", text: "They replace the need for retrofits." },
-            { v: "D", text: "They only matter to administrators." }
-          ],
-          correct: "B"
-        },
-        {
-          passage: "Cognitive science suggests that retrieval practice strengthens memory more than passive re-reading. Short quizzes spaced over days can outperform one long cramming session.",
-          q: "According to the passage, what strengthens memory most?",
-          options: [
-            { v: "A", text: "Passive re-reading" },
-            { v: "B", text: "Retrieval practice and spaced quizzes" },
-            { v: "C", text: "Highlighting only" },
-            { v: "D", text: "Avoiding tests" }
-          ],
-          correct: "B"
-        },
-        {
-          passage: "Effective note-taking is selective: capture main ideas and key terms, not every word from a lecture.",
-          q: "The passage recommends note-taking that is _______.",
-          options: [
-            { v: "A", text: "verbatim" },
-            { v: "B", text: "selective and idea-focused" },
-            { v: "C", text: "optional" },
-            { v: "D", text: "only decorative" }
-          ],
-          correct: "B"
-        }
-      ],
-      listeningScript:
-        "Registration for spring seminars opens next Monday at nine A M. Popular sections fill quickly, so plan two backup courses. If a class is full, you can join the waitlist and check daily for openings.",
-      listeningQs: [
-        {
-          q: "When does registration open?",
-          options: [
-            { v: "A", text: "Next Monday at 9 a.m." },
-            { v: "B", text: "Next Friday at noon" },
-            { v: "C", text: "Yesterday" },
-            { v: "D", text: "It does not say" }
-          ],
-          correct: "A"
-        },
-        {
-          q: "What should students do if a class is full?",
-          options: [
-            { v: "A", text: "Join the waitlist and check daily" },
-            { v: "B", text: "Pay extra tuition automatically" },
-            { v: "C", text: "Skip registration entirely" },
-            { v: "D", text: "Email the president only" }
-          ],
-          correct: "A"
-        }
-      ],
-      speakingTopic: "Describe one academic habit that helps you prepare for exams. Explain why it works for you.",
-      writingPrompt:
-        "Do you agree or disagree with the following statement? It is better to study alone than in a group. Use specific reasons and examples to support your answer.",
-      writingLimitMin: 30
+    /**
+     * 全真模考題庫：依側欄語系載入對應長篇閱讀（約 500–700+ 英文詞／日文漢字等）、
+     * 聽力稿（目標 TTS 2 分鐘以上）、口說／寫作提示。
+     */
+    const MOCK_EXAM_BY_LANG = {
+      en: {
+        label: "TOEFL iBT 風格（英文）",
+        readingPassage:
+          "In the past two decades, university teaching and learning have been reshaped by digital tools that promise personalization at scale. Learning management systems, automated feedback on quizzes, and analytics dashboards now sit alongside traditional lectures and seminars. Proponents argue that data-rich environments can help instructors identify struggling students earlier and tailor resources to individual needs. Critics, however, warn that an overreliance on metrics may reduce education to easily measurable behaviors, sidelining creativity, ethical reasoning, and collaborative discussion. A synthesis emerging from educational research suggests that the most effective blended models preserve human mentorship while using technology to remove logistical friction. For example, short, targeted videos can deliver foundational content outside class, freeing seminar time for debate and application. Yet implementation challenges remain: unequal access to devices and bandwidth, instructor workload associated with redesigning courses, and student privacy concerns when platforms collect fine-grained interaction data. Policies at several institutions now require transparency notices and limit third-party data sharing, reflecting a growing awareness that pedagogical innovation must be paired with governance. Longitudinal studies further indicate that gains in completion rates are strongest when digital supplements are paired with structured study routines and clear learning outcomes rather than deployed as optional add-ons. In reading-intensive fields such as history and literature, faculty report that annotation tools and shared digital archives deepen close reading when students are trained to interrogate sources collaboratively. By contrast, in quantitative courses, adaptive homework systems can provide immediate corrective feedback that resembles one-on-one tutoring at a fraction of the cost. The central insight across contexts is that technology amplifies existing instructional philosophies rather than replacing them. Institutions that invest in faculty development and instructional design teams tend to see more sustained improvement than those that purchase software without curricular integration. As global mobility increases, English-medium programs and international partnerships place additional pressure on language support services, motivating investments in writing centers and speaking studios that combine peer tutoring with speech recognition practice. Looking forward, artificial intelligence assistants may assist with drafting and summarization, but assessment experts emphasize the continued need for authentic tasks that reveal a student's ability to synthesize evidence, acknowledge uncertainty, and communicate with precision. Researchers who study transfer of learning note that students often perform well on immediate tests yet struggle to apply ideas in new domains unless courses explicitly build bridges between abstract principles and concrete scenarios. Professional schools have responded with case-based curricula, while undergraduate programs increasingly embed micro-internships and community partnerships. Assessment redesigns—moving from single high-stakes exams toward portfolios and project milestones—aim to align evaluation with these richer goals. Nevertheless, resource constraints mean that large introductory courses may still depend on multiple-choice instruments, sparking debate about validity and fairness. Accessibility offices likewise highlight that inclusive design benefits all learners: captions benefit second-language users as well as deaf students, and flexible deadlines can support caregivers without lowering standards when expectations are communicated clearly. The interplay between policy, pedagogy, and platform design will continue to define the next chapter of higher education worldwide. Ultimately, the measure of success will not be the novelty of the platform but whether graduates can transfer skills to workplaces and civic life where problems are ill-defined and cooperation across differences is essential.",
+        readingQs: [
+          {
+            q: "According to the passage, what do critics fear about heavy use of learning analytics?",
+            options: [
+              { v: "A", text: "That courses will become too short" },
+              { v: "B", text: "That education may narrow to easily measurable behaviors" },
+              { v: "C", text: "That libraries will close" },
+              { v: "D", text: "That students will avoid group work entirely" }
+            ],
+            correct: "B"
+          },
+          {
+            q: "The author implies that technology in higher education is most effective when it _______.",
+            options: [
+              { v: "A", text: "replaces all in-person instruction" },
+              { v: "B", text: "amplifies sound pedagogy rather than substituting for it" },
+              { v: "C", text: "eliminates instructor office hours" },
+              { v: "D", text: "removes all forms of assessment" }
+            ],
+            correct: "B"
+          },
+          {
+            q: "What point does the passage make about inclusive design (e.g., captions, flexible deadlines)?",
+            options: [
+              { v: "A", text: "It only helps students with documented disabilities" },
+              { v: "B", text: "It can benefit diverse learners beyond a single group" },
+              { v: "C", text: "It always lowers academic standards" },
+              { v: "D", text: "It is unrelated to second-language learners" }
+            ],
+            correct: "B"
+          }
+        ],
+        listeningScript:
+          "Good afternoon everyone. Welcome to Academic Success Workshop session three. Today we are focusing on time management across a full semester rather than just cramming before finals. First, picture your weekly calendar not as a list of tasks but as a budget of attention. Research on cognitive load tells us that deep work blocks of ninety minutes with short breaks outperform endless multitasking, even if multitasking feels productive. Second, map your high-energy hours. If you are sharper in the morning, protect that window for reading-heavy courses and reserve lighter chores for later. Third, build in buffer days. Students who schedule every hour often collapse when one assignment runs long; aim for one unplanned block per week that can absorb overflow. Fourth, use office hours strategically. Bring a specific question or a draft outline, not a vague request for help, because instructors can support you faster when your goal is concrete. Fifth, form study groups with clear norms—start on time, rotate roles, and agree on what done looks like before you meet. Remember that peer explaining reinforces your memory more than passive highlighting. Sixth, track patterns instead of feelings. A simple log of when you actually studied versus when you planned to study reveals realistic capacity and helps you negotiate commitments. Seventh, digital tools can help if you curate them: one calendar, one task inbox, and avoid switching systems mid-semester. Eighth, sleep is not negotiable for consolidation. Cutting sleep to add study hours often lowers exam performance even if the extra hours feel virtuous. Ninth, when motivation dips, shrink the next step. Ten focused minutes on a tough paragraph beats zero minutes while waiting for inspiration. Tenth, review your plan every month. Courses change tempo; midterm weeks need different pacing than project weeks. Finally, the advising center will host drop-in coaching Friday afternoons, and the writing center now offers asynchronous feedback if you cannot attend live sessions. Before we close, remember that registration for spring honors seminars opens next Monday at nine A M Eastern, and waitlisted students should check the portal every morning because seats often reopen after drops. Thank you, and see you next week.",
+        listeningQs: [
+          {
+            q: "According to the workshop, what is recommended regarding high-energy hours?",
+            options: [
+              { v: "A", text: "Ignore them and study only at night" },
+              { v: "B", text: "Use them for demanding reading when you are sharpest" },
+              { v: "C", text: "Schedule only social events then" },
+              { v: "D", text: "The speaker does not mention energy patterns" }
+            ],
+            correct: "B"
+          },
+          {
+            q: "When does registration for spring honors seminars open?",
+            options: [
+              { v: "A", text: "Next Monday at 9 a.m. Eastern" },
+              { v: "B", text: "Next Friday at noon" },
+              { v: "C", text: "Yesterday" },
+              { v: "D", text: "It is not stated" }
+            ],
+            correct: "A"
+          }
+        ],
+        speakingTopic: "Describe one academic habit that helps you prepare for exams. Explain why it works for you.",
+        writingPrompt:
+          "Do you agree or disagree with the following statement? It is better to study alone than in a group. Use specific reasons and examples to support your answer.",
+        writingLimitMin: 30
+      },
+      ja: {
+        label: "長文模考（日文 · JLPT/留學取向）",
+        readingPassage:
+          "近年、大学教育ではハイブリッド学習やオンライン教材の導入が進み、学習ログの可視化が教員と学生の対話を支えています。一方で、数値に現れにくい批判的思考や協働的な議論を軽視しないカリキュラム設計が求められます。本稿では、短い動画や自動採点が基礎理解の効率化に寄与しつつ、対面のゼミで応用力を育てるモデルに焦点を当てます。アクセシビリティの観点からは、字幕や柔軟な期限設定が多様な学習者を支援しますが、学習目標の明示と質の高いフィードバックが成果を左右します。長期的な調査によれば、デジタルツール単体より、計画的な復習やメタ認知の訓練と組み合わせたときに継続的な成績向上が観察されます。国際化が進む学部では英語で授業を受ける学生が増え、ライティングやスピーキング支援の重要性も高まっています。生成AIの利用が広がる一方で、根拠を評価し不確実性に対処する力は依然として人間の指導と対話が中心です。教育技術は教育観を増幅する道具であり、教員研修や授業設計への投資なしに導入だけでは効果は限定的です。図書館のグループ学習室は今月からオンライン予約が必須となり、深夜の開館時間も拡大されました。学生には週次で学習時間を記録し、過小評価されがちな準備時間を可視化することが推奨されます。カウンセリング室では、不安管理とタスク細分化のワークショップが金曜午後に開催され、参加は任意です。来学期の履修登録は来週月曜午前九時に開始し、人気講座はすぐに埋まるため、代替科目を二つ用意しておくことが奨励されています。定員超過の場合はキャンセル待ちに登録し、毎朝ポータルを確認してください。以上のように、デジタルと対面を統合した支援体制が、現代のキャンパス学習を形作っています。卒業後の社会では、曖昧な課題に対し証拠を統合し、他者と協働しながら解決策を模索する力が問われます。大学はその基盤をどのように育成するかが、今後の評価の焦点となるでしょう。",
+        readingQs: [
+          {
+            q: "筆者が最も強調しているのはどれか。",
+            options: [
+              { v: "A", text: "デジタルだけで教育が完結する" },
+              { v: "B", text: "技術は教育観を増幅し、設計と支援が不可欠" },
+              { v: "C", text: "対面授業は不要になる" },
+              { v: "D", text: "評価はテストのみでよい" }
+            ],
+            correct: "B"
+          },
+          {
+            q: "アクセシビリティについて本文が述べていることはどれか。",
+            options: [
+              { v: "A", text: "字幕などは特定の学生だけの利益" },
+              { v: "B", text: "多様な学習者に広く役立ち得る" },
+              { v: "C", text: "期限の柔軟化は常に基準低下を意味する" },
+              { v: "D", text: "図書館予約は不要" }
+            ],
+            correct: "B"
+          },
+          {
+            q: "履修登録について本文と合致するのはどれか。",
+            options: [
+              { v: "A", text: "来週月曜9時開始、待ちは毎朝確認" },
+              { v: "B", text: "登録は不要" },
+              { v: "C", text: "金曜のみ可能" },
+              { v: "D", text: "夜間のみ開講" }
+            ],
+            correct: "A"
+          }
+        ],
+        listeningScript:
+          "皆さんこんにちは。学習スキル講座、第三回目を始めます。今日は期末直前だけでなく学期全体を見通した時間管理についてお話しします。まず、週間スケジュールを単なるToDoリストではなく注意の予算と考えてください。認知負荷の研究では、九十分集中して短い休憩を挟むブロックが、細切れのマルチタスクより成果が高いとされています。次に、自分の高エネルギー帯を把握しましょう。午前中に頭が冴えるなら、読解の重い科目をそこに配置し、雑務は後ろに回します。第三に、余白の日を一つ確保してください。予定を詰め込みすぎると、一つの課題の遅れで全体が崩れます。第四に、オフィスアワーには具体的な質問やアウトラインを持参し、曖昧な相談は避けましょう。第五に、学習グループは開始時刻と役割分担を決め、終わりの定義を共有してください。第六に、計画と実績のログを取り、感覚ではなくデータで調整します。第七に、カレンダーとタスク管理はシンプルに保ち、学期の途中でツールを替えないこと。第八に、睡眠は記憶の固定に不可欠で、削るほどテスト成績が下がることがあります。第九に、やる気が落ちたら最初の一歩を小さくし、難しい段落に十分集中するだけでも前進です。第十に、月一回は計画を見直し、中間試験週とプロジェクト週でペースが違うことを忘れないでください。最後に、来週月曜午前九時から来学期の履修登録が始まり、人気講座はすぐ満席になるので代替を二つ用意し、キャンセル待ちに入った方は毎朝ポータルを確認してください。ライティングセンターは非同期フィードバックも開始しました。本日は以上です。来週もよろしくお願いします。",
+        listeningQs: [
+          {
+            q: "講義で推奨されている学習ブロックの考え方に最も近いのはどれか。",
+            options: [
+              { v: "A", text: "細切れマルチタスクを増やす" },
+              { v: "B", text: "九十分集中と短い休憩のサイクル" },
+              { v: "C", text: "徹夜のみ" },
+              { v: "D", text: "計画は不要" }
+            ],
+            correct: "B"
+          },
+          {
+            q: "履修登録について述べられていることはどれか。",
+            options: [
+              { v: "A", text: "来週月曜9時開始、待ちは毎朝確認" },
+              { v: "B", text: "いつでも自動で入る" },
+              { v: "C", text: "金曜のみ" },
+              { v: "D", text: "説明されていない" }
+            ],
+            correct: "A"
+          }
+        ],
+        speakingTopic: "あなたの試験勉強に効いている習慣を一つ選び、理由とともに説明してください。",
+        writingPrompt: "「グループで学ぶより一人で学ぶ方がよい」に賛成か反対か、理由と具体例を書きなさい。",
+        writingLimitMin: 30
+      },
+      ko: {
+        label: "TOPIK 取向 · 長文模考（韓文）",
+        readingPassage:
+          "최근 대학 교육에서는 온라인 강의와 학습 분석 도구가 확대되면서 교수와 학생의 상호작용 방식이 빠르게 변하고 있다. 지지측은 데이터를 통해 학습 어려움을 조기에 발견할 수 있다고 주장하지만, 비판측은 측정 가능한 행동에만 초점이 맞춰질 위험을 지적한다. 효과적인 혼합 학습은 기술로 행정적 마찰을 줄이되 멘토링과 토론 같은 인간적 요소를 유지할 때 성과가 크다는 연구 결과가 누적되고 있다. 접근성 측면에서 자막과 유연한 마감은 다양한 학습자를 돕지만, 명확한 학습 목표와 질 높은 피드백이 없으면 도구만으로는 한계가 있다. 장기 추적 연구에 따르면 디지털 보조 자료는 구조화된 복습 루틴과 결합될 때 이수율 향상과 연관된다. 국제화가 진행되는 학과에서는 영어 강의와 논술 지원 수요가 늘고 있으며, 쓰기 센터와 말하기 연습 공간의 역할이 커지고 있다. 인공지능 도구가 확산되더라도 근거 평가와 불확실성에 대응하는 능력은 여전히 교육적 대화를 통해 길러져야 한다. 기술은 교육 철학을 증폭시키는 매개이며, 교수 설계와 교원 연수 투자 없이 소프트웨어만 도입하는 것은 지속 가능한 개선으로 이어지기 어렵다. 도서관 그룹 스터디룸은 이번 달부터 온라인 예약이 필수이며, 야간 개관 시간이 연장되었다. 학생들은 매주 학습 시간을 기록하여 과소평가되기 쉬운 준비 시간을 가시화할 것을 권장받는다. 상담실에서는 불안 관리와 과제 세분화 워크숍이 금요 오후에 열리며 참여는 자율이다. 다음 학기 수강 신청은 다음 주 월요일 오전 아홉 시에 시작되며, 인기 과목은 빠르게 마감되므로 대체 과목 두 개를 미리 준비하고, 대기 명단에 올랐다면 매일 아침 포털을 확인해야 한다. 졸업 후 직장과 시민 생활에서는 모호한 문제에 증거를 통합하고 협력하여 해법을 찾는 역량이 요구된다. 대학은 이러한 역량의 토대를 어떻게 설계할 것인가가 앞으로의 평가 초점이 될 것이다.",
+        readingQs: [
+          {
+            q: "글의 중심 내용으로 가장 적절한 것은?",
+            options: [
+              { v: "A", text: "기술만으로 교육이 완성된다" },
+              { v: "B", text: "기술은 교육 철학과 설계·지원과 결합될 때 효과적이다" },
+              { v: "C", text: "토론은 불필요하다" },
+              { v: "D", text: "데이터는 사용하지 않는 것이 좋다" }
+            ],
+            correct: "B"
+          },
+          {
+            q: "접근성에 관한 설명으로 맞는 것은?",
+            options: [
+              { v: "A", text: "자막은 특정 집단만을 위한 것이다" },
+              { v: "B", text: "다양한 학습자에게 도움이 될 수 있다" },
+              { v: "C", text: "유연한 마감은 항상 기준을 낮춘다" },
+              { v: "D", text: "글에서 다루지 않는다" }
+            ],
+            correct: "B"
+          },
+          {
+            q: "수강 신청에 대한 내용과 일치하는 것은?",
+            options: [
+              { v: "A", text: "다음 주 월요일 9시 시작, 대기자는 매일 포털 확인" },
+              { v: "B", text: "신청이 없다" },
+              { v: "C", text: "금요일만 가능" },
+              { v: "D", text: "야간만 연다" }
+            ],
+            correct: "A"
+          }
+        ],
+        listeningScript:
+          "안녕하세요. 학습 전략 워크숍 세 번째 시간입니다. 오늘은 기말 직전이 아니라 학기 전체의 시간 관리를 다룹니다. 먼저 주간 일정을 할 일 목록이 아니라 주의력 예산으로 보세요. 인지 부하 연구에 따르면 아홉십 분 집중과 짧은 휴식의 블록이 잦은 멀티태스킹보다 낫습니다. 다음으로 본인의 고에너지 시간대를 파악하세요. 오전에 맑다면 읽기 부담이 큰 과목을 그때 배치하십시오. 셋째, 완충용 하루를 남겨 두세요. 넷째, 오피스 아워에는 구체적인 질문이나 개요를 가져가십시오. 다섯째, 스터디 그룹은 시작 시각과 역할을 정하고 끝의 기준을 공유하세요. 여섯째, 계획과 실제를 기록해 감이 아니라 데이터로 조정합니다. 일곱째, 도구는 단순하게, 학기 중간에 바꾸지 마세요. 여덟째, 수면은 기억 고착에 필수입니다. 아홉째, 의욕이 떨어지면 첫걸음을 작게 하세요. 열째, 한 달에 한 번 계획을 재검토하세요. 마지막으로 다음 주 월요일 오전 아홉 시 다음 학기 수강 신청이 시작되며 인기 과목은 빨리 찹니다. 대기 명단이면 매일 아침 포털을 확인하십시오. 금요 오후 상담실에서 불안 관리 워크숍이 열립니다. 감사합니다. 다음 주에 뵙겠습니다.",
+        listeningQs: [
+          {
+            q: "강의에서 권장하는 집중 방식에 가장 가까운 것은?",
+            options: [
+              { v: "A", text: "멀티태스킹을 늘린다" },
+              { v: "B", text: "아홉십 분 집중과 짧은 휴식" },
+              { v: "C", text: "밤샘만 한다" },
+              { v: "D", text: "계획이 불필요하다" }
+            ],
+            correct: "B"
+          },
+          {
+            q: "수강 신청 시작 시각은?",
+            options: [
+              { v: "A", text: "다음 주 월요일 오전 9시" },
+              { v: "B", text: "금요일 정오" },
+              { v: "C", text: "어제" },
+              { v: "D", text: "언급 없음" }
+            ],
+            correct: "A"
+          }
+        ],
+        speakingTopic: "시험 준비에 도움이 되는 습관 하나를 말하고 이유를 설명하세요.",
+        writingPrompt: "혼자 공부하는 것이 그룹 공부보다 낫다는 주장에 동의하는지, 이유와 예를 들어 쓰세요.",
+        writingLimitMin: 30
+      },
+      es: {
+        label: "DELE 取向 · 長文模考（西文）",
+        readingPassage:
+          "En las últimas décadas, la enseñanza universitaria ha incorporado plataformas digitales, analíticas de aprendizaje y retroalimentación automática que prometen personalización a gran escala. Los defensores sostienen que los datos ayudan a detectar dificultades antes y a adaptar recursos; los críticos advierten que medir solo lo fácilmente cuantificable puede desplazar el debate ético, la creatividad y el trabajo colaborativo. La investigación sugiere que los modelos híbridos más efectivos combinan mentoría humana con tecnología que reduce fricciones logísticas. Los videos breves pueden trasladar conceptos básicos fuera del aula y reservar el tiempo presencial para aplicación y discusión. Persisten desafíos: brecha digital, carga docente al rediseñar cursos y privacidad cuando se registran interacciones detalladas. Varias políticas exigen transparencia y limitan el uso de terceros. Los estudios longitudinales muestran que las mejoras en permanencia son mayores cuando los complementos digitales van acompañados de rutinas de estudio claras y resultados de aprendizaje explícitos. En carreras lectoras intensivas, la anotación colaborativa y los archivos compartidos profundizan la lectura crítica si se enseña a interrogar fuentes. En cursos cuantitativos, la práctica adaptativa puede asemejarse a tutoría inmediata. La tecnología amplía la filosofía pedagógica existente; sin diseño instruccional ni formación del profesorado, el software solo rara vez produce cambios duraderos. La internacionalización aumenta la demanda de apoyo para escribir y hablar en inglés u otras lenguas. Los asistentes de IA pueden ayudar a redactar, pero las tareas auténticas siguen siendo necesarias para evaluar síntesis y manejo de la incertidumbre. La transferencia del aprendizaje falla si los cursos no conectan principios abstractos con escenarios concretos; por eso proliferan los casos, las microprácticas y las evaluaciones por proyectos. El diseño inclusivo beneficia a muchos: los subtítulos ayudan también a estudiantes de segunda lengua y los plazos flexibles pueden apoyar a cuidadores sin confundir estándares si las expectativas son claras. La biblioteca amplía horario nocturno y exige reserva en línea para salas de grupo. Se recomienda registrar semanalmente el tiempo real de estudio. Los talleres de ansiedad y fragmentación de tareas son opcionales los viernes por la tarde. La matrícula del próximo semestre abre el lunes próximo a las nueve de la mañana; los cursos populares se llenan pronto, así que prepare dos alternativas y, si está en lista de espera, revise el portal cada mañana. El éxito futuro dependerá de si los graduados transfieren habilidades a entornos laborales y cívicos donde los problemas son ambiguos y la cooperación es esencial.",
+        readingQs: [
+          {
+            q: "¿Qué temen los críticos respecto al uso intensivo de analíticas?",
+            options: [
+              { v: "A", text: "Que las clases sean demasiado cortas" },
+              { v: "B", text: "Que la educación se reduzca a lo fácilmente medible" },
+              { v: "C", text: "Que desaparezcan las bibliotecas" },
+              { v: "D", text: "Que no haya exámenes" }
+            ],
+            correct: "B"
+          },
+          {
+            q: "Según el texto, la tecnología es más efectiva cuando _______.",
+            options: [
+              { v: "A", text: "sustituye por completo al profesor" },
+              { v: "B", text: "amplía una pedagogía sólida y está bien diseñada" },
+              { v: "C", text: "elimina la evaluación" },
+              { v: "D", text: "solo se usa en exámenes finales" }
+            ],
+            correct: "B"
+          },
+          {
+            q: "¿Qué se indica sobre la matrícula del próximo semestre?",
+            options: [
+              { v: "A", text: "Abre el lunes próximo a las 9:00; revisar el portal si hay lista de espera" },
+              { v: "B", text: "No hay matrícula" },
+              { v: "C", text: "Solo los viernes" },
+              { v: "D", text: "Solo por la noche" }
+            ],
+            correct: "A"
+          }
+        ],
+        listeningScript:
+          "Buenas tardes. Bienvenidos al taller tres de gestión del tiempo académico. Hoy hablamos del semestre completo, no solo de la cram session final. Primero, vean su calendario como un presupuesto de atención: bloques de noventa minutos con pausas cortas suelen vencer al multitarea constante. Segundo, mapeen sus horas de mayor energía y reserven ahí la lectura densa. Tercero, dejen un día colchón para absorber retrasos. Cuarto, en horas de consulta traigan una pregunta concreta o un esquema, no una petición vaga. Quinto, en grupos de estudio acuerden hora de inicio, roles y qué significa terminar. Sexto, lleven un registro de plan versus realidad. Séptimo, simplifiquen herramientas digitales y no cambien de sistema a mitad de curso. Octavo, el sueño es esencial para consolidar memoria. Noveno, si falta motivación, reduzcan el primer paso a diez minutos enfocados. Décimo, revisen el plan cada mes. El centro de orientación ofrecerá coaching los viernes por la tarde y el centro de escritura dará retroalimentación asíncrona. Antes de cerrar: la matrícula de seminarios de honores de primavera abre el lunes próximo a las nueve de la mañana; quienes estén en lista de espera deben revisar el portal cada mañana porque suelen liberarse plazas. Gracias y nos vemos la próxima semana.",
+        listeningQs: [
+          {
+            q: "Según el taller, ¿qué se recomienda sobre bloques de estudio?",
+            options: [
+              { v: "A", text: "Solo multitarea" },
+              { v: "B", text: "Bloques de noventa minutos con pausas" },
+              { v: "C", text: "No planificar" },
+              { v: "D", text: "Evitar descansos" }
+            ],
+            correct: "B"
+          },
+          {
+            q: "¿Cuándo abre la matrícula mencionada al final?",
+            options: [
+              { v: "A", text: "El lunes próximo a las 9:00" },
+              { v: "B", text: "El viernes al mediodía" },
+              { v: "C", text: "Ayer" },
+              { v: "D", text: "No se dice" }
+            ],
+            correct: "A"
+          }
+        ],
+        speakingTopic: "Describe un hábito de estudio que te ayude para exámenes y explica por qué funciona.",
+        writingPrompt:
+          "¿Estás de acuerdo? Es mejor estudiar solo que en grupo. Da razones y ejemplos.",
+        writingLimitMin: 30
+      },
+      de: {
+        label: "TestDaF/歌德取向 · 長文模考（德文）",
+        readingPassage:
+          "In den letzten Jahrzehnten haben digitale Lernplattformen, Lernanalysen und automatisches Feedback die Hochschullehre stark verändert. Befürworter argumentieren, Daten helfen, Schwierigkeiten früh zu erkennen und Angebote anzupassen. Kritiker warnen, dass ein Übermaß an Messbarkeit kreative, ethische und kooperative Dimensionen verdrängen könnte. Studien legen nahe, dass hybride Modelle dann am wirksamsten sind, wenn menschliche Mentoring-Anteile erhalten bleiben und Technik vor allem logistische Hürden abbaut. Kurze Videos können Grundlagen außerhalb der Präsenzzeit vermitteln und Seminarstunden für Anwendung und Diskussion freisetzen. Herausforderungen bleiben: digitale Spaltung, Mehrbelastung bei Curriculumsredesign und Datenschutz bei detaillierten Interaktionsprotokollen. Viele Hochschulen fordern Transparenz und begrenzen Drittanbieter. Längsschnittdaten zeigen, dass Abschlussquoten stärker steigen, wenn digitale Ergänzungen mit klaren Lernzielen und strukturierten Wiederholungsroutinen einhergehen. In leseintensiven Fächern vertiefen kollaborative Annotationen das Quellenverständnis, wenn Studierende methodisch geschult sind. In quantitativen Kursen kann adaptives Üben schnelles Korrektivfeedback liefern. Technologie verstärkt vorhandene didaktische Konzepte; ohne instructional design und Lehrendenfortbildung bleiben Softwarekäufe oft wirkungslos. Internationalisierung erhöht den Bedarf an Schreib- und Sprechtrainings. KI-Hilfen können Entwürfe unterstützen, authentische Prüfaufgaben bleiben jedoch nötig, um Syntheseleistung und Umgang mit Unsicherheit zu beurteilen. Transfer gelingt häufiger, wenn abstrakte Prinzipien mit konkreten Szenarien verknüpft werden; deshalb nehmen Fallstudien und Portfolioelemente zu. Inklusives Design nützt vielen: Untertitel helfen auch Zweitsprachlerinnen, flexible Fristen können Familien unterstützen, sofern Erwartungen klar kommuniziert werden. Die Bibliothek verlängert nächtliche Öffnungszeiten und verpflichtet zur Online-Reservierung von Gruppenräumen. Wöchentliche Protokolle der effektiven Lernzeit werden empfohlen. Workshops zu Stressmanagement und Aufgabenzerlegung finden freitagnachmittags statt. Die Einschreibung für das nächste Semester beginnt nächsten Montag um neun Uhr; beliebte Kurse sind schnell voll, daher zwei Alternativen planen und bei Wartelisten täglich das Portal prüfen. Langfristig zählt, ob Absolventinnen und Absolventen Kompetenzen in berufliche und zivile Kontexte übertragen können, in denen Probleme unscharf sind und Zusammenarbeit entscheidet.",
+        readingQs: [
+          {
+            q: "Was befürchten Kritiker bezüglich starker Nutzung von Lernanalysen?",
+            options: [
+              { v: "A", text: "Dass Veranstaltungen zu kurz werden" },
+              { v: "B", text: "Dass Bildung auf leicht Messbares schrumpft" },
+              { v: "C", text: "Dass Bibliotheken schließen" },
+              { v: "D", text: "Dass es keine Prüfungen gibt" }
+            ],
+            correct: "B"
+          },
+          {
+            q: "Der Text legt nahe, Technologie wirkt am besten, wenn sie _______.",
+            options: [
+              { v: "A", text: "Lehrende vollständig ersetzt" },
+              { v: "B", text: "solide Pädagogik verstärkt und eingebettet ist" },
+              { v: "C", text: "alle Bewertungen abschafft" },
+              { v: "D", text: "nur in der Nacht genutzt wird" }
+            ],
+            correct: "B"
+          },
+          {
+            q: "Was gilt laut Text für die Einschreibung?",
+            options: [
+              { v: "A", text: "Beginnt nächsten Montag um 9 Uhr; Portal täglich prüfen bei Warteliste" },
+              { v: "B", text: "Es gibt keine Einschreibung" },
+              { v: "C", text: "Nur freitags" },
+              { v: "D", text: "Nur nachts" }
+            ],
+            correct: "A"
+          }
+        ],
+        listeningScript:
+          "Guten Tag, willkommen zur dritten Sitzung unseres Zeitmanagement-Workshops. Heute geht es um das ganze Semester, nicht nur um Lernen in der Prüfungswoche. Betrachten Sie Ihren Wochenplan als Aufmerksamkeitsbudget: Neunzigminutenblöcke mit kurzen Pausen schlagen ständiges Multitasking. Ordnen Sie anspruchsvolle Leseaufgaben Ihren energiereichsten Stunden zu. Planen Sie Puffertage ein. Sprechstunden nutzen Sie mit konkreten Fragen oder Gliederungen. In Lerngruppen vereinbaren Sie Startzeit, Rollen und ein klares Fertigkeitskriterium. Protokollieren Sie Plan und Realität. Halten Sie digitale Tools schlank und wechseln Sie nicht mitten im Semester. Schlaf ist für die Konsolidierung unverzichtbar. Fehlt Motivation, verkleinern Sie den ersten Schritt auf zehn fokussierte Minuten. Überprüfen Sie monatlich Ihren Plan. Das Beratungszentrum bietet freitagnachmittags Drop-in-Coaching, das Schreibzentrum asynchrones Feedback. Zum Schluss: Die Einschreibung für Frühlings-Seminare beginnt nächsten Montag um neun Uhr; bei Wartelisten bitte täglich das Portal prüfen, weil Plätze oft frei werden. Danke und bis nächste Woche.",
+        listeningQs: [
+          {
+            q: "Was empfiehlt der Workshop zu Lernblöcken?",
+            options: [
+              { v: "A", text: "Nur Multitasking" },
+              { v: "B", text: "Neunzig Minuten Fokus mit Pausen" },
+              { v: "C", text: "Gar nicht planen" },
+              { v: "D", text: "Keine Pausen" }
+            ],
+            correct: "B"
+          },
+          {
+            q: "Wann beginnt die genannte Einschreibung?",
+            options: [
+              { v: "A", text: "Nächsten Montag um 9 Uhr" },
+              { v: "B", text: "Freitag mittags" },
+              { v: "C", text: "Gestern" },
+              { v: "D", text: "Wird nicht genannt" }
+            ],
+            correct: "A"
+          }
+        ],
+        speakingTopic: "Beschreiben Sie eine Studiengewohnheit, die Ihnen bei Prüfungen hilft, und erklären Sie warum.",
+        writingPrompt:
+          "Stimmen Sie zu oder nicht? Allein zu lernen ist besser als in der Gruppe. Begründen Sie mit Beispielen.",
+        writingLimitMin: 30
+      }
     };
+
+    function getCurrentMockExam() {
+      return MOCK_EXAM_BY_LANG[currentLang] || MOCK_EXAM_BY_LANG.en;
+    }
+
+    /** 百詞斬式詞書：依語系與下拉選單 id 切換閃卡詞條 */
+    const WORD_BOOKS = {
+      en: [
+        {
+          id: "toefl_core",
+          label: "托福核心詞彙",
+          words: [
+            { front: "hypothesis", back: "假設；前提" },
+            { front: "coherent", back: "連貫的；一致的" },
+            { front: "plausible", back: "貌似合理的" },
+            { front: "intrinsic", back: "內在的；固有的" },
+            { front: "paradigm", back: "典範；模式" }
+          ]
+        },
+        {
+          id: "classic",
+          label: "Classic Vocabulary List",
+          words: [
+            { front: "outbreak", back: "（疾病、暴力等）爆發" },
+            { front: "resume", back: "（中斷後）繼續；履歷（résumé）" },
+            { front: "lonesome", back: "孤寂的；人跡罕至的" },
+            { front: "scrutiny", back: "徹底檢查；密切注視" },
+            { front: "tenuous", back: "薄弱的；含糊的" }
+          ]
+        }
+      ],
+      ko: [
+        { id: "yonsei_1", label: "延世韓國語 第1冊", words: [{ front: "안녕하세요", back: "您好（正式問候）" }, { front: "감사합니다", back: "謝謝" }, { front: "죄송합니다", back: "對不起" }] },
+        { id: "yonsei_2", label: "延世韓國語 第2冊", words: [{ front: "날씨가 어때요?", back: "天氣如何？" }, { front: "약속", back: "約定" }, { front: "취미", back: "嗜好" }] },
+        { id: "yonsei_3", label: "延世韓國語 第3冊", words: [{ front: "습관", back: "習慣" }, { front: "목표", back: "目標" }, { front: "복습", back: "複習" }] },
+        { id: "yonsei_4", label: "延世韓國語 第4冊", words: [{ front: "견해", back: "見解" }, { front: "논의", back: "討論" }, { front: "요약", back: "摘要" }] },
+        { id: "yonsei_5", label: "延世韓國語 第5冊", words: [{ front: "사회문제", back: "社會問題" }, { front: "정책", back: "政策" }, { front: "분석", back: "分析" }] },
+        { id: "yonsei_6", label: "延世韓國語 第6冊", words: [{ front: "추상적", back: "抽象的" }, { front: "통합", back: "整合" }, { front: "비판적 사고", back: "批判思考" }] },
+        { id: "topik_begin", label: "TOPIK 初級詞彙", words: [{ front: "날씨", back: "天氣" }, { front: "교통", back: "交通" }, { front: "건강", back: "健康" }] },
+        { id: "topik_mid", label: "TOPIK 中級詞彙", words: [{ front: "환경", back: "環境" }, { front: "경쟁", back: "競爭" }, { front: "협력", back: "合作" }] },
+        { id: "topik_adv", label: "TOPIK 高級詞彙", words: [{ front: "궁극적", back: "終極的" }, { front: "논지", back: "論旨" }, { front: "함의", back: "含義" }] }
+      ],
+      es: [
+        { id: "es_1000", label: "入门必背1000词", words: [{ front: "hola", back: "你好" }, { front: "gracias", back: "謝謝" }, { front: "biblioteca", back: "圖書館" }] },
+        { id: "dele_b2", label: "DELE B2", words: [{ front: "asimismo", back: "同樣地；此外" }, { front: "repercución", back: "影響；反響" }, { front: "supuesto", back: "假設；當然" }] },
+        { id: "dele_c1", label: "DELE C1", words: [{ front: "ubiquitous", back: "無所不在的（西語常見對應：ubicuo）" }, { front: "sine qua non", back: "必要條件（拉丁借詞）" }, { front: "matiz", back: "細微差別；色調" }] }
+      ],
+      ja: [
+        { id: "gojuon", label: "五十音（示例）", words: [{ front: "あ", back: "あ行母音 a" }, { front: "か", back: "ka 行" }, { front: "さ", back: "sa 行" }] },
+        { id: "minna_begin", label: "大家的日語 初級", words: [{ front: "はじめまして", back: "初次見面" }, { front: "よろしく", back: "請多關照" }, { front: "がんばります", back: "我會加油" }] },
+        { id: "minna_mid", label: "大家的日語 中級", words: [{ front: "〜に違いない", back: "一定…；肯定…" }, { front: "一方で", back: "另一方面" }, { front: "要するに", back: "總之" }] },
+        { id: "jlpt_n5", label: "N5 必背", words: [{ front: "食べる", back: "吃" }, { front: "行く", back: "去" }, { front: "大きい", back: "大的" }] },
+        { id: "jlpt_n1", label: "N1 必背", words: [{ front: "憂慮", back: "憂慮（ゆうりょ）" }, { front: "著しい", back: "顯著的（いちじるしい）" }, { front: "推移", back: "推移（すいい）" }] }
+      ],
+      de: [
+        { id: "goethe_b1", label: "歌德 B1", words: [{ front: "die Meinung", back: "意見" }, { front: "trotzdem", back: "儘管如此" }, { front: "sich bemühen", back: "努力；致力" }] },
+        { id: "goethe_b2", label: "歌德 B2", words: [{ front: "die Auswirkung", back: "影響；後果" }, { front: "hingegen", back: "相反地" }, { front: "unter Berücksichtigung", back: "考慮到…" }] },
+        { id: "testdaf_3", label: "德福 3 分必背", words: [{ front: "die Grafik", back: "圖表" }, { front: "zunehmend", back: "日益增加的" }, { front: "zusammenfassen", back: "總結" }] }
+      ]
+    };
+
+    /** B 站影音資源（網格卡片動態渲染） */
+    const VIDEO_RESOURCES = [
+      {
+        category: "托福 TOEFL",
+        items: [
+          { title: "每天五句 · 二十天搞定托福 7000 詞", url: "https://b23.tv/3C8S43n" },
+          { title: "Adam 老師超實用托福寫作技巧", url: "https://b23.tv/GpWeNsG" },
+          { title: "百集最強托福網課合集（聽說讀寫）", url: "https://b23.tv/x9mPsSM" },
+          { title: "托福聽力神級合集（全 80 集）", url: "https://b23.tv/YAQp487" },
+          { title: "Group9120 托福閱讀滿分教程 2025", url: "https://b23.tv/i1VwEEB" },
+          { title: "托福閱讀真題", url: "https://b23.tv/hhBDSWO" },
+          { title: "油管超火托福口語晨讀 30 分鐘", url: "https://b23.tv/m5QZkqi" }
+        ]
+      },
+      {
+        category: "日語 Japanese",
+        items: [
+          { title: "新標日 0 到 N1 入門教程", url: "https://b23.tv/AZyCvLW" },
+          { title: "15000 個日語單詞分類記憶（睡前磨耳朵）", url: "https://b23.tv/mbrp6m9" },
+          { title: "N5~N2 日語語法詳解", url: "https://b23.tv/Fb7YPIr" },
+          { title: "逆轉裁判學日語", url: "https://b23.tv/DScSgbZ" }
+        ]
+      },
+      {
+        category: "韓語 Korean · TOPIK",
+        items: [
+          { title: "TOPIK 初級單字全攻略", url: "https://b23.tv/U5dCQX0" },
+          { title: "KoreanClass101 韓語 800+ 集", url: "https://b23.tv/hm9MgXw" },
+          { title: "韓語語法初中高級教程（CC 雙語）", url: "https://b23.tv/B41vO4k" }
+        ]
+      },
+      {
+        category: "西班牙語 Spanish",
+        items: [
+          { title: "Laura 老師零基礎西語", url: "https://b23.tv/PDuB7P0" },
+          { title: "西班牙語初級課程 129 集完整版", url: "https://b23.tv/eekSeOY" },
+          { title: "Dictée 聽寫 74 篇（法語／聽力口語參考）", url: "https://b23.tv/FvdDNX1" }
+        ]
+      },
+      {
+        category: "德語 German",
+        items: [
+          { title: "21 天背完 8000 詞（德英對照）", url: "https://b23.tv/baWPSz3" },
+          { title: "走遍德國 0-B2 網課合集", url: "https://b23.tv/7ZnEsnR" },
+          { title: "德語精聽訓練", url: "https://b23.tv/T0sYJC8" }
+        ]
+      }
+    ];
 
     /** 考研：MIS / 資料庫閃卡、考古題 */
     const EXAM_FLASH = [
@@ -2012,7 +2607,7 @@ ORDER BY avg_score DESC;"></textarea>
     function activatePanel(panelId) {
       // 語言模式 panels: vocab, grammar, reading, listening, speaking, writing, mock-exam
       // 考研模式: exam-flash, exam-essay, exam-code
-      const langPanels = ["vocab", "grammar", "reading", "listening", "speaking", "writing", "mock-exam"];
+      const langPanels = ["vocab", "grammar", "reading", "listening", "speaking", "writing", "video-hub", "mock-exam"];
       const examPanels = ["exam-flash", "exam-essay", "exam-code"];
 
       $$(".panel-area .panel").forEach((p) => {
@@ -2043,10 +2638,14 @@ ORDER BY avg_score DESC;"></textarea>
       }
       activatePanel(panelId);
       if (currentMode === "lang" && panelId === "mock-exam") {
-        if (mockPhase === "welcome") showMockView("welcome");
-        else if (mockPhase === "wizard") showMockView("wizard");
+        if (mockPhase === "welcome") {
+          var wx = getCurrentMockExam();
+          $("#mockWelcomeTitle").textContent = wx.label || "全真長篇模考";
+          showMockView("welcome");
+        } else if (mockPhase === "wizard") showMockView("wizard");
         else showMockView("result");
       }
+      if (currentMode === "lang" && panelId === "video-hub") renderVideoHub();
     }
 
     function applyLanguageContent() {
@@ -2056,7 +2655,8 @@ ORDER BY avg_score DESC;"></textarea>
       $("#mainTitle").textContent = d.label;
       $("#mainDesc").textContent = d.desc;
 
-      // 單字閃卡
+      // 單字閃卡（詞書下拉）
+      populateVocabBookSelect();
       vocabIndex = 0;
       renderVocabFlash();
 
@@ -2132,14 +2732,66 @@ ORDER BY avg_score DESC;"></textarea>
       resetListenPlayer();
     }
 
+    function populateVocabBookSelect() {
+      const sel = $("#vocabBookSelect");
+      const books = WORD_BOOKS[currentLang] || WORD_BOOKS.en;
+      sel.innerHTML = "";
+      books.forEach(function (b) {
+        const opt = document.createElement("option");
+        opt.value = b.id;
+        opt.textContent = b.label;
+        sel.appendChild(opt);
+      });
+    }
+
+    function getActiveVocabDeck() {
+      const books = WORD_BOOKS[currentLang] || WORD_BOOKS.en;
+      const id = $("#vocabBookSelect").value;
+      const book = books.find(function (b) {
+        return b.id === id;
+      });
+      return book && book.words && book.words.length ? book.words : [{ front: "（無詞條）", back: "請選擇其他詞書" }];
+    }
+
     /* ---------- 單字 3D 閃卡 ---------- */
     function renderVocabFlash() {
-      const d = LANG_DATA[currentLang].vocab;
-      const item = d[vocabIndex];
+      const deck = getActiveVocabDeck();
+      if (vocabIndex >= deck.length) vocabIndex = 0;
+      const item = deck[vocabIndex];
       $("#vocabFront").textContent = item.front;
       $("#vocabBack").textContent = item.back;
       $("#vocabFlashCard").classList.remove("is-flipped");
     }
+
+    /** 影音學習：由 VIDEO_RESOURCES 產生網格 */
+    function renderVideoHub() {
+      const root = $("#videoHubRoot");
+      if (!root) return;
+      root.innerHTML = "";
+      VIDEO_RESOURCES.forEach(function (sec) {
+        const wrap = document.createElement("div");
+        wrap.className = "video-hub-section";
+        wrap.innerHTML = "<h4>" + sec.category + "</h4>";
+        const grid = document.createElement("div");
+        grid.className = "video-grid";
+        sec.items.forEach(function (it) {
+          const a = document.createElement("a");
+          a.className = "video-card";
+          a.href = it.url;
+          a.target = "_blank";
+          a.rel = "noopener noreferrer";
+          a.innerHTML = '<div class="vc-title">' + it.title + '</div><div class="vc-link">' + it.url + "</div>";
+          grid.appendChild(a);
+        });
+        wrap.appendChild(grid);
+        root.appendChild(wrap);
+      });
+    }
+
+    $("#vocabBookSelect").addEventListener("change", function () {
+      vocabIndex = 0;
+      renderVocabFlash();
+    });
 
     function flipVocabCard() {
       $("#vocabFlashCard").classList.toggle("is-flipped");
@@ -2495,13 +3147,13 @@ ORDER BY avg_score DESC;"></textarea>
     });
     $("#vocabPrev").addEventListener("click", function (e) {
       e.stopPropagation();
-      const d = LANG_DATA[currentLang].vocab;
+      const d = getActiveVocabDeck();
       vocabIndex = (vocabIndex - 1 + d.length) % d.length;
       renderVocabFlash();
     });
     $("#vocabNext").addEventListener("click", function (e) {
       e.stopPropagation();
-      const d = LANG_DATA[currentLang].vocab;
+      const d = getActiveVocabDeck();
       vocabIndex = (vocabIndex + 1) % d.length;
       renderVocabFlash();
     });
@@ -2584,22 +3236,26 @@ ORDER BY avg_score DESC;"></textarea>
     }
 
     function renderMockReadingStep() {
-      const q = MOCK_EXAM.reading[mockReadingIdx];
-      $("#mockReadingPassage").textContent = q.passage;
+      const ex = getCurrentMockExam();
+      $("#mockReadingPassage").textContent = ex.readingPassage;
+      const q = ex.readingQs[mockReadingIdx];
       $("#mockReadingQ").textContent = q.q;
       renderMcqOptions("mockReadingOpts", q.options, "mock_read_sel");
       updateMockWizardProgress();
     }
 
     function enterMockListening() {
+      const ex = getCurrentMockExam();
       mockWizardStep = 1;
       $("#mockStepReading").classList.add("mock-hidden");
       $("#mockStepListening").classList.remove("mock-hidden");
       $("#mockListenQuizWrap").classList.add("mock-hidden");
       mockListenPlayed = false;
-      $("#mockListenScriptHint").textContent = "請按播放鍵聽取音檔（英文 TTS 優化播放）。";
-      const q1 = MOCK_EXAM.listeningQs[0];
-      const q2 = MOCK_EXAM.listeningQs[1];
+      $("#mockListenNotes").value = "";
+      $("#mockListenScriptHint").textContent =
+        "請按播放鍵聽取長篇音檔（語速 0.9、高品質語音分段停頓）。全程約 2 分鐘以上，可邊聽邊於下方筆記。";
+      const q1 = ex.listeningQs[0];
+      const q2 = ex.listeningQs[1];
       $("#mockListenQ1").textContent = "1. " + q1.q;
       $("#mockListenQ2").textContent = "2. " + q2.q;
       renderMcqOptions("mockListenOpts1", q1.options, "mock_l1");
@@ -2611,7 +3267,7 @@ ORDER BY avg_score DESC;"></textarea>
       mockWizardStep = 2;
       $("#mockStepListening").classList.add("mock-hidden");
       $("#mockStepSpeaking").classList.remove("mock-hidden");
-      $("#mockSpeakTopic").textContent = MOCK_EXAM.speakingTopic;
+      $("#mockSpeakTopic").textContent = getCurrentMockExam().speakingTopic;
       $("#mockPrepStatus").textContent = "準備時間：倒數 15 秒";
       $("#mockRecPhase").textContent = "請等待準備結束";
       $("#mockRecStart").disabled = true;
@@ -2639,9 +3295,10 @@ ORDER BY avg_score DESC;"></textarea>
       mockWizardStep = 3;
       $("#mockStepSpeaking").classList.add("mock-hidden");
       $("#mockStepWriting").classList.remove("mock-hidden");
-      $("#mockWritePrompt").textContent = MOCK_EXAM.writingPrompt;
+      const exW = getCurrentMockExam();
+      $("#mockWritePrompt").textContent = exW.writingPrompt;
       $("#mockWriteArea").value = "";
-      mockWriteRemainSec = MOCK_EXAM.writingLimitMin * 60;
+      mockWriteRemainSec = exW.writingLimitMin * 60;
       function fmt(sec) {
         const m = Math.floor(sec / 60);
         const s = sec % 60;
@@ -2663,8 +3320,12 @@ ORDER BY avg_score DESC;"></textarea>
 
     function updateMockWordCount() {
       const t = $("#mockWriteArea").value.trim();
-      const n = t ? t.split(/\s+/).filter(Boolean).length : 0;
-      $("#mockWriteWordCount").textContent = "字數：" + n + "（英文單字數）";
+      var n = 0;
+      if (!t) n = 0;
+      else if (/[\u3040-\u30ff\u3400-\u9fff\uac00-\ud7af]/.test(t)) n = t.replace(/\s/g, "").length;
+      else n = t.split(/\s+/).filter(Boolean).length;
+      $("#mockWriteWordCount").textContent =
+        currentLang === "en" ? "字數：" + n + "（英文單字數）" : "字數／音節數：" + n + "（依語言自動估算）";
     }
 
     $("#mockWriteArea").addEventListener("input", updateMockWordCount);
@@ -2692,6 +3353,8 @@ ORDER BY avg_score DESC;"></textarea>
         clearInterval(mockWriteTimerId);
         mockWriteTimerId = null;
       }
+      var ex0 = getCurrentMockExam();
+      $("#mockWelcomeTitle").textContent = ex0.label || "全真長篇模考";
       showMockView("wizard");
       renderMockReadingStep();
     });
@@ -2703,7 +3366,8 @@ ORDER BY avg_score DESC;"></textarea>
         return;
       }
       mockAnswers.read.push(ans);
-      if (mockReadingIdx < MOCK_EXAM.reading.length - 1) {
+      const ex = getCurrentMockExam();
+      if (mockReadingIdx < ex.readingQs.length - 1) {
         mockReadingIdx++;
         renderMockReadingStep();
       } else {
@@ -2720,7 +3384,9 @@ ORDER BY avg_score DESC;"></textarea>
       }
       listenPlaying = true;
       $("#mockListenPlay").textContent = "❚❚";
-      TTSHelper.speakChunks(MOCK_EXAM.listeningScript, "en", 1, function () {
+      const exL = getCurrentMockExam();
+      /** 模考聽力：固定語速 0.9 + 高品質語音（speakExamChunks） */
+      TTSHelper.speakExamChunks(exL.listeningScript, currentLang, function () {
         listenPlaying = false;
         $("#mockListenPlay").textContent = "▶";
         mockListenPlayed = true;
@@ -2845,15 +3511,17 @@ ORDER BY avg_score DESC;"></textarea>
     $("#mockFinishExam").addEventListener("click", function () {
       var text = $("#mockWriteArea").value.trim();
       var words = text ? text.split(/\s+/).filter(Boolean).length : 0;
+      if (/[\u3040-\u30ff\u3400-\u9fff\uac00-\ud7af]/.test(text)) words = text.replace(/\s/g, "").length;
       mockAnswers.writeAi = Math.min(30, Math.round(12 + Math.min(18, words / 15) + Math.random() * 4));
 
+      var exF = getCurrentMockExam();
       var readCorrect = 0;
-      for (var i = 0; i < MOCK_EXAM.reading.length; i++) {
-        if (mockAnswers.read[i] === MOCK_EXAM.reading[i].correct) readCorrect++;
+      for (var i = 0; i < exF.readingQs.length; i++) {
+        if (mockAnswers.read[i] === exF.readingQs[i].correct) readCorrect++;
       }
       var listenCorrect = 0;
-      if (mockAnswers.listen[0] === MOCK_EXAM.listeningQs[0].correct) listenCorrect++;
-      if (mockAnswers.listen[1] === MOCK_EXAM.listeningQs[1].correct) listenCorrect++;
+      if (mockAnswers.listen[0] === exF.listeningQs[0].correct) listenCorrect++;
+      if (mockAnswers.listen[1] === exF.listeningQs[1].correct) listenCorrect++;
 
       var readScore = Math.round((readCorrect / 3) * 30);
       var listenScore = Math.round((listenCorrect / 2) * 30);
@@ -2870,7 +3538,42 @@ ORDER BY avg_score DESC;"></textarea>
         readCorrect +
         "/3、聽力 " +
         listenCorrect +
-        "/2。口說／寫作為模擬 AI 評分。此為前端示範，非 ETS 官方成績。";
+        "/2。口說／寫作為模擬評分（參考 ETS 四科 0–30 量尺）。本頁為前端示範，非官方成績。";
+
+      /** 模擬 ETS 風格文字建議（依分數區間） */
+      var ets = $("#mockEtsFeedback");
+      ets.innerHTML =
+        "<h4>詳細評估建議（模擬 ETS 報告口吻）</h4>" +
+        "<p><strong>Reading</strong>（估分 " +
+        readScore +
+        "/30）：" +
+        (readScore >= 22
+          ? "能理解學術文體的主旨、細節與推論；可再練習較快的段落定位與詞彙題排除法。"
+          : "建議加強長句拆解與指代關係；每週固定 2–3 篇計時閱讀並訂正錯因。") +
+        "</p>" +
+        "<p><strong>Listening</strong>（估分 " +
+        listenScore +
+        "/30）：" +
+        (listenScore >= 22
+          ? "能理解講座主線與細節；可加入「筆記符號系統」以應付更長的 campus conversation。"
+          : "請重複聽長篇稿並對照筆記缺口；精聽關鍵數字、步驟與轉折語。") +
+        "</p>" +
+        "<p><strong>Speaking</strong>（估分 " +
+        speakScore +
+        "/30）：" +
+        (speakScore >= 22
+          ? "表達大致流暢；可強化開頭主題句與例子細節，減少填充詞。"
+          : "建議固定模板（觀點→理由→例子）並錄音自評流利度與時長。") +
+        "</p>" +
+        "<p><strong>Writing</strong>（估分 " +
+        writeScore +
+        "/30）：" +
+        (writeScore >= 22
+          ? "結構尚可；可加強主題句與段落間過渡，並檢查指稱一致與句型多樣性。"
+          : "先穩定段落架構與字數，再逐步加入具體例證與讓步反駁。") +
+        "</p>" +
+        "<ul><li>總分對照：約 80+ 常對應 B2 以上門檻；實際門檻依學校與科系而異。</li>" +
+        "<li>正式備考請搭配 TPO／官方指南與寫作／口說人工批改。</li></ul>";
 
       var bars = $("#mockSkillBars");
       bars.innerHTML = "";
@@ -2936,6 +3639,7 @@ ORDER BY avg_score DESC;"></textarea>
     });
 
     /* ---------- 初始化 ---------- */
+    renderVideoHub();
     applyLanguageContent();
     openTab("vocab");
   </script>
