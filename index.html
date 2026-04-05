@@ -1,0 +1,1705 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Varsity Lingo — 全方位學習儀表板</title>
+  <style>
+    /* ========== CSS Variables — Varsity Ivy Palette ========== */
+    :root {
+      --navy: #0A2240;
+      --mustard: #FDB813;
+      --bg: #F4F6F8;
+      --white: #ffffff;
+      --text: #1a2b45;
+      --muted: #5c6b7f;
+      --border: #d8dee6;
+      --success: #1e7e4a;
+      --error: #b42318;
+      --sidebar-w: 260px;
+      --font-display: "Georgia", "Times New Roman", serif;
+      --font-ui: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans TC", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-ui);
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.5;
+    }
+
+    /* ========== App Shell ========== */
+    .app {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* ========== Sidebar — Varsity Stripes ========== */
+    .sidebar {
+      width: var(--sidebar-w);
+      flex-shrink: 0;
+      background: linear-gradient(180deg, var(--navy) 0%, #0d2d52 100%);
+      color: var(--white);
+      padding: 1.25rem 0;
+      border-right: 4px solid var(--mustard);
+      box-shadow: 4px 0 24px rgba(10, 34, 64, 0.15);
+      position: sticky;
+      top: 0;
+      align-self: flex-start;
+      min-height: 100vh;
+    }
+
+    .sidebar-inner {
+      padding: 0 1rem;
+    }
+
+    .logo {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--mustard);
+      padding: 0.5rem 0.75rem 1rem;
+      border-bottom: 2px solid rgba(253, 184, 19, 0.35);
+      margin-bottom: 1rem;
+    }
+
+    .logo-sub {
+      display: block;
+      font-size: 0.65rem;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      color: rgba(255, 255, 255, 0.75);
+      margin-top: 0.35rem;
+      text-transform: none;
+    }
+
+    .nav-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: rgba(255, 255, 255, 0.45);
+      padding: 0 0.75rem 0.5rem;
+    }
+
+    .nav-list {
+      list-style: none;
+    }
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      width: 100%;
+      padding: 0.75rem 0.85rem;
+      margin-bottom: 0.35rem;
+      border: none;
+      border-radius: 8px;
+      background: transparent;
+      color: rgba(255, 255, 255, 0.88);
+      font-size: 0.95rem;
+      cursor: pointer;
+      text-align: left;
+      transition: background 0.2s, color 0.2s, transform 0.15s;
+      font-family: inherit;
+    }
+
+    .nav-item:hover {
+      background: rgba(253, 184, 19, 0.12);
+      color: var(--mustard);
+    }
+
+    .nav-item.active {
+      background: var(--mustard);
+      color: var(--navy);
+      font-weight: 600;
+      box-shadow: 0 4px 12px rgba(253, 184, 19, 0.35);
+    }
+
+    .nav-icon {
+      font-size: 1.15rem;
+      line-height: 1;
+    }
+
+    /* ========== Main ========== */
+    .main {
+      flex: 1;
+      min-width: 0;
+      padding: 1.5rem 1.75rem 2.5rem;
+    }
+
+    .main-header {
+      margin-bottom: 1.25rem;
+    }
+
+    .main-title {
+      font-family: var(--font-display);
+      font-size: 1.65rem;
+      color: var(--navy);
+      letter-spacing: 0.02em;
+    }
+
+    .main-desc {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-top: 0.35rem;
+    }
+
+    /* ========== Tabs ========== */
+    .tabs-wrap {
+      background: var(--white);
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 20px rgba(10, 34, 64, 0.06);
+      overflow: hidden;
+    }
+
+    .tabs-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0;
+      background: linear-gradient(180deg, #eef1f5 0%, #e4e9ef 100%);
+      border-bottom: 3px solid var(--mustard);
+      padding: 0.35rem 0.35rem 0;
+    }
+
+    .tab-btn {
+      padding: 0.65rem 1rem;
+      border: none;
+      background: transparent;
+      color: var(--muted);
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      border-radius: 8px 8px 0 0;
+      transition: background 0.2s, color 0.2s;
+      font-family: inherit;
+    }
+
+    .tab-btn:hover {
+      color: var(--navy);
+      background: rgba(255, 255, 255, 0.6);
+    }
+
+    .tab-btn.active {
+      background: var(--white);
+      color: var(--navy);
+      box-shadow: 0 -2px 8px rgba(10, 34, 64, 0.08);
+    }
+
+    .panel-area {
+      padding: 1.5rem;
+      min-height: 420px;
+    }
+
+    /* Fade-in for panels */
+    .panel {
+      display: none;
+      animation: fadeIn 0.45s ease forwards;
+    }
+
+    .panel.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(6px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ========== Shared panel UI ========== */
+    .panel h3 {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      color: var(--navy);
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--mustard);
+      display: inline-block;
+    }
+
+    .panel-block {
+      margin-bottom: 1.25rem;
+    }
+
+    .panel-block:last-child {
+      margin-bottom: 0;
+    }
+
+    label.lbl {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0.35rem;
+    }
+
+    textarea.input-area,
+    input[type="text"].input-line {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 0.9rem;
+      resize: vertical;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    textarea.input-area:focus,
+    input[type="text"].input-line:focus {
+      outline: none;
+      border-color: var(--navy);
+      box-shadow: 0 0 0 3px rgba(10, 34, 64, 0.12);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      padding: 0.55rem 1.1rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+      transition: transform 0.15s, box-shadow 0.2s;
+    }
+
+    .btn:active {
+      transform: scale(0.98);
+    }
+
+    .btn-primary {
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 4px 14px rgba(10, 34, 64, 0.35);
+    }
+
+    .btn-accent {
+      background: var(--mustard);
+      color: var(--navy);
+    }
+
+    .btn-accent:hover {
+      box-shadow: 0 4px 14px rgba(253, 184, 19, 0.45);
+    }
+
+    .btn-outline {
+      background: var(--white);
+      color: var(--navy);
+      border: 2px solid var(--navy);
+    }
+
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.65rem;
+    }
+
+    .hint {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 0.35rem;
+    }
+
+    .result-msg {
+      margin-top: 0.75rem;
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      font-size: 0.88rem;
+      display: none;
+    }
+
+    .result-msg.show {
+      display: block;
+    }
+
+    .result-msg.ok {
+      background: #e8f5e9;
+      color: var(--success);
+      border: 1px solid #a5d6a7;
+    }
+
+    .result-msg.err {
+      background: #ffebee;
+      color: var(--error);
+      border: 1px solid #ef9a9a;
+    }
+
+    .result-msg.neutral {
+      background: #e3f2fd;
+      color: #1565c0;
+      border: 1px solid #90caf9;
+    }
+
+    /* ========== Listening — Fake Player ========== */
+    .player-card {
+      background: linear-gradient(135deg, var(--navy) 0%, #143a66 100%);
+      color: var(--white);
+      border-radius: 12px;
+      padding: 1.25rem;
+      margin-bottom: 1rem;
+    }
+
+    .player-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .play-toggle {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      border: 3px solid var(--mustard);
+      background: var(--mustard);
+      color: var(--navy);
+      font-size: 1.25rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.15s;
+    }
+
+    .play-toggle:hover {
+      transform: scale(1.05);
+    }
+
+    .progress-wrap {
+      flex: 1;
+      min-width: 160px;
+    }
+
+    .progress-bar {
+      height: 8px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 4px;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: var(--mustard);
+      border-radius: 4px;
+      transition: width 0.1s linear;
+    }
+
+    .time-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      opacity: 0.85;
+      margin-top: 0.35rem;
+    }
+
+    .rate-select {
+      padding: 0.4rem 0.65rem;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--white);
+      font-size: 0.85rem;
+      cursor: pointer;
+    }
+
+    .tts-text-box {
+      margin-top: 0.75rem;
+      padding: 0.75rem;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+      font-size: 0.88rem;
+      line-height: 1.6;
+      border-left: 4px solid var(--mustard);
+    }
+
+    /* MCQ */
+    .mcq-options {
+      margin-top: 0.5rem;
+    }
+
+    .mcq-options label {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      padding: 0.45rem 0;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+
+    /* ========== Speaking ========== */
+    .rec-status {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--navy);
+    }
+
+    .rec-status.recording {
+      color: #c62828;
+      animation: pulse 1s ease infinite;
+    }
+
+    @keyframes pulse {
+      50% { opacity: 0.65; }
+    }
+
+    .timer-display {
+      font-family: ui-monospace, monospace;
+      font-size: 1.5rem;
+      color: var(--mustard);
+      background: var(--navy);
+      padding: 0.35rem 0.85rem;
+      border-radius: 8px;
+      display: inline-block;
+      margin-top: 0.5rem;
+    }
+
+    .audio-slot audio {
+      width: 100%;
+      max-width: 420px;
+      margin-top: 0.75rem;
+    }
+
+    /* ========== Writing word count ========== */
+    .word-count {
+      font-size: 0.85rem;
+      color: var(--muted);
+      text-align: right;
+      margin-top: 0.35rem;
+    }
+
+    .word-count.met {
+      color: var(--success);
+      font-weight: 700;
+    }
+
+    /* ========== 3D Flashcard ========== */
+    .flash-scene {
+      perspective: 1200px;
+      margin: 1rem 0;
+    }
+
+    .flash-card-wrap {
+      width: 100%;
+      max-width: 380px;
+      height: 200px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .flash-card {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: pointer;
+      border-radius: 12px;
+    }
+
+    .flash-card.is-flipped {
+      transform: rotateY(180deg);
+    }
+
+    .flash-face {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.25rem;
+      text-align: center;
+      border: 2px solid var(--navy);
+      box-shadow: 0 8px 24px rgba(10, 34, 64, 0.15);
+    }
+
+    .flash-front {
+      background: linear-gradient(145deg, #fff 0%, #f0f4f8 100%);
+      color: var(--navy);
+      font-size: 1.15rem;
+      font-weight: 700;
+    }
+
+    .flash-back {
+      background: linear-gradient(145deg, var(--navy) 0%, #143a66 100%);
+      color: var(--mustard);
+      transform: rotateY(180deg);
+      font-size: 0.95rem;
+      line-height: 1.45;
+    }
+
+    .flash-nav {
+      display: flex;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    .reading-passage {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--mustard);
+      padding: 1rem 1.15rem;
+      border-radius: 0 8px 8px 0;
+      font-size: 0.92rem;
+      line-height: 1.65;
+      color: var(--text);
+    }
+
+    /* ========== Grad: Code IDE ========== */
+    .ide-wrap {
+      background: #1e1e2e;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid #2d2d44;
+      margin-top: 0.5rem;
+    }
+
+    .ide-bar {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.45rem 0.75rem;
+      background: #2a2a3c;
+      color: #a6accd;
+      font-size: 0.75rem;
+      font-family: ui-monospace, monospace;
+    }
+
+    .ide-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .ide-dot.r { background: #ff5f56; }
+    .ide-dot.y { background: #ffbd2e; }
+    .ide-dot.g { background: #27c93f; }
+
+    .ide-editor {
+      min-height: 200px;
+      width: 100%;
+      padding: 1rem;
+      background: #1e1e2e;
+      color: #cdd6f4;
+      border: none;
+      font-family: "Consolas", "Monaco", ui-monospace, monospace;
+      font-size: 0.85rem;
+      line-height: 1.5;
+      resize: vertical;
+    }
+
+    .ide-editor:focus {
+      outline: none;
+    }
+
+    .essay-timer {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--navy);
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* ========== Responsive ========== */
+    @media (max-width: 900px) {
+      .app {
+        flex-direction: column;
+      }
+      .sidebar {
+        width: 100%;
+        min-height: auto;
+        position: relative;
+        border-right: none;
+        border-bottom: 4px solid var(--mustard);
+      }
+      .nav-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar" aria-label="主選單">
+      <div class="sidebar-inner">
+        <div class="logo">
+          Varsity Lingo
+          <span class="logo-sub">Ivy League Learning Hub</span>
+        </div>
+        <div class="nav-label">六大主目錄</div>
+        <ul class="nav-list">
+          <li>
+            <button type="button" class="nav-item active" data-mode="lang" data-lang="en" aria-pressed="true">
+              <span class="nav-icon" aria-hidden="true">🇺🇸</span> 英文
+            </button>
+          </li>
+          <li>
+            <button type="button" class="nav-item" data-mode="lang" data-lang="ja" aria-pressed="false">
+              <span class="nav-icon" aria-hidden="true">🇯🇵</span> 日文
+            </button>
+          </li>
+          <li>
+            <button type="button" class="nav-item" data-mode="lang" data-lang="ko" aria-pressed="false">
+              <span class="nav-icon" aria-hidden="true">🇰🇷</span> 韓文
+            </button>
+          </li>
+          <li>
+            <button type="button" class="nav-item" data-mode="lang" data-lang="es" aria-pressed="false">
+              <span class="nav-icon" aria-hidden="true">🇪🇸</span> 西文
+            </button>
+          </li>
+          <li>
+            <button type="button" class="nav-item" data-mode="lang" data-lang="de" aria-pressed="false">
+              <span class="nav-icon" aria-hidden="true">🇩🇪</span> 德文
+            </button>
+          </li>
+          <li>
+            <button type="button" class="nav-item" data-mode="exam" data-lang="" aria-pressed="false">
+              <span class="nav-icon" aria-hidden="true">🎓</span> 資管考研
+            </button>
+          </li>
+        </ul>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="main-header">
+        <h1 class="main-title" id="mainTitle">🇺🇸 英文特訓</h1>
+        <p class="main-desc" id="mainDesc">美式常春藤風格學習儀表板 — 單字、文法、閱讀、聽力、口說、寫作一站整合。</p>
+      </header>
+
+      <div class="tabs-wrap">
+        <!-- 語言模式 Tabs -->
+        <div class="tabs-bar" id="tabsLang" role="tablist">
+          <button type="button" class="tab-btn active" role="tab" data-panel="vocab" aria-selected="true">單字</button>
+          <button type="button" class="tab-btn" role="tab" data-panel="grammar" aria-selected="false">文法</button>
+          <button type="button" class="tab-btn" role="tab" data-panel="reading" aria-selected="false">閱讀</button>
+          <button type="button" class="tab-btn" role="tab" data-panel="listening" aria-selected="false">聽力</button>
+          <button type="button" class="tab-btn" role="tab" data-panel="speaking" aria-selected="false">口說</button>
+          <button type="button" class="tab-btn" role="tab" data-panel="writing" aria-selected="false">寫作</button>
+        </div>
+        <!-- 考研模式 Tabs -->
+        <div class="tabs-bar" id="tabsExam" role="tablist" style="display: none;">
+          <button type="button" class="tab-btn active" role="tab" data-panel="exam-flash" aria-selected="true">核心觀念閃卡</button>
+          <button type="button" class="tab-btn" role="tab" data-panel="exam-essay" aria-selected="false">申論題模擬</button>
+          <button type="button" class="tab-btn" role="tab" data-panel="exam-code" aria-selected="false">演算法與 SQL</button>
+        </div>
+
+        <div class="panel-area" id="panelArea">
+          <!-- ===== 語言：單字 ===== -->
+          <section class="panel active" id="panel-vocab" role="tabpanel">
+            <h3>單字庫 — 3D 翻轉閃卡</h3>
+            <p class="hint">點擊卡片翻面；使用按鈕切換 JSON 資料列中的下一張。</p>
+            <div class="flash-scene">
+              <div class="flash-card-wrap">
+                <div class="flash-card" id="vocabFlashCard" tabindex="0" aria-label="單字閃卡，點擊翻面">
+                  <div class="flash-face flash-front" id="vocabFront">—</div>
+                  <div class="flash-face flash-back" id="vocabBack">—</div>
+                </div>
+              </div>
+              <div class="flash-nav">
+                <button type="button" class="btn btn-outline" id="vocabPrev">上一張</button>
+                <button type="button" class="btn btn-accent" id="vocabFlip">翻面</button>
+                <button type="button" class="btn btn-outline" id="vocabNext">下一張</button>
+              </div>
+            </div>
+          </section>
+
+          <!-- ===== 語言：文法 ===== -->
+          <section class="panel" id="panel-grammar" role="tabpanel">
+            <h3>文法修煉 — 選擇題</h3>
+            <p id="grammarQuestion" class="panel-block" style="font-weight: 600;">—</p>
+            <div class="mcq-options" id="grammarOptions"></div>
+            <div class="btn-row">
+              <button type="button" class="btn btn-primary" id="grammarSubmit">送出答案</button>
+            </div>
+            <div class="result-msg" id="grammarResult"></div>
+          </section>
+
+          <!-- ===== 語言：閱讀 ===== -->
+          <section class="panel" id="panel-reading" role="tabpanel">
+            <h3>閱讀實戰</h3>
+            <div class="panel-block">
+              <div class="reading-passage" id="readingPassage">—</div>
+            </div>
+            <div class="panel-block">
+              <label class="lbl">理解測驗</label>
+              <p id="readingQuestion" style="margin-bottom: 0.5rem; font-weight: 600;">—</p>
+              <div class="mcq-options" id="readingOptions"></div>
+              <div class="btn-row">
+                <button type="button" class="btn btn-primary" id="readingSubmit">提交測驗</button>
+              </div>
+              <div class="result-msg" id="readingResult"></div>
+            </div>
+          </section>
+
+          <!-- ===== 語言：聽力 ===== -->
+          <section class="panel" id="panel-listening" role="tabpanel">
+            <h3>聽力精聽</h3>
+            <div class="player-card">
+              <div class="player-row">
+                <button type="button" class="play-toggle" id="listenPlay" aria-label="播放或暫停 TTS">▶</button>
+                <div class="progress-wrap">
+                  <div class="progress-bar" id="listenProgressBar" role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" tabindex="0">
+                    <div class="progress-fill" id="listenProgressFill"></div>
+                  </div>
+                  <div class="time-row">
+                    <span id="listenCur">0:00</span>
+                    <span id="listenDur">0:45</span>
+                  </div>
+                </div>
+                <select class="rate-select" id="listenRate" aria-label="語速">
+                  <option value="0.75">0.75x</option>
+                  <option value="1" selected>1x</option>
+                  <option value="1.25">1.25x</option>
+                </select>
+              </div>
+              <div class="tts-text-box" id="listenTtsText">—</div>
+            </div>
+            <div class="panel-block">
+              <label class="lbl" for="listenNotes">邊聽邊記筆記</label>
+              <textarea id="listenNotes" class="input-area" rows="5" placeholder="在此輸入聽打筆記…"></textarea>
+            </div>
+            <div class="panel-block">
+              <label class="lbl">聽力理解（選擇題）</label>
+              <p id="listenQuizQ" style="margin-bottom: 0.5rem;">—</p>
+              <div class="mcq-options" id="listenQuizOpts"></div>
+              <div class="btn-row">
+                <button type="button" class="btn btn-primary" id="listenQuizSubmit">提交並驗證</button>
+              </div>
+              <div class="result-msg" id="listenQuizResult"></div>
+            </div>
+          </section>
+
+          <!-- ===== 語言：口說 ===== -->
+          <section class="panel" id="panel-speaking" role="tabpanel">
+            <h3>口說特訓（真實錄音）</h3>
+            <p class="hint">請允許瀏覽器使用麥克風。錄音停止後會自動產生可回放的音訊播放器。</p>
+            <div class="panel-block">
+              <p>題目提示：<strong id="speakPrompt">—</strong></p>
+              <div class="rec-status" id="recStatus">待機中</div>
+              <div class="timer-display" id="recTimer">00:00</div>
+              <div class="btn-row" style="margin-top: 1rem;">
+                <button type="button" class="btn btn-accent" id="recStart">開始錄音</button>
+                <button type="button" class="btn btn-primary" id="recStop" disabled>停止錄音</button>
+              </div>
+              <div id="audioPlaybackSlot" class="audio-slot"></div>
+            </div>
+            <div class="panel-block">
+              <button type="button" class="btn btn-outline" id="aiScoreBtn">交給 AI 評分</button>
+              <div class="result-msg neutral" id="aiScoreResult"></div>
+            </div>
+          </section>
+
+          <!-- ===== 語言：寫作 ===== -->
+          <section class="panel" id="panel-writing" role="tabpanel">
+            <h3>寫作實戰</h3>
+            <p class="hint" id="writingPrompt">—</p>
+            <div class="panel-block">
+              <label class="lbl" for="writingArea">作文內容</label>
+              <textarea id="writingArea" class="input-area" rows="10" placeholder="開始寫作…"></textarea>
+              <div class="word-count" id="wordCountDisplay">字數：0 / 目標 80</div>
+              <div class="btn-row">
+                <button type="button" class="btn btn-primary" id="writingSubmit">送出批改</button>
+              </div>
+              <div class="result-msg neutral" id="writingResult"></div>
+            </div>
+          </section>
+
+          <!-- ===== 考研：閃卡 ===== -->
+          <section class="panel" id="panel-exam-flash" role="tabpanel" style="display: none;">
+            <h3>核心觀念閃卡（MIS / 資料庫）</h3>
+            <p class="hint">點擊卡片或「翻面」檢視名詞解釋。</p>
+            <div class="flash-scene">
+              <div class="flash-card-wrap">
+                <div class="flash-card" id="examFlashCard" tabindex="0">
+                  <div class="flash-face flash-front" id="examFlashFront">—</div>
+                  <div class="flash-face flash-back" id="examFlashBack">—</div>
+                </div>
+              </div>
+              <div class="flash-nav">
+                <button type="button" class="btn btn-outline" id="examFlashPrev">上一張</button>
+                <button type="button" class="btn btn-accent" id="examFlashFlip">翻面</button>
+                <button type="button" class="btn btn-outline" id="examFlashNext">下一張</button>
+              </div>
+            </div>
+          </section>
+
+          <!-- ===== 考研：申論 ===== -->
+          <section class="panel" id="panel-exam-essay" role="tabpanel" style="display: none;">
+            <h3>申論題模擬</h3>
+            <div class="panel-block">
+              <p style="font-weight: 600;" id="examEssayTitle">—</p>
+              <p class="hint" id="examEssayBody">—</p>
+            </div>
+            <div class="panel-block">
+              <p>計時：<span class="essay-timer" id="essayTimerDisplay">00:00</span>
+                <span class="btn-row" style="display: inline-flex; margin-left: 0.75rem; vertical-align: middle;">
+                  <button type="button" class="btn btn-accent" id="essayTimerStart">開始計時</button>
+                  <button type="button" class="btn btn-outline" id="essayTimerReset">重置</button>
+                </span>
+              </p>
+            </div>
+            <div class="panel-block">
+              <label class="lbl" for="examEssayArea">作答區</label>
+              <textarea id="examEssayArea" class="input-area" rows="12" placeholder="請在此練習申論作答…"></textarea>
+            </div>
+          </section>
+
+          <!-- ===== 考研：Code ===== -->
+          <section class="panel" id="panel-exam-code" role="tabpanel" style="display: none;">
+            <h3>演算法與 SQL 練習區</h3>
+            <p class="hint">深色區塊模擬 IDE，可練習虛擬碼、資料結構觀念或 SQL。</p>
+            <label class="lbl" for="ideEditor">練習編輯器</label>
+            <div class="ide-wrap">
+              <div class="ide-bar">
+                <span class="ide-dot r"></span><span class="ide-dot y"></span><span class="ide-dot g"></span>
+                <span>practice.sql / scratch.pad</span>
+              </div>
+              <textarea id="ideEditor" class="ide-editor" spellcheck="false" placeholder="-- 範例 SQL
+SELECT student_id, AVG(score) AS avg_score
+FROM grades
+GROUP BY student_id
+HAVING AVG(score) &gt;= 60
+ORDER BY avg_score DESC;"></textarea>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    /* ========================================================================
+       Varsity Lingo — SPA 邏輯
+       所有狀態：當前模式 (lang | exam)、當前語系、當前 Tab
+       ======================================================================== */
+
+    /** 各語系內容資料：單字閃卡、文法題、閱讀、聽力 TTS 與測驗、口說提示、寫作提示 */
+    const LANG_DATA = {
+      en: {
+        label: "🇺🇸 英文特訓",
+        desc: "美式常春藤風格學習儀表板 — 單字、文法、閱讀、聽力、口說、寫作一站整合。",
+        vocab: [
+          { front: "Ubiquitous", back: "無所不在的；普遍存在的 (adj.)" },
+          { front: "Pragmatic", back: "務實的；重實效的 (adj.)" },
+          { front: "Eloquent", back: "雄辯的；有說服力的 (adj.)" }
+        ],
+        grammar: {
+          q: "Choose the correct form: By next year, she _______ here for a decade.",
+          options: [
+            { v: "A", text: "will live" },
+            { v: "B", text: "will have lived" },
+            { v: "C", text: "lives" },
+            { v: "D", text: "is living" }
+          ],
+          correct: "B"
+        },
+        reading: {
+          passage: "The Ivy League began as an athletic conference, yet today it signals academic excellence and selective admissions. Students often pursue rigorous reading habits alongside structured debate — a blend of tradition and innovation that defines the modern liberal arts ethos.",
+          q: "What does the passage mainly suggest about the Ivy League today?",
+          options: [
+            { v: "A", text: "It only cares about sports." },
+            { v: "B", text: "It represents academic prestige and selectivity." },
+            { v: "C", text: "It rejects liberal arts education." },
+            { v: "D", text: "It has abandoned debate." }
+          ],
+          correct: "B"
+        },
+        listening: {
+          tts: "The quick brown fox jumps over the lazy dog. Varsity athletes balance training with coursework, often meeting at dawn for practice before lectures begin.",
+          quizQ: "According to the passage, when do varsity athletes often practice?",
+          quizOptions: [
+            { v: "A", text: "At midnight" },
+            { v: "B", text: "Before lectures, often at dawn" },
+            { v: "C", text: "Only on weekends" },
+            { v: "D", text: "After graduation" }
+          ],
+          quizCorrect: "B"
+        },
+        speaking: "Introduce your favorite study routine in English (about 30 seconds).",
+        writing: { prompt: "Write at least 80 English words: How would you balance language learning with exam preparation?", targetWords: 80 }
+      },
+      ja: {
+        label: "🇯🇵 日文特訓",
+        desc: "JLPT 思維 × 常春藤式規律練習 — 聽說讀寫整合。",
+        vocab: [
+          { front: "根気強い（ねづよい）", back: "有耐性的、堅持不懈的" },
+          { front: "言い換える", back: "換句話說、改寫（動詞）" },
+          { front: "着手する", back: "著手、開始進行（サ变动詞）" }
+        ],
+        grammar: {
+          q: "次の空欄に最も適切なものを選べ：彼は来週までにレポートを _____ 予定だ。",
+          options: [
+            { v: "A", text: "書く" },
+            { v: "B", text: "書いている" },
+            { v: "C", text: "書いた" },
+            { v: "D", text: "書いていた" }
+          ],
+          correct: "A"
+        },
+        reading: {
+          passage: "日本の大学受験では、基礎学力と長期的な読解訓練が重視される。毎日短い文章を音読し、聞き取りと発音を同時に鍛えると効果的だ。",
+          q: "筆者が効果的だと述べている学習法はどれか。",
+          options: [
+            { v: "A", text: "週に一度だけ長文を読む" },
+            { v: "B", text: "毎日短文を音読し聞き取りと発音を鍛える" },
+            { v: "C", text: "文法だけを暗記する" },
+            { v: "D", text: "試験直前に徹夜する" }
+          ],
+          correct: "B"
+        },
+        listening: {
+          tts: "毎朝六時に起きて、単語を二十分復習します。そのあとで文法の問題を一セット解きます。",
+          quizQ: "話し手はまず何をしますか。",
+          quizOptions: [
+            { v: "A", text: "文法を先にする" },
+            { v: "B", text: "六時に起きて単語を復習する" },
+            { v: "C", text: "寝る" },
+            { v: "D", text: "晩ご飯を食べる" }
+          ],
+          quizCorrect: "B"
+        },
+        speaking: "あなたの一日の勉強スケジュールを日本語で簡単に説明してください。",
+        writing: { prompt: "日本語で 80 字以上：語学と専門勉強のバランスについて述べなさい。", targetWords: 80 }
+      },
+      ko: {
+        label: "🇰🇷 韓文特訓",
+        desc: "TOPIK 實戰 × 系統化單字與聽讀整合。",
+        vocab: [
+          { front: "꾸준하다", back: "持續的、堅持不懈的（形容詞）" },
+          { front: "복습하다", back: "複習（動詞）" },
+          { front: "어휘", back: "詞彙（名詞）" }
+        ],
+        grammar: {
+          q: "빈칸에 가장 알맞은 것을 고르시오: 나는 어제 책을 _____ .",
+          options: [
+            { v: "A", text: "읽었다" },
+            { v: "B", text: "읽는다" },
+            { v: "C", text: "읽을 것이다" },
+            { v: "D", text: "읽고 있다" }
+          ],
+          correct: "A"
+        },
+        reading: {
+          passage: "언어 학습에서는 매일 조금씩 하는 것이 가장 중요하다. 듣기와 말하기를 함께 연습하면 기억이 오래 남는다.",
+          q: "글의 중심 내용으로 가장 적절한 것은?",
+          options: [
+            { v: "A", text: "하루에 많이 외우는 것만이 중요하다" },
+            { v: "B", text: "매일 조금씩 하고 듣기·말하기를 함께 하라" },
+            { v: "C", text: "읽기만 하면 된다" },
+            { v: "D", text: "문법은 필요 없다" }
+          ],
+          correct: "B"
+        },
+        listening: {
+          tts: "저는 도서관에서 한 시간 동안 공부하고, 집에 가서 듣기 연습을 합니다.",
+          quizQ: "화자는 도서관에서 무엇을 합니까?",
+          quizOptions: [
+            { v: "A", text: "한 시간 공부한다" },
+            { v: "B", text: "잠을 잔다" },
+            { v: "C", text: "운동만 한다" },
+            { v: "D", text: "영화만 본다" }
+          ],
+          quizCorrect: "A"
+        },
+        speaking: "하루 학습 계획을 한국어로 짧게 말해 보세요.",
+        writing: { prompt: "한국어로 80 단어 이상: 시험 준비와 언어 학습을 어떻게 조화시킬지 쓰시오.", targetWords: 80 }
+      },
+      es: {
+        label: "🇪🇸 西文特訓",
+        desc: "DELE 取向 — 閱讀、聽力與口說整合訓練。",
+        vocab: [
+          { front: "Persistente", back: "堅持不懈的 (adj.)" },
+          { front: "Meta", back: "目標 (f.)" },
+          { front: "Repasar", back: "複習（動詞）" }
+        ],
+        grammar: {
+          q: "Elige la opción correcta: Mañana _______ a la biblioteca.",
+          options: [
+            { v: "A", text: "voy" },
+            { v: "B", text: "iba" },
+            { v: "C", text: "fui" },
+            { v: "D", text: "ido" }
+          ],
+          correct: "A"
+        },
+        reading: {
+          passage: "Aprender un idioma requiere constancia. Es mejor estudiar treinta minutos cada día que cinco horas solo el día antes del examen.",
+          q: "¿Qué recomienda el texto?",
+          options: [
+            { v: "A", text: "Estudiar solo la noche anterior" },
+            { v: "B", text: "Ser constante y estudiar un poco cada día" },
+            { v: "C", text: "No practicar la expresión oral" },
+            { v: "D", text: "Evitar la lectura" }
+          ],
+          correct: "B"
+        },
+        listening: {
+          tts: "Cada mañana repaso veinte palabras nuevas y luego escucho un podcast en español durante quince minutos.",
+          quizQ: "¿Qué hace el hablante después de repasar palabras?",
+          quizOptions: [
+            { v: "A", text: "Duerme" },
+            { v: "B", text: "Escucha un podcast quince minutos" },
+            { v: "C", text: "Va al cine" },
+            { v: "D", text: "Nada" }
+          ],
+          quizCorrect: "B"
+        },
+        speaking: "Presenta en español tu rutina de estudio diaria (unos 30 segundos).",
+        writing: { prompt: "Escribe al menos 80 palabras en español: cómo organizas tu tiempo entre idiomas y exámenes.", targetWords: 80 }
+      },
+      de: {
+        label: "🇩🇪 德文特訓",
+        desc: "Goethe 取向 — 文法、閱讀與聽寫並重。",
+        vocab: [
+          { front: "die Ausdauer", back: "耐力、恆心（陰性名詞）" },
+          { front: "wiederholen", back: "複習、重複（動詞）" },
+          { front: "die Routine", back: "例行公事、習慣（陰性名詞）" }
+        ],
+        grammar: {
+          q: "Wähle die richtige Form: Wenn ich Zeit _____, lese ich jeden Tag ein Kapitel.",
+          options: [
+            { v: "A", text: "habe" },
+            { v: "B", text: "hatte" },
+            { v: "C", text: "haben" },
+            { v: "D", text: "gehabt" }
+          ],
+          correct: "A"
+        },
+        reading: {
+          passage: "Sprachenlernen ist ein Marathon, kein Sprint. Kurze, tägliche Einheiten helfen dem Gedächtnis mehr als seltene Marathon-Sessions.",
+          q: "Was empfiehlt der Text?",
+          options: [
+            { v: "A", text: "Nur am Wochenende lernen" },
+            { v: "B", text: "Kurze tägliche Lerneinheiten" },
+            { v: "C", text: "Gar nicht lesen" },
+            { v: "D", text: "Nur Grammatik pauken" }
+          ],
+          correct: "B"
+        },
+        listening: {
+          tts: "Ich stehe um sieben Uhr auf und wiederhole zuerst die Vokabeln. Danach höre ich ein kurzes Interview.",
+          quizQ: "Was macht der Sprecher zuerst nach dem Aufstehen?",
+          quizOptions: [
+            { v: "A", text: "Er schaut fern" },
+            { v: "B", text: "Er wiederholt Vokabeln" },
+            { v: "C", text: "Er geht schlafen" },
+            { v: "D", text: "Er kocht ein großes Essen" }
+          ],
+          quizCorrect: "B"
+        },
+        speaking: "Beschreibe auf Deutsch kurz deinen Tagesablauf beim Lernen.",
+        writing: { prompt: "Schreibe mindestens 80 Wörter auf Deutsch: Wie verbindest du Sprachenlernen und Prüfungsvorbereitung?", targetWords: 80 }
+      }
+    };
+
+    /** 考研：MIS / 資料庫閃卡、考古題 */
+    const EXAM_FLASH = [
+      { front: "MIS（管理資訊系統）", back: "支援組織決策與營運的人機整合系統，透過資料蒐集、處理與傳遞提升效能。" },
+      { front: "ERP", back: "企業資源規劃：整合財務、供應鏈、人資等流程的套裝或模組化資訊系統。" },
+      { front: "正規化（Normalization）", back: "減少資料重複與異常相依，將關聯綱要分解為良好結構的過程。" },
+      { front: "ACID", back: "交易四性質：原子性、一致性、隔離性、持久性，確保資料庫交易可靠。" },
+      { front: "主鍵（Primary Key）", back: "唯一識別資料表中每一列的欄位或欄位組合，不可重複且通常不可為 NULL。" }
+    ];
+
+    const EXAM_ESSAY = {
+      title: "113 年某校資管所 — 申論題（模擬）",
+      body: "請說明「數位轉型」對傳統製造業管理資訊系統（MIS）在資料治理、流程再造與資安面向的影響，並舉例一項關鍵技術與其可能風險。字數建議 600–800 字（此處為練習可不限制）。"
+    };
+
+    /* ---------- 全域狀態 ---------- */
+    let currentMode = "lang"; // 'lang' | 'exam'
+    let currentLang = "en";
+    let vocabIndex = 0;
+    let examFlashIndex = 0;
+
+    /** 聽力：模擬播放進度與 TTS */
+    let listenDurationSec = 45;
+    let listenCurrentSec = 0;
+    let listenPlaying = false;
+    let listenRafId = null;
+    let listenUtterance = null;
+    let speechSynth = window.speechSynthesis;
+
+    /** 口說：MediaRecorder 相關狀態
+     * 使用 getUserMedia 取得音訊串流，再以 MediaRecorder 錄製為 Blob，
+     * 停止後建立 Object URL 供 <audio> 播放。 */
+    let mediaRecorder = null;
+    let recordedChunks = [];
+    let recordStream = null;
+    let recordStartTime = 0;
+    let recordTimerId = null;
+
+    const $ = (sel) => document.querySelector(sel);
+    const $$ = (sel) => document.querySelectorAll(sel);
+
+    /* ---------- Sidebar & Tabs 切換 ---------- */
+    function setSidebarActive(btn) {
+      $$(".nav-item").forEach((b) => {
+        b.classList.toggle("active", b === btn);
+        b.setAttribute("aria-pressed", b === btn ? "true" : "false");
+      });
+    }
+
+    function showTabsForMode(mode) {
+      const tabsLang = $("#tabsLang");
+      const tabsExam = $("#tabsExam");
+      if (mode === "exam") {
+        tabsLang.style.display = "none";
+        tabsExam.style.display = "flex";
+      } else {
+        tabsLang.style.display = "flex";
+        tabsExam.style.display = "none";
+      }
+    }
+
+    /** 取得目前應顯示的 tab 按鈕容器內的 panel id 前綴 */
+    function getActiveTabPanelId() {
+      if (currentMode === "exam") {
+        const active = $("#tabsExam .tab-btn.active");
+        return active ? active.getAttribute("data-panel") : "exam-flash";
+      }
+      const active = $("#tabsLang .tab-btn.active");
+      return active ? active.getAttribute("data-panel") : "vocab";
+    }
+
+    function activatePanel(panelId) {
+      // 語言模式 panels: vocab, grammar, reading, listening, speaking, writing
+      // 考研模式: exam-flash, exam-essay, exam-code
+      const langPanels = ["vocab", "grammar", "reading", "listening", "speaking", "writing"];
+      const examPanels = ["exam-flash", "exam-essay", "exam-code"];
+
+      $$(".panel-area .panel").forEach((p) => {
+        const id = p.id.replace("panel-", "");
+        const isLangPanel = langPanels.includes(id);
+        const isExamPanel = examPanels.includes(id);
+        let show = false;
+        if (currentMode === "lang" && isLangPanel) show = id === panelId;
+        if (currentMode === "exam" && isExamPanel) show = id === panelId;
+        p.classList.toggle("active", show);
+        p.style.display = show ? "block" : "none";
+      });
+    }
+
+    function switchTabBar(tabBar, panelId) {
+      tabBar.querySelectorAll(".tab-btn").forEach((btn) => {
+        const match = btn.getAttribute("data-panel") === panelId;
+        btn.classList.toggle("active", match);
+        btn.setAttribute("aria-selected", match ? "true" : "false");
+      });
+    }
+
+    function openTab(panelId) {
+      if (currentMode === "lang") {
+        switchTabBar($("#tabsLang"), panelId);
+      } else {
+        switchTabBar($("#tabsExam"), panelId);
+      }
+      activatePanel(panelId);
+    }
+
+    function applyLanguageContent() {
+      const d = LANG_DATA[currentLang];
+      if (!d) return;
+
+      $("#mainTitle").textContent = d.label;
+      $("#mainDesc").textContent = d.desc;
+
+      // 單字閃卡
+      vocabIndex = 0;
+      renderVocabFlash();
+
+      // 文法
+      $("#grammarQuestion").textContent = d.grammar.q;
+      renderMcqOptions("grammarOptions", d.grammar.options, "grammar_opt");
+      $("#grammarResult").className = "result-msg";
+      $("#grammarResult").textContent = "";
+      $("#grammarResult").classList.remove("show");
+
+      // 閱讀
+      $("#readingPassage").textContent = d.reading.passage;
+      $("#readingQuestion").textContent = d.reading.q;
+      renderMcqOptions("readingOptions", d.reading.options, "read_opt");
+      $("#readingResult").className = "result-msg";
+      $("#readingResult").textContent = "";
+
+      // 聽力
+      $("#listenTtsText").textContent = d.listening.tts;
+      $("#listenQuizQ").textContent = d.listening.quizQ;
+      renderMcqOptions("listenQuizOpts", d.listening.quizOptions, "listen_quiz");
+      $("#listenQuizResult").className = "result-msg";
+      $("#listenQuizResult").textContent = "";
+      resetListenPlayer();
+
+      // 口說
+      $("#speakPrompt").textContent = d.speaking;
+      $("#audioPlaybackSlot").innerHTML = "";
+      $("#recStatus").textContent = "待機中";
+      $("#recStatus").classList.remove("recording");
+      $("#recTimer").textContent = "00:00";
+      $("#aiScoreResult").className = "result-msg neutral";
+      $("#aiScoreResult").textContent = "";
+      $("#aiScoreResult").classList.remove("show");
+
+      // 寫作
+      $("#writingPrompt").textContent = d.writing.prompt;
+      $("#writingArea").value = "";
+      updateWordCount();
+      $("#writingResult").className = "result-msg neutral";
+      $("#writingResult").textContent = "";
+      $("#writingResult").classList.remove("show");
+    }
+
+    function renderMcqOptions(containerId, options, name) {
+      const el = $("#" + containerId);
+      el.innerHTML = "";
+      options.forEach((opt) => {
+        const lab = document.createElement("label");
+        lab.innerHTML = `<input type="radio" name="${name}" value="${opt.v}" /> <span>${opt.v}. ${opt.text}</span>`;
+        el.appendChild(lab);
+      });
+    }
+
+    /* ---------- 單字 3D 閃卡 ---------- */
+    function renderVocabFlash() {
+      const d = LANG_DATA[currentLang].vocab;
+      const item = d[vocabIndex];
+      $("#vocabFront").textContent = item.front;
+      $("#vocabBack").textContent = item.back;
+      $("#vocabFlashCard").classList.remove("is-flipped");
+    }
+
+    function flipVocabCard() {
+      $("#vocabFlashCard").classList.toggle("is-flipped");
+    }
+
+    /* ---------- 文法 / 閱讀 驗證 ---------- */
+    function getCheckedValue(name) {
+      const r = document.querySelector(`input[name="${name}"]:checked`);
+      return r ? r.value : null;
+    }
+
+    $("#grammarSubmit").addEventListener("click", () => {
+      const ans = getCheckedValue("grammar_opt");
+      const correct = LANG_DATA[currentLang].grammar.correct;
+      const box = $("#grammarResult");
+      if (!ans) {
+        box.className = "result-msg err show";
+        box.textContent = "請選擇一個選項。";
+        return;
+      }
+      if (ans === correct) {
+        box.className = "result-msg ok show";
+        box.textContent = "答對了！";
+      } else {
+        box.className = "result-msg err show";
+        box.textContent = "答錯了，正確答案為 " + correct + "。";
+      }
+    });
+
+    $("#readingSubmit").addEventListener("click", () => {
+      const ans = getCheckedValue("read_opt");
+      const correct = LANG_DATA[currentLang].reading.correct;
+      const box = $("#readingResult");
+      if (!ans) {
+        box.className = "result-msg err show";
+        box.textContent = "請選擇一個選項。";
+        return;
+      }
+      if (ans === correct) {
+        box.className = "result-msg ok show";
+        box.textContent = "答對了！";
+      } else {
+        box.className = "result-msg err show";
+        box.textContent = "答錯了，正確答案為 " + correct + "。";
+      }
+    });
+
+    /* ---------- 聽力：進度條模擬 + Web Speech API ---------- */
+    function resetListenPlayer() {
+      listenCurrentSec = 0;
+      listenPlaying = false;
+      $("#listenPlay").textContent = "▶";
+      updateListenProgressUI();
+      if (listenRafId) cancelAnimationFrame(listenRafId);
+      listenRafId = null;
+      speechSynth.cancel();
+    }
+
+    function updateListenProgressUI() {
+      const pct = listenDurationSec > 0 ? (listenCurrentSec / listenDurationSec) * 100 : 0;
+      $("#listenProgressFill").style.width = pct + "%";
+      $("#listenCur").textContent = formatTime(listenCurrentSec);
+      $("#listenDur").textContent = formatTime(listenDurationSec);
+      $("#listenProgressBar").setAttribute("aria-valuenow", Math.round(pct));
+    }
+
+    function formatTime(sec) {
+      const m = Math.floor(sec / 60);
+      const s = Math.floor(sec % 60);
+      return m + ":" + (s < 10 ? "0" : "") + s;
+    }
+
+    /** 以 rAF 更新模擬播放進度（與 TTS 並行顯示） */
+    function tickListenPlayback() {
+      if (!listenPlaying) return;
+      let last = performance.now();
+      function frame(now) {
+        if (!listenPlaying) return;
+        const dt = (now - last) / 1000;
+        last = now;
+        listenCurrentSec += dt;
+        if (listenCurrentSec >= listenDurationSec) {
+          listenCurrentSec = listenDurationSec;
+          listenPlaying = false;
+          $("#listenPlay").textContent = "▶";
+        }
+        updateListenProgressUI();
+        if (listenPlaying && listenCurrentSec < listenDurationSec) {
+          listenRafId = requestAnimationFrame(frame);
+        }
+      }
+      listenRafId = requestAnimationFrame(frame);
+    }
+
+    /** 使用 SpeechSynthesisUtterance 朗讀；語速由 rate 控制 */
+    function speakListenText() {
+      const text = LANG_DATA[currentLang].listening.tts;
+      speechSynth.cancel();
+      listenUtterance = new SpeechSynthesisUtterance(text);
+      listenUtterance.rate = parseFloat($("#listenRate").value) || 1;
+      listenUtterance.onend = function () {
+        listenPlaying = false;
+        $("#listenPlay").textContent = "▶";
+        listenCurrentSec = listenDurationSec;
+        updateListenProgressUI();
+        if (listenRafId) cancelAnimationFrame(listenRafId);
+      };
+      speechSynth.speak(listenUtterance);
+    }
+
+    $("#listenPlay").addEventListener("click", () => {
+      if (listenPlaying) {
+        listenPlaying = false;
+        speechSynth.cancel();
+        $("#listenPlay").textContent = "▶";
+        if (listenRafId) cancelAnimationFrame(listenRafId);
+        return;
+      }
+      listenPlaying = true;
+      $("#listenPlay").textContent = "❚❚";
+      listenCurrentSec = 0;
+      updateListenProgressUI();
+      tickListenPlayback();
+      speakListenText();
+    });
+
+    $("#listenRate").addEventListener("change", () => {
+      if (listenUtterance && listenPlaying) {
+        speechSynth.cancel();
+        speakListenText();
+      }
+    });
+
+    $("#listenProgressBar").addEventListener("click", (e) => {
+      const rect = e.currentTarget.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      listenCurrentSec = (x / rect.width) * listenDurationSec;
+      updateListenProgressUI();
+    });
+
+    $("#listenQuizSubmit").addEventListener("click", () => {
+      const ans = getCheckedValue("listen_quiz");
+      const correct = LANG_DATA[currentLang].listening.quizCorrect;
+      const box = $("#listenQuizResult");
+      if (!ans) {
+        box.className = "result-msg err show";
+        box.textContent = "請選擇一個選項。";
+        return;
+      }
+      if (ans === correct) {
+        box.className = "result-msg ok show";
+        box.textContent = "答對了！";
+      } else {
+        box.className = "result-msg err show";
+        box.textContent = "答錯了，正確答案為 " + correct + "。";
+      }
+    });
+
+    /* ---------- 口說：getUserMedia + MediaRecorder ---------- */
+    /**
+     * 開始錄音流程：
+     * 1. 呼叫 navigator.mediaDevices.getUserMedia({ audio: true }) 取得麥克風權限與 MediaStream
+     * 2. 建立 MediaRecorder(stream)，監聽 ondataavailable 將片段推入 recordedChunks
+     * 3. 呼叫 start() 開始錄製；並以計時器顯示經過時間
+     */
+    async function startRecording() {
+      try {
+        recordStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        recordedChunks = [];
+        const options = { mimeType: MediaRecorder.isTypeSupported("audio/webm") ? "audio/webm" : "audio/mp4" };
+        mediaRecorder = new MediaRecorder(recordStream, options);
+
+        mediaRecorder.ondataavailable = function (e) {
+          if (e.data && e.data.size > 0) recordedChunks.push(e.data);
+        };
+
+        mediaRecorder.onstop = function () {
+          /** 錄音停止：將 Blob 轉成可播放的 URL，並動態插入 <audio controls> */
+          const blob = new Blob(recordedChunks, { type: mediaRecorder.mimeType || "audio/webm" });
+          const url = URL.createObjectURL(blob);
+          const slot = $("#audioPlaybackSlot");
+          slot.innerHTML = "";
+          const audio = document.createElement("audio");
+          audio.setAttribute("controls", "controls");
+          audio.src = url;
+          slot.appendChild(audio);
+
+          // 釋放麥克風
+          if (recordStream) {
+            recordStream.getTracks().forEach((t) => t.stop());
+            recordStream = null;
+          }
+        };
+
+        mediaRecorder.start();
+        recordStartTime = Date.now();
+        $("#recStatus").textContent = "錄音中…";
+        $("#recStatus").classList.add("recording");
+        $("#recStart").disabled = true;
+        $("#recStop").disabled = false;
+
+        if (recordTimerId) clearInterval(recordTimerId);
+        recordTimerId = setInterval(function () {
+          const sec = Math.floor((Date.now() - recordStartTime) / 1000);
+          const m = Math.floor(sec / 60);
+          const s = sec % 60;
+          $("#recTimer").textContent = (m < 10 ? "0" : "") + m + ":" + (s < 10 ? "0" : "") + s;
+        }, 250);
+      } catch (err) {
+        alert("無法存取麥克風：" + (err && err.message ? err.message : err));
+      }
+    }
+
+    function stopRecording() {
+      if (mediaRecorder && mediaRecorder.state !== "inactive") {
+        mediaRecorder.stop();
+      }
+      if (recordTimerId) {
+        clearInterval(recordTimerId);
+        recordTimerId = null;
+      }
+      $("#recStatus").textContent = "已停止（可回放錄音）";
+      $("#recStatus").classList.remove("recording");
+      $("#recStart").disabled = false;
+      $("#recStop").disabled = true;
+    }
+
+    $("#recStart").addEventListener("click", startRecording);
+    $("#recStop").addEventListener("click", stopRecording);
+
+    /** 交給 AI 評分：模擬延遲 1.5 秒後顯示分數與建議 */
+    $("#aiScoreBtn").addEventListener("click", function () {
+      const box = $("#aiScoreResult");
+      box.className = "result-msg neutral show";
+      box.textContent = "評分中…";
+      setTimeout(function () {
+        const score = 78 + Math.floor(Math.random() * 15);
+        box.className = "result-msg neutral show";
+        box.innerHTML =
+          "<strong>模擬評分：" +
+          score +
+          " / 100</strong><br/>建議：子音尾韻再清楚一些；開頭先給一句主題句；可加入一個具體例子。此為前端模擬結果，非真實 API。";
+      }, 1500);
+    });
+
+    /* ---------- 寫作：字數與模擬批改 ---------- */
+    function countWords(text) {
+      const t = text.trim();
+      if (!t) return 0;
+      // 英文用空白分詞；中日韓等無空白時以字元數近似
+      if (/[\u3040-\u30ff\u3400-\u9fff\uac00-\ud7af]/.test(t)) {
+        return t.replace(/\s/g, "").length;
+      }
+      return t.split(/\s+/).filter(Boolean).length;
+    }
+
+    function updateWordCount() {
+      const target = LANG_DATA[currentLang].writing.targetWords;
+      const n = countWords($("#writingArea").value);
+      const el = $("#wordCountDisplay");
+      el.textContent = "字數：" + n + " / 目標 " + target;
+      el.classList.toggle("met", n >= target);
+    }
+
+    $("#writingArea").addEventListener("input", updateWordCount);
+
+    $("#writingSubmit").addEventListener("click", function () {
+      const text = $("#writingArea").value.trim();
+      const box = $("#writingResult");
+      if (!text) {
+        box.className = "result-msg err show";
+        box.textContent = "請先輸入內容。";
+        return;
+      }
+      box.className = "result-msg neutral show";
+      box.innerHTML =
+        "<strong>模擬 AI 批改</strong><br/>結構完整度：良好。建議加強過渡句與結論呼應主題。詞彙可再替換 2–3 個更精準的動詞。此為前端模擬，非真實模型。";
+    });
+
+    /* ---------- 考研閃卡 ---------- */
+    function renderExamFlash() {
+      const item = EXAM_FLASH[examFlashIndex];
+      $("#examFlashFront").textContent = item.front;
+      $("#examFlashBack").textContent = item.back;
+      $("#examFlashCard").classList.remove("is-flipped");
+    }
+
+    $("#examFlashCard").addEventListener("click", function () {
+      this.classList.toggle("is-flipped");
+    });
+    $("#examFlashFlip").addEventListener("click", function (e) {
+      e.stopPropagation();
+      $("#examFlashCard").classList.toggle("is-flipped");
+    });
+    $("#examFlashPrev").addEventListener("click", function (e) {
+      e.stopPropagation();
+      examFlashIndex = (examFlashIndex - 1 + EXAM_FLASH.length) % EXAM_FLASH.length;
+      renderExamFlash();
+    });
+    $("#examFlashNext").addEventListener("click", function (e) {
+      e.stopPropagation();
+      examFlashIndex = (examFlashIndex + 1) % EXAM_FLASH.length;
+      renderExamFlash();
+    });
+
+    /* ---------- 單字卡事件 ---------- */
+    $("#vocabFlashCard").addEventListener("click", flipVocabCard);
+    $("#vocabFlip").addEventListener("click", function (e) {
+      e.stopPropagation();
+      flipVocabCard();
+    });
+    $("#vocabPrev").addEventListener("click", function (e) {
+      e.stopPropagation();
+      const d = LANG_DATA[currentLang].vocab;
+      vocabIndex = (vocabIndex - 1 + d.length) % d.length;
+      renderVocabFlash();
+    });
+    $("#vocabNext").addEventListener("click", function (e) {
+      e.stopPropagation();
+      const d = LANG_DATA[currentLang].vocab;
+      vocabIndex = (vocabIndex + 1) % d.length;
+      renderVocabFlash();
+    });
+
+    /* ---------- 考研申論計時器 ---------- */
+    let essaySec = 0;
+    let essayTimer = null;
+
+    function renderEssayTime() {
+      const m = Math.floor(essaySec / 60);
+      const s = essaySec % 60;
+      $("#essayTimerDisplay").textContent =
+        (m < 10 ? "0" : "") + m + ":" + (s < 10 ? "0" : "") + s;
+    }
+
+    $("#essayTimerStart").addEventListener("click", function () {
+      if (essayTimer) {
+        clearInterval(essayTimer);
+        essayTimer = null;
+        $("#essayTimerStart").textContent = "開始計時";
+        return;
+      }
+      $("#essayTimerStart").textContent = "暫停";
+      essayTimer = setInterval(function () {
+        essaySec++;
+        renderEssayTime();
+      }, 1000);
+    });
+
+    $("#essayTimerReset").addEventListener("click", function () {
+      if (essayTimer) {
+        clearInterval(essayTimer);
+        essayTimer = null;
+      }
+      $("#essayTimerStart").textContent = "開始計時";
+      essaySec = 0;
+      renderEssayTime();
+    });
+
+    /* ---------- Tab 點擊 ---------- */
+    $("#tabsLang").addEventListener("click", function (e) {
+      const btn = e.target.closest(".tab-btn");
+      if (!btn) return;
+      openTab(btn.getAttribute("data-panel"));
+    });
+
+    $("#tabsExam").addEventListener("click", function (e) {
+      const btn = e.target.closest(".tab-btn");
+      if (!btn) return;
+      openTab(btn.getAttribute("data-panel"));
+    });
+
+    /* ---------- Sidebar 導覽 ---------- */
+    $$(".nav-item").forEach(function (navBtn) {
+      navBtn.addEventListener("click", function () {
+        const mode = this.getAttribute("data-mode");
+        setSidebarActive(this);
+        currentMode = mode;
+        showTabsForMode(mode);
+
+        if (mode === "lang") {
+          currentLang = this.getAttribute("data-lang") || "en";
+          applyLanguageContent();
+          openTab("vocab");
+        } else {
+          $("#mainTitle").textContent = "🎓 資管考研";
+          $("#mainDesc").textContent = "管理資訊系統與資料庫核心觀念、申論與程式/SQL 練習。";
+          $("#examEssayTitle").textContent = EXAM_ESSAY.title;
+          $("#examEssayBody").textContent = EXAM_ESSAY.body;
+          examFlashIndex = 0;
+          renderExamFlash();
+          openTab("exam-flash");
+        }
+      });
+    });
+
+    /* ---------- 初始化 ---------- */
+    applyLanguageContent();
+    openTab("vocab");
+  </script>
+</body>
+</html>
