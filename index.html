@@ -199,6 +199,192 @@
       box-shadow: 0 -2px 8px rgba(10, 34, 64, 0.08);
     }
 
+    /* 全真模考 Tab — 醒目樣式 */
+    .tab-btn.tab-mock-exam {
+      background: linear-gradient(135deg, #fff8e6 0%, #ffe8a3 100%);
+      color: var(--navy);
+      border: 2px solid var(--mustard);
+      font-weight: 800;
+      margin-left: 0.25rem;
+      box-shadow: 0 2px 10px rgba(253, 184, 19, 0.45);
+    }
+
+    .tab-btn.tab-mock-exam:hover {
+      background: linear-gradient(135deg, var(--mustard) 0%, #ffc93c 100%);
+      color: var(--navy);
+    }
+
+    .tab-btn.tab-mock-exam.active {
+      background: var(--mustard);
+      border-color: var(--navy);
+    }
+
+    /* 模考：歡迎 / 精靈 / 成績 */
+    .mock-hidden {
+      display: none !important;
+    }
+
+    .mock-welcome {
+      text-align: center;
+      padding: 2rem 1rem 2.5rem;
+    }
+
+    .mock-welcome h2 {
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+    }
+
+    .mock-welcome .mock-badge {
+      display: inline-block;
+      background: var(--mustard);
+      color: var(--navy);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+      margin-bottom: 1rem;
+    }
+
+    .btn-start-exam {
+      font-size: 1.15rem;
+      padding: 1rem 2.5rem;
+      margin-top: 1rem;
+      border-radius: 999px;
+      background: var(--navy);
+      color: var(--mustard);
+      border: 3px solid var(--mustard);
+      cursor: pointer;
+      font-weight: 800;
+      font-family: var(--font-display);
+      letter-spacing: 0.06em;
+      transition: transform 0.15s, box-shadow 0.2s;
+    }
+
+    .btn-start-exam:hover {
+      transform: scale(1.03);
+      box-shadow: 0 8px 28px rgba(10, 34, 64, 0.35);
+    }
+
+    .wizard-top {
+      margin-bottom: 1.25rem;
+    }
+
+    .wizard-progress-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 0.35rem;
+    }
+
+    .wizard-progress-track {
+      height: 12px;
+      background: #e2e8f0;
+      border-radius: 999px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .wizard-progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--navy), var(--mustard));
+      border-radius: 999px;
+      transition: width 0.45s ease;
+    }
+
+    .wizard-step-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.75rem;
+    }
+
+    .mock-reading-hint {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .result-hero {
+      text-align: center;
+      padding: 1.5rem 1rem;
+      background: linear-gradient(180deg, rgba(253, 184, 19, 0.15) 0%, transparent 100%);
+      border-radius: 12px;
+      margin-bottom: 1.25rem;
+    }
+
+    .result-score {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.1;
+    }
+
+    .result-cefr {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--mustard);
+      background: var(--navy);
+      display: inline-block;
+      padding: 0.35rem 1rem;
+      border-radius: 8px;
+      margin-top: 0.5rem;
+    }
+
+    .skill-bars {
+      display: grid;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    .skill-row {
+      display: grid;
+      grid-template-columns: 100px 1fr 40px;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+    }
+
+    .skill-row span:first-child {
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .skill-bar-bg {
+      height: 10px;
+      background: #e2e8f0;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .skill-bar-fill {
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--navy), #3d6fb8);
+      transition: width 0.6s ease;
+    }
+
+    .radar-wrap {
+      max-width: 280px;
+      margin: 1rem auto;
+    }
+
+    .radar-svg {
+      width: 100%;
+      height: auto;
+    }
+
+    .quiz-nav-hint {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-top: 0.5rem;
+    }
+
     .panel-area {
       padding: 1.5rem;
       min-height: 420px;
@@ -709,6 +895,7 @@
           <button type="button" class="tab-btn" role="tab" data-panel="listening" aria-selected="false">聽力</button>
           <button type="button" class="tab-btn" role="tab" data-panel="speaking" aria-selected="false">口說</button>
           <button type="button" class="tab-btn" role="tab" data-panel="writing" aria-selected="false">寫作</button>
+          <button type="button" class="tab-btn tab-mock-exam" role="tab" data-panel="mock-exam" aria-selected="false">🏆 全真模考</button>
         </div>
         <!-- 考研模式 Tabs -->
         <div class="tabs-bar" id="tabsExam" role="tablist" style="display: none;">
@@ -737,20 +924,24 @@
             </div>
           </section>
 
-          <!-- ===== 語言：文法 ===== -->
+          <!-- ===== 語言：文法（題庫陣列 + 上一題/下一題） ===== -->
           <section class="panel" id="panel-grammar" role="tabpanel">
             <h3>文法修煉 — 選擇題</h3>
+            <p class="quiz-nav-hint" id="grammarNavHint">—</p>
             <p id="grammarQuestion" class="panel-block" style="font-weight: 600;">—</p>
             <div class="mcq-options" id="grammarOptions"></div>
             <div class="btn-row">
+              <button type="button" class="btn btn-outline" id="grammarPrev">上一題</button>
+              <button type="button" class="btn btn-outline" id="grammarNext">下一題</button>
               <button type="button" class="btn btn-primary" id="grammarSubmit">送出答案</button>
             </div>
             <div class="result-msg" id="grammarResult"></div>
           </section>
 
-          <!-- ===== 語言：閱讀 ===== -->
+          <!-- ===== 語言：閱讀（題庫陣列 + 上一題/下一題） ===== -->
           <section class="panel" id="panel-reading" role="tabpanel">
             <h3>閱讀實戰</h3>
+            <p class="quiz-nav-hint" id="readingNavHint">—</p>
             <div class="panel-block">
               <div class="reading-passage" id="readingPassage">—</div>
             </div>
@@ -759,6 +950,8 @@
               <p id="readingQuestion" style="margin-bottom: 0.5rem; font-weight: 600;">—</p>
               <div class="mcq-options" id="readingOptions"></div>
               <div class="btn-row">
+                <button type="button" class="btn btn-outline" id="readingPrev">上一題</button>
+                <button type="button" class="btn btn-outline" id="readingNext">下一題</button>
                 <button type="button" class="btn btn-primary" id="readingSubmit">提交測驗</button>
               </div>
               <div class="result-msg" id="readingResult"></div>
@@ -792,11 +985,14 @@
               <label class="lbl" for="listenNotes">邊聽邊記筆記</label>
               <textarea id="listenNotes" class="input-area" rows="5" placeholder="在此輸入聽打筆記…"></textarea>
             </div>
+            <p class="quiz-nav-hint" id="listeningNavHint">—</p>
             <div class="panel-block">
               <label class="lbl">聽力理解（選擇題）</label>
               <p id="listenQuizQ" style="margin-bottom: 0.5rem;">—</p>
               <div class="mcq-options" id="listenQuizOpts"></div>
               <div class="btn-row">
+                <button type="button" class="btn btn-outline" id="listeningPrev">上一題</button>
+                <button type="button" class="btn btn-outline" id="listeningNext">下一題</button>
                 <button type="button" class="btn btn-primary" id="listenQuizSubmit">提交並驗證</button>
               </div>
               <div class="result-msg" id="listenQuizResult"></div>
@@ -820,6 +1016,104 @@
             <div class="panel-block">
               <button type="button" class="btn btn-outline" id="aiScoreBtn">交給 AI 評分</button>
               <div class="result-msg neutral" id="aiScoreResult"></div>
+            </div>
+          </section>
+
+          <!-- ===== 🏆 全真模考 TOEFL ===== -->
+          <section class="panel" id="panel-mock-exam" role="tabpanel">
+            <div id="mockViewWelcome">
+              <div class="mock-welcome">
+                <span class="mock-badge">FULL MOCK EXAM</span>
+                <h2>TOEFL 模擬測驗</h2>
+                <p class="hint">閱讀 → 聽力 → 口說 → 寫作，依序完成後將顯示預估總分與 CEFR。</p>
+                <button type="button" class="btn-start-exam" id="mockStartBtn">Start Exam</button>
+              </div>
+            </div>
+            <div id="mockViewWizard" class="mock-hidden">
+              <div class="wizard-top">
+                <div class="wizard-progress-label">
+                  <span id="mockWizardStepLabel">Step 1 / 4</span>
+                  <span id="mockWizardPct">0%</span>
+                </div>
+                <div class="wizard-progress-track">
+                  <div class="wizard-progress-fill" id="mockWizardProgressFill"></div>
+                </div>
+              </div>
+              <!-- Step1 閱讀 -->
+              <div id="mockStepReading">
+                <div class="wizard-step-title">Step 1：閱讀測驗</div>
+                <p class="mock-reading-hint">請依序作答，每題按 Next 進入下一題（共 3 題）。</p>
+                <div class="reading-passage" id="mockReadingPassage"></div>
+                <p id="mockReadingQ" style="margin: 1rem 0 0.5rem; font-weight: 600;"></p>
+                <div class="mcq-options" id="mockReadingOpts"></div>
+                <div class="btn-row">
+                  <button type="button" class="btn btn-primary" id="mockReadingNext">Next</button>
+                </div>
+              </div>
+              <!-- Step2 聽力 -->
+              <div id="mockStepListening" class="mock-hidden">
+                <div class="wizard-step-title">Step 2：聽力測驗</div>
+                <p class="hint">先播放音檔（TTS），再回答 2 題選擇題。</p>
+                <div class="player-card">
+                  <div class="player-row">
+                    <button type="button" class="play-toggle" id="mockListenPlay" aria-label="播放聽力">▶</button>
+                    <span style="font-size:0.85rem;opacity:0.9;">播放完畢後請作答</span>
+                  </div>
+                  <div class="tts-text-box" id="mockListenScriptHint" style="font-size:0.8rem;">音訊播放中…</div>
+                </div>
+                <div id="mockListenQuizWrap" class="mock-hidden" style="margin-top:1rem;">
+                  <p id="mockListenQ1" style="font-weight:600;"></p>
+                  <div class="mcq-options" id="mockListenOpts1"></div>
+                  <p id="mockListenQ2" style="font-weight:600;margin-top:1rem;"></p>
+                  <div class="mcq-options" id="mockListenOpts2"></div>
+                  <div class="btn-row">
+                    <button type="button" class="btn btn-primary" id="mockListenNext">Next</button>
+                  </div>
+                </div>
+              </div>
+              <!-- Step3 口說 -->
+              <div id="mockStepSpeaking" class="mock-hidden">
+                <div class="wizard-step-title">Step 3：口說測驗</div>
+                <p><strong>題目：</strong><span id="mockSpeakTopic"></span></p>
+                <p class="rec-status" id="mockPrepStatus">準備時間倒數</p>
+                <div class="timer-display" id="mockPrepTimer">00:15</div>
+                <p class="rec-status" id="mockRecPhase" style="margin-top:1rem;">待準備結束後開始錄音</p>
+                <div class="timer-display" id="mockRecTimer">00:45</div>
+                <div class="btn-row">
+                  <button type="button" class="btn btn-accent" id="mockRecStart" disabled>開始錄音</button>
+                  <button type="button" class="btn btn-primary" id="mockRecStop" disabled>停止錄音</button>
+                  <button type="button" class="btn btn-outline" id="mockSpeakNext" disabled>Next</button>
+                </div>
+                <div id="mockAudioSlot" class="audio-slot"></div>
+              </div>
+              <!-- Step4 寫作 -->
+              <div id="mockStepWriting" class="mock-hidden">
+                <div class="wizard-step-title">Step 4：寫作測驗</div>
+                <p id="mockWritePrompt" class="hint"></p>
+                <p>剩餘時間：<span class="essay-timer" id="mockWriteTimer">30:00</span></p>
+                <label class="lbl" for="mockWriteArea">作答</label>
+                <textarea id="mockWriteArea" class="input-area" rows="12" placeholder="請於時限內完成…"></textarea>
+                <div class="word-count" id="mockWriteWordCount">字數：0（英文單字數）</div>
+                <div class="btn-row">
+                  <button type="button" class="btn btn-primary" id="mockFinishExam">完成測驗並查看成績</button>
+                </div>
+              </div>
+            </div>
+            <div id="mockViewResult" class="mock-hidden">
+              <h3>成績結算中心</h3>
+              <div class="result-hero">
+                <div class="result-score" id="mockTotalScore">—</div>
+                <div>預估總分（0–120）</div>
+                <div class="result-cefr" id="mockCefr">—</div>
+              </div>
+              <p class="hint" id="mockResultSummary"></p>
+              <div class="skill-bars" id="mockSkillBars"></div>
+              <div class="radar-wrap">
+                <svg class="radar-svg" id="mockRadarSvg" viewBox="0 0 200 200" aria-label="能力雷達圖"></svg>
+              </div>
+              <div class="btn-row">
+                <button type="button" class="btn btn-outline" id="mockRestartBtn">返回模考首頁</button>
+              </div>
             </div>
           </section>
 
@@ -907,7 +1201,92 @@ ORDER BY avg_score DESC;"></textarea>
        所有狀態：當前模式 (lang | exam)、當前語系、當前 Tab
        ======================================================================== */
 
-    /** 各語系內容資料：單字閃卡、文法題、閱讀、聽力 TTS 與測驗、口說提示、寫作提示 */
+    /**
+     * TTS 優化模組：英文優先選擇 en-US / en-GB 高品質語音，並以分段朗讀製造標點停頓
+     */
+    const TTSHelper = {
+      speech: window.speechSynthesis,
+      /** 依語系挑選 Voice；英文優先 Google / Natural */
+      pickVoice(langKey) {
+        const voices = this.speech.getVoices();
+        if (!voices || !voices.length) return null;
+        const isEn = langKey === "en";
+        let pool = voices;
+        if (isEn) {
+          pool = voices.filter(function (v) {
+            return v.lang && (v.lang.indexOf("en-US") === 0 || v.lang.indexOf("en-GB") === 0);
+          });
+          if (!pool.length) pool = voices.filter(function (v) { return v.lang && v.lang.indexOf("en") === 0; });
+        } else {
+          const map = { ja: "ja", ko: "ko", es: "es", de: "de" };
+          const prefix = map[langKey] || "";
+          if (prefix) pool = voices.filter(function (v) { return v.lang && v.lang.indexOf(prefix) === 0; });
+        }
+        if (!pool.length) return voices[0];
+        const scored = pool.map(function (v) {
+          let s = 0;
+          if (/Google|Natural|Premium|Enhanced/i.test(v.name)) s += 20;
+          if (v.lang && v.lang.indexOf("en-US") === 0) s += 5;
+          return { voice: v, score: s };
+        });
+        scored.sort(function (a, b) { return b.score - a.score; });
+        return scored[0].voice;
+      },
+      /** 依句讀拆段，逐段朗讀並在標點後插入短暫停 */
+      splitForPauses(text) {
+        if (!text) return [];
+        var parts = text.split(/(?<=[\.\,\;\:\!\?\u3002\u3001])/);
+        return parts
+          .map(function (s) { return s.replace(/^\s+/, "").replace(/\s+$/, ""); })
+          .filter(Boolean);
+      },
+      speakChunks(text, langKey, rateMultiplier, onEnd) {
+        const self = this;
+        this.speech.cancel();
+        const chunks = this.splitForPauses(text);
+        if (!chunks.length) {
+          if (typeof onEnd === "function") onEnd();
+          return;
+        }
+        const baseRate = langKey === "en" ? 0.88 : 0.95;
+        const rate = typeof rateMultiplier === "number" ? rateMultiplier * baseRate : baseRate;
+        let i = 0;
+        function speakNext() {
+          if (i >= chunks.length) {
+            if (typeof onEnd === "function") onEnd();
+            return;
+          }
+          const u = new SpeechSynthesisUtterance(chunks[i]);
+          u.voice = self.pickVoice(langKey);
+          u.rate = Math.min(1.2, Math.max(0.5, rate));
+          u.pitch = 1.0;
+          u.lang = u.voice ? u.voice.lang : (langKey === "en" ? "en-US" : "");
+          u.onend = function () {
+            i++;
+            setTimeout(speakNext, /[\.\!\?]$/.test(chunks[i - 1]) ? 280 : 120);
+          };
+          self.speech.speak(u);
+        }
+        speakNext();
+      },
+      speakPlain(text, langKey, rateMul) {
+        const self = this;
+        this.speech.cancel();
+        const u = new SpeechSynthesisUtterance(text);
+        u.voice = this.pickVoice(langKey);
+        u.rate = langKey === "en" ? 0.88 * (rateMul || 1) : 0.95 * (rateMul || 1);
+        u.pitch = 1.0;
+        if (u.voice) u.lang = u.voice.lang;
+        this.speech.speak(u);
+        return u;
+      }
+    };
+
+    if (window.speechSynthesis.onvoiceschanged !== undefined) {
+      window.speechSynthesis.onvoiceschanged = function () { TTSHelper.pickVoice("en"); };
+    }
+
+    /** 各語系：單字閃卡、文法/閱讀/聽力皆為 questions 陣列（至少 3 題） */
     const LANG_DATA = {
       en: {
         label: "🇺🇸 英文特訓",
@@ -917,38 +1296,108 @@ ORDER BY avg_score DESC;"></textarea>
           { front: "Pragmatic", back: "務實的；重實效的 (adj.)" },
           { front: "Eloquent", back: "雄辯的；有說服力的 (adj.)" }
         ],
-        grammar: {
-          q: "Choose the correct form: By next year, she _______ here for a decade.",
-          options: [
-            { v: "A", text: "will live" },
-            { v: "B", text: "will have lived" },
-            { v: "C", text: "lives" },
-            { v: "D", text: "is living" }
-          ],
-          correct: "B"
-        },
-        reading: {
-          passage: "The Ivy League began as an athletic conference, yet today it signals academic excellence and selective admissions. Students often pursue rigorous reading habits alongside structured debate — a blend of tradition and innovation that defines the modern liberal arts ethos.",
-          q: "What does the passage mainly suggest about the Ivy League today?",
-          options: [
-            { v: "A", text: "It only cares about sports." },
-            { v: "B", text: "It represents academic prestige and selectivity." },
-            { v: "C", text: "It rejects liberal arts education." },
-            { v: "D", text: "It has abandoned debate." }
-          ],
-          correct: "B"
-        },
-        listening: {
-          tts: "The quick brown fox jumps over the lazy dog. Varsity athletes balance training with coursework, often meeting at dawn for practice before lectures begin.",
-          quizQ: "According to the passage, when do varsity athletes often practice?",
-          quizOptions: [
-            { v: "A", text: "At midnight" },
-            { v: "B", text: "Before lectures, often at dawn" },
-            { v: "C", text: "Only on weekends" },
-            { v: "D", text: "After graduation" }
-          ],
-          quizCorrect: "B"
-        },
+        grammarQuestions: [
+          {
+            q: "Choose the correct form: By next year, she _______ here for a decade.",
+            options: [
+              { v: "A", text: "will live" },
+              { v: "B", text: "will have lived" },
+              { v: "C", text: "lives" },
+              { v: "D", text: "is living" }
+            ],
+            correct: "B"
+          },
+          {
+            q: "Neither the students nor the professor _______ absent yesterday.",
+            options: [
+              { v: "A", text: "was" },
+              { v: "B", text: "were" },
+              { v: "C", text: "are" },
+              { v: "D", text: "have been" }
+            ],
+            correct: "A"
+          },
+          {
+            q: "If I _______ earlier, I would have caught the train.",
+            options: [
+              { v: "A", text: "leave" },
+              { v: "B", text: "left" },
+              { v: "C", text: "had left" },
+              { v: "D", text: "have left" }
+            ],
+            correct: "C"
+          }
+        ],
+        readingQuestions: [
+          {
+            passage: "The Ivy League began as an athletic conference, yet today it signals academic excellence and selective admissions. Students often pursue rigorous reading habits alongside structured debate — a blend of tradition and innovation that defines the modern liberal arts ethos.",
+            q: "What does the passage mainly suggest about the Ivy League today?",
+            options: [
+              { v: "A", text: "It only cares about sports." },
+              { v: "B", text: "It represents academic prestige and selectivity." },
+              { v: "C", text: "It rejects liberal arts education." },
+              { v: "D", text: "It has abandoned debate." }
+            ],
+            correct: "B"
+          },
+          {
+            passage: "Spaced repetition distributes review sessions over increasing intervals, which strengthens long-term retention more than massed practice in a single night.",
+            q: "According to the passage, spaced repetition is effective because it _______.",
+            options: [
+              { v: "A", text: "avoids any review" },
+              { v: "B", text: "spreads practice over time" },
+              { v: "C", text: "only works for vocabulary" },
+              { v: "D", text: "replaces sleep" }
+            ],
+            correct: "B"
+          },
+          {
+            passage: "Critical reading requires distinguishing claims from evidence and evaluating assumptions before accepting a conclusion.",
+            q: "The author emphasizes that readers should _______.",
+            options: [
+              { v: "A", text: "memorize every sentence" },
+              { v: "B", text: "assess claims and evidence carefully" },
+              { v: "C", text: "trust the first impression" },
+              { v: "D", text: "skip difficult paragraphs" }
+            ],
+            correct: "B"
+          }
+        ],
+        listeningQuestions: [
+          {
+            tts: "The quick brown fox jumps over the lazy dog. Varsity athletes balance training with coursework, often meeting at dawn for practice before lectures begin.",
+            quizQ: "According to the audio, when do varsity athletes often practice?",
+            quizOptions: [
+              { v: "A", text: "At midnight" },
+              { v: "B", text: "Before lectures, often at dawn" },
+              { v: "C", text: "Only on weekends" },
+              { v: "D", text: "After graduation" }
+            ],
+            quizCorrect: "B"
+          },
+          {
+            tts: "Library hours extend until midnight during finals week. Please keep your voice low, and remember to reserve group study rooms online.",
+            quizQ: "What is explicitly mentioned about finals week?",
+            quizOptions: [
+              { v: "A", text: "The library closes at five." },
+              { v: "B", text: "Hours extend until midnight." },
+              { v: "C", text: "Group rooms are walk-in only." },
+              { v: "D", text: "Food is prohibited everywhere." }
+            ],
+            quizCorrect: "B"
+          },
+          {
+            tts: "Your thesis statement should forecast the essay structure. Use topic sentences to connect each paragraph back to that central claim.",
+            quizQ: "What should a thesis statement do?",
+            quizOptions: [
+              { v: "A", text: "Hide the main idea" },
+              { v: "B", text: "Preview the essay structure" },
+              { v: "C", text: "Repeat the prompt only" },
+              { v: "D", text: "Appear only in the conclusion" }
+            ],
+            quizCorrect: "B"
+          }
+        ],
         speaking: "Introduce your favorite study routine in English (about 30 seconds).",
         writing: { prompt: "Write at least 80 English words: How would you balance language learning with exam preparation?", targetWords: 80 }
       },
@@ -960,38 +1409,108 @@ ORDER BY avg_score DESC;"></textarea>
           { front: "言い換える", back: "換句話說、改寫（動詞）" },
           { front: "着手する", back: "著手、開始進行（サ变动詞）" }
         ],
-        grammar: {
-          q: "次の空欄に最も適切なものを選べ：彼は来週までにレポートを _____ 予定だ。",
-          options: [
-            { v: "A", text: "書く" },
-            { v: "B", text: "書いている" },
-            { v: "C", text: "書いた" },
-            { v: "D", text: "書いていた" }
-          ],
-          correct: "A"
-        },
-        reading: {
-          passage: "日本の大学受験では、基礎学力と長期的な読解訓練が重視される。毎日短い文章を音読し、聞き取りと発音を同時に鍛えると効果的だ。",
-          q: "筆者が効果的だと述べている学習法はどれか。",
-          options: [
-            { v: "A", text: "週に一度だけ長文を読む" },
-            { v: "B", text: "毎日短文を音読し聞き取りと発音を鍛える" },
-            { v: "C", text: "文法だけを暗記する" },
-            { v: "D", text: "試験直前に徹夜する" }
-          ],
-          correct: "B"
-        },
-        listening: {
-          tts: "毎朝六時に起きて、単語を二十分復習します。そのあとで文法の問題を一セット解きます。",
-          quizQ: "話し手はまず何をしますか。",
-          quizOptions: [
-            { v: "A", text: "文法を先にする" },
-            { v: "B", text: "六時に起きて単語を復習する" },
-            { v: "C", text: "寝る" },
-            { v: "D", text: "晩ご飯を食べる" }
-          ],
-          quizCorrect: "B"
-        },
+        grammarQuestions: [
+          {
+            q: "次の空欄に最も適切なものを選べ：彼は来週までにレポートを _____ 予定だ。",
+            options: [
+              { v: "A", text: "書く" },
+              { v: "B", text: "書いている" },
+              { v: "C", text: "書いた" },
+              { v: "D", text: "書いていた" }
+            ],
+            correct: "A"
+          },
+          {
+            q: "彼女は昨日、図書館で本を _____。",
+            options: [
+              { v: "A", text: "読む" },
+              { v: "B", text: "読んだ" },
+              { v: "C", text: "読んでいる" },
+              { v: "D", text: "読んでいた" }
+            ],
+            correct: "B"
+          },
+          {
+            q: "もし時間があれば、映画を _____だろう。",
+            options: [
+              { v: "A", text: "見る" },
+              { v: "B", text: "見た" },
+              { v: "C", text: "見ていた" },
+              { v: "D", text: "見ている" }
+            ],
+            correct: "A"
+          }
+        ],
+        readingQuestions: [
+          {
+            passage: "日本の大学受験では、基礎学力と長期的な読解訓練が重視される。毎日短い文章を音読し、聞き取りと発音を同時に鍛えると効果的だ。",
+            q: "筆者が効果的だと述べている学習法はどれか。",
+            options: [
+              { v: "A", text: "週に一度だけ長文を読む" },
+              { v: "B", text: "毎日短文を音読し聞き取りと発音を鍛える" },
+              { v: "C", text: "文法だけを暗記する" },
+              { v: "D", text: "試験直前に徹夜する" }
+            ],
+            correct: "B"
+          },
+          {
+            passage: "語彙は文脈の中で覚えると定着しやすい。単語帳だけでなく、例文を声に出して読むことが重要である。",
+            q: "筆者が推奨していることは何か。",
+            options: [
+              { v: "A", text: "単語帳だけで十分" },
+              { v: "B", text: "例文を声に出して読む" },
+              { v: "C", text: "文脈は不要" },
+              { v: "D", text: "音読は無意味" }
+            ],
+            correct: "B"
+          },
+          {
+            passage: "リスニング対策には、速度を変えずに繰り返し聞く精聴と、大意を掴む泛聴の両方が必要だ。",
+            q: "筆者の主張に合うのはどれか。",
+            options: [
+              { v: "A", text: "精聴だけでよい" },
+              { v: "B", text: "精聴と泛聴の両方が必要" },
+              { v: "C", text: "泛聴だけでよい" },
+              { v: "D", text: "速度は常に最大がよい" }
+            ],
+            correct: "B"
+          }
+        ],
+        listeningQuestions: [
+          {
+            tts: "毎朝六時に起きて、単語を二十分復習します。そのあとで文法の問題を一セット解きます。",
+            quizQ: "話し手はまず何をしますか。",
+            quizOptions: [
+              { v: "A", text: "文法を先にする" },
+              { v: "B", text: "六時に起きて単語を復習する" },
+              { v: "C", text: "寝る" },
+              { v: "D", text: "晩ご飯を食べる" }
+            ],
+            quizCorrect: "B"
+          },
+          {
+            tts: "今日の授業では、助詞の使い分けを練習します。教科書の十二ページを開いてください。",
+            quizQ: "授業で何をするか。",
+            quizOptions: [
+              { v: "A", text: "助詞の使い分けを練習する" },
+              { v: "B", text: "漢字テストだけ" },
+              { v: "C", text: "休講" },
+              { v: "D", text: "映画鑑賞" }
+            ],
+            quizCorrect: "A"
+          },
+          {
+            tts: "レポートの締切は金曜日の午後五時です。遅れた場合は減点になります。",
+            quizQ: "締切はいつか。",
+            quizOptions: [
+              { v: "A", text: "月曜の朝" },
+              { v: "B", text: "金曜午後五時" },
+              { v: "C", text: "日曜夜" },
+              { v: "D", text: "未設定" }
+            ],
+            quizCorrect: "B"
+          }
+        ],
         speaking: "あなたの一日の勉強スケジュールを日本語で簡単に説明してください。",
         writing: { prompt: "日本語で 80 字以上：語学と専門勉強のバランスについて述べなさい。", targetWords: 80 }
       },
@@ -1003,38 +1522,108 @@ ORDER BY avg_score DESC;"></textarea>
           { front: "복습하다", back: "複習（動詞）" },
           { front: "어휘", back: "詞彙（名詞）" }
         ],
-        grammar: {
-          q: "빈칸에 가장 알맞은 것을 고르시오: 나는 어제 책을 _____ .",
-          options: [
-            { v: "A", text: "읽었다" },
-            { v: "B", text: "읽는다" },
-            { v: "C", text: "읽을 것이다" },
-            { v: "D", text: "읽고 있다" }
-          ],
-          correct: "A"
-        },
-        reading: {
-          passage: "언어 학습에서는 매일 조금씩 하는 것이 가장 중요하다. 듣기와 말하기를 함께 연습하면 기억이 오래 남는다.",
-          q: "글의 중심 내용으로 가장 적절한 것은?",
-          options: [
-            { v: "A", text: "하루에 많이 외우는 것만이 중요하다" },
-            { v: "B", text: "매일 조금씩 하고 듣기·말하기를 함께 하라" },
-            { v: "C", text: "읽기만 하면 된다" },
-            { v: "D", text: "문법은 필요 없다" }
-          ],
-          correct: "B"
-        },
-        listening: {
-          tts: "저는 도서관에서 한 시간 동안 공부하고, 집에 가서 듣기 연습을 합니다.",
-          quizQ: "화자는 도서관에서 무엇을 합니까?",
-          quizOptions: [
-            { v: "A", text: "한 시간 공부한다" },
-            { v: "B", text: "잠을 잔다" },
-            { v: "C", text: "운동만 한다" },
-            { v: "D", text: "영화만 본다" }
-          ],
-          quizCorrect: "A"
-        },
+        grammarQuestions: [
+          {
+            q: "빈칸에 가장 알맞은 것을 고르시오: 나는 어제 책을 _____ .",
+            options: [
+              { v: "A", text: "읽었다" },
+              { v: "B", text: "읽는다" },
+              { v: "C", text: "읽을 것이다" },
+              { v: "D", text: "읽고 있다" }
+            ],
+            correct: "A"
+          },
+          {
+            q: "오늘은 날씨가 _____ .",
+            options: [
+              { v: "A", text: "좋다" },
+              { v: "B", text: "좋았다" },
+              { v: "C", text: "좋을 것이다" },
+              { v: "D", text: "좋고 있다" }
+            ],
+            correct: "A"
+          },
+          {
+            q: "저는 내일 친구를 _____ .",
+            options: [
+              { v: "A", text: "만난다" },
+              { v: "B", text: "만났다" },
+              { v: "C", text: "만날 것이다" },
+              { v: "D", text: "만나고 있다" }
+            ],
+            correct: "C"
+          }
+        ],
+        readingQuestions: [
+          {
+            passage: "언어 학습에서는 매일 조금씩 하는 것이 가장 중요하다. 듣기와 말하기를 함께 연습하면 기억이 오래 남는다.",
+            q: "글의 중심 내용으로 가장 적절한 것은?",
+            options: [
+              { v: "A", text: "하루에 많이 외우는 것만이 중요하다" },
+              { v: "B", text: "매일 조금씩 하고 듣기·말하기를 함께 하라" },
+              { v: "C", text: "읽기만 하면 된다" },
+              { v: "D", text: "문법은 필요 없다" }
+            ],
+            correct: "B"
+          },
+          {
+            passage: "독해는 핵심 문장을 찾는 훈련이다. 모든 단어를 다 알 필요는 없다.",
+            q: "글쓴이의 의견은?",
+            options: [
+              { v: "A", text: "모든 단어를 외워야 한다" },
+              { v: "B", text: "핵심 문장 찾기가 중요하다" },
+              { v: "C", text: "독해는 불필요하다" },
+              { v: "D", text: "속도만 중요하다" }
+            ],
+            correct: "B"
+          },
+          {
+            passage: "말하기 연습은 녹음하고 스스로 피드백하는 것이 효과적이다.",
+            q: "효과적인 방법은?",
+            options: [
+              { v: "A", text: "녹음 후 자기 피드백" },
+              { v: "B", text: "말하지 않기" },
+              { v: "C", text: "남의 목소리만 듣기" },
+              { v: "D", text: "문법만 보기" }
+            ],
+            correct: "A"
+          }
+        ],
+        listeningQuestions: [
+          {
+            tts: "저는 도서관에서 한 시간 동안 공부하고, 집에 가서 듣기 연습을 합니다.",
+            quizQ: "화자는 도서관에서 무엇을 합니까?",
+            quizOptions: [
+              { v: "A", text: "한 시간 공부한다" },
+              { v: "B", text: "잠을 잔다" },
+              { v: "C", text: "운동만 한다" },
+              { v: "D", text: "영화만 본다" }
+            ],
+            quizCorrect: "A"
+          },
+          {
+            tts: "시험 범위는 교과서 세 장부터 다섯 장까지입니다. 필기 도구는 펜만 사용하세요.",
+            quizQ: "시험 범위는 어디까지입니까?",
+            quizOptions: [
+              { v: "A", text: "전 책" },
+              { v: "B", text: "3장에서 5장" },
+              { v: "C", text: "1장만" },
+              { v: "D", text: "없음" }
+            ],
+            quizCorrect: "B"
+          },
+          {
+            tts: "내일은 단어 시험이 있으니 단어장을 꼭 가져오세요.",
+            quizQ: "내일 무엇이 있습니까?",
+            quizOptions: [
+              { v: "A", text: "단어 시험" },
+              { v: "B", text: "체육 대회" },
+              { v: "C", text: "영화 상영" },
+              { v: "D", text: "휴강" }
+            ],
+            quizCorrect: "A"
+          }
+        ],
         speaking: "하루 학습 계획을 한국어로 짧게 말해 보세요.",
         writing: { prompt: "한국어로 80 단어 이상: 시험 준비와 언어 학습을 어떻게 조화시킬지 쓰시오.", targetWords: 80 }
       },
@@ -1046,38 +1635,108 @@ ORDER BY avg_score DESC;"></textarea>
           { front: "Meta", back: "目標 (f.)" },
           { front: "Repasar", back: "複習（動詞）" }
         ],
-        grammar: {
-          q: "Elige la opción correcta: Mañana _______ a la biblioteca.",
-          options: [
-            { v: "A", text: "voy" },
-            { v: "B", text: "iba" },
-            { v: "C", text: "fui" },
-            { v: "D", text: "ido" }
-          ],
-          correct: "A"
-        },
-        reading: {
-          passage: "Aprender un idioma requiere constancia. Es mejor estudiar treinta minutos cada día que cinco horas solo el día antes del examen.",
-          q: "¿Qué recomienda el texto?",
-          options: [
-            { v: "A", text: "Estudiar solo la noche anterior" },
-            { v: "B", text: "Ser constante y estudiar un poco cada día" },
-            { v: "C", text: "No practicar la expresión oral" },
-            { v: "D", text: "Evitar la lectura" }
-          ],
-          correct: "B"
-        },
-        listening: {
-          tts: "Cada mañana repaso veinte palabras nuevas y luego escucho un podcast en español durante quince minutos.",
-          quizQ: "¿Qué hace el hablante después de repasar palabras?",
-          quizOptions: [
-            { v: "A", text: "Duerme" },
-            { v: "B", text: "Escucha un podcast quince minutos" },
-            { v: "C", text: "Va al cine" },
-            { v: "D", text: "Nada" }
-          ],
-          quizCorrect: "B"
-        },
+        grammarQuestions: [
+          {
+            q: "Elige la opción correcta: Mañana _______ a la biblioteca.",
+            options: [
+              { v: "A", text: "voy" },
+              { v: "B", text: "iba" },
+              { v: "C", text: "fui" },
+              { v: "D", text: "ido" }
+            ],
+            correct: "A"
+          },
+          {
+            q: "Si _______ tiempo, viajaré a España.",
+            options: [
+              { v: "A", text: "tengo" },
+              { v: "B", text: "tuve" },
+              { v: "C", text: "tenía" },
+              { v: "D", text: "tendré" }
+            ],
+            correct: "A"
+          },
+          {
+            q: "Ellos _______ estudiando desde las tres.",
+            options: [
+              { v: "A", text: "están" },
+              { v: "B", text: "están siendo" },
+              { v: "C", text: "son" },
+              { v: "D", text: "fueron" }
+            ],
+            correct: "A"
+          }
+        ],
+        readingQuestions: [
+          {
+            passage: "Aprender un idioma requiere constancia. Es mejor estudiar treinta minutos cada día que cinco horas solo el día antes del examen.",
+            q: "¿Qué recomienda el texto?",
+            options: [
+              { v: "A", text: "Estudiar solo la noche anterior" },
+              { v: "B", text: "Ser constante y estudiar un poco cada día" },
+              { v: "C", text: "No practicar la expresión oral" },
+              { v: "D", text: "Evitar la lectura" }
+            ],
+            correct: "B"
+          },
+          {
+            passage: "La lectura extensa mejora el vocabulario pasivo, pero hay que activarlo con producción escrita y oral.",
+            q: "Según el texto, ¿qué se necesita además de leer mucho?",
+            options: [
+              { v: "A", text: "Solo memorizar" },
+              { v: "B", text: "Activar el vocabulario con producción" },
+              { v: "C", text: "Evitar escribir" },
+              { v: "D", text: "No hablar" }
+            ],
+            correct: "B"
+          },
+          {
+            passage: "Un buen ensayo tiene tesis clara, párrafos con idea central y conclusión coherente.",
+            q: "¿Qué elemento menciona el autor?",
+            options: [
+              { v: "A", text: "Tesis clara y conclusión coherente" },
+              { v: "B", text: "Solo listas de palabras" },
+              { v: "C", text: "Evitar la conclusión" },
+              { v: "D", text: "Párrafos sin idea" }
+            ],
+            correct: "A"
+          }
+        ],
+        listeningQuestions: [
+          {
+            tts: "Cada mañana repaso veinte palabras nuevas y luego escucho un podcast en español durante quince minutos.",
+            quizQ: "¿Qué hace el hablante después de repasar palabras?",
+            quizOptions: [
+              { v: "A", text: "Duerme" },
+              { v: "B", text: "Escucha un podcast quince minutos" },
+              { v: "C", text: "Va al cine" },
+              { v: "D", text: "Nada" }
+            ],
+            quizCorrect: "B"
+          },
+          {
+            tts: "El examen oral será en la sala cuatro a las diez de la mañana.",
+            quizQ: "¿Dónde será el examen?",
+            quizOptions: [
+              { v: "A", text: "Sala cuatro" },
+              { v: "B", text: "En casa" },
+              { v: "C", text: "En el parque" },
+              { v: "D", text: "Sin lugar fijo" }
+            ],
+            quizCorrect: "A"
+          },
+          {
+            tts: "Para mejorar la pronunciación, graba tu voz y compárala con el audio nativo.",
+            quizQ: "¿Qué recomienda el audio?",
+            quizOptions: [
+              { v: "A", text: "Grabar y comparar con nativos" },
+              { v: "B", text: "No practicar" },
+              { v: "C", text: "Solo leer en silencio" },
+              { v: "D", text: "Evitar grabaciones" }
+            ],
+            quizCorrect: "A"
+          }
+        ],
         speaking: "Presenta en español tu rutina de estudio diaria (unos 30 segundos).",
         writing: { prompt: "Escribe al menos 80 palabras en español: cómo organizas tu tiempo entre idiomas y exámenes.", targetWords: 80 }
       },
@@ -1089,41 +1748,178 @@ ORDER BY avg_score DESC;"></textarea>
           { front: "wiederholen", back: "複習、重複（動詞）" },
           { front: "die Routine", back: "例行公事、習慣（陰性名詞）" }
         ],
-        grammar: {
-          q: "Wähle die richtige Form: Wenn ich Zeit _____, lese ich jeden Tag ein Kapitel.",
-          options: [
-            { v: "A", text: "habe" },
-            { v: "B", text: "hatte" },
-            { v: "C", text: "haben" },
-            { v: "D", text: "gehabt" }
-          ],
-          correct: "A"
-        },
-        reading: {
-          passage: "Sprachenlernen ist ein Marathon, kein Sprint. Kurze, tägliche Einheiten helfen dem Gedächtnis mehr als seltene Marathon-Sessions.",
-          q: "Was empfiehlt der Text?",
-          options: [
-            { v: "A", text: "Nur am Wochenende lernen" },
-            { v: "B", text: "Kurze tägliche Lerneinheiten" },
-            { v: "C", text: "Gar nicht lesen" },
-            { v: "D", text: "Nur Grammatik pauken" }
-          ],
-          correct: "B"
-        },
-        listening: {
-          tts: "Ich stehe um sieben Uhr auf und wiederhole zuerst die Vokabeln. Danach höre ich ein kurzes Interview.",
-          quizQ: "Was macht der Sprecher zuerst nach dem Aufstehen?",
-          quizOptions: [
-            { v: "A", text: "Er schaut fern" },
-            { v: "B", text: "Er wiederholt Vokabeln" },
-            { v: "C", text: "Er geht schlafen" },
-            { v: "D", text: "Er kocht ein großes Essen" }
-          ],
-          quizCorrect: "B"
-        },
+        grammarQuestions: [
+          {
+            q: "Wähle die richtige Form: Wenn ich Zeit _____, lese ich jeden Tag ein Kapitel.",
+            options: [
+              { v: "A", text: "habe" },
+              { v: "B", text: "hatte" },
+              { v: "C", text: "haben" },
+              { v: "D", text: "gehabt" }
+            ],
+            correct: "A"
+          },
+          {
+            q: "Gestern _____ ich früh ins Bett gegangen.",
+            options: [
+              { v: "A", text: "bin" },
+              { v: "B", text: "habe" },
+              { v: "C", text: "war" },
+              { v: "D", text: "wurde" }
+            ],
+            correct: "A"
+          },
+          {
+            q: "Morgen _____ wir die Prüfung bestehen.",
+            options: [
+              { v: "A", text: "werden" },
+              { v: "B", text: "wurden" },
+              { v: "C", text: "worden" },
+              { v: "D", text: "wird" }
+            ],
+            correct: "A"
+          }
+        ],
+        readingQuestions: [
+          {
+            passage: "Sprachenlernen ist ein Marathon, kein Sprint. Kurze, tägliche Einheiten helfen dem Gedächtnis mehr als seltene Marathon-Sessions.",
+            q: "Was empfiehlt der Text?",
+            options: [
+              { v: "A", text: "Nur am Wochenende lernen" },
+              { v: "B", text: "Kurze tägliche Lerneinheiten" },
+              { v: "C", text: "Gar nicht lesen" },
+              { v: "D", text: "Nur Grammatik pauken" }
+            ],
+            correct: "B"
+          },
+          {
+            passage: "Aktives Lesen bedeutet: Fragen stellen, Zusammenfassungen schreiben und Unbekanntes markieren.",
+            q: "Was gehört zum aktiven Lesen?",
+            options: [
+              { v: "A", text: "Nur die Augen bewegen" },
+              { v: "B", text: "Fragen stellen und markieren" },
+              { v: "C", text: "Keine Notizen" },
+              { v: "D", text: "Nur Überschriften lesen" }
+            ],
+            correct: "B"
+          },
+          {
+            passage: "Wortschatz wächst schneller, wenn man Kollokationen in echten Sätzen lernt.",
+            q: "Worauf betont der Text?",
+            options: [
+              { v: "A", text: "Kollokationen in Kontext" },
+              { v: "B", text: "Einzelne Buchstaben" },
+              { v: "C", text: "Nur Listen ohne Sätze" },
+              { v: "D", text: "Nur Aussprache" }
+            ],
+            correct: "A"
+          }
+        ],
+        listeningQuestions: [
+          {
+            tts: "Ich stehe um sieben Uhr auf und wiederhole zuerst die Vokabeln. Danach höre ich ein kurzes Interview.",
+            quizQ: "Was macht der Sprecher zuerst nach dem Aufstehen?",
+            quizOptions: [
+              { v: "A", text: "Er schaut fern" },
+              { v: "B", text: "Er wiederholt Vokabeln" },
+              { v: "C", text: "Er geht schlafen" },
+              { v: "D", text: "Er kocht ein großes Essen" }
+            ],
+            quizCorrect: "B"
+          },
+          {
+            tts: "Die Hausaufgaben sind bis Freitag abzugeben. Bitte als PDF im Portal hochladen.",
+            quizQ: "Bis wann sind die Hausaufgaben fällig?",
+            quizOptions: [
+              { v: "A", text: "Freitag" },
+              { v: "B", text: "Montag" },
+              { v: "C", text: "Ohne Termin" },
+              { v: "D", text: "Nächstes Jahr" }
+            ],
+            quizCorrect: "A"
+          },
+          {
+            tts: "In der mündlichen Prüfung zählen Klarheit und Struktur mehr als perfekte Grammatik.",
+            quizQ: "Was zählt laut Audio mehr?",
+            quizOptions: [
+              { v: "A", text: "Klarheit und Struktur" },
+              { v: "B", text: "Nur Geschwindigkeit" },
+              { v: "C", text: "Lautstärke allein" },
+              { v: "D", text: "Nur Wortanzahl" }
+            ],
+            quizCorrect: "A"
+          }
+        ],
         speaking: "Beschreibe auf Deutsch kurz deinen Tagesablauf beim Lernen.",
         writing: { prompt: "Schreibe mindestens 80 Wörter auf Deutsch: Wie verbindest du Sprachenlernen und Prüfungsvorbereitung?", targetWords: 80 }
       }
+    };
+
+    /** TOEFL 全真模考題庫（與一般練習分離） */
+    const MOCK_EXAM = {
+      reading: [
+        {
+          passage: "Campus sustainability programs often combine energy retrofits with student-led education. A measurable outcome is lower electricity use per square foot, but social outcomes—like increased environmental literacy—are harder to quantify yet equally important for long-term change.",
+          q: "What does the author imply about social outcomes?",
+          options: [
+            { v: "A", text: "They are irrelevant to sustainability." },
+            { v: "B", text: "They are difficult to measure but important." },
+            { v: "C", text: "They replace the need for retrofits." },
+            { v: "D", text: "They only matter to administrators." }
+          ],
+          correct: "B"
+        },
+        {
+          passage: "Cognitive science suggests that retrieval practice strengthens memory more than passive re-reading. Short quizzes spaced over days can outperform one long cramming session.",
+          q: "According to the passage, what strengthens memory most?",
+          options: [
+            { v: "A", text: "Passive re-reading" },
+            { v: "B", text: "Retrieval practice and spaced quizzes" },
+            { v: "C", text: "Highlighting only" },
+            { v: "D", text: "Avoiding tests" }
+          ],
+          correct: "B"
+        },
+        {
+          passage: "Effective note-taking is selective: capture main ideas and key terms, not every word from a lecture.",
+          q: "The passage recommends note-taking that is _______.",
+          options: [
+            { v: "A", text: "verbatim" },
+            { v: "B", text: "selective and idea-focused" },
+            { v: "C", text: "optional" },
+            { v: "D", text: "only decorative" }
+          ],
+          correct: "B"
+        }
+      ],
+      listeningScript:
+        "Registration for spring seminars opens next Monday at nine A M. Popular sections fill quickly, so plan two backup courses. If a class is full, you can join the waitlist and check daily for openings.",
+      listeningQs: [
+        {
+          q: "When does registration open?",
+          options: [
+            { v: "A", text: "Next Monday at 9 a.m." },
+            { v: "B", text: "Next Friday at noon" },
+            { v: "C", text: "Yesterday" },
+            { v: "D", text: "It does not say" }
+          ],
+          correct: "A"
+        },
+        {
+          q: "What should students do if a class is full?",
+          options: [
+            { v: "A", text: "Join the waitlist and check daily" },
+            { v: "B", text: "Pay extra tuition automatically" },
+            { v: "C", text: "Skip registration entirely" },
+            { v: "D", text: "Email the president only" }
+          ],
+          correct: "A"
+        }
+      ],
+      speakingTopic: "Describe one academic habit that helps you prepare for exams. Explain why it works for you.",
+      writingPrompt:
+        "Do you agree or disagree with the following statement? It is better to study alone than in a group. Use specific reasons and examples to support your answer.",
+      writingLimitMin: 30
     };
 
     /** 考研：MIS / 資料庫閃卡、考古題 */
@@ -1145,13 +1941,30 @@ ORDER BY avg_score DESC;"></textarea>
     let currentLang = "en";
     let vocabIndex = 0;
     let examFlashIndex = 0;
+    /** 題庫陣列目前索引（文法 / 閱讀 / 聽力） */
+    let grammarIdx = 0;
+    let readingIdx = 0;
+    let listeningIdx = 0;
+
+    /** 全真模考狀態 */
+    let mockPhase = "welcome"; // welcome | wizard | result
+    let mockWizardStep = 0; // 0 read, 1 listen, 2 speak, 3 write
+    let mockReadingIdx = 0;
+    let mockAnswers = { read: [], listen: [], speakAi: 0, writeAi: 0 };
+    let mockListenPlayed = false;
+    let mockPrepTimerId = null;
+    let mockRecTimerId = null;
+    let mockWriteTimerId = null;
+    let mockWriteRemainSec = 0;
+    let mockMediaRecorder = null;
+    let mockRecordedChunks = [];
+    let mockRecordStream = null;
 
     /** 聽力：模擬播放進度與 TTS */
     let listenDurationSec = 45;
     let listenCurrentSec = 0;
     let listenPlaying = false;
     let listenRafId = null;
-    let listenUtterance = null;
     let speechSynth = window.speechSynthesis;
 
     /** 口說：MediaRecorder 相關狀態
@@ -1197,9 +2010,9 @@ ORDER BY avg_score DESC;"></textarea>
     }
 
     function activatePanel(panelId) {
-      // 語言模式 panels: vocab, grammar, reading, listening, speaking, writing
+      // 語言模式 panels: vocab, grammar, reading, listening, speaking, writing, mock-exam
       // 考研模式: exam-flash, exam-essay, exam-code
-      const langPanels = ["vocab", "grammar", "reading", "listening", "speaking", "writing"];
+      const langPanels = ["vocab", "grammar", "reading", "listening", "speaking", "writing", "mock-exam"];
       const examPanels = ["exam-flash", "exam-essay", "exam-code"];
 
       $$(".panel-area .panel").forEach((p) => {
@@ -1229,6 +2042,11 @@ ORDER BY avg_score DESC;"></textarea>
         switchTabBar($("#tabsExam"), panelId);
       }
       activatePanel(panelId);
+      if (currentMode === "lang" && panelId === "mock-exam") {
+        if (mockPhase === "welcome") showMockView("welcome");
+        else if (mockPhase === "wizard") showMockView("wizard");
+        else showMockView("result");
+      }
     }
 
     function applyLanguageContent() {
@@ -1242,26 +2060,12 @@ ORDER BY avg_score DESC;"></textarea>
       vocabIndex = 0;
       renderVocabFlash();
 
-      // 文法
-      $("#grammarQuestion").textContent = d.grammar.q;
-      renderMcqOptions("grammarOptions", d.grammar.options, "grammar_opt");
-      $("#grammarResult").className = "result-msg";
-      $("#grammarResult").textContent = "";
-      $("#grammarResult").classList.remove("show");
-
-      // 閱讀
-      $("#readingPassage").textContent = d.reading.passage;
-      $("#readingQuestion").textContent = d.reading.q;
-      renderMcqOptions("readingOptions", d.reading.options, "read_opt");
-      $("#readingResult").className = "result-msg";
-      $("#readingResult").textContent = "";
-
-      // 聽力
-      $("#listenTtsText").textContent = d.listening.tts;
-      $("#listenQuizQ").textContent = d.listening.quizQ;
-      renderMcqOptions("listenQuizOpts", d.listening.quizOptions, "listen_quiz");
-      $("#listenQuizResult").className = "result-msg";
-      $("#listenQuizResult").textContent = "";
+      grammarIdx = 0;
+      readingIdx = 0;
+      listeningIdx = 0;
+      renderGrammarQuestion();
+      renderReadingQuestion();
+      renderListeningQuestion();
       resetListenPlayer();
 
       // 口說
@@ -1293,6 +2097,41 @@ ORDER BY avg_score DESC;"></textarea>
       });
     }
 
+    function renderGrammarQuestion() {
+      const arr = LANG_DATA[currentLang].grammarQuestions;
+      const g = arr[grammarIdx];
+      $("#grammarNavHint").textContent = "第 " + (grammarIdx + 1) + " / " + arr.length + " 題";
+      $("#grammarQuestion").textContent = g.q;
+      renderMcqOptions("grammarOptions", g.options, "grammar_opt");
+      $("#grammarResult").className = "result-msg";
+      $("#grammarResult").textContent = "";
+      $("#grammarResult").classList.remove("show");
+    }
+
+    function renderReadingQuestion() {
+      const arr = LANG_DATA[currentLang].readingQuestions;
+      const r = arr[readingIdx];
+      $("#readingNavHint").textContent = "第 " + (readingIdx + 1) + " / " + arr.length + " 題";
+      $("#readingPassage").textContent = r.passage;
+      $("#readingQuestion").textContent = r.q;
+      renderMcqOptions("readingOptions", r.options, "read_opt");
+      $("#readingResult").className = "result-msg";
+      $("#readingResult").textContent = "";
+      $("#readingResult").classList.remove("show");
+    }
+
+    function renderListeningQuestion() {
+      const arr = LANG_DATA[currentLang].listeningQuestions;
+      const L = arr[listeningIdx];
+      $("#listeningNavHint").textContent = "第 " + (listeningIdx + 1) + " / " + arr.length + " 題（播放與本題同步）";
+      $("#listenTtsText").textContent = L.tts;
+      $("#listenQuizQ").textContent = L.quizQ;
+      renderMcqOptions("listenQuizOpts", L.quizOptions, "listen_quiz");
+      $("#listenQuizResult").className = "result-msg";
+      $("#listenQuizResult").textContent = "";
+      resetListenPlayer();
+    }
+
     /* ---------- 單字 3D 閃卡 ---------- */
     function renderVocabFlash() {
       const d = LANG_DATA[currentLang].vocab;
@@ -1312,9 +2151,42 @@ ORDER BY avg_score DESC;"></textarea>
       return r ? r.value : null;
     }
 
+    $("#grammarPrev").addEventListener("click", () => {
+      const n = LANG_DATA[currentLang].grammarQuestions.length;
+      grammarIdx = (grammarIdx - 1 + n) % n;
+      renderGrammarQuestion();
+    });
+    $("#grammarNext").addEventListener("click", () => {
+      const n = LANG_DATA[currentLang].grammarQuestions.length;
+      grammarIdx = (grammarIdx + 1) % n;
+      renderGrammarQuestion();
+    });
+
+    $("#readingPrev").addEventListener("click", () => {
+      const n = LANG_DATA[currentLang].readingQuestions.length;
+      readingIdx = (readingIdx - 1 + n) % n;
+      renderReadingQuestion();
+    });
+    $("#readingNext").addEventListener("click", () => {
+      const n = LANG_DATA[currentLang].readingQuestions.length;
+      readingIdx = (readingIdx + 1) % n;
+      renderReadingQuestion();
+    });
+
+    $("#listeningPrev").addEventListener("click", () => {
+      const n = LANG_DATA[currentLang].listeningQuestions.length;
+      listeningIdx = (listeningIdx - 1 + n) % n;
+      renderListeningQuestion();
+    });
+    $("#listeningNext").addEventListener("click", () => {
+      const n = LANG_DATA[currentLang].listeningQuestions.length;
+      listeningIdx = (listeningIdx + 1) % n;
+      renderListeningQuestion();
+    });
+
     $("#grammarSubmit").addEventListener("click", () => {
       const ans = getCheckedValue("grammar_opt");
-      const correct = LANG_DATA[currentLang].grammar.correct;
+      const correct = LANG_DATA[currentLang].grammarQuestions[grammarIdx].correct;
       const box = $("#grammarResult");
       if (!ans) {
         box.className = "result-msg err show";
@@ -1332,7 +2204,7 @@ ORDER BY avg_score DESC;"></textarea>
 
     $("#readingSubmit").addEventListener("click", () => {
       const ans = getCheckedValue("read_opt");
-      const correct = LANG_DATA[currentLang].reading.correct;
+      const correct = LANG_DATA[currentLang].readingQuestions[readingIdx].correct;
       const box = $("#readingResult");
       if (!ans) {
         box.className = "result-msg err show";
@@ -1395,20 +2267,28 @@ ORDER BY avg_score DESC;"></textarea>
       listenRafId = requestAnimationFrame(frame);
     }
 
-    /** 使用 SpeechSynthesisUtterance 朗讀；語速由 rate 控制 */
+    /**
+     * 聽力 TTS：英文使用 TTSHelper 分段朗讀（標點停頓）+ 優選語音；
+     * 非英文仍用分段邏輯但語系改為對應 lang。
+     */
     function speakListenText() {
-      const text = LANG_DATA[currentLang].listening.tts;
+      const L = LANG_DATA[currentLang].listeningQuestions[listeningIdx];
+      const text = L.tts;
+      const rateMul = parseFloat($("#listenRate").value) || 1;
+      listenDurationSec = Math.max(25, Math.min(120, text.length / 12));
+      listenCurrentSec = 0;
+      updateListenProgressUI();
+
       speechSynth.cancel();
-      listenUtterance = new SpeechSynthesisUtterance(text);
-      listenUtterance.rate = parseFloat($("#listenRate").value) || 1;
-      listenUtterance.onend = function () {
+      listenPlaying = true;
+
+      TTSHelper.speakChunks(text, currentLang, rateMul, function () {
         listenPlaying = false;
         $("#listenPlay").textContent = "▶";
         listenCurrentSec = listenDurationSec;
         updateListenProgressUI();
         if (listenRafId) cancelAnimationFrame(listenRafId);
-      };
-      speechSynth.speak(listenUtterance);
+      });
     }
 
     $("#listenPlay").addEventListener("click", () => {
@@ -1419,7 +2299,6 @@ ORDER BY avg_score DESC;"></textarea>
         if (listenRafId) cancelAnimationFrame(listenRafId);
         return;
       }
-      listenPlaying = true;
       $("#listenPlay").textContent = "❚❚";
       listenCurrentSec = 0;
       updateListenProgressUI();
@@ -1428,9 +2307,11 @@ ORDER BY avg_score DESC;"></textarea>
     });
 
     $("#listenRate").addEventListener("change", () => {
-      if (listenUtterance && listenPlaying) {
+      if (listenPlaying) {
+        listenPlaying = false;
         speechSynth.cancel();
-        speakListenText();
+        $("#listenPlay").textContent = "▶";
+        if (listenRafId) cancelAnimationFrame(listenRafId);
       }
     });
 
@@ -1443,7 +2324,7 @@ ORDER BY avg_score DESC;"></textarea>
 
     $("#listenQuizSubmit").addEventListener("click", () => {
       const ans = getCheckedValue("listen_quiz");
-      const correct = LANG_DATA[currentLang].listening.quizCorrect;
+      const correct = LANG_DATA[currentLang].listeningQuestions[listeningIdx].quizCorrect;
       const box = $("#listenQuizResult");
       if (!ans) {
         box.className = "result-msg err show";
@@ -1658,6 +2539,363 @@ ORDER BY avg_score DESC;"></textarea>
       $("#essayTimerStart").textContent = "開始計時";
       essaySec = 0;
       renderEssayTime();
+    });
+
+    /* ---------- 全真模考 (TOEFL Mock) ---------- */
+    function showMockView(which) {
+      $("#mockViewWelcome").classList.toggle("mock-hidden", which !== "welcome");
+      $("#mockViewWizard").classList.toggle("mock-hidden", which !== "wizard");
+      $("#mockViewResult").classList.toggle("mock-hidden", which !== "result");
+    }
+
+    function updateMockWizardProgress() {
+      const sub = mockWizardStep === 0 ? mockReadingIdx / 3 : mockWizardStep === 1 ? (mockListenPlayed ? 0.5 : 0) + 0.25 : mockWizardStep / 4;
+      const pct = Math.min(100, Math.round(((mockWizardStep + sub) / 4) * 100));
+      $("#mockWizardPct").textContent = pct + "%";
+      $("#mockWizardProgressFill").style.width = pct + "%";
+      $("#mockWizardStepLabel").textContent = "Step " + (mockWizardStep + 1) + " / 4";
+    }
+
+    function resetMockExamToWelcome() {
+      mockPhase = "welcome";
+      mockWizardStep = 0;
+      mockReadingIdx = 0;
+      mockListenPlayed = false;
+      mockAnswers = { read: [], listen: [null, null], speakAi: 0, writeAi: 0 };
+      if (mockPrepTimerId) {
+        clearInterval(mockPrepTimerId);
+        mockPrepTimerId = null;
+      }
+      if (mockRecTimerId) {
+        clearInterval(mockRecTimerId);
+        mockRecTimerId = null;
+      }
+      if (mockWriteTimerId) {
+        clearInterval(mockWriteTimerId);
+        mockWriteTimerId = null;
+      }
+      speechSynth.cancel();
+      $("#mockListenQuizWrap").classList.add("mock-hidden");
+      $("#mockStepReading").classList.remove("mock-hidden");
+      $("#mockStepListening").classList.add("mock-hidden");
+      $("#mockStepSpeaking").classList.add("mock-hidden");
+      $("#mockStepWriting").classList.add("mock-hidden");
+      showMockView("welcome");
+    }
+
+    function renderMockReadingStep() {
+      const q = MOCK_EXAM.reading[mockReadingIdx];
+      $("#mockReadingPassage").textContent = q.passage;
+      $("#mockReadingQ").textContent = q.q;
+      renderMcqOptions("mockReadingOpts", q.options, "mock_read_sel");
+      updateMockWizardProgress();
+    }
+
+    function enterMockListening() {
+      mockWizardStep = 1;
+      $("#mockStepReading").classList.add("mock-hidden");
+      $("#mockStepListening").classList.remove("mock-hidden");
+      $("#mockListenQuizWrap").classList.add("mock-hidden");
+      mockListenPlayed = false;
+      $("#mockListenScriptHint").textContent = "請按播放鍵聽取音檔（英文 TTS 優化播放）。";
+      const q1 = MOCK_EXAM.listeningQs[0];
+      const q2 = MOCK_EXAM.listeningQs[1];
+      $("#mockListenQ1").textContent = "1. " + q1.q;
+      $("#mockListenQ2").textContent = "2. " + q2.q;
+      renderMcqOptions("mockListenOpts1", q1.options, "mock_l1");
+      renderMcqOptions("mockListenOpts2", q2.options, "mock_l2");
+      updateMockWizardProgress();
+    }
+
+    function enterMockSpeaking() {
+      mockWizardStep = 2;
+      $("#mockStepListening").classList.add("mock-hidden");
+      $("#mockStepSpeaking").classList.remove("mock-hidden");
+      $("#mockSpeakTopic").textContent = MOCK_EXAM.speakingTopic;
+      $("#mockPrepStatus").textContent = "準備時間：倒數 15 秒";
+      $("#mockRecPhase").textContent = "請等待準備結束";
+      $("#mockRecStart").disabled = true;
+      $("#mockRecStop").disabled = true;
+      $("#mockSpeakNext").disabled = true;
+      $("#mockAudioSlot").innerHTML = "";
+      let prep = 15;
+      $("#mockPrepTimer").textContent = "00:" + (prep < 10 ? "0" : "") + prep;
+      if (mockPrepTimerId) clearInterval(mockPrepTimerId);
+      mockPrepTimerId = setInterval(function () {
+        prep--;
+        $("#mockPrepTimer").textContent = "00:" + (prep < 10 ? "0" : "") + prep;
+        if (prep <= 0) {
+          clearInterval(mockPrepTimerId);
+          mockPrepTimerId = null;
+          $("#mockPrepStatus").textContent = "準備結束";
+          $("#mockRecPhase").textContent = "請按「開始錄音」，最長 45 秒";
+          $("#mockRecStart").disabled = false;
+        }
+      }, 1000);
+      updateMockWizardProgress();
+    }
+
+    function enterMockWriting() {
+      mockWizardStep = 3;
+      $("#mockStepSpeaking").classList.add("mock-hidden");
+      $("#mockStepWriting").classList.remove("mock-hidden");
+      $("#mockWritePrompt").textContent = MOCK_EXAM.writingPrompt;
+      $("#mockWriteArea").value = "";
+      mockWriteRemainSec = MOCK_EXAM.writingLimitMin * 60;
+      function fmt(sec) {
+        const m = Math.floor(sec / 60);
+        const s = sec % 60;
+        return (m < 10 ? "0" : "") + m + ":" + (s < 10 ? "0" : "") + s;
+      }
+      $("#mockWriteTimer").textContent = fmt(mockWriteRemainSec);
+      if (mockWriteTimerId) clearInterval(mockWriteTimerId);
+      mockWriteTimerId = setInterval(function () {
+        mockWriteRemainSec--;
+        $("#mockWriteTimer").textContent = fmt(mockWriteRemainSec);
+        if (mockWriteRemainSec <= 0) {
+          clearInterval(mockWriteTimerId);
+          mockWriteTimerId = null;
+        }
+      }, 1000);
+      updateMockWordCount();
+      updateMockWizardProgress();
+    }
+
+    function updateMockWordCount() {
+      const t = $("#mockWriteArea").value.trim();
+      const n = t ? t.split(/\s+/).filter(Boolean).length : 0;
+      $("#mockWriteWordCount").textContent = "字數：" + n + "（英文單字數）";
+    }
+
+    $("#mockWriteArea").addEventListener("input", updateMockWordCount);
+
+    $("#mockStartBtn").addEventListener("click", function () {
+      mockPhase = "wizard";
+      mockWizardStep = 0;
+      mockReadingIdx = 0;
+      mockAnswers = { read: [], listen: [null, null], speakAi: 0, writeAi: 0 };
+      mockListenPlayed = false;
+      $("#mockListenQuizWrap").classList.add("mock-hidden");
+      $("#mockStepReading").classList.remove("mock-hidden");
+      $("#mockStepListening").classList.add("mock-hidden");
+      $("#mockStepSpeaking").classList.add("mock-hidden");
+      $("#mockStepWriting").classList.add("mock-hidden");
+      if (mockPrepTimerId) {
+        clearInterval(mockPrepTimerId);
+        mockPrepTimerId = null;
+      }
+      if (mockRecTimerId) {
+        clearInterval(mockRecTimerId);
+        mockRecTimerId = null;
+      }
+      if (mockWriteTimerId) {
+        clearInterval(mockWriteTimerId);
+        mockWriteTimerId = null;
+      }
+      showMockView("wizard");
+      renderMockReadingStep();
+    });
+
+    $("#mockReadingNext").addEventListener("click", function () {
+      const ans = getCheckedValue("mock_read_sel");
+      if (!ans) {
+        alert("請選擇答案後再按 Next。");
+        return;
+      }
+      mockAnswers.read.push(ans);
+      if (mockReadingIdx < MOCK_EXAM.reading.length - 1) {
+        mockReadingIdx++;
+        renderMockReadingStep();
+      } else {
+        enterMockListening();
+      }
+    });
+
+    $("#mockListenPlay").addEventListener("click", function () {
+      if (listenPlaying) {
+        speechSynth.cancel();
+        listenPlaying = false;
+        $("#mockListenPlay").textContent = "▶";
+        return;
+      }
+      listenPlaying = true;
+      $("#mockListenPlay").textContent = "❚❚";
+      TTSHelper.speakChunks(MOCK_EXAM.listeningScript, "en", 1, function () {
+        listenPlaying = false;
+        $("#mockListenPlay").textContent = "▶";
+        mockListenPlayed = true;
+        $("#mockListenQuizWrap").classList.remove("mock-hidden");
+        $("#mockListenScriptHint").textContent = "音檔播放完畢，請作答。";
+        updateMockWizardProgress();
+      });
+    });
+
+    $("#mockListenNext").addEventListener("click", function () {
+      const a1 = getCheckedValue("mock_l1");
+      const a2 = getCheckedValue("mock_l2");
+      if (!a1 || !a2) {
+        alert("請完成兩題聽力選擇題。");
+        return;
+      }
+      mockAnswers.listen = [a1, a2];
+      enterMockSpeaking();
+    });
+
+    $("#mockRecStart").addEventListener("click", async function () {
+      try {
+        mockRecordStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        mockRecordedChunks = [];
+        const opt = { mimeType: MediaRecorder.isTypeSupported("audio/webm") ? "audio/webm" : "audio/mp4" };
+        mockMediaRecorder = new MediaRecorder(mockRecordStream, opt);
+        mockMediaRecorder.ondataavailable = function (e) {
+          if (e.data && e.data.size > 0) mockRecordedChunks.push(e.data);
+        };
+        mockMediaRecorder.onstop = function () {
+          const blob = new Blob(mockRecordedChunks, { type: mockMediaRecorder.mimeType || "audio/webm" });
+          const url = URL.createObjectURL(blob);
+          $("#mockAudioSlot").innerHTML = "";
+          const audio = document.createElement("audio");
+          audio.controls = true;
+          audio.src = url;
+          $("#mockAudioSlot").appendChild(audio);
+          if (mockRecordStream) {
+            mockRecordStream.getTracks().forEach(function (t) {
+              t.stop();
+            });
+            mockRecordStream = null;
+          }
+          $("#mockRecPhase").textContent = "錄音已停止，可回放或按 Next";
+          $("#mockSpeakNext").disabled = false;
+          /** 模擬口說分數（0–30）：實務可改接後端語音辨識／AI */
+          mockAnswers.speakAi = Math.min(30, 17 + Math.floor(Math.random() * 11));
+        };
+        mockMediaRecorder.start();
+        $("#mockRecStart").disabled = true;
+        $("#mockRecStop").disabled = false;
+        $("#mockRecPhase").textContent = "錄音中…（最長 45 秒）";
+        var left = 45;
+        $("#mockRecTimer").textContent = "00:" + (left < 10 ? "0" : "") + left;
+        if (mockRecTimerId) clearInterval(mockRecTimerId);
+        mockRecTimerId = setInterval(function () {
+          left--;
+          $("#mockRecTimer").textContent = "00:" + (left < 10 ? "0" : "") + left;
+          if (left <= 0) {
+            clearInterval(mockRecTimerId);
+            mockRecTimerId = null;
+            if (mockMediaRecorder && mockMediaRecorder.state !== "inactive") mockMediaRecorder.stop();
+            $("#mockRecStop").disabled = true;
+          }
+        }, 1000);
+      } catch (e) {
+        alert("無法使用麥克風：" + (e.message || e));
+      }
+    });
+
+    $("#mockRecStop").addEventListener("click", function () {
+      if (mockRecTimerId) {
+        clearInterval(mockRecTimerId);
+        mockRecTimerId = null;
+      }
+      if (mockMediaRecorder && mockMediaRecorder.state !== "inactive") mockMediaRecorder.stop();
+      $("#mockRecStop").disabled = true;
+    });
+
+    $("#mockSpeakNext").addEventListener("click", function () {
+      if (!mockAnswers.speakAi) mockAnswers.speakAi = 18 + Math.floor(Math.random() * 8);
+      enterMockWriting();
+    });
+
+    function totalToCefr(n) {
+      if (n >= 110) return "C2";
+      if (n >= 94) return "C1";
+      if (n >= 72) return "B2";
+      if (n >= 46) return "B1";
+      if (n >= 24) return "A2";
+      return "A1";
+    }
+
+    function drawRadar(svgEl, vals) {
+      var labels = ["閱讀", "聽力", "口說", "寫作"];
+      var cx = 100;
+      var cy = 100;
+      var R = 70;
+      var pts = [];
+      for (var i = 0; i < 4; i++) {
+        var ang = -Math.PI / 2 + (i * 2 * Math.PI) / 4;
+        var sc = vals[i] / 30;
+        var x = cx + R * sc * Math.cos(ang);
+        var y = cy + R * sc * Math.sin(ang);
+        pts.push(x.toFixed(1) + "," + y.toFixed(1));
+      }
+      var poly =
+        '<polygon fill="rgba(253,184,19,0.35)" stroke="#0A2240" stroke-width="2" points="' +
+        pts.join(" ") +
+        '" />';
+      var texts = labels
+        .map(function (lb, i) {
+          var ang = -Math.PI / 2 + (i * 2 * Math.PI) / 4;
+          var lx = cx + (R + 22) * Math.cos(ang);
+          var ly = cy + (R + 22) * Math.sin(ang);
+          return '<text x="' + lx.toFixed(1) + '" y="' + ly.toFixed(1) + '" font-size="11" text-anchor="middle" fill="#0A2240">' + lb + "</text>";
+        })
+        .join("");
+      svgEl.innerHTML = poly + texts;
+    }
+
+    $("#mockFinishExam").addEventListener("click", function () {
+      var text = $("#mockWriteArea").value.trim();
+      var words = text ? text.split(/\s+/).filter(Boolean).length : 0;
+      mockAnswers.writeAi = Math.min(30, Math.round(12 + Math.min(18, words / 15) + Math.random() * 4));
+
+      var readCorrect = 0;
+      for (var i = 0; i < MOCK_EXAM.reading.length; i++) {
+        if (mockAnswers.read[i] === MOCK_EXAM.reading[i].correct) readCorrect++;
+      }
+      var listenCorrect = 0;
+      if (mockAnswers.listen[0] === MOCK_EXAM.listeningQs[0].correct) listenCorrect++;
+      if (mockAnswers.listen[1] === MOCK_EXAM.listeningQs[1].correct) listenCorrect++;
+
+      var readScore = Math.round((readCorrect / 3) * 30);
+      var listenScore = Math.round((listenCorrect / 2) * 30);
+      var speakScore = mockAnswers.speakAi || 20;
+      var writeScore = mockAnswers.writeAi || 18;
+      var total = Math.min(120, readScore + listenScore + speakScore + writeScore);
+
+      mockPhase = "result";
+      showMockView("result");
+      $("#mockTotalScore").textContent = total;
+      $("#mockCefr").textContent = "CEFR：" + totalToCefr(total);
+      $("#mockResultSummary").textContent =
+        "選擇題：閱讀 " +
+        readCorrect +
+        "/3、聽力 " +
+        listenCorrect +
+        "/2。口說／寫作為模擬 AI 評分。此為前端示範，非 ETS 官方成績。";
+
+      var bars = $("#mockSkillBars");
+      bars.innerHTML = "";
+      [
+        { k: "閱讀 Reading", v: readScore },
+        { k: "聽力 Listening", v: listenScore },
+        { k: "口說 Speaking", v: speakScore },
+        { k: "寫作 Writing", v: writeScore }
+      ].forEach(function (row) {
+        var pct = Math.round((row.v / 30) * 100);
+        bars.innerHTML +=
+          '<div class="skill-row"><span>' +
+          row.k +
+          '</span><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:' +
+          pct +
+          '%"></div></div><span>' +
+          row.v +
+          "</span></div>";
+      });
+
+      drawRadar($("#mockRadarSvg"), [readScore, listenScore, speakScore, writeScore]);
+    });
+
+    $("#mockRestartBtn").addEventListener("click", function () {
+      resetMockExamToWelcome();
     });
 
     /* ---------- Tab 點擊 ---------- */
