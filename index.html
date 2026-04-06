@@ -9,6 +9,8 @@
     :root {
       --navy: #0A2240;
       --mustard: #FDB813;
+      --navy-blue: #0A2240;
+      --mustard-yellow: #FDB813;
       --bg: #F4F6F8;
       --white: #ffffff;
       --text: #1a2b45;
@@ -1025,6 +1027,50 @@
       cursor: pointer;
     }
 
+    .english-submenu {
+      display: none;
+      margin: 0 0 0.9rem;
+      padding: 0.8rem;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--mustard);
+      border-radius: 10px;
+    }
+
+    .english-submenu.show {
+      display: block;
+    }
+
+    .english-submenu-label {
+      font-size: 0.78rem;
+      color: var(--muted);
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.04em;
+    }
+
+    .english-submenu-buttons {
+      display: flex;
+      gap: 0.45rem;
+      flex-wrap: wrap;
+    }
+
+    .english-submenu-btn {
+      border: 1px solid var(--border);
+      background: #f7f9fc;
+      color: var(--navy);
+      border-radius: 999px;
+      padding: 0.4rem 0.7rem;
+      font-weight: 700;
+      font-size: 0.8rem;
+      cursor: pointer;
+    }
+
+    .english-submenu-btn.active {
+      background: var(--mustard);
+      border-color: var(--mustard);
+    }
+
     .writing-layout {
       display: grid;
       grid-template-columns: 1fr minmax(200px, 280px);
@@ -1401,8 +1447,8 @@
           Varsity Lingo
           <span class="logo-sub">Ivy League Learning Hub</span>
         </div>
-        <div class="nav-label">英檢類型（雅思／托福／多益）</div>
-        <div class="nav-select-row">
+        <div class="nav-label" style="display:none;">英檢類型（雅思／托福／多益）</div>
+        <div class="nav-select-row" style="display:none;">
           <label for="englishExamSelect">選擇英語檢定</label>
           <select id="englishExamSelect" aria-label="雅思 托福 多益">
             <option value="ielts">🇬🇧 雅思 IELTS</option>
@@ -1414,7 +1460,7 @@
         <ul class="nav-list">
           <li>
             <button type="button" class="nav-item active" data-mode="lang" data-lang="en" aria-pressed="true">
-              <span class="nav-icon" aria-hidden="true">📘</span> 英語檢定練習
+              <span class="nav-icon" aria-hidden="true">🌐</span> 英文檢定
             </button>
           </li>
           <li>
@@ -1439,12 +1485,12 @@
           </li>
           <li>
             <button type="button" class="nav-item" data-mode="exam" data-lang="" aria-pressed="false">
-              <span class="nav-icon" aria-hidden="true">🎓</span> 資管考研戰情室
+              <span class="nav-icon" aria-hidden="true">🎓</span> 資管考研
             </button>
           </li>
           <li>
             <button type="button" class="nav-item" data-mode="mind" data-lang="" aria-pressed="false">
-              <span class="nav-icon" aria-hidden="true">💡</span> 多語天才心法
+              <span class="nav-icon" aria-hidden="true">💡</span> 學習心法
             </button>
           </li>
         </ul>
@@ -1459,6 +1505,16 @@
         <h1 class="main-title" id="mainTitle">🇺🇸 英文特訓</h1>
         <p class="main-desc" id="mainDesc">美式常春藤風格學習儀表板 — 單字、文法、閱讀、聽力、口說、寫作一站整合。</p>
       </header>
+
+      <div id="englishExamSubmenu" class="english-submenu" aria-label="英文檢定次級選單">
+        <p class="english-submenu-label">English Exams · 次級選單</p>
+        <div class="english-submenu-buttons">
+          <button type="button" class="english-submenu-btn" data-en-exam="ielts" data-toeic-mode="">🇬🇧 雅思 (IELTS)</button>
+          <button type="button" class="english-submenu-btn active" data-en-exam="toefl" data-toeic-mode="">🇺🇸 托福 (TOEFL)</button>
+          <button type="button" class="english-submenu-btn" data-en-exam="toeic" data-toeic-mode="lr">💼 多益 (TOEIC L&R 聽讀)</button>
+          <button type="button" class="english-submenu-btn" data-en-exam="toeic" data-toeic-mode="sw">💼 多益 (TOEIC S&W 說寫)</button>
+        </div>
+      </div>
 
       <!-- 多益：聽讀 L&R 與說寫 S&W 為不同測驗（僅英文模式＋側欄選多益時顯示） -->
       <div id="toeicModeBar" class="im-track-bar" style="display: none; margin: 0 0 1rem;" aria-label="TOEIC 測驗類型">
@@ -2019,6 +2075,22 @@ ORDER BY avg_score DESC;"></textarea>
         u.rate = langKey === "en" ? 0.88 * (rateMul || 1) : 0.95 * (rateMul || 1);
         u.pitch = 1.0;
         if (u.voice) u.lang = u.voice.lang;
+        this.speech.speak(u);
+        return u;
+      },
+      speakWithBoundary(text, langKey, rateMul, onBoundary, onEnd) {
+        this.speech.cancel();
+        const u = new SpeechSynthesisUtterance(text || "");
+        u.voice = this.pickVoice(langKey);
+        u.rate = langKey === "en" ? 0.88 * (rateMul || 1) : 0.95 * (rateMul || 1);
+        u.pitch = 1.0;
+        if (u.voice) u.lang = u.voice.lang;
+        u.onboundary = function (event) {
+          if (typeof onBoundary === "function") onBoundary(event, u);
+        };
+        u.onend = function () {
+          if (typeof onEnd === "function") onEnd();
+        };
         this.speech.speak(u);
         return u;
       }
@@ -3719,10 +3791,10 @@ ORDER BY avg_score DESC;"></textarea>
 
       // TOEIC 視覺題：避免本機路徑破圖，統一掛線上可用圖片
       EN_READING_POOLS.toeic.forEach(function (b, i) {
-        if (!b.imageUrl) b.imageUrl = "https://placehold.co/600x400/0A2240/FDB813?text=TOEIC+Part7+" + (i + 1);
+        if (!b.imageUrl) b.imageUrl = "Part 7 模擬圖片區塊 " + (i + 1);
       });
       EN_LISTENING_POOLS.toeic.forEach(function (b, i) {
-        if (!b.imageUrl) b.imageUrl = "https://placehold.co/600x400/0A2240/FDB813?text=TOEIC+Listening+" + (i + 1);
+        if (!b.imageUrl) b.imageUrl = "Listening 模擬圖片區塊 " + (i + 1);
       });
     })();
 
@@ -3730,7 +3802,7 @@ ORDER BY avg_score DESC;"></textarea>
     const TOEIC_PART1_POOL = [
       {
         stem: "Look at the photograph. Where is this scene most likely taking place?",
-        imageUrl: "https://placehold.co/600x400/0A2240/FDB813?text=Airport+Check-in",
+        imageUrl: "Part 1 - Airport Check-in",
         options: [
           { v: "A", text: "At a hospital operating room" },
           { v: "B", text: "At an airport check-in area" },
@@ -3741,7 +3813,7 @@ ORDER BY avg_score DESC;"></textarea>
       },
       {
         stem: "Look at the photograph. What are the people probably doing?",
-        imageUrl: "https://placehold.co/600x400/0A2240/FDB813?text=Business+Meeting",
+        imageUrl: "Part 1 - Business Meeting",
         options: [
           { v: "A", text: "Installing solar panels on a roof" },
           { v: "B", text: "Conducting a team meeting around a whiteboard" },
@@ -3752,7 +3824,7 @@ ORDER BY avg_score DESC;"></textarea>
       },
       {
         stem: "Look at the photograph. What is the main focus of the activity shown?",
-        imageUrl: "https://placehold.co/600x400/0A2240/FDB813?text=Warehouse+Logistics",
+        imageUrl: "Part 1 - Warehouse Logistics",
         options: [
           { v: "A", text: "Loading cargo onto a forklift in a warehouse" },
           { v: "B", text: "Teaching a cooking class in a home kitchen" },
@@ -3763,7 +3835,7 @@ ORDER BY avg_score DESC;"></textarea>
       },
       {
         stem: "Look at the photograph. When might this situation occur?",
-        imageUrl: "https://placehold.co/600x400/0A2240/FDB813?text=Morning+Commute",
+        imageUrl: "Part 1 - Morning Commute",
         options: [
           { v: "A", text: "During a morning commute rush at a ticket gate" },
           { v: "B", text: "During a midnight astronomy class indoors" },
@@ -3774,7 +3846,7 @@ ORDER BY avg_score DESC;"></textarea>
       },
       {
         stem: "Look at the photograph. What does the signage in the image most likely indicate?",
-        imageUrl: "https://placehold.co/600x400/0A2240/FDB813?text=Road+Detour+Sign",
+        imageUrl: "Part 1 - Road Detour Sign",
         options: [
           { v: "A", text: "A construction detour for motorists" },
           { v: "B", text: "A permanent museum exhibit" },
@@ -3785,7 +3857,7 @@ ORDER BY avg_score DESC;"></textarea>
       },
       {
         stem: "Look at the photograph. Who would most likely work in this setting?",
-        imageUrl: "https://placehold.co/600x400/0A2240/FDB813?text=Hotel+Reception",
+        imageUrl: "Part 1 - Hotel Reception",
         options: [
           { v: "A", text: "Marine biologists on a diving vessel" },
           { v: "B", text: "Hospitality staff at a hotel reception desk" },
@@ -3796,7 +3868,7 @@ ORDER BY avg_score DESC;"></textarea>
       },
       {
         stem: "Look at the photograph. What equipment visible suggests the industry involved?",
-        imageUrl: "https://placehold.co/600x400/0A2240/FDB813?text=Commercial+Kitchen",
+        imageUrl: "Part 1 - Commercial Kitchen",
         options: [
           { v: "A", text: "Microscopes suggest a research laboratory" },
           { v: "B", text: "Ovens suggest a commercial bakery or restaurant kitchen" },
@@ -3807,7 +3879,7 @@ ORDER BY avg_score DESC;"></textarea>
       },
       {
         stem: "Look at the photograph. What weather condition fits the scene best?",
-        imageUrl: "https://placehold.co/600x400/0A2240/FDB813?text=Outdoor+Delivery",
+        imageUrl: "Part 1 - Outdoor Delivery",
         options: [
           { v: "A", text: "Heavy snow blocking the windows" },
           { v: "B", text: "Clear daylight suitable for outdoor delivery" },
@@ -3992,14 +4064,23 @@ ORDER BY avg_score DESC;"></textarea>
         if (old) old.remove();
         return;
       }
-      var img = old || document.createElement("img");
-      img.id = imageId;
-      img.src = imageUrl;
-      img.alt = altText || "exam image";
-      img.style.maxWidth = "100%";
-      img.style.borderRadius = "8px";
-      img.style.margin = "15px 0";
-      if (!old) anchorEl.parentNode.insertBefore(img, anchorEl);
+      var box = old || document.createElement("div");
+      box.id = imageId;
+      box.setAttribute("role", "img");
+      box.setAttribute("aria-label", altText || "TOEIC 模擬圖片區塊");
+      box.style.width = "100%";
+      box.style.height = "250px";
+      box.style.backgroundColor = "var(--navy-blue)";
+      box.style.color = "var(--mustard-yellow)";
+      box.style.display = "flex";
+      box.style.alignItems = "center";
+      box.style.justifyContent = "center";
+      box.style.fontWeight = "bold";
+      box.style.borderRadius = "8px";
+      box.style.margin = "15px 0";
+      var label = String(imageUrl).replace(/^https?:\/\/\S+text=/, "").replace(/\+/g, " ");
+      box.textContent = "[ " + (label ? "TOEIC " + label : "TOEIC Part 1 - 模擬圖片區塊") + " ]";
+      if (!old) anchorEl.parentNode.insertBefore(box, anchorEl);
     }
 
     function getGeneralLongReadingSet() {
@@ -5085,6 +5166,32 @@ ORDER BY avg_score DESC;"></textarea>
       }
     }
 
+    function syncEnglishExamSubmenu() {
+      var wrap = $("#englishExamSubmenu");
+      if (!wrap) return;
+      var show = currentMode === "lang" && currentLang === "en";
+      wrap.classList.toggle("show", show);
+      var btns = wrap.querySelectorAll(".english-submenu-btn");
+      btns.forEach(function (btn) {
+        var exam = btn.getAttribute("data-en-exam");
+        var mode = btn.getAttribute("data-toeic-mode");
+        var active = exam === englishExam && (exam !== "toeic" || mode === toeicMode);
+        btn.classList.toggle("active", active);
+        btn.setAttribute("aria-pressed", active ? "true" : "false");
+      });
+    }
+
+    function setEnglishExamFromSubmenu(exam, toeicSplit) {
+      englishExam = exam || "toefl";
+      if (englishExam === "toeic") toeicMode = toeicSplit === "sw" ? "sw" : "lr";
+      else toeicMode = "lr";
+      var selEn = $("#englishExamSelect");
+      if (selEn) selEn.value = englishExam;
+      if (currentMode === "lang" && currentLang === "en") applyLanguageContent();
+      else syncEnglishExamSubmenu();
+      updateMockWelcomeCopy();
+    }
+
     function rebuildLangTabs() {
       var bar = $("#tabsLang");
       if (!bar || currentMode !== "lang") return;
@@ -5187,6 +5294,7 @@ ORDER BY avg_score DESC;"></textarea>
         tabsExam.style.display = "none";
         if (tabsMind) tabsMind.style.display = "none";
       }
+      syncEnglishExamSubmenu();
     }
 
     /** 取得目前應顯示的 tab 按鈕容器內的 panel id 前綴 */
@@ -5337,6 +5445,7 @@ ORDER BY avg_score DESC;"></textarea>
 
       // 模考首頁文案需依語系/考試分流同步更新
       updateMockWelcomeCopy();
+      syncEnglishExamSubmenu();
     }
 
     function renderMcqOptions(containerId, options, name) {
@@ -5401,7 +5510,7 @@ ORDER BY avg_score DESC;"></textarea>
 
     function populateVocabBookSelect() {
       const sel = $("#vocabBookSelect");
-      const books = WORD_BOOKS[currentLang] || WORD_BOOKS.en;
+      const books = getFilteredWordBooks();
       sel.innerHTML = "";
       books.forEach(function (b) {
         const opt = document.createElement("option");
@@ -5409,10 +5518,27 @@ ORDER BY avg_score DESC;"></textarea>
         opt.textContent = b.label;
         sel.appendChild(opt);
       });
+      if (books.length && !books.some(function (b) { return b.id === sel.value; })) {
+        sel.value = books[0].id;
+      }
+    }
+
+    function getFilteredWordBooks() {
+      var all = WORD_BOOKS[currentLang] || WORD_BOOKS.en;
+      if (currentLang !== "en") return all.slice();
+      // 嚴格過濾：英文模式下只能顯示目前考科對應詞書
+      var target = englishExam === "toeic" ? "toeic" : englishExam === "ielts" ? "ielts" : "toefl";
+      return all.filter(function (b) {
+        var id = (b.id || "").toLowerCase();
+        var label = (b.label || "").toLowerCase();
+        if (target === "toeic") return id.indexOf("toeic") >= 0 || label.indexOf("多益") >= 0;
+        if (target === "ielts") return id.indexOf("ielts") >= 0 || label.indexOf("雅思") >= 0;
+        return id.indexOf("toefl") >= 0 || label.indexOf("托福") >= 0;
+      });
     }
 
     function getActiveVocabDeck() {
-      const books = WORD_BOOKS[currentLang] || WORD_BOOKS.en;
+      const books = getFilteredWordBooks();
       const id = $("#vocabBookSelect").value;
       const book = books.find(function (b) {
         return b.id === id;
@@ -5424,7 +5550,7 @@ ORDER BY avg_score DESC;"></textarea>
     function updateVocabResourceHint() {
       var el = $("#vocabResourceHint");
       if (!el) return;
-      var books = WORD_BOOKS[currentLang] || WORD_BOOKS.en;
+      var books = getFilteredWordBooks();
       var id = $("#vocabBookSelect").value;
       var book = books.find(function (b) {
         return b.id === id;
@@ -5881,8 +6007,7 @@ ORDER BY avg_score DESC;"></textarea>
     }
 
     /**
-     * 聽力 TTS：英文使用 TTSHelper 分段朗讀（標點停頓）+ 優選語音；
-     * 非英文仍用分段邏輯但語系改為對應 lang。
+     * 聽力 TTS：使用 onboundary 事件同步推進進度條。
      */
     function speakListenText() {
       const rateMul = parseFloat($("#listenRate").value) || 1;
@@ -5902,14 +6027,27 @@ ORDER BY avg_score DESC;"></textarea>
 
       speechSynth.cancel();
       listenPlaying = true;
-
-      TTSHelper.speakChunks(text, currentLang, rateMul, function () {
-        listenPlaying = false;
-        $("#listenPlay").textContent = "▶";
-        listenCurrentSec = listenDurationSec;
-        updateListenProgressUI();
-        if (listenRafId) cancelAnimationFrame(listenRafId);
-      });
+      var fullLen = Math.max(1, (text || "").length);
+      TTSHelper.speakWithBoundary(
+        text,
+        currentLang,
+        rateMul,
+        function (event) {
+          var idx = event && typeof event.charIndex === "number" ? event.charIndex : 0;
+          var pct = Math.max(0, Math.min(100, (idx / fullLen) * 100));
+          $("#listenProgressFill").style.width = pct + "%";
+          listenCurrentSec = (pct / 100) * listenDurationSec;
+          $("#listenCur").textContent = formatTime(listenCurrentSec);
+          $("#listenProgressBar").setAttribute("aria-valuenow", Math.round(pct));
+        },
+        function () {
+          listenPlaying = false;
+          $("#listenPlay").textContent = "▶";
+          listenCurrentSec = listenDurationSec;
+          updateListenProgressUI();
+          if (listenRafId) cancelAnimationFrame(listenRafId);
+        }
+      );
     }
 
     $("#listenPlay").addEventListener("click", () => {
@@ -5923,7 +6061,6 @@ ORDER BY avg_score DESC;"></textarea>
       $("#listenPlay").textContent = "❚❚";
       listenCurrentSec = 0;
       updateListenProgressUI();
-      tickListenPlayback();
       speakListenText();
     });
 
@@ -7069,18 +7206,22 @@ ORDER BY avg_score DESC;"></textarea>
     var englishExamSelectEl = $("#englishExamSelect");
     if (englishExamSelectEl) {
       englishExamSelectEl.addEventListener("change", function () {
-        englishExam = this.value || "toefl";
-        if (englishExam !== "toeic") toeicMode = "lr";
-        if (currentLang === "en") {
-          applyLanguageContent();
-        } else {
-          syncToeicModeBar();
-        }
-        updateMockWelcomeCopy();
+        setEnglishExamFromSubmenu(this.value || "toefl", toeicMode);
         if (currentMode === "lang" && getActiveTabPanelId() === "mock-exam" && mockPhase === "welcome") {
           var wx = getCurrentMockExam();
           $("#mockWelcomeTitle").textContent = wx.label || "全真長篇模考";
         }
+      });
+    }
+
+    var enMenu = $("#englishExamSubmenu");
+    if (enMenu) {
+      enMenu.addEventListener("click", function (e) {
+        var btn = e.target.closest(".english-submenu-btn");
+        if (!btn) return;
+        var exam = btn.getAttribute("data-en-exam");
+        var mode = btn.getAttribute("data-toeic-mode");
+        setEnglishExamFromSubmenu(exam, mode);
       });
     }
 
@@ -7089,17 +7230,13 @@ ORDER BY avg_score DESC;"></textarea>
     if (toeicLRBtnEl) {
       toeicLRBtnEl.addEventListener("click", function () {
         if (englishExam !== "toeic" || currentLang !== "en") return;
-        toeicMode = "lr";
-        applyLanguageContent();
-        updateMockWelcomeCopy();
+        setEnglishExamFromSubmenu("toeic", "lr");
       });
     }
     if (toeicSWBtnEl) {
       toeicSWBtnEl.addEventListener("click", function () {
         if (englishExam !== "toeic" || currentLang !== "en") return;
-        toeicMode = "sw";
-        applyLanguageContent();
-        updateMockWelcomeCopy();
+        setEnglishExamFromSubmenu("toeic", "sw");
       });
     }
 
