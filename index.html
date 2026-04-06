@@ -997,6 +997,98 @@
       margin: 0.5rem 0 0 1.1rem;
     }
 
+    .nav-select-row {
+      padding: 0 0.75rem 0.75rem;
+      margin-bottom: 0.35rem;
+      border-bottom: 1px solid rgba(253, 184, 19, 0.25);
+    }
+
+    .nav-select-row label {
+      display: block;
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: rgba(255, 255, 255, 0.5);
+      margin-bottom: 0.35rem;
+    }
+
+    .nav-select-row select {
+      width: 100%;
+      padding: 0.55rem 0.5rem;
+      border-radius: 8px;
+      border: 2px solid var(--mustard);
+      background: rgba(255, 255, 255, 0.95);
+      color: var(--navy);
+      font-size: 0.82rem;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+    }
+
+    .writing-layout {
+      display: grid;
+      grid-template-columns: 1fr minmax(200px, 280px);
+      gap: 1rem;
+      align-items: start;
+    }
+
+    @media (max-width: 900px) {
+      .writing-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .pattern-sidebar {
+      background: linear-gradient(180deg, #fff 0%, #f0f4f8 100%);
+      border: 2px solid var(--navy);
+      border-radius: 10px;
+      padding: 0.75rem;
+      max-height: 420px;
+      overflow-y: auto;
+      position: sticky;
+      top: 0.5rem;
+    }
+
+    .pattern-sidebar h4 {
+      font-size: 0.8rem;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+      padding-bottom: 0.35rem;
+      border-bottom: 2px solid var(--mustard);
+    }
+
+    .pattern-btn {
+      display: block;
+      width: 100%;
+      text-align: left;
+      font-size: 0.72rem;
+      padding: 0.35rem 0.45rem;
+      margin-bottom: 0.25rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: var(--white);
+      color: var(--text);
+      cursor: pointer;
+      line-height: 1.35;
+      font-family: inherit;
+    }
+
+    .pattern-btn:hover {
+      border-color: var(--mustard);
+      background: #fffbf0;
+    }
+
+    .reading-exam-badge {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 800;
+      background: var(--mustard);
+      color: var(--navy);
+      padding: 0.2rem 0.55rem;
+      border-radius: 6px;
+      margin-bottom: 0.5rem;
+    }
+
     /* ========== Responsive ========== */
     @media (max-width: 900px) {
       .app {
@@ -1024,16 +1116,25 @@
           Varsity Lingo
           <span class="logo-sub">Ivy League Learning Hub</span>
         </div>
+        <div class="nav-label">英檢類型（雅思／托福／多益）</div>
+        <div class="nav-select-row">
+          <label for="englishExamSelect">選擇英語檢定</label>
+          <select id="englishExamSelect" aria-label="雅思 托福 多益">
+            <option value="ielts">🇬🇧 雅思 IELTS</option>
+            <option value="toefl" selected>🇺🇸 托福 TOEFL</option>
+            <option value="toeic">💼 多益 TOEIC</option>
+          </select>
+        </div>
         <div class="nav-label">語言與模式</div>
         <ul class="nav-list">
           <li>
             <button type="button" class="nav-item active" data-mode="lang" data-lang="en" aria-pressed="true">
-              <span class="nav-icon" aria-hidden="true">🇺🇸</span> 英文
+              <span class="nav-icon" aria-hidden="true">📘</span> 英語檢定練習
             </button>
           </li>
           <li>
             <button type="button" class="nav-item" data-mode="lang" data-lang="ja" aria-pressed="false">
-              <span class="nav-icon" aria-hidden="true">🇯🇵</span> 日文
+              <span class="nav-icon" aria-hidden="true">🇯🇵</span> 日文 JLPT
             </button>
           </li>
           <li>
@@ -1056,6 +1157,11 @@
               <span class="nav-icon" aria-hidden="true">🎓</span> 考研專區
             </button>
           </li>
+          <li>
+            <button type="button" class="nav-item" data-mode="mind" data-lang="" aria-pressed="false">
+              <span class="nav-icon" aria-hidden="true">💡</span> 學習心法專區
+            </button>
+          </li>
         </ul>
       </div>
     </aside>
@@ -1072,8 +1178,8 @@
         <div class="strategy-grid">
           <article class="strategy-card">
             <h3>總目標 · North Star</h3>
-            <p>大四推甄前<strong>托福突破 90 分</strong>，並爭取<strong>美國或日本雙聯學位</strong>，以國際視野銜接研究所與職涯。</p>
-            <span class="tag">TOEFL 90+</span>
+            <p>大四推甄前<strong>托福 90+</strong>、<strong>雅思 6.5+</strong>，並爭取<strong>美國或日本雙聯學位</strong>申請，以國際視野銜接研究所與職涯。</p>
+            <span class="tag">TOEFL 90+ · IELTS 6.5+</span>
           </article>
           <article class="strategy-card">
             <h3>語言階段 · Language Stack</h3>
@@ -1105,6 +1211,10 @@
           <button type="button" class="tab-btn active" role="tab" data-panel="exam-flash" aria-selected="true">核心觀念閃卡</button>
           <button type="button" class="tab-btn" role="tab" data-panel="exam-essay" aria-selected="false">申論題模擬</button>
           <button type="button" class="tab-btn" role="tab" data-panel="exam-code" aria-selected="false">演算法與 SQL</button>
+        </div>
+        <!-- 學習心法模式（單一面板） -->
+        <div class="tabs-bar" id="tabsMind" role="tablist" style="display: none;">
+          <button type="button" class="tab-btn active" role="tab" data-panel="learning-mind" aria-selected="true">💡 心法與雲端資源</button>
         </div>
 
         <div class="panel-area" id="panelArea">
@@ -1145,24 +1255,30 @@
             <div class="result-msg" id="grammarResult"></div>
           </section>
 
-          <!-- ===== 語言：閱讀（題庫陣列 + 上一題/下一題） ===== -->
+          <!-- ===== 語言：閱讀（非英文：逐題；英文：長篇 + 隨機題組 + 多題） ===== -->
           <section class="panel" id="panel-reading" role="tabpanel">
             <h3>閱讀實戰</h3>
+            <span class="reading-exam-badge" id="readingExamBadge" style="display: none;">—</span>
             <p class="quiz-nav-hint" id="readingNavHint">—</p>
             <div class="panel-block">
               <div class="reading-scroll-passage" id="readingPassage">—</div>
             </div>
-            <div class="panel-block">
+            <div class="panel-block" id="readingSingleBlock">
               <label class="lbl">理解測驗</label>
               <p id="readingQuestion" style="margin-bottom: 0.5rem; font-weight: 600;">—</p>
               <div class="mcq-options" id="readingOptions"></div>
-              <div class="btn-row">
-                <button type="button" class="btn btn-outline" id="readingPrev">上一題</button>
-                <button type="button" class="btn btn-outline" id="readingNext">下一題</button>
-                <button type="button" class="btn btn-primary" id="readingSubmit">提交測驗</button>
-              </div>
-              <div class="result-msg" id="readingResult"></div>
             </div>
+            <div class="panel-block" id="readingMultiBlock" style="display: none;">
+              <label class="lbl">理解測驗（同一長文 · 共 4 題）</label>
+              <div id="readingQuestionsWrap"></div>
+            </div>
+            <div class="btn-row">
+              <button type="button" class="btn btn-outline" id="readingPrev">上一題</button>
+              <button type="button" class="btn btn-outline" id="readingNext">下一題</button>
+              <button type="button" class="btn btn-accent" id="readingRandomBtn" style="display: none;">🎲 隨機換一篇</button>
+              <button type="button" class="btn btn-primary" id="readingSubmit">提交測驗</button>
+            </div>
+            <div class="result-msg" id="readingResult"></div>
           </section>
 
           <!-- ===== 語言：聽力 ===== -->
@@ -1336,19 +1452,33 @@
             <div id="videoHubRoot"></div>
           </section>
 
-          <!-- ===== 語言：寫作 ===== -->
+          <!-- ===== 語言：寫作（含 52 活用句型側欄） ===== -->
           <section class="panel" id="panel-writing" role="tabpanel">
             <h3>寫作實戰</h3>
             <p class="hint" id="writingPrompt">—</p>
-            <div class="panel-block">
-              <label class="lbl" for="writingArea">作文內容</label>
-              <textarea id="writingArea" class="input-area" rows="10" placeholder="開始寫作…"></textarea>
-              <div class="word-count" id="wordCountDisplay">字數：0 / 目標 80</div>
-              <div class="btn-row">
-                <button type="button" class="btn btn-primary" id="writingSubmit">送出批改</button>
+            <div class="writing-layout panel-block">
+              <div>
+                <label class="lbl" for="writingArea">作文內容</label>
+                <textarea id="writingArea" class="input-area" rows="12" placeholder="開始寫作…點右側句型可插入範例。"></textarea>
+                <div class="word-count" id="wordCountDisplay">字數：0 / 目標 80</div>
+                <div class="btn-row">
+                  <button type="button" class="btn btn-primary" id="writingSubmit">送出批改</button>
+                </div>
+                <div class="result-msg neutral" id="writingResult"></div>
               </div>
-              <div class="result-msg neutral" id="writingResult"></div>
+              <aside class="pattern-sidebar" aria-label="52 活用句型">
+                <h4>52 活用句型快選</h4>
+                <p class="hint" style="font-size: 0.7rem; margin-bottom: 0.5rem;">點一下插入游標處（含銜接、讓步、強調等）</p>
+                <div id="patternButtonsWrap"></div>
+              </aside>
             </div>
+          </section>
+
+          <!-- ===== 學習心法專區 ===== -->
+          <section class="panel" id="panel-learning-mind" role="tabpanel" style="display: none;">
+            <h3>學習心法 · 元學習與雲端資料</h3>
+            <p class="video-hub-intro">以下連結包含 TED／MIT 公開課與你提供的 Google Drive 資料夾，於新分頁開啟。</p>
+            <div id="mindHubRoot"></div>
           </section>
 
           <!-- ===== 考研：閃卡 ===== -->
@@ -2408,8 +2538,987 @@ ORDER BY avg_score DESC;"></textarea>
       }
     };
 
+    /** 從陣列隨機抽一筆（每次進入面板／按鈕可再抽，避免永遠同一題） */
+    function getRandomFrom(arr) {
+      if (!arr || !arr.length) return null;
+      return arr[Math.floor(Math.random() * arr.length)];
+    }
+
+    /**
+     * 英文長篇閱讀題庫（每組含 passage + 4 題 MCQ）
+     * 每類檢定至少 3 篇、每篇目標 600–800 英文詞（學術／商務取向）
+     */
+    const EN_READING_POOLS = {
+      ielts: [],
+      toefl: [],
+      toeic: []
+    };
+
+    /** 英文聽力長稿（2–3 分鐘 TTS）+ 2 題測驗 */
+    const EN_LISTENING_POOLS = {
+      ielts: [],
+      toefl: [],
+      toeic: []
+    };
+
+    (function initEnglishPools() {
+      var ieltsP1 =
+        "Urbanisation has reshaped public health systems in ways that are easy to overlook when policymakers focus only on hospital capacity. As cities densify, infectious disease dynamics change: proximity accelerates transmission during outbreaks, yet the same concentration also enables rapid vaccination campaigns and specialist care within shorter travel times. Chronic disease profiles shift as well. Sedentary commuting, longer work hours, and food environments rich in ultra-processed products correlate with higher rates of hypertension and diabetes, even when national GDP is rising. Environmental stressors compound the burden. Air quality violations disproportionately affect low-income neighbourhoods located near industrial corridors, producing asthma clusters that show up in emergency admissions long before they appear in headline economic statistics. Mental health services strain under similar patterns of inequality: wait times lengthen where community counselling is underfunded, while private providers concentrate in districts where residents can pay out of pocket. Despite these challenges, cities remain laboratories for intervention. Pilot programmes that combine green infrastructure, safe cycling networks, and subsidised preventive screenings have demonstrated measurable reductions in cardiovascular risk within five-year windows. Digital triage tools, when governed transparently, can route patients earlier and reduce overcrowding in emergency departments. The central lesson for IELTS-style analytical reading is that urban health outcomes are not determined by a single sector; they emerge from interactions among transport planning, housing policy, labour regulation, and clinical capacity. Critics warn that smart-city narratives sometimes overpromise technology fixes while underinvesting in primary care workforces. Supporters counter that integrated data can reveal hotspots earlier, provided privacy safeguards and community consent are treated as design requirements rather than afterthoughts. Funding debates often pit hospital construction against upstream prevention, yet longitudinal evidence suggests the highest returns appear when governments sequence investments: stabilise sanitation and vaccination coverage first, then expand specialty centres, and continuously fund public health surveillance that can detect novel risks before they become crises.";
+      var ieltsP2 =
+        "Public funding for the arts remains one of the most polarising items in municipal budgets, yet its economic justification is stronger than anecdote suggests. Festivals and museums anchor tourism spend: visitors pay for lodging, dining, and retail in surrounding districts, producing tax receipts that rarely appear under the culture line item in spreadsheets. Beyond consumption, creative industries incubate small businesses. Independent studios hire sound engineers, fabricators, and legal services; game developers contract translators; theatre companies commission local writers. These linkages explain why several mid-sized cities now treat arts infrastructure as workforce development rather than ornament. Opponents argue that subsidies distort markets and benefit elites who attend gala openings. Proponents respond with targeted programmes: free student matinees, mobile libraries, and community choirs that report higher civic participation in follow-up surveys. A further layer involves soft power and city branding. When a metropolis becomes known for reliable film festivals or design biennials, it attracts remote workers and international students who might otherwise choose a capital with a narrower cultural menu. Equity concerns persist. If venues cluster in renovated waterfront districts while peripheral neighbourhoods lack basic rehearsal space, cultural policy can deepen spatial divides. Planners increasingly require grant recipients to host workshops in underserved wards and to publish accessibility metrics. From an academic reading perspective, the passage illustrates how claims must be weighed against counterclaims, how evidence ranges from fiscal multipliers to qualitative participation data, and how recommendations must acknowledge trade-offs between excellence-oriented flagship projects and grassroots inclusion.";
+      var ieltsP3 =
+        "The transition away from coal-fired electricity illustrates how climate policy, engineering constraints, and labour politics intertwine. Grid operators cannot simply swap fuels without addressing baseload stability, storage, and transmission bottlenecks. Meanwhile, communities that depended on mining and plant jobs demand retraining funds and early retirement packages that match the pace of plant closures. International supply chains add another wrinkle: countries that retire domestic coal may import manufactured goods whose embedded emissions remain invisible on national ledgers unless border adjustments or supplier standards are enforced. Advocates of carbon pricing argue that predictable price signals spur innovation in turbines, batteries, and hydrogen electrolysis. Skeptics note that vulnerable households face higher energy bills unless revenues are recycled through rebates. Legal scholars highlight litigation risk when governments change rules mid-project, potentially chilling private investment. Technological optimists point to steep cost curves for solar and wind, while systems analysts emphasise that variability requires flexible demand, storage, and cross-regional interconnectors. The IELTS reader should notice how authors qualify certainty: modal verbs, contrastive connectors, and lists of preconditions signal nuance rather than slogans.";
+      var toeflP1 =
+        "In the past two decades, university teaching and learning have been reshaped by digital tools that promise personalization at scale. Learning management systems, automated feedback on quizzes, and analytics dashboards now sit alongside traditional lectures and seminars. Proponents argue that data-rich environments can help instructors identify struggling students earlier and tailor resources to individual needs. Critics, however, warn that an overreliance on metrics may reduce education to easily measurable behaviors, sidelining creativity, ethical reasoning, and collaborative discussion. A synthesis emerging from educational research suggests that the most effective blended models preserve human mentorship while using technology to remove logistical friction. For example, short, targeted videos can deliver foundational content outside class, freeing seminar time for debate and application. Yet implementation challenges remain: unequal access to devices and bandwidth, instructor workload associated with redesigning courses, and student privacy concerns when platforms collect fine-grained interaction data. Policies at several institutions now require transparency notices and limit third-party data sharing, reflecting a growing awareness that pedagogical innovation must be paired with governance. Longitudinal studies further indicate that gains in completion rates are strongest when digital supplements are paired with structured study routines and clear learning outcomes rather than deployed as optional add-ons. In reading-intensive fields such as history and literature, faculty report that annotation tools and shared digital archives deepen close reading when students are trained to interrogate sources collaboratively. By contrast, in quantitative courses, adaptive homework systems can provide immediate corrective feedback that resembles one-on-one tutoring at a fraction of the cost. The central insight across contexts is that technology amplifies existing instructional philosophies rather than replacing them. Institutions that invest in faculty development and instructional design teams tend to see more sustained improvement than those that purchase software without curricular integration. As global mobility increases, English-medium programs and international partnerships place additional pressure on language support services, motivating investments in writing centers and speaking studios that combine peer tutoring with speech recognition practice. Looking forward, artificial intelligence assistants may assist with drafting and summarization, but assessment experts emphasize the continued need for authentic tasks that reveal a student's ability to synthesize evidence, acknowledge uncertainty, and communicate with precision. Researchers who study transfer of learning note that students often perform well on immediate tests yet struggle to apply ideas in new domains unless courses explicitly build bridges between abstract principles and concrete scenarios. Professional schools have responded with case-based curricula, while undergraduate programs increasingly embed micro-internships and community partnerships. Assessment redesigns—moving from single high-stakes exams toward portfolios and project milestones—aim to align evaluation with these richer goals. Nevertheless, resource constraints mean that large introductory courses may still depend on multiple-choice instruments, sparking debate about validity and fairness. Accessibility offices likewise highlight that inclusive design benefits all learners: captions benefit second-language users as well as deaf students, and flexible deadlines can support caregivers without lowering standards when expectations are communicated clearly. The interplay between policy, pedagogy, and platform design will continue to define the next chapter of higher education worldwide. Ultimately, the measure of success will not be the novelty of the platform but whether graduates can transfer skills to workplaces and civic life where problems are ill-defined and cooperation across differences is essential.";
+      var toeflP2 =
+        "Cognitive psychologists distinguish between encoding, storage, and retrieval, yet classroom practice often overweights the first two while neglecting the third. Retrieval practice—self-testing rather than passive rereading—forces the brain to reconstruct knowledge, strengthening cue-to-answer pathways. Spaced repetition distributes reviews across increasing intervals, countering the forgetting curve that steepens when massed practice creates illusions of mastery. Interleaving mixes problem types so learners discriminate when to apply a strategy instead of repeating one pattern until it becomes automatic but brittle. Elaborative interrogation prompts students to ask why a fact is true, linking new material to prior causal models. Despite robust laboratory evidence, adoption lags because busy syllabi reward coverage over depth and because students perceive testing as punitive rather than pedagogical. Faculty who embed low-stakes quizzes weekly report fewer catastrophic final exam failures and more honest feedback about misconceptions. Writing-to-learn activities, such as summarising a lecture without notes and then comparing to a model outline, combine retrieval with generative processing. Neuroimaging studies caution against overstating localization, but converging evidence suggests that effortful recall engages frontal and hippocampal circuits associated with durable memory. Critics argue that excessive testing can increase anxiety; proponents recommend transparent rubrics, optional retakes, and explicit teaching of study strategies so students experience quizzes as diagnostic tools. Institutional incentives matter: when teaching evaluations emphasise entertainment value, instructors may avoid rigorous retrieval tasks. Accreditation bodies increasingly ask for evidence of learning outcomes, nudging departments toward outcome-aligned assessments that resemble spaced, varied practice rather than one-shot memorisation. For TOEFL-style reading, notice how definitions, contrasts, and lists of caveats build a qualified thesis rather than a slogan.";
+      var toeflP3 =
+        "Ecologists studying invasive species on islands have documented recurring patterns that inform both conservation budgets and international shipping rules. Islands often host endemic species with small populations and limited genetic diversity, making them vulnerable to predators or plants introduced accidentally through ballast water or cargo pallets. Eradication campaigns can succeed when invasive mammals are removed before forest understories collapse, but they require sustained funding and community buy-in, especially when local residents depend on introduced species for income. Biosecurity at ports—inspections, heat treatment of wood packaging, and dog teams trained to detect contraband fruit—functions as prevention insurance whose benefits are statistically invisible until a failure triggers a costly outbreak. Climate change alters the map of risk: warmer winters may allow insect pests to overwinter farther north, while storms damage infrastructure that once isolated fragile habitats. Ethical debates arise when managers propose controversial tools such as gene drives or toxic bait drops near human settlements. Indigenous knowledge holders sometimes highlight seasonal indicators of ecosystem stress that standardized surveys miss. From a reading-comprehension standpoint, the passage models how scientists weigh uncertainty, cite comparative studies across archipelagos, and acknowledge trade-offs between rapid action and precautionary delay.";
+      var toeicP1 =
+        "MEMORANDUM\nTo: Regional Operations Managers\nFrom: Elena Park, VP Supply Chain\nDate: March 12\nSubject: Q2 Inventory and Vendor Performance\n\nWe are entering the second quarter with tighter lead times on semiconductor components and elevated freight rates on the transpacific lane. Please note three immediate priorities. First, freeze any non-critical purchase orders above fifty thousand dollars until the centralized review on March twentieth. Second, activate the alternate routing through Vancouver for SKUs listed in Appendix A; although per-container cost is eight percent higher, customer service data show a twelve percent reduction in late penalties. Third, escalate to my office any vendor proposing unilateral contract amendments referencing force majeure without documented disruption evidence. Finance will publish weekly cash-conversion metrics every Monday; plants should reconcile warehouse snapshots by Wednesday close. HR-partners will host optional webinars on supplier negotiation tone and documentation standards, as recent audits flagged inconsistent email trails. Legal reminds everyone that forward-looking statements must not be shared with external partners. We recognise that these controls add administrative steps; they are designed to protect margin while we onboard two backup suppliers in Malaysia. Thank you for the weekend work many teams contributed during the pilot scan in Detroit; the error rate on pick lists dropped measurably. Questions should route through the chain portal ticket system to preserve an auditable thread.";
+      var toeicP2 =
+        "Quarterly Business Review — Excerpt for Training Purposes\n\nThe Asia-Pacific branch reported a four percent year-over-year revenue increase, driven by renewals in the enterprise software suite and attach-rate growth for premium support. Operating margin compressed slightly due to currency headwinds and higher cloud-hosting fees. Customer satisfaction scores improved in Taiwan and Singapore after we localised the onboarding portal and added chat support in Traditional Chinese. Conversely, the Australia retail pilot underperformed expectations; foot traffic rose, yet basket size fell, suggesting pricing sensitivity. Marketing proposes a bundled promotion with the loyalty programme in May, pending compliance review. Human resources highlights that voluntary turnover among engineers ticked up in Bangalore; retention interviews cite workload spikes during release windows. We will pilot a rotating on-call cap and clearer sprint commitments. Risk notes heightened phishing attempts spoofing the CFO signature; all staff must complete the refreshed security module by month end. Facilities will relocate the Seoul sales floor to a LEED-certified tower in July, with IT coordinating VPN stress tests beforehand. Leadership emphasises that cross-border teams should document decisions in the shared wiki to reduce duplicated meetings. These themes illustrate typical TOEIC-style workplace communication: goals, metrics, problems, and action items embedded in formal prose.";
+      var toeicP3 =
+        "Internal Announcement — Customer Experience Transformation\nOver the next eighteen months, we will consolidate three legacy CRM platforms into a single cloud instance to reduce duplicate records and shorten case resolution time. Phase one focuses on data hygiene: each department must appoint a steward to validate contact fields before migration weekend in August. Phase two introduces AI-assisted routing for tier-one inquiries; agents will supervise suggestions and log corrections so models improve responsibly. Phase three integrates the warranty lookup tool used by field technicians. Change management includes bilingual job aids, office hours with the vendor, and sandbox practice for team leads. Finance approved a contingency budget for overtime during cutover weekends. We expect temporary slowdowns in reporting dashboards; executives will receive PDF snapshots until APIs stabilise. Ethics and privacy councils reviewed data residency requirements for EU accounts; those tenants remain on the Frankfurt region stack. Sales worries that pipeline visibility could blur during the transition; we will maintain read-only exports weekly. The programme steering committee meets Thursdays and publishes minutes in the transformation channel. Success metrics include first-contact resolution rate, average handle time, and employee satisfaction on the quarterly pulse survey.";
+
+      function q4(mainIdea, detail, infer, vocab) {
+        return [mainIdea, detail, infer, vocab];
+      }
+
+      EN_READING_POOLS.ielts.push({
+        passage: ieltsP1,
+        questions: q4(
+          {
+            q: "What is the writer's main emphasis regarding cities and health?",
+            options: [
+              { v: "A", text: "Hospitals alone determine outcomes" },
+              { v: "B", text: "Urban health results from interacting policies and systems" },
+              { v: "C", text: "Technology always fixes inequality" },
+              { v: "D", text: "Rural areas no longer matter" }
+            ],
+            correct: "B"
+          },
+          {
+            q: "According to the passage, digital triage tools can help by —",
+            options: [
+              { v: "A", text: "replacing nurses entirely" },
+              { v: "B", text: "routing patients earlier when governed well" },
+              { v: "C", text: "eliminating privacy concerns" },
+              { v: "D", text: "removing the need for primary care" }
+            ],
+            correct: "B"
+          },
+          {
+            q: "The passage implies that smart-city narratives risk —",
+            options: [
+              { v: "A", text: "overstating tech while underfunding primary care staff" },
+              { v: "B", text: "building too many parks" },
+              { v: "C", text: "ignoring tourism" },
+              { v: "D", text: "banning surveillance" }
+            ],
+            correct: "A"
+          },
+          {
+            q: "The word 'inequality' in the passage is used in contexts of —",
+            options: [
+              { v: "A", text: "uneven access to care and services across groups" },
+              { v: "B", text: "perfectly equal outcomes everywhere" },
+              { v: "C", text: "mathematical fractions only" },
+              { v: "D", text: "weather patterns" }
+            ],
+            correct: "A"
+          }
+        )
+      });
+      EN_READING_POOLS.ielts.push({
+        passage: ieltsP2,
+        questions: q4(
+          {
+            q: "The primary argument for public arts funding presented is that —",
+            options: [
+              { v: "A", text: "it mainly benefits wealthy gala attendees only" },
+              { v: "B", text: "cultural spending can generate broader local economic activity" },
+              { v: "C", text: "museums never attract tourists" },
+              { v: "D", text: "subsidies never distort markets" }
+            ],
+            correct: "B"
+          },
+          {
+            q: "According to the text, equity concerns include —",
+            options: [
+              { v: "A", text: "venues clustering while peripheral areas lack space" },
+              { v: "B", text: "too many community choirs" },
+              { v: "C", text: "excessive funding for waterfronts only" },
+              { v: "D", text: "students attending too many matinees" }
+            ],
+            correct: "A"
+          },
+          {
+            q: "The passage suggests that city branding through arts can —",
+            options: [
+              { v: "A", text: "attract remote workers and students" },
+              { v: "B", text: "eliminate the need for universities" },
+              { v: "C", text: "reduce all housing costs" },
+              { v: "D", text: "replace fiscal policy" }
+            ],
+            correct: "A"
+          },
+          {
+            q: "Opponents' claim about subsidies is summarised as —",
+            options: [
+              { v: "A", text: "they distort markets and favour elites" },
+              { v: "B", text: "they always increase equality" },
+              { v: "C", text: "they are too small" },
+              { v: "D", text: "they only fund sports" }
+            ],
+            correct: "A"
+          }
+        )
+      });
+      EN_READING_POOLS.ielts.push({
+        passage: ieltsP3,
+        questions: q4(
+          {
+            q: "What does the passage say about coal transitions?",
+            options: [
+              { v: "A", text: "They involve grid stability, jobs, and trade-offs" },
+              { v: "B", text: "They require no planning" },
+              { v: "C", text: "They only affect rich countries" },
+              { v: "D", text: "They eliminate legal risk" }
+            ],
+            correct: "A"
+          },
+          {
+            q: "Carbon pricing critics in the passage worry about —",
+            options: [
+              { v: "A", text: "higher bills unless revenues are recycled" },
+              { v: "B", text: "too many trees" },
+              { v: "C", text: "excess innovation" },
+              { v: "D", text: "free electricity" }
+            ],
+            correct: "A"
+          },
+          {
+            q: "Technological optimists are portrayed as emphasising —",
+            options: [
+              { v: "A", text: "falling costs for solar and wind" },
+              { v: "B", text: "eliminating all storage needs" },
+              { v: "C", text: "ignoring variability" },
+              { v: "D", text: "banning hydrogen" }
+            ],
+            correct: "A"
+          },
+          {
+            q: "Embedded emissions in imports illustrate —",
+            options: [
+              { v: "A", text: "national ledgers may hide offshore manufacturing impacts" },
+              { v: "B", text: "borders remove all accounting issues" },
+              { v: "C", text: "coal never moves internationally" },
+              { v: "D", text: "jobs always increase" }
+            ],
+            correct: "A"
+          }
+        )
+      });
+
+      EN_READING_POOLS.toefl.push({
+        passage: toeflP1,
+        questions: q4(
+          {
+            q: "According to the passage, critics of learning analytics fear that —",
+            options: [
+              { v: "A", text: "education may narrow to easily measurable behaviors" },
+              { v: "B", text: "libraries will expand too quickly" },
+              { v: "C", text: "seminars will disappear entirely" },
+              { v: "D", text: "students will read too much" }
+            ],
+            correct: "A"
+          },
+          {
+            q: "The author's view of technology in higher education is best described as —",
+            options: [
+              { v: "A", text: "it amplifies existing teaching philosophies" },
+              { v: "B", text: "it should replace all mentorship" },
+              { v: "C", text: "it makes assessment unnecessary" },
+              { v: "D", text: "it only helps quantitative courses" }
+            ],
+            correct: "A"
+          },
+          {
+            q: "Inclusive design is presented as benefiting —",
+            options: [
+              { v: "A", text: "diverse learners beyond one group" },
+              { v: "B", text: "only documented disabilities" },
+              { v: "C", text: "only native speakers" },
+              { v: "D", text: "administrators exclusively" }
+            ],
+            correct: "A"
+          },
+          {
+            q: "The passage warns that purchasing software without curricular integration tends to —",
+            options: [
+              { v: "A", text: "produce less sustained improvement" },
+              { v: "B", text: "guarantee higher completion rates" },
+              { v: "C", text: "eliminate faculty workload" },
+              { v: "D", text: "remove privacy issues" }
+            ],
+            correct: "A"
+          }
+        )
+      });
+      EN_READING_POOLS.toefl.push({
+        passage: toeflP2,
+        questions: q4(
+          {
+            q: "What practice does the passage prioritise for durable learning?",
+            options: [
+              { v: "A", text: "Retrieval practice and spaced repetition" },
+              { v: "B", text: "Only highlighting textbooks" },
+              { v: "C", text: "Cramming the night before" },
+              { v: "D", text: "Avoiding all quizzes" }
+            ],
+            correct: "A"
+          },
+          {
+            q: "Interleaving is said to help learners —",
+            options: [
+              { v: "A", text: "discriminate when to apply strategies" },
+              { v: "B", text: "repeat one pattern mindlessly" },
+              { v: "C", text: "skip problem sets" },
+              { v: "D", text: "ignore feedback" }
+            ],
+            correct: "A"
+          },
+          {
+            q: "Why might adoption of retrieval practice lag?",
+            options: [
+              { v: "A", text: "Syllabi reward coverage; students fear testing" },
+              { v: "B", text: "Laboratory evidence is absent" },
+              { v: "C", text: "Quizzes are legally banned" },
+              { v: "D", text: "Writing never helps memory" }
+            ],
+            correct: "A"
+          },
+          {
+            q: "Institutional incentives are described as sometimes —",
+            options: [
+              { v: "A", text: "favouring entertainment over rigorous retrieval tasks" },
+              { v: "B", text: "eliminating accreditation" },
+              { v: "C", text: "banning portfolios" },
+              { v: "D", text: "removing learning outcomes" }
+            ],
+            correct: "A"
+          }
+        )
+      });
+      EN_READING_POOLS.toefl.push({
+        passage: toeflP3,
+        questions: q4(
+          {
+            q: "Islands are portrayed as vulnerable because —",
+            options: [
+              { v: "A", text: "endemic species often have small populations and low diversity" },
+              { v: "B", text: "they have no ports" },
+              { v: "C", text: "invasive species never arrive" },
+              { v: "D", text: "eradication always fails instantly" }
+            ],
+            correct: "A"
+          },
+          {
+            q: "Biosecurity at ports is compared to —",
+            options: [
+              { v: "A", text: "prevention insurance with invisible benefits until failure" },
+              { v: "B", text: "a tourist tax" },
+              { v: "C", text: "a music festival" },
+              { v: "D", text: "a classroom quiz" }
+            ],
+            correct: "A"
+          },
+          {
+            q: "Climate change is linked to —",
+            options: [
+              { v: "A", text: "shifting risk maps for pests and storm damage" },
+              { v: "B", text: "zero ecological effects" },
+              { v: "C", text: "fewer storms everywhere" },
+              { v: "D", text: "automatic eradication" }
+            ],
+            correct: "A"
+          },
+          {
+            q: "Indigenous knowledge is presented as —",
+            options: [
+              { v: "A", text: "sometimes catching stress signals surveys miss" },
+              { v: "B", text: "irrelevant to management" },
+              { v: "C", text: "identical to statistical models" },
+              { v: "D", text: "opposed to ethics" }
+            ],
+            correct: "A"
+          }
+        )
+      });
+
+      EN_READING_POOLS.toeic.push({
+        passage: toeicP1,
+        questions: q4(
+          {
+            q: "What is the main purpose of the memorandum?",
+            options: [
+              { v: "A", text: "Announce Q2 supply constraints and required actions" },
+              { v: "B", text: "Cancel all vendor contracts" },
+              { v: "C", text: "Promote a gala event" },
+              { v: "D", text: "Hire new executives" }
+            ],
+            correct: "A"
+          },
+          {
+            q: "Purchase orders above fifty thousand dollars should —",
+            options: [
+              { v: "A", text: "be frozen until centralized review" },
+              { v: "B", text: "be doubled" },
+              { v: "C", text: "ignore approval" },
+              { v: "D", text: "route only to HR" }
+            ],
+            correct: "A"
+          },
+          {
+            q: "Appendix A SKUs should use routing through —",
+            options: [
+              { v: "A", text: "Vancouver despite higher per-container cost" },
+              { v: "B", text: "local trucks only" },
+              { v: "C", text: "air exclusively" },
+              { v: "D", text: "unspecified ports" }
+            ],
+            correct: "A"
+          },
+          {
+            q: "Questions must be submitted through —",
+            options: [
+              { v: "A", text: "the chain portal ticket system" },
+              { v: "B", text: "personal text messages to the CFO" },
+              { v: "C", text: "public social media" },
+              { v: "D", text: "verbal-only communication" }
+            ],
+            correct: "A"
+          }
+        )
+      });
+      EN_READING_POOLS.toeic.push({
+        passage: toeicP2,
+        questions: q4(
+          {
+            q: "Asia-Pacific revenue change year-over-year was —",
+            options: [
+              { v: "A", text: "a four percent increase" },
+              { v: "B", text: "a ten percent decrease" },
+              { v: "C", text: "flat" },
+              { v: "D", text: "not stated" }
+            ],
+            correct: "A"
+          },
+          {
+            q: "Operating margin was affected by —",
+            options: [
+              { v: "A", text: "currency and higher cloud-hosting fees" },
+              { v: "B", text: "only marketing" },
+              { v: "C", text: "retail pilot success" },
+              { v: "D", text: "Taiwan satisfaction drops" }
+            ],
+            correct: "A"
+          },
+          {
+            q: "The Australia pilot showed —",
+            options: [
+              { v: "A", text: "traffic rose but basket size fell" },
+              { v: "B", text: "basket size soared" },
+              { v: "C", text: "no foot traffic change" },
+              { v: "D", text: "pricing was irrelevant" }
+            ],
+            correct: "A"
+          },
+          {
+            q: "Leadership asks teams to —",
+            options: [
+              { v: "A", text: "document decisions in the shared wiki" },
+              { v: "B", text: "avoid all meetings" },
+              { v: "C", text: "delete wikis" },
+              { v: "D", text: "stop cross-border work" }
+            ],
+            correct: "A"
+          }
+        )
+      });
+      EN_READING_POOLS.toeic.push({
+        passage: toeicP3,
+        questions: q4(
+          {
+            q: "Phase one emphasises —",
+            options: [
+              { v: "A", text: "data hygiene with departmental stewards" },
+              { v: "B", text: "deleting all CRM data" },
+              { v: "C", text: "closing EU accounts" },
+              { v: "D", text: "removing AI routing" }
+            ],
+            correct: "A"
+          },
+          {
+            q: "EU tenant data will —",
+            options: [
+              { v: "A", text: "remain on the Frankfurt region stack" },
+              { v: "B", text: "move to an unspecified country" },
+              { v: "C", text: "be published publicly" },
+              { v: "D", text: "be deleted without review" }
+            ],
+            correct: "A"
+          },
+          {
+            q: "Sales concerns during transition include —",
+            options: [
+              { v: "A", text: "pipeline visibility blurring temporarily" },
+              { v: "B", text: "too many dashboards" },
+              { v: "C", text: "no exports allowed" },
+              { v: "D", text: "AI routing on day one" }
+            ],
+            correct: "A"
+          },
+          {
+            q: "Success metrics explicitly include —",
+            options: [
+              { v: "A", text: "first-contact resolution and handle time" },
+              { v: "B", text: "only CEO satisfaction" },
+              { v: "C", text: "number of legacy platforms retained" },
+              { v: "D", text: "warehouse square footage" }
+            ],
+            correct: "A"
+          }
+        )
+      });
+
+      var tedStyle1 =
+        "This lecture opens with a deceptively simple question about motivation. The speaker argues that many organisations communicate from the outside in: they describe what they make, how it is engineered, and expect customers to infer why it matters. Inspired movements, by contrast, begin with purpose. The speaker uses historical examples where belief preceded product adoption, noting that early supporters often accept imperfection because they identify with a mission. The middle section contrasts short-term manipulation—price cuts, fear-based messaging, aspirational hype—with leadership that clarifies values even when products are still imperfect. A case from consumer electronics illustrates how narrative coherence can accelerate ecosystem growth, while fragmented messaging confuses developers and partners. The speaker cautions that authenticity cannot be manufactured; stakeholders compare public statements with hiring practices and supplier contracts. Toward the end, the talk addresses failure: teams that lose sight of why they exist begin optimising metrics that reward volume over trust. Questions from the audience raise issues about scale, regulation, and global cultural differences in how purpose is expressed. The speaker concludes that sustainable innovation pairs technical excellence with transparent storytelling, and that educators should train students to examine assumptions behind slogans rather than memorising buzzwords. This paraphrased talk-style script is designed for IELTS listening practice: it is structured, argumentative, and rich in signal words such as however, by contrast, and consequently.";
+      var tedStyle2 =
+        "In this segment the lecturer explores how multilingual people manage cognitive load when switching languages mid-conversation. Early psycholinguistic models assumed a hard switch between mental lexicons, but newer imaging studies suggest partial overlap and competition between candidates for each word. The speaker describes code-switching in families where parents use one language for discipline and another for affection, shaping emotional associations that persist into adulthood. Workplace examples include engineers negotiating contracts in English while troubleshooting with colleagues in a first language, which can improve precision but also create documentation gaps if decisions are not translated. The lecture reviews pedagogical implications: immersion accelerates fluency yet may delay metalinguistic awareness; explicit contrastive instruction can feel slow but reduces fossilised errors. Listeners are reminded to notice hedging language—might, tends to, in many cases—because exam items often test whether you heard qualification rather than absolutes. The final minutes summarise strategies: shadow short paragraphs, transcribe key numbers, and map paragraph functions such as problem, evidence, and recommendation.";
+      var campusLec =
+        "Welcome to Biology 204. Today we connect cellular respiration to real-world training decisions for endurance athletes. Mitochondria convert nutrients into ATP through pathways you diagrammed last week; the rate-limiting steps depend on oxygen delivery, enzyme concentrations, and substrate availability. Coaches manipulate training volume to signal mitochondrial biogenesis, but excessive load without recovery raises reactive oxygen species and can blunt adaptation. We will compare three studies on interval protocols: short high-intensity repeats, threshold blocks, and polarised plans that keep most volume low intensity with selective spikes. Pay attention to sample sizes and control conditions—one famous study lacked a dietary control, which reviewers later criticised. We will also discuss heat acclimation, which expands plasma volume and shifts the sweating threshold, potentially improving performance in humid marathons. Your assignment asks you to critique a popular press article that overstates a single supplement; bring two primary sources to section. Office hours move to Thursday afternoon because of a department meeting. Next lecture covers lactate misconceptions; read the flagged chapter before class.";
+      var advisorTalk =
+        "Good afternoon. This is the international student advising podcast for week six. Registration for next term opens Monday at eight a.m. If you are on a waitlist, check the portal twice daily because seats reopen unpredictably. Full-time visa holders must enroll in twelve credits unless you have an approved reduced course load on file. The writing center now offers asynchronous feedback within seventy-two hours; attach your rubric. If you face a family emergency abroad, contact our office before you purchase non-refundable tickets so we can discuss documentation. The bursar will host a webinar on payment plans Wednesday evening. Remember that academic integrity training must be completed before midterm grades post. We encourage you to map milestones backward from final projects rather than relying on all-nighters. Questions can be emailed with your student ID in the subject line.";
+      var toeicCall1 =
+        "Conference call — APAC sales and logistics. Sarah opens: Thanks everyone for joining. We need to align on the Jakarta shipment delayed by customs documentation. Mike reports the carrier received revised invoices yesterday afternoon local time. Legal confirms the HS codes now match the purchase order. Priya asks whether we should split the container to protect the retail launch date in Singapore. Finance notes that partial air freight would erase margin on SKU seven twelve unless the client approves a surcharge. Sarah proposes expediting only the hero units while ocean freight completes for accessories. Tom cautions that splitting increases handling fees at the hub. After debate, the team agrees to airlift two hundred units with written client approval by five p.m. tomorrow, and to schedule a contingency stand-up if customs requests another inspection. Action items are logged in the collaboration board. Everyone acknowledges weekend work may be needed. Call ends with a reminder to archive the recording for compliance.";
+      var toeicCall2 =
+        "Quarterly review call — HR and site managers. Director Lee summarises turnover trends: engineering sites in India and Vietnam rose three points, correlated with release crunch periods. Proposal one caps consecutive on-call weeks at two. Proposal two adds a floating wellness day per quarter. Managers raise concerns about coverage; Lee suggests staggered adoption by site. Compliance adds that labour law posters must be updated in two provinces by month end. IT announces single sign-on for the ticketing system goes live Friday; expect a short outage window. Marketing requests earlier notice of hiring freezes to adjust campaign timelines. Lee closes by asking each site to submit a two-page retention plan within ten business days. The tone remains formal, problem-solution oriented, with explicit deadlines—typical of TOEIC listening scenarios.";
+
+      function lpair(script, q1, q2) {
+        return { script: script, quizzes: [q1, q2] };
+      }
+
+      EN_LISTENING_POOLS.ielts.push(
+        lpair(
+          tedStyle1,
+          {
+            q: "According to the lecture, inspired movements often begin with —",
+            options: [
+              { v: "A", text: "purpose and belief before product details" },
+              { v: "B", text: "price cuts only" },
+              { v: "C", text: "fear alone" },
+              { v: "D", text: "random advertising" }
+            ],
+            correct: "A"
+          },
+          {
+            q: "The speaker warns that authenticity —",
+            options: [
+              { v: "A", text: "is checked against hiring and supplier practices" },
+              { v: "B", text: "can be easily faked without consequences" },
+              { v: "C", text: "is irrelevant to developers" },
+              { v: "D", text: "only matters for nonprofits" }
+            ],
+            correct: "A"
+          }
+        )
+      );
+      EN_LISTENING_POOLS.ielts.push(
+        lpair(
+          tedStyle2,
+          {
+            q: "Newer studies suggest bilingual lexical access involves —",
+            options: [
+              { v: "A", text: "overlap and competition between word candidates" },
+              { v: "B", text: "a single switch with no overlap" },
+              { v: "C", text: "only written language" },
+              { v: "D", text: "forgetting the first language" }
+            ],
+            correct: "A"
+          },
+          {
+            q: "The lecturer recommends listeners notice —",
+            options: [
+              { v: "A", text: "hedging language such as might and tends to" },
+              { v: "B", text: "only proper nouns" },
+              { v: "C", text: "background music" },
+              { v: "D", text: "spelling of every word" }
+            ],
+            correct: "A"
+          }
+        )
+      );
+      EN_LISTENING_POOLS.ielts.push(
+        lpair(
+          tedStyle1 + " " + tedStyle2,
+          {
+            q: "Combined themes emphasise examining —",
+            options: [
+              { v: "A", text: "assumptions behind narratives and qualified claims" },
+              { v: "B", text: "only numerical data" },
+              { v: "C", text: "font choices in slides" },
+              { v: "D", text: "celebrity endorsements only" }
+            ],
+            correct: "A"
+          },
+          {
+            q: "The longer script pairing is intended to approximate —",
+            options: [
+              { v: "A", text: "a two-to-three minute lecture segment" },
+              { v: "B", text: "a ten-second advertisement" },
+              { v: "C", text: "a weather report only" },
+              { v: "D", text: "silent reading" }
+            ],
+            correct: "A"
+          }
+        )
+      );
+
+      EN_LISTENING_POOLS.toefl.push(
+        lpair(
+          campusLec + " " + advisorTalk,
+          {
+            q: "The biology lecture ties training volume to —",
+            options: [
+              { v: "A", text: "mitochondrial signalling and recovery balance" },
+              { v: "B", text: "eliminating oxygen use" },
+              { v: "C", text: "only supplements" },
+              { v: "D", text: "avoiding intervals" }
+            ],
+            correct: "A"
+          },
+          {
+            q: "The advising segment states registration opens —",
+            options: [
+              { v: "A", text: "Monday at eight a.m." },
+              { v: "B", text: "Friday at noon" },
+              { v: "C", text: "only in person" },
+              { v: "D", text: "after finals only" }
+            ],
+            correct: "A"
+          }
+        )
+      );
+      EN_LISTENING_POOLS.toefl.push(
+        lpair(
+          advisorTalk + " " + campusLec,
+          {
+            q: "Waitlisted students should —",
+            options: [
+              { v: "A", text: "check the portal twice daily" },
+              { v: "B", text: "never check email" },
+              { v: "C", text: "drop all classes" },
+              { v: "D", text: "ignore visa rules" }
+            ],
+            correct: "A"
+          },
+          {
+            q: "One assignment asks students to critique —",
+            options: [
+              { v: "A", text: "a popular press article with two primary sources" },
+              { v: "B", text: "a novel unrelated to biology" },
+              { v: "C", text: "only lecture slides" },
+              { v: "D", text: "social media comments" }
+            ],
+            correct: "A"
+          }
+        )
+      );
+      EN_LISTENING_POOLS.toefl.push(
+        lpair(
+          campusLec + " " + campusLec,
+          {
+            q: "Heat acclimation is said to —",
+            options: [
+              { v: "A", text: "expand plasma volume and adjust sweating threshold" },
+              { v: "B", text: "eliminate sweating" },
+              { v: "C", text: "reduce oxygen use to zero" },
+              { v: "D", text: "replace training entirely" }
+            ],
+            correct: "A"
+          },
+          {
+            q: "Next lecture will address —",
+            options: [
+              { v: "A", text: "lactate misconceptions" },
+              { v: "B", text: "plant taxonomy only" },
+              { v: "C", text: "music theory" },
+              { v: "D", text: "campus parking fines only" }
+            ],
+            correct: "A"
+          }
+        )
+      );
+
+      EN_LISTENING_POOLS.toeic.push(
+        lpair(
+          toeicCall1 + " " + toeicCall2,
+          {
+            q: "The Jakarta delay was tied to —",
+            options: [
+              { v: "A", text: "customs documentation issues" },
+              { v: "B", text: "a marketing campaign" },
+              { v: "C", text: "a software launch" },
+              { v: "D", text: "holiday office closure only" }
+            ],
+            correct: "A"
+          },
+          {
+            q: "The final agreed action includes —",
+            options: [
+              { v: "A", text: "airlifting two hundred units with client approval by deadline" },
+              { v: "B", text: "cancelling the retail launch" },
+              { v: "C", text: "doing nothing" },
+              { v: "D", text: "removing compliance archiving" }
+            ],
+            correct: "A"
+          }
+        )
+      );
+      EN_LISTENING_POOLS.toeic.push(
+        lpair(
+          toeicCall2 + " " + toeicCall1,
+          {
+            q: "Proposal one for engineering turnover caps —",
+            options: [
+              { v: "A", text: "consecutive on-call weeks at two" },
+              { v: "B", text: "all hiring" },
+              { v: "C", text: "wellness days at zero" },
+              { v: "D", text: "compliance updates" }
+            ],
+            correct: "A"
+          },
+          {
+            q: "Sites must submit retention plans within —",
+            options: [
+              { v: "A", text: "ten business days" },
+              { v: "B", text: "one day" },
+              { v: "C", text: "one year" },
+              { v: "D", text: "no deadline" }
+            ],
+            correct: "A"
+          }
+        )
+      );
+      EN_LISTENING_POOLS.toeic.push(
+        lpair(
+          toeicCall1 + " " + toeicCall1,
+          {
+            q: "Priya's question concerned —",
+            options: [
+              { v: "A", text: "splitting a container to protect a launch date" },
+              { v: "B", text: "canceling HR training" },
+              { v: "C", text: "music licensing" },
+              { v: "D", text: "tax holidays" }
+            ],
+            correct: "A"
+          },
+          {
+            q: "The team emphasises archiving recordings for —",
+            options: [
+              { v: "A", text: "compliance" },
+              { v: "B", text: "entertainment" },
+              { v: "C", text: "personal blogs" },
+              { v: "D", text: "deleting evidence" }
+            ],
+            correct: "A"
+          }
+        )
+      );
+    })();
+
+    /** 英檢模考當次隨機題組（按 Start Exam 產生） */
+    window.__mockEnSession = null;
+
     function getCurrentMockExam() {
+      if (currentLang === "en" && window.__mockEnSession) return window.__mockEnSession;
+      if (currentLang === "en") {
+        var rb = getRandomFrom(EN_READING_POOLS[englishExam]);
+        var lb = getRandomFrom(EN_LISTENING_POOLS[englishExam]);
+        if (rb && lb) {
+          return {
+            label: englishExamLabel() + " · 隨機預覽",
+            readingPassage: rb.passage,
+            readingQs: rb.questions.slice(0, 3),
+            listeningScript: lb.script,
+            listeningQs: lb.quizzes,
+            speakingTopic: "Describe a challenge you overcame in academic or professional settings and what you learned.",
+            writingPrompt:
+              "To what extent do you agree that structured study plans matter more than talent? Support your view with reasons and examples.",
+            writingLimitMin: 30
+          };
+        }
+      }
       return MOCK_EXAM_BY_LANG[currentLang] || MOCK_EXAM_BY_LANG.en;
+    }
+
+    function englishExamLabel() {
+      if (englishExam === "ielts") return "IELTS 雅思";
+      if (englishExam === "toeic") return "TOEIC 多益";
+      return "TOEFL 托福";
+    }
+
+    /** 英文文法大題庫：隨機抽一題（getRandomQuestion） */
+    const EN_GRAMMAR_BANK = [
+      { q: "Choose the best answer: By 2030, many experts predict that renewable energy _______ twenty percent of global supply.", options: [{ v: "A", text: "will have exceeded" }, { v: "B", text: "exceeds" }, { v: "C", text: "exceeded" }, { v: "D", text: "is exceeding" }], correct: "A" },
+      { q: "Neither the interns nor the supervisor _______ the revised protocol yesterday.", options: [{ v: "A", text: "was" }, { v: "B", text: "were" }, { v: "C", text: "are" }, { v: "D", text: "have been" }], correct: "A" },
+      { q: "Had the dataset been cleaned earlier, the model _______ higher accuracy.", options: [{ v: "A", text: "would have achieved" }, { v: "B", text: "will achieve" }, { v: "C", text: "achieves" }, { v: "D", text: "achieved" }], correct: "A" },
+      { q: "The committee recommended that the report _______ published without delay.", options: [{ v: "A", text: "be" }, { v: "B", text: "is" }, { v: "C", text: "was" }, { v: "D", text: "has been" }], correct: "A" },
+      { q: "Rarely _______ such a clear alignment between theory and field data.", options: [{ v: "A", text: "have we seen" }, { v: "B", text: "we have seen" }, { v: "C", text: "we saw" }, { v: "D", text: "did we saw" }], correct: "A" },
+      { q: "The new policy, along with its amendments, _______ to take effect in April.", options: [{ v: "A", text: "is expected" }, { v: "B", text: "are expected" }, { v: "C", text: "were expecting" }, { v: "D", text: "have been expected" }], correct: "A" },
+      { q: "She would rather _______ overtime tonight than miss the client deadline.", options: [{ v: "A", text: "work" }, { v: "B", text: "to work" }, { v: "C", text: "working" }, { v: "D", text: "worked" }], correct: "A" },
+      { q: "No sooner _______ the announcement posted than the server traffic spiked.", options: [{ v: "A", text: "had" }, { v: "B", text: "than" }, { v: "C", text: "was" }, { v: "D", text: "did" }], correct: "C" },
+      { q: "The CFO asked whether the figures _______ audited by an external firm.", options: [{ v: "A", text: "had been" }, { v: "B", text: "have" }, { v: "C", text: "are being" }, { v: "D", text: "will" }], correct: "A" },
+      { q: "If I _______ you, I would document every approval in writing.", options: [{ v: "A", text: "were" }, { v: "B", text: "am" }, { v: "C", text: "was" }, { v: "D", text: "had been" }], correct: "A" },
+      { q: "The manuscript _______ edited three times before submission.", options: [{ v: "A", text: "was" }, { v: "B", text: "has been" }, { v: "C", text: "is being" }, { v: "D", text: "had been" }], correct: "D" },
+      { q: "Not until the trial ended _______ the witness speak publicly.", options: [{ v: "A", text: "did" }, { v: "B", text: "the witness" }, { v: "C", text: "was" }, { v: "D", text: "has" }], correct: "A" },
+      { q: "Each of the regional managers _______ a different compliance checklist.", options: [{ v: "A", text: "receives" }, { v: "B", text: "receive" }, { v: "C", text: "are receiving" }, { v: "D", text: "have received" }], correct: "A" },
+      { q: "The more transparent the disclosure, _______ investor confidence tends to be.", options: [{ v: "A", text: "the higher" }, { v: "B", text: "higher" }, { v: "C", text: "more high" }, { v: "D", text: "the highest" }], correct: "A" },
+      { q: "Were the budget to shrink again, we _______ to pause hiring.", options: [{ v: "A", text: "would have" }, { v: "B", text: "will have" }, { v: "C", text: "had" }, { v: "D", text: "have" }], correct: "A" }
+    ];
+
+    function getRandomQuestion(pool) {
+      return getRandomFrom(pool);
+    }
+
+    function pickEnglishReadingBundle() {
+      var pool = EN_READING_POOLS[englishExam] || EN_READING_POOLS.toefl;
+      enReadingBundle = getRandomFrom(pool);
+      return enReadingBundle;
+    }
+
+    function pickEnglishListeningBundle() {
+      var pool = EN_LISTENING_POOLS[englishExam] || EN_LISTENING_POOLS.toefl;
+      enListeningBundle = getRandomFrom(pool);
+      return enListeningBundle;
+    }
+
+    function renderEnglishReadingPanel() {
+      if (!enReadingBundle) pickEnglishReadingBundle();
+      $("#readingExamBadge").style.display = "inline-block";
+      $("#readingExamBadge").textContent = englishExamLabel();
+      $("#readingNavHint").textContent = "長篇閱讀 · 同一文章 4 題 · 按「隨機換篇」可再抽題庫";
+      $("#readingPassage").textContent = enReadingBundle.passage;
+      $("#readingSingleBlock").style.display = "none";
+      $("#readingMultiBlock").style.display = "block";
+      $("#readingPrev").style.display = "none";
+      $("#readingNext").style.display = "none";
+      $("#readingRandomBtn").style.display = "inline-flex";
+      var wrap = $("#readingQuestionsWrap");
+      wrap.innerHTML = "";
+      enReadingBundle.questions.forEach(function (q, i) {
+        var p = document.createElement("p");
+        p.style.fontWeight = "600";
+        p.style.marginTop = i ? "1rem" : "0";
+        p.textContent = i + 1 + ". " + q.q;
+        wrap.appendChild(p);
+        var div = document.createElement("div");
+        div.className = "mcq-options";
+        var id = "readMultiOpt_" + i;
+        div.id = id;
+        wrap.appendChild(div);
+        renderMcqOptions(id, q.options, "read_multi_" + i);
+      });
+      $("#readingResult").className = "result-msg";
+      $("#readingResult").textContent = "";
+      $("#readingResult").classList.remove("show");
+    }
+
+    function renderNonEnglishReadingPanel() {
+      $("#readingExamBadge").style.display = "none";
+      $("#readingSingleBlock").style.display = "block";
+      $("#readingMultiBlock").style.display = "none";
+      $("#readingPrev").style.display = "inline-flex";
+      $("#readingNext").style.display = "inline-flex";
+      $("#readingRandomBtn").style.display = "none";
+      var arr = LANG_DATA[currentLang].readingQuestions;
+      var r = arr[readingIdx];
+      $("#readingNavHint").textContent = "第 " + (readingIdx + 1) + " / " + arr.length + " 題";
+      $("#readingPassage").textContent = r.passage;
+      $("#readingQuestion").textContent = r.q;
+      renderMcqOptions("readingOptions", r.options, "read_opt");
+      $("#readingResult").className = "result-msg";
+      $("#readingResult").textContent = "";
+      $("#readingResult").classList.remove("show");
+    }
+
+    function renderEnListenQuiz() {
+      if (!enListeningBundle || !enListeningBundle.quizzes || !enListeningBundle.quizzes.length) return;
+      var qz = enListeningBundle.quizzes[enListenQuizIdx];
+      var nq = enListeningBundle.quizzes.length;
+      $("#listenQuizQ").textContent =
+        "（" + (enListenQuizIdx + 1) + " / " + nq + "）" + qz.q;
+      renderMcqOptions("listenQuizOpts", qz.options, "listen_quiz");
+      $("#listenQuizResult").className = "result-msg";
+      $("#listenQuizResult").textContent = "";
+      $("#listenQuizResult").classList.remove("show");
+    }
+
+    function renderEnglishListeningPanel(resetQuizIdx) {
+      if (!enListeningBundle) pickEnglishListeningBundle();
+      if (resetQuizIdx !== false) enListenQuizIdx = 0;
+      $("#listeningNavHint").textContent =
+        englishExamLabel() +
+        " · 長篇 Lecture／對話（約 2–3 分鐘 TTS）· 「上一題／下一題」切換同稿小題或換新稿";
+      var w = enListeningBundle.script.split(/\s+/).filter(Boolean).length;
+      $("#listenTtsText").textContent =
+        "【練習模式】文稿播放中不顯示全文。本稿約 " + w + " 詞。主題隨題庫隨機抽出，非固定例句。";
+      resetListenPlayer();
+      listenDurationSec = Math.max(120, Math.min(220, Math.round(w / 2.2)));
+      renderEnListenQuiz();
+      $("#listeningPrev").style.display = "inline-flex";
+      $("#listeningNext").style.display = "inline-flex";
+    }
+
+    function renderNonEnglishListeningPanel() {
+      var arr = LANG_DATA[currentLang].listeningQuestions;
+      var L = arr[listeningIdx];
+      $("#listeningNavHint").textContent = "第 " + (listeningIdx + 1) + " / " + arr.length + " 題（播放與本題同步）";
+      $("#listenTtsText").textContent = L.tts;
+      $("#listenQuizQ").textContent = L.quizQ;
+      renderMcqOptions("listenQuizOpts", L.quizOptions, "listen_quiz");
+      $("#listenQuizResult").className = "result-msg";
+      $("#listenQuizResult").textContent = "";
+      resetListenPlayer();
+    }
+
+    /** 52 活用句型（寫作一鍵插入） */
+    const SENTENCE_PATTERNS_52 = [
+      "It goes without saying that ...",
+      "There is no denying that ...",
+      "It is widely acknowledged that ...",
+      "There is a growing body of evidence that ...",
+      "From my perspective, ...",
+      "As far as I am concerned, ...",
+      "This raises the question of whether ...",
+      "A case in point is ...",
+      "By contrast, ...",
+      "Conversely, ...",
+      "Nevertheless, ...",
+      "Notwithstanding ..., ...",
+      "That being said, ...",
+      "To put it another way, ...",
+      "In other words, ...",
+      "For instance, ...",
+      "To illustrate, ...",
+      "Specifically, ...",
+      "More importantly, ...",
+      "First and foremost, ...",
+      "In addition, ...",
+      "Furthermore, ...",
+      "Moreover, ...",
+      "Consequently, ...",
+      "Therefore, ...",
+      "As a result, ...",
+      "Hence, ...",
+      "On the one hand, ... On the other hand, ...",
+      "While it is true that ..., ...",
+      "Although ..., ...",
+      "Despite the fact that ..., ...",
+      "Provided that ..., ...",
+      "Unless ..., ...",
+      "Should ..., ...",
+      "Were ..., ...",
+      "Had ..., ...",
+      "It is imperative that ...",
+      "It is high time that ...",
+      "The primary reason is that ...",
+      "Another contributing factor is ...",
+      "This phenomenon can be attributed to ...",
+      "One plausible explanation is that ...",
+      "This finding is consistent with ...",
+      "This approach is not without limitations.",
+      "Further research is warranted to determine ...",
+      "In light of these considerations, ...",
+      "To sum up, ...",
+      "In conclusion, ...",
+      "Taking everything into account, ...",
+      "The implications of this are far-reaching.",
+      "This underscores the need for ...",
+      "Ultimately, ..."
+    ];
+
+    function populateSentencePatterns() {
+      var w = $("#patternButtonsWrap");
+      if (!w) return;
+      w.innerHTML = "";
+      SENTENCE_PATTERNS_52.forEach(function (s, idx) {
+        var b = document.createElement("button");
+        b.type = "button";
+        b.className = "pattern-btn";
+        b.textContent = idx + 1 + ". " + s;
+        b.addEventListener("click", function () {
+          var ta = $("#writingArea");
+          var ins = s + " ";
+          var p = ta.selectionStart || ta.value.length;
+          ta.value = ta.value.slice(0, p) + ins + ta.value.slice(p);
+          ta.focus();
+          if (typeof updateWordCount === "function") updateWordCount();
+        });
+        w.appendChild(b);
+      });
+    }
+
+    /** 學習心法 + 雲端連結 */
+    const MIND_MEDIA_RESOURCES = [
+      {
+        category: "💡 學習心法 · TED / 元學習",
+        items: [
+          { title: "如何在六個月內學會任何一門外語（TEDx）", url: "https://b23.tv/BIvb2hU" },
+          { title: "多語言天才的唯一秘訣（中英+文稿）", url: "https://b23.tv/R5RafaT" },
+          { title: "像玩遊戲一樣學會一門語言（TED）", url: "https://b23.tv/5RasS2W" },
+          { title: "你的自學能力決定人生高度（TED）", url: "https://b23.tv/uWC3S2H" },
+          { title: "優秀的人如何訓練大腦（TED）", url: "https://b23.tv/feML6o9" },
+          { title: "20 小時學會任何事情（TED）", url: "https://b23.tv/CKTWBzm" },
+          { title: "MIT 公開課：如何說話", url: "https://b23.tv/fpMMJlR" }
+        ]
+      },
+      {
+        category: "☁️ Google Drive 雲端資料（你提供的連結）",
+        items: [
+          { title: "資料夾總覽", url: "https://drive.google.com/drive/folders/16z251J_E5qPAUDLbgRJO3YS8KFth2kl4" },
+          { title: "雲端檔案 1", url: "https://drive.google.com/file/d/1GCTXAFysuPzqghLxdMdkBkHPrdrYi4pC/view?usp=drivesdk" },
+          { title: "雲端檔案 2", url: "https://drive.google.com/file/d/16KZa_GqNxi_lQml59zMvqWi5TF6-jcnL/view?usp=drivesdk" },
+          { title: "雲端檔案 3", url: "https://drive.google.com/file/d/1GcaYcsBHEern0YYPFpKXXVC35TLyyh_9/view?usp=drivesdk" },
+          { title: "雲端檔案 4", url: "https://drive.google.com/file/d/1gqn_Hfp9Z2068CGQnq1TL2eJ8PycRCxt/view?usp=drivesdk" }
+        ]
+      }
+    ];
+
+    function renderMindHub() {
+      var root = $("#mindHubRoot");
+      if (!root) return;
+      root.innerHTML = "";
+      MIND_MEDIA_RESOURCES.forEach(function (sec) {
+        var wrap = document.createElement("div");
+        wrap.className = "video-hub-section";
+        wrap.innerHTML = "<h4>" + sec.category + "</h4>";
+        var grid = document.createElement("div");
+        grid.className = "video-grid";
+        sec.items.forEach(function (it) {
+          var a = document.createElement("a");
+          a.className = "video-card";
+          a.href = it.url;
+          a.target = "_blank";
+          a.rel = "noopener noreferrer";
+          a.innerHTML = '<div class="vc-title">' + it.title + '</div><div class="vc-link">' + it.url + "</div>";
+          grid.appendChild(a);
+        });
+        wrap.appendChild(grid);
+        root.appendChild(wrap);
+      });
     }
 
     /** 百詞斬式詞書：依語系與下拉選單 id 切換閃卡詞條 */
@@ -2471,7 +3580,19 @@ ORDER BY avg_score DESC;"></textarea>
     /** B 站影音資源（網格卡片動態渲染） */
     const VIDEO_RESOURCES = [
       {
-        category: "托福 TOEFL",
+        category: "🇬🇧 雅思 IELTS",
+        items: [
+          { title: "Simon 全 100 集（聽說讀寫，中字）", url: "https://b23.tv/T32GdaW" },
+          { title: "Simon 寫作全集 2026（寫作觀點庫／範文）", url: "https://b23.tv/dbI1f1T" },
+          { title: "Tiffani 口語 0→9 雙語字幕", url: "https://b23.tv/Vy0qimF" },
+          { title: "雅思詞彙真經 21 天 6600 詞", url: "https://b23.tv/AUvGl1R" },
+          { title: "劍雅 1–19 聽力合集", url: "https://b23.tv/IcRIiif" },
+          { title: "雅思閱讀真題合集", url: "https://b23.tv/8HF3Z4y" },
+          { title: "6 小時雅思口語速成", url: "https://b23.tv/4y3UUGJ" }
+        ]
+      },
+      {
+        category: "🇺🇸 托福 TOEFL",
         items: [
           { title: "每天五句 · 二十天搞定托福 7000 詞", url: "https://b23.tv/3C8S43n" },
           { title: "Adam 老師超實用托福寫作技巧", url: "https://b23.tv/GpWeNsG" },
@@ -2483,36 +3604,61 @@ ORDER BY avg_score DESC;"></textarea>
         ]
       },
       {
-        category: "日語 Japanese",
+        category: "🇯🇵 日語 Japanese",
         items: [
+          { title: "零基礎日語 · 新標日 0–N4（高考／考研基礎）", url: "https://b23.tv/63EHbw6" },
+          { title: "Shadowing 日本語を話そう 影子跟讀全系列", url: "https://b23.tv/8b7oK93" },
           { title: "新標日 0 到 N1 入門教程", url: "https://b23.tv/AZyCvLW" },
-          { title: "15000 個日語單詞分類記憶（睡前磨耳朵）", url: "https://b23.tv/mbrp6m9" },
-          { title: "N5~N2 日語語法詳解", url: "https://b23.tv/Fb7YPIr" },
-          { title: "逆轉裁判學日語", url: "https://b23.tv/DScSgbZ" }
+          { title: "逆轉裁判學日語", url: "https://b23.tv/DScSgbZ" },
+          { title: "N5~N2 日語語法詳解", url: "https://b23.tv/Fb7YPIr" }
         ]
       },
       {
-        category: "韓語 Korean · TOPIK",
+        category: "🇰🇷 韓語 Korean · TOPIK",
         items: [
+          { title: "韓語 0–TOPIK6 百集教程", url: "https://b23.tv/0F2rCLn" },
+          { title: "0 基礎學韓語 入門到精通（長時單片）", url: "https://b23.tv/n7EfOjq" },
           { title: "TOPIK 初級單字全攻略", url: "https://b23.tv/U5dCQX0" },
-          { title: "KoreanClass101 韓語 800+ 集", url: "https://b23.tv/hm9MgXw" },
-          { title: "韓語語法初中高級教程（CC 雙語）", url: "https://b23.tv/B41vO4k" }
+          { title: "KoreanClass101 韓語 800+ 集", url: "https://b23.tv/hm9MgXw" }
         ]
       },
       {
-        category: "西班牙語 Spanish",
+        category: "🇪🇸 西班牙語 Spanish",
         items: [
+          { title: "情景化西語 · 中西字幕口語", url: "https://b23.tv/VSVq2HP" },
           { title: "Laura 老師零基礎西語", url: "https://b23.tv/PDuB7P0" },
-          { title: "西班牙語初級課程 129 集完整版", url: "https://b23.tv/eekSeOY" },
-          { title: "Dictée 聽寫 74 篇（法語／聽力口語參考）", url: "https://b23.tv/FvdDNX1" }
+          { title: "西班牙語初級課程 129 集完整版", url: "https://b23.tv/eekSeOY" }
         ]
       },
       {
-        category: "德語 German",
+        category: "🇩🇪 德語 German",
         items: [
+          { title: "德語外刊精讀 2022 下半年（明鏡／南德等）", url: "https://b23.tv/AOnVRfv" },
           { title: "21 天背完 8000 詞（德英對照）", url: "https://b23.tv/baWPSz3" },
           { title: "走遍德國 0-B2 網課合集", url: "https://b23.tv/7ZnEsnR" },
           { title: "德語精聽訓練", url: "https://b23.tv/T0sYJC8" }
+        ]
+      },
+      {
+        category: "💡 學習心法（影音學習區精選）",
+        items: [
+          { title: "六個月學會任何外語（TEDx）", url: "https://b23.tv/BIvb2hU" },
+          { title: "多語言天才的唯一秘訣", url: "https://b23.tv/R5RafaT" },
+          { title: "MIT 公開課：如何說話", url: "https://b23.tv/fpMMJlR" },
+          { title: "像玩遊戲一樣學會一門語言", url: "https://b23.tv/5RasS2W" },
+          { title: "自學能力與人生高度（MIT 挑戰）", url: "https://b23.tv/uWC3S2H" },
+          { title: "優秀的人如何訓練大腦", url: "https://b23.tv/feML6o9" },
+          { title: "20 小時學會任何事情", url: "https://b23.tv/CKTWBzm" }
+        ]
+      },
+      {
+        category: "☁️ Google Drive（雲端備份）",
+        items: [
+          { title: "資料夾總覽", url: "https://drive.google.com/drive/folders/16z251J_E5qPAUDLbgRJO3YS8KFth2kl4" },
+          { title: "雲端檔案 1", url: "https://drive.google.com/file/d/1GCTXAFysuPzqghLxdMdkBkHPrdrYi4pC/view?usp=drivesdk" },
+          { title: "雲端檔案 2", url: "https://drive.google.com/file/d/16KZa_GqNxi_lQml59zMvqWi5TF6-jcnL/view?usp=drivesdk" },
+          { title: "雲端檔案 3", url: "https://drive.google.com/file/d/1GcaYcsBHEern0YYPFpKXXVC35TLyyh_9/view?usp=drivesdk" },
+          { title: "雲端檔案 4", url: "https://drive.google.com/file/d/1gqn_Hfp9Z2068CGQnq1TL2eJ8PycRCxt/view?usp=drivesdk" }
         ]
       }
     ];
@@ -2532,8 +3678,17 @@ ORDER BY avg_score DESC;"></textarea>
     };
 
     /* ---------- 全域狀態 ---------- */
-    let currentMode = "lang"; // 'lang' | 'exam'
+    let currentMode = "lang"; // 'lang' | 'exam' | 'mind'
     let currentLang = "en";
+    /** 英檢分類：ielts | toefl | toeic（與側欄下拉同步） */
+    let englishExam = "toefl";
+    /** 英文練習：當前隨機抽中的閱讀包／聽力稿 */
+    let enReadingBundle = null;
+    let enListeningBundle = null;
+    /** 英文文法隨機題當前物件 */
+    let enGrammarRandom = null;
+    /** 英文聽力：同一長稿下的第幾題（0-based） */
+    let enListenQuizIdx = 0;
     let vocabIndex = 0;
     let examFlashIndex = 0;
     /** 題庫陣列目前索引（文法 / 閱讀 / 聽力） */
@@ -2585,12 +3740,19 @@ ORDER BY avg_score DESC;"></textarea>
     function showTabsForMode(mode) {
       const tabsLang = $("#tabsLang");
       const tabsExam = $("#tabsExam");
+      const tabsMind = $("#tabsMind");
       if (mode === "exam") {
         tabsLang.style.display = "none";
         tabsExam.style.display = "flex";
+        if (tabsMind) tabsMind.style.display = "none";
+      } else if (mode === "mind") {
+        tabsLang.style.display = "none";
+        tabsExam.style.display = "none";
+        if (tabsMind) tabsMind.style.display = "flex";
       } else {
         tabsLang.style.display = "flex";
         tabsExam.style.display = "none";
+        if (tabsMind) tabsMind.style.display = "none";
       }
     }
 
@@ -2600,6 +3762,10 @@ ORDER BY avg_score DESC;"></textarea>
         const active = $("#tabsExam .tab-btn.active");
         return active ? active.getAttribute("data-panel") : "exam-flash";
       }
+      if (currentMode === "mind") {
+        const active = $("#tabsMind .tab-btn.active");
+        return active ? active.getAttribute("data-panel") : "learning-mind";
+      }
       const active = $("#tabsLang .tab-btn.active");
       return active ? active.getAttribute("data-panel") : "vocab";
     }
@@ -2607,16 +3773,20 @@ ORDER BY avg_score DESC;"></textarea>
     function activatePanel(panelId) {
       // 語言模式 panels: vocab, grammar, reading, listening, speaking, writing, mock-exam
       // 考研模式: exam-flash, exam-essay, exam-code
+      // 心法模式: learning-mind
       const langPanels = ["vocab", "grammar", "reading", "listening", "speaking", "writing", "video-hub", "mock-exam"];
       const examPanels = ["exam-flash", "exam-essay", "exam-code"];
+      const mindPanels = ["learning-mind"];
 
       $$(".panel-area .panel").forEach((p) => {
         const id = p.id.replace("panel-", "");
         const isLangPanel = langPanels.includes(id);
         const isExamPanel = examPanels.includes(id);
+        const isMindPanel = mindPanels.includes(id);
         let show = false;
         if (currentMode === "lang" && isLangPanel) show = id === panelId;
         if (currentMode === "exam" && isExamPanel) show = id === panelId;
+        if (currentMode === "mind" && isMindPanel) show = id === panelId;
         p.classList.toggle("active", show);
         p.style.display = show ? "block" : "none";
       });
@@ -2633,6 +3803,8 @@ ORDER BY avg_score DESC;"></textarea>
     function openTab(panelId) {
       if (currentMode === "lang") {
         switchTabBar($("#tabsLang"), panelId);
+      } else if (currentMode === "mind") {
+        switchTabBar($("#tabsMind"), panelId);
       } else {
         switchTabBar($("#tabsExam"), panelId);
       }
@@ -2646,6 +3818,7 @@ ORDER BY avg_score DESC;"></textarea>
         else showMockView("result");
       }
       if (currentMode === "lang" && panelId === "video-hub") renderVideoHub();
+      if (currentMode === "mind" && panelId === "learning-mind") renderMindHub();
     }
 
     function applyLanguageContent() {
@@ -2654,6 +3827,16 @@ ORDER BY avg_score DESC;"></textarea>
 
       $("#mainTitle").textContent = d.label;
       $("#mainDesc").textContent = d.desc;
+
+      var selEn = $("#englishExamSelect");
+      if (selEn) selEn.value = englishExam;
+
+      if (currentLang === "en") {
+        enGrammarRandom = null;
+        enReadingBundle = null;
+        enListeningBundle = null;
+        enListenQuizIdx = 0;
+      }
 
       // 單字閃卡（詞書下拉）
       populateVocabBookSelect();
@@ -2667,6 +3850,8 @@ ORDER BY avg_score DESC;"></textarea>
       renderReadingQuestion();
       renderListeningQuestion();
       resetListenPlayer();
+
+      populateSentencePatterns();
 
       // 口說
       $("#speakPrompt").textContent = d.speaking;
@@ -2697,7 +3882,25 @@ ORDER BY avg_score DESC;"></textarea>
       });
     }
 
+    function renderEnglishGrammarPanel() {
+      if (!enGrammarRandom) enGrammarRandom = getRandomQuestion(EN_GRAMMAR_BANK);
+      $("#grammarNavHint").textContent =
+        englishExamLabel() +
+        " · 文法大題庫隨機（" +
+        EN_GRAMMAR_BANK.length +
+        " 題）· 上一題／下一題＝重新抽題";
+      $("#grammarQuestion").textContent = enGrammarRandom.q;
+      renderMcqOptions("grammarOptions", enGrammarRandom.options, "grammar_opt");
+      $("#grammarResult").className = "result-msg";
+      $("#grammarResult").textContent = "";
+      $("#grammarResult").classList.remove("show");
+    }
+
     function renderGrammarQuestion() {
+      if (currentLang === "en") {
+        renderEnglishGrammarPanel();
+        return;
+      }
       const arr = LANG_DATA[currentLang].grammarQuestions;
       const g = arr[grammarIdx];
       $("#grammarNavHint").textContent = "第 " + (grammarIdx + 1) + " / " + arr.length + " 題";
@@ -2709,27 +3912,21 @@ ORDER BY avg_score DESC;"></textarea>
     }
 
     function renderReadingQuestion() {
-      const arr = LANG_DATA[currentLang].readingQuestions;
-      const r = arr[readingIdx];
-      $("#readingNavHint").textContent = "第 " + (readingIdx + 1) + " / " + arr.length + " 題";
-      $("#readingPassage").textContent = r.passage;
-      $("#readingQuestion").textContent = r.q;
-      renderMcqOptions("readingOptions", r.options, "read_opt");
-      $("#readingResult").className = "result-msg";
-      $("#readingResult").textContent = "";
-      $("#readingResult").classList.remove("show");
+      if (currentLang === "en") {
+        renderEnglishReadingPanel();
+        return;
+      }
+      renderNonEnglishReadingPanel();
     }
 
     function renderListeningQuestion() {
-      const arr = LANG_DATA[currentLang].listeningQuestions;
-      const L = arr[listeningIdx];
-      $("#listeningNavHint").textContent = "第 " + (listeningIdx + 1) + " / " + arr.length + " 題（播放與本題同步）";
-      $("#listenTtsText").textContent = L.tts;
-      $("#listenQuizQ").textContent = L.quizQ;
-      renderMcqOptions("listenQuizOpts", L.quizOptions, "listen_quiz");
-      $("#listenQuizResult").className = "result-msg";
-      $("#listenQuizResult").textContent = "";
-      resetListenPlayer();
+      if (currentLang === "en") {
+        renderEnglishListeningPanel();
+        return;
+      }
+      renderNonEnglishListeningPanel();
+      $("#listeningPrev").style.display = "inline-flex";
+      $("#listeningNext").style.display = "inline-flex";
     }
 
     function populateVocabBookSelect() {
@@ -2804,11 +4001,21 @@ ORDER BY avg_score DESC;"></textarea>
     }
 
     $("#grammarPrev").addEventListener("click", () => {
+      if (currentLang === "en") {
+        enGrammarRandom = getRandomQuestion(EN_GRAMMAR_BANK);
+        renderEnglishGrammarPanel();
+        return;
+      }
       const n = LANG_DATA[currentLang].grammarQuestions.length;
       grammarIdx = (grammarIdx - 1 + n) % n;
       renderGrammarQuestion();
     });
     $("#grammarNext").addEventListener("click", () => {
+      if (currentLang === "en") {
+        enGrammarRandom = getRandomQuestion(EN_GRAMMAR_BANK);
+        renderEnglishGrammarPanel();
+        return;
+      }
       const n = LANG_DATA[currentLang].grammarQuestions.length;
       grammarIdx = (grammarIdx + 1) % n;
       renderGrammarQuestion();
@@ -2826,11 +4033,35 @@ ORDER BY avg_score DESC;"></textarea>
     });
 
     $("#listeningPrev").addEventListener("click", () => {
+      if (currentLang === "en") {
+        if (!enListeningBundle) pickEnglishListeningBundle();
+        if (enListenQuizIdx > 0) {
+          enListenQuizIdx--;
+          renderEnListenQuiz();
+        } else {
+          pickEnglishListeningBundle();
+          enListenQuizIdx = Math.max(0, enListeningBundle.quizzes.length - 1);
+          renderEnglishListeningPanel(false);
+        }
+        return;
+      }
       const n = LANG_DATA[currentLang].listeningQuestions.length;
       listeningIdx = (listeningIdx - 1 + n) % n;
       renderListeningQuestion();
     });
     $("#listeningNext").addEventListener("click", () => {
+      if (currentLang === "en") {
+        if (!enListeningBundle) pickEnglishListeningBundle();
+        if (enListenQuizIdx < enListeningBundle.quizzes.length - 1) {
+          enListenQuizIdx++;
+          renderEnListenQuiz();
+        } else {
+          pickEnglishListeningBundle();
+          enListenQuizIdx = 0;
+          renderEnglishListeningPanel();
+        }
+        return;
+      }
       const n = LANG_DATA[currentLang].listeningQuestions.length;
       listeningIdx = (listeningIdx + 1) % n;
       renderListeningQuestion();
@@ -2838,7 +4069,10 @@ ORDER BY avg_score DESC;"></textarea>
 
     $("#grammarSubmit").addEventListener("click", () => {
       const ans = getCheckedValue("grammar_opt");
-      const correct = LANG_DATA[currentLang].grammarQuestions[grammarIdx].correct;
+      const correct =
+        currentLang === "en"
+          ? enGrammarRandom && enGrammarRandom.correct
+          : LANG_DATA[currentLang].grammarQuestions[grammarIdx].correct;
       const box = $("#grammarResult");
       if (!ans) {
         box.className = "result-msg err show";
@@ -2855,9 +4089,33 @@ ORDER BY avg_score DESC;"></textarea>
     });
 
     $("#readingSubmit").addEventListener("click", () => {
+      const box = $("#readingResult");
+      if (currentLang === "en") {
+        if (!enReadingBundle || !enReadingBundle.questions) return;
+        var total = enReadingBundle.questions.length;
+        var ok = 0;
+        var missed = [];
+        for (var i = 0; i < total; i++) {
+          var a = getCheckedValue("read_multi_" + i);
+          if (!a) {
+            box.className = "result-msg err show";
+            box.textContent = "請完成全部 " + total + " 題再提交。";
+            return;
+          }
+          if (a === enReadingBundle.questions[i].correct) ok++;
+          else missed.push(i + 1);
+        }
+        box.className = "result-msg show " + (ok === total ? "ok" : "err");
+        box.textContent =
+          "答對 " +
+          ok +
+          " / " +
+          total +
+          (missed.length ? "。可再檢討第 " + missed.join("、") + " 題。" : "。全對！");
+        return;
+      }
       const ans = getCheckedValue("read_opt");
       const correct = LANG_DATA[currentLang].readingQuestions[readingIdx].correct;
-      const box = $("#readingResult");
       if (!ans) {
         box.className = "result-msg err show";
         box.textContent = "請選擇一個選項。";
@@ -2871,6 +4129,15 @@ ORDER BY avg_score DESC;"></textarea>
         box.textContent = "答錯了，正確答案為 " + correct + "。";
       }
     });
+
+    var readingRandomBtn = $("#readingRandomBtn");
+    if (readingRandomBtn) {
+      readingRandomBtn.addEventListener("click", function () {
+        if (currentLang !== "en") return;
+        pickEnglishReadingBundle();
+        renderEnglishReadingPanel();
+      });
+    }
 
     /* ---------- 聽力：進度條模擬 + Web Speech API ---------- */
     function resetListenPlayer() {
@@ -2924,10 +4191,18 @@ ORDER BY avg_score DESC;"></textarea>
      * 非英文仍用分段邏輯但語系改為對應 lang。
      */
     function speakListenText() {
-      const L = LANG_DATA[currentLang].listeningQuestions[listeningIdx];
-      const text = L.tts;
       const rateMul = parseFloat($("#listenRate").value) || 1;
-      listenDurationSec = Math.max(25, Math.min(120, text.length / 12));
+      var text;
+      if (currentLang === "en") {
+        if (!enListeningBundle) pickEnglishListeningBundle();
+        text = enListeningBundle.script;
+        var w = text.split(/\s+/).filter(Boolean).length;
+        listenDurationSec = Math.max(120, Math.min(220, Math.round(w / 2.2)));
+      } else {
+        const L = LANG_DATA[currentLang].listeningQuestions[listeningIdx];
+        text = L.tts;
+        listenDurationSec = Math.max(25, Math.min(120, text.length / 12));
+      }
       listenCurrentSec = 0;
       updateListenProgressUI();
 
@@ -2976,7 +4251,12 @@ ORDER BY avg_score DESC;"></textarea>
 
     $("#listenQuizSubmit").addEventListener("click", () => {
       const ans = getCheckedValue("listen_quiz");
-      const correct = LANG_DATA[currentLang].listeningQuestions[listeningIdx].quizCorrect;
+      const correct =
+        currentLang === "en"
+          ? enListeningBundle &&
+            enListeningBundle.quizzes[enListenQuizIdx] &&
+            enListeningBundle.quizzes[enListenQuizIdx].correct
+          : LANG_DATA[currentLang].listeningQuestions[listeningIdx].quizCorrect;
       const box = $("#listenQuizResult");
       if (!ans) {
         box.className = "result-msg err show";
@@ -3209,6 +4489,7 @@ ORDER BY avg_score DESC;"></textarea>
     }
 
     function resetMockExamToWelcome() {
+      window.__mockEnSession = null;
       mockPhase = "welcome";
       mockWizardStep = 0;
       mockReadingIdx = 0;
@@ -3331,6 +4612,26 @@ ORDER BY avg_score DESC;"></textarea>
     $("#mockWriteArea").addEventListener("input", updateMockWordCount);
 
     $("#mockStartBtn").addEventListener("click", function () {
+      if (currentLang === "en") {
+        var rb = getRandomFrom(EN_READING_POOLS[englishExam] || EN_READING_POOLS.toefl);
+        var lb = getRandomFrom(EN_LISTENING_POOLS[englishExam] || EN_LISTENING_POOLS.toefl);
+        if (rb && lb) {
+          window.__mockEnSession = {
+            label: englishExamLabel() + " · 全真長篇模考",
+            readingPassage: rb.passage,
+            readingQs: rb.questions.slice(0, 3),
+            listeningScript: lb.script,
+            listeningQs: lb.quizzes,
+            speakingTopic:
+              "Describe a challenge you overcame in academic or professional settings and what you learned.",
+            writingPrompt:
+              "To what extent do you agree that structured study plans matter more than talent? Support your view with reasons and examples.",
+            writingLimitMin: 30
+          };
+        }
+      } else {
+        window.__mockEnSession = null;
+      }
       mockPhase = "wizard";
       mockWizardStep = 0;
       mockReadingIdx = 0;
@@ -3515,16 +4816,19 @@ ORDER BY avg_score DESC;"></textarea>
       mockAnswers.writeAi = Math.min(30, Math.round(12 + Math.min(18, words / 15) + Math.random() * 4));
 
       var exF = getCurrentMockExam();
+      var nRead = exF.readingQs ? exF.readingQs.length : 3;
+      var nListen = exF.listeningQs ? exF.listeningQs.length : 2;
       var readCorrect = 0;
-      for (var i = 0; i < exF.readingQs.length; i++) {
+      for (var i = 0; i < nRead; i++) {
         if (mockAnswers.read[i] === exF.readingQs[i].correct) readCorrect++;
       }
       var listenCorrect = 0;
-      if (mockAnswers.listen[0] === exF.listeningQs[0].correct) listenCorrect++;
-      if (mockAnswers.listen[1] === exF.listeningQs[1].correct) listenCorrect++;
+      for (var j = 0; j < nListen; j++) {
+        if (mockAnswers.listen[j] === exF.listeningQs[j].correct) listenCorrect++;
+      }
 
-      var readScore = Math.round((readCorrect / 3) * 30);
-      var listenScore = Math.round((listenCorrect / 2) * 30);
+      var readScore = Math.round((readCorrect / Math.max(1, nRead)) * 30);
+      var listenScore = Math.round((listenCorrect / Math.max(1, nListen)) * 30);
       var speakScore = mockAnswers.speakAi || 20;
       var writeScore = mockAnswers.writeAi || 18;
       var total = Math.min(120, readScore + listenScore + speakScore + writeScore);
@@ -3536,9 +4840,13 @@ ORDER BY avg_score DESC;"></textarea>
       $("#mockResultSummary").textContent =
         "選擇題：閱讀 " +
         readCorrect +
-        "/3、聽力 " +
+        "/" +
+        nRead +
+        "、聽力 " +
         listenCorrect +
-        "/2。口說／寫作為模擬評分（參考 ETS 四科 0–30 量尺）。本頁為前端示範，非官方成績。";
+        "/" +
+        nListen +
+        "。口說／寫作為模擬評分（參考 ETS 四科 0–30 量尺）。本頁為前端示範，非官方成績。";
 
       /** 模擬 ETS 風格文字建議（依分數區間） */
       var ets = $("#mockEtsFeedback");
@@ -3614,6 +4922,35 @@ ORDER BY avg_score DESC;"></textarea>
       openTab(btn.getAttribute("data-panel"));
     });
 
+    var tabsMindEl = $("#tabsMind");
+    if (tabsMindEl) {
+      tabsMindEl.addEventListener("click", function (e) {
+        const btn = e.target.closest(".tab-btn");
+        if (!btn) return;
+        openTab(btn.getAttribute("data-panel"));
+      });
+    }
+
+    var englishExamSelectEl = $("#englishExamSelect");
+    if (englishExamSelectEl) {
+      englishExamSelectEl.addEventListener("change", function () {
+        englishExam = this.value || "toefl";
+        if (currentLang === "en") {
+          enGrammarRandom = null;
+          enReadingBundle = null;
+          enListeningBundle = null;
+          enListenQuizIdx = 0;
+          renderGrammarQuestion();
+          renderReadingQuestion();
+          renderListeningQuestion();
+        }
+        if (currentMode === "lang" && getActiveTabPanelId() === "mock-exam" && mockPhase === "welcome") {
+          var wx = getCurrentMockExam();
+          $("#mockWelcomeTitle").textContent = wx.label || "全真長篇模考";
+        }
+      });
+    }
+
     /* ---------- Sidebar 導覽 ---------- */
     $$(".nav-item").forEach(function (navBtn) {
       navBtn.addEventListener("click", function () {
@@ -3626,6 +4963,10 @@ ORDER BY avg_score DESC;"></textarea>
           currentLang = this.getAttribute("data-lang") || "en";
           applyLanguageContent();
           openTab("vocab");
+        } else if (mode === "mind") {
+          $("#mainTitle").textContent = "💡 學習心法專區";
+          $("#mainDesc").textContent = "TED、元學習、MIT 公開課與你提供的 Google Drive 雲端連結。";
+          openTab("learning-mind");
         } else {
           $("#mainTitle").textContent = "🎓 資管考研";
           $("#mainDesc").textContent = "管理資訊系統與資料庫核心觀念、申論與程式/SQL 練習。";
