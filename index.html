@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
@@ -396,6 +397,22 @@
     .panel {
       display: none;
       animation: fadeIn 0.45s ease forwards;
+    }
+
+    /* 重要：聽力區塊的 details/summary 的初始樣式 */
+    details.transcript-hidden {
+      margin-top: 0.75rem;
+    }
+    details.transcript-hidden summary {
+      cursor: pointer;
+      display: inline-block;
+      padding: 0.55rem 0.9rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: #fff;
+      font-weight: 700;
+      color: var(--navy);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
     }
 
     .panel.active {
@@ -1538,7 +1555,7 @@
         <div class="strategy-grid">
           <article class="strategy-card">
             <h3>學習者 · Learner Profile</h3>
-            <p><strong>1134538　張芷瑜（Chang Chih-yu）</strong><br />國立嘉義大學　資訊管理學系</p>
+            <p><strong>張芷瑜 </strong><br />國立嘉義大學　資訊管理學系</p>
             <span class="tag">NCYU MIS</span>
           </article>
           <article class="strategy-card">
@@ -1678,7 +1695,12 @@
                   <option value="1.25">1.25x</option>
                 </select>
               </div>
-              <div class="tts-text-box" id="listenTtsText">—</div>
+              <div class="tts-text-box" id="listenTtsText">
+                <details class="transcript-hidden">
+                  <summary>👁️ 顯示聽力原文 (建議答題後再查看)</summary>
+                  <div id="transcriptContent" style="padding-top: 0.5rem;">—</div>
+                </details>
+              </div>
             </div>
             <div class="panel-block">
               <label class="lbl" for="listenNotes">邊聽邊記筆記</label>
@@ -3295,6 +3317,7 @@ ORDER BY avg_score DESC;"></textarea>
 
       EN_READING_POOLS.toeic.push({
         passage: toeicP1,
+        img: "https://picsum.photos/id/100/400/300",
         questions: q4(
           {
             q: "What is the main purpose of the memorandum?",
@@ -3340,6 +3363,7 @@ ORDER BY avg_score DESC;"></textarea>
       });
       EN_READING_POOLS.toeic.push({
         passage: toeicP2,
+        img: "https://picsum.photos/id/200/400/300",
         questions: q4(
           {
             q: "Asia-Pacific revenue change year-over-year was —",
@@ -3385,6 +3409,7 @@ ORDER BY avg_score DESC;"></textarea>
       });
       EN_READING_POOLS.toeic.push({
         passage: toeicP3,
+        img: "https://picsum.photos/id/300/400/300",
         questions: q4(
           {
             q: "Phase one emphasises —",
@@ -3455,6 +3480,7 @@ ORDER BY avg_score DESC;"></textarea>
 
       EN_READING_POOLS.toeic.push({
         passage: toeicPart7A,
+        img: "https://picsum.photos/id/400/400/300",
         questions: q4(
           {
             q: "According to the postings, employees who score below eighty percent must —",
@@ -3500,6 +3526,7 @@ ORDER BY avg_score DESC;"></textarea>
       });
       EN_READING_POOLS.toeic.push({
         passage: toeicPart7B,
+        img: "https://picsum.photos/id/500/400/300",
         questions: q4(
           {
             q: "The promotion requires corporate buyers to —",
@@ -3563,7 +3590,7 @@ ORDER BY avg_score DESC;"></textarea>
 
       EN_LISTENING_POOLS.ielts.push(
         lpair(
-          tedStyle1,
+          "This lecture opens with a deceptively simple question about motivation. The speaker argues that many organisations communicate from the outside in: they describe what they make, how it is engineered, and expect customers to infer why it matters. Inspired movements, by contrast, begin with purpose. The speaker uses historical examples where belief preceded product adoption, noting that early supporters often accept imperfection because they identify with a mission. The middle section contrasts short-term manipulation—price cuts, fear-based messaging, aspirational hype—with leadership that clarifies values even when products are still imperfect. A case from consumer electronics illustrates how narrative coherence can accelerate ecosystem growth, while fragmented messaging confuses developers and partners. The speaker cautions that authenticity cannot be manufactured; stakeholders compare public statements with hiring practices and supplier contracts. Toward the end, the talk addresses failure: teams that lose sight of why they exist begin optimising metrics that reward volume over trust. Questions from the audience raise issues about scale, regulation, and global cultural differences in how purpose is expressed. The speaker concludes that sustainable innovation pairs technical excellence with transparent storytelling, and that educators should train students to examine assumptions behind slogans rather than memorising buzzwords.",
           {
             q: "According to the lecture, inspired movements often begin with —",
             options: [
@@ -3588,7 +3615,7 @@ ORDER BY avg_score DESC;"></textarea>
       );
       EN_LISTENING_POOLS.ielts.push(
         lpair(
-          tedStyle2,
+          "In this segment the lecturer explores how multilingual people manage cognitive load when switching languages mid-conversation. Early psycholinguistic models assumed a hard switch between mental lexicons, but newer imaging studies suggest partial overlap and competition between candidates for each word. The speaker describes code-switching in families where parents use one language for discipline and another for affection, shaping emotional associations that persist into adulthood. Workplace examples include engineers negotiating contracts in English while troubleshooting with colleagues in a first language, which can improve precision but also create documentation gaps if decisions are not translated. The lecture reviews pedagogical implications: immersion accelerates fluency yet may delay metalinguistic awareness; explicit contrastive instruction can feel slow but reduces fossilised errors. Listeners are reminded to notice hedging language—might, tends to, in many cases—because exam items often test whether you heard qualification rather than absolutes. The final minutes summarise strategies: shadow short paragraphs, transcribe key numbers, and map paragraph functions such as problem, evidence, and recommendation.",
           {
             q: "Newer studies suggest bilingual lexical access involves —",
             options: [
@@ -3613,7 +3640,7 @@ ORDER BY avg_score DESC;"></textarea>
       );
       EN_LISTENING_POOLS.ielts.push(
         lpair(
-          tedStyle1 + " " + tedStyle2,
+          "This lecture opens with a deceptively simple question about motivation. The speaker argues that many organisations communicate from the outside in: they describe what they make, how it is engineered, and expect customers to infer why it matters. Inspired movements, by contrast, begin with purpose. The speaker uses historical examples where belief preceded product adoption, noting that early supporters often accept imperfection because they identify with a mission. The middle section contrasts short-term manipulation—price cuts, fear-based messaging, aspirational hype—with leadership that clarifies values even when products are still imperfect. A case from consumer electronics illustrates how narrative coherence can accelerate ecosystem growth, while fragmented messaging confuses developers and partners. The speaker cautions that authenticity cannot be manufactured; stakeholders compare public statements with hiring practices and supplier contracts. Toward the end, the talk addresses failure: teams that lose sight of why they exist begin optimising metrics that reward volume over trust. Questions from the audience raise issues about scale, regulation, and global cultural differences in how purpose is expressed. The speaker concludes that sustainable innovation pairs technical excellence with transparent storytelling, and that educators should train students to examine assumptions behind slogans rather than memorising buzzwords. In this segment the lecturer explores how multilingual people manage cognitive load when switching languages mid-conversation. Early psycholinguistic models assumed a hard switch between mental lexicons, but newer imaging studies suggest partial overlap and competition between candidates for each word. The speaker describes code-switching in families where parents use one language for discipline and another for affection, shaping emotional associations that persist into adulthood. Workplace examples include engineers negotiating contracts in English while troubleshooting with colleagues in a first language, which can improve precision but also create documentation gaps if decisions are not translated. The lecture reviews pedagogical implications: immersion accelerates fluency yet may delay metalinguistic awareness; explicit contrastive instruction can feel slow but reduces fossilised errors. Listeners are reminded to notice hedging language—might, tends to, in many cases—because exam items often test whether you heard qualification rather than absolutes. The final minutes summarise strategies: shadow short paragraphs, transcribe key numbers, and map paragraph functions such as problem, evidence, and recommendation.",
           {
             q: "Combined themes emphasise examining —",
             options: [
@@ -3639,24 +3666,24 @@ ORDER BY avg_score DESC;"></textarea>
 
       EN_LISTENING_POOLS.toefl.push(
         lpair(
-          campusLec + " " + advisorTalk,
+          "In the past two decades, university teaching and learning have been reshaped by digital tools that promise personalization at scale. Learning management systems, automated feedback on quizzes, and analytics dashboards now sit alongside traditional lectures and seminars. Proponents argue that data-rich environments can help instructors identify struggling students earlier and tailor resources to individual needs. Critics, however, warn that an overreliance on metrics may reduce education to easily measurable behaviors, sidelining creativity, ethical reasoning, and collaborative discussion. A synthesis emerging from educational research suggests that the most effective blended models preserve human mentorship while using technology to remove logistical friction. For example, short, targeted videos can deliver foundational content outside class, freeing seminar time for debate and application. Yet implementation challenges remain: unequal access to devices and bandwidth, instructor workload associated with redesigning courses, and student privacy concerns when platforms collect fine-grained interaction data. Policies at several institutions now require transparency notices and limit third-party data sharing, reflecting a growing awareness that pedagogical innovation must be paired with governance. Longitudinal studies further indicate that gains in completion rates are strongest when digital supplements are paired with structured study routines and clear learning outcomes rather than deployed as optional add-ons. In reading-intensive fields such as history and literature, faculty report that annotation tools and shared digital archives deepen close reading when students are trained to interrogate sources collaboratively. By contrast, in quantitative courses, adaptive homework systems can provide immediate corrective feedback that resembles one-on-one tutoring at a fraction of the cost. The central insight across contexts is that technology amplifies existing instructional philosophies rather than replacing them. Institutions that invest in faculty development and instructional design teams tend to see more sustained improvement than those that purchase software without curricular integration. As global mobility increases, English-medium programs and international partnerships place additional pressure on language support services, motivating investments in writing centers and speaking studios that combine peer tutoring with speech recognition practice. Looking forward, artificial intelligence assistants may assist with drafting and summarization, but assessment experts emphasize the continued need for authentic tasks that reveal a student's ability to synthesize evidence, acknowledge uncertainty, and communicate with precision. Researchers who study transfer of learning note that students often perform well on immediate tests yet struggle to apply ideas in new domains unless courses explicitly build bridges between abstract principles and concrete scenarios. Professional schools have responded with case-based curricula, while undergraduate programs increasingly embed micro-internships and community partnerships. Assessment redesigns—moving from single high-stakes exams toward portfolios and project milestones—aim to align evaluation with these richer goals. Nevertheless, resource constraints mean that large introductory courses may still depend on multiple-choice instruments, sparking debate about validity and fairness. Accessibility offices likewise highlight that inclusive design benefits all learners: captions benefit second-language users as well as deaf students, and flexible deadlines can support caregivers without lowering standards when expectations are communicated clearly. The interplay between policy, pedagogy, and platform design will continue to define the next chapter of higher education worldwide. Ultimately, the measure of success will not be the novelty of the platform but whether graduates can transfer skills to workplaces and civic life where problems are ill-defined and cooperation across differences is essential.",
           {
-            q: "The biology lecture ties training volume to —",
+            q: "According to the passage, critics of learning analytics fear that —",
             options: [
-              { v: "A", text: "mitochondrial signalling and recovery balance" },
-              { v: "B", text: "eliminating oxygen use" },
-              { v: "C", text: "only supplements" },
-              { v: "D", text: "avoiding intervals" }
+              { v: "A", text: "education may narrow to easily measurable behaviors" },
+              { v: "B", text: "libraries will expand too quickly" },
+              { v: "C", text: "seminars will disappear entirely" },
+              { v: "D", text: "students will read too much" }
             ],
             correct: "A"
           },
           {
-            q: "The advising segment states registration opens —",
+            q: "The author's view of technology in higher education is best described as —",
             options: [
-              { v: "A", text: "Monday at eight a.m." },
-              { v: "B", text: "Friday at noon" },
-              { v: "C", text: "only in person" },
-              { v: "D", text: "after finals only" }
+              { v: "A", text: "it amplifies existing teaching philosophies" },
+              { v: "B", text: "it should replace all mentorship" },
+              { v: "C", text: "it makes assessment unnecessary" },
+              { v: "D", text: "it only helps quantitative courses" }
             ],
             correct: "A"
           }
@@ -3664,24 +3691,24 @@ ORDER BY avg_score DESC;"></textarea>
       );
       EN_LISTENING_POOLS.toefl.push(
         lpair(
-          advisorTalk + " " + campusLec,
+          "Cognitive psychologists distinguish between encoding, storage, and retrieval, yet classroom practice often overweights the first two while neglecting the third. Retrieval practice—self-testing rather than passive rereading—forces the brain to reconstruct knowledge, strengthening cue-to-answer pathways. Spaced repetition distributes reviews across increasing intervals, countering the forgetting curve that steepens when massed practice creates illusions of mastery. Interleaving mixes problem types so learners discriminate when to apply a strategy instead of repeating one pattern until it becomes automatic but brittle. Elaborative interrogation prompts students to ask why a fact is true, linking new material to prior causal models. Despite robust laboratory evidence, adoption lags because busy syllabi reward coverage over depth and because students perceive testing as punitive rather than pedagogical. Faculty who embed low-stakes quizzes weekly report fewer catastrophic final exam failures and more honest feedback about misconceptions. Writing-to-learn activities, such as summarising a lecture without notes and then comparing to a model outline, combine retrieval with generative processing. Neuroimaging studies caution against overstating localization, but converging evidence suggests that effortful recall engages frontal and hippocampal circuits associated with durable memory. Critics argue that excessive testing can increase anxiety; proponents recommend transparent rubrics, optional retakes, and explicit teaching of study strategies so students experience quizzes as diagnostic tools. Institutional incentives matter: when teaching evaluations emphasise entertainment value, instructors may avoid rigorous retrieval tasks. Accreditation bodies increasingly ask for evidence of learning outcomes, nudging departments toward outcome-aligned assessments that resemble spaced, varied practice rather than one-shot memorisation. For TOEFL-style reading, notice how definitions, contrasts, and lists of caveats build a qualified thesis rather than a slogan.",
           {
-            q: "Waitlisted students should —",
+            q: "What practice does the passage prioritise for durable learning?",
             options: [
-              { v: "A", text: "check the portal twice daily" },
-              { v: "B", text: "never check email" },
-              { v: "C", text: "drop all classes" },
-              { v: "D", text: "ignore visa rules" }
+              { v: "A", text: "Retrieval practice and spaced repetition" },
+              { v: "B", text: "Only highlighting textbooks" },
+              { v: "C", text: "Cramming the night before" },
+              { v: "D", text: "Avoiding all quizzes" }
             ],
             correct: "A"
           },
           {
-            q: "One assignment asks students to critique —",
+            q: "Interleaving is said to help learners —",
             options: [
-              { v: "A", text: "a popular press article with two primary sources" },
-              { v: "B", text: "a novel unrelated to biology" },
-              { v: "C", text: "only lecture slides" },
-              { v: "D", text: "social media comments" }
+              { v: "A", text: "discriminate when to apply strategies" },
+              { v: "B", text: "repeat one pattern mindlessly" },
+              { v: "C", text: "skip problem sets" },
+              { v: "D", text: "ignore feedback" }
             ],
             correct: "A"
           }
@@ -3689,24 +3716,24 @@ ORDER BY avg_score DESC;"></textarea>
       );
       EN_LISTENING_POOLS.toefl.push(
         lpair(
-          campusLec + " " + campusLec,
+          "Ecologists studying invasive species on islands have documented recurring patterns that inform both conservation budgets and international shipping rules. Islands often host endemic species with small populations and limited genetic diversity, making them vulnerable to predators or plants introduced accidentally through ballast water or cargo pallets. Eradication campaigns can succeed when invasive mammals are removed before forest understories collapse, but they require sustained funding and community buy-in, especially when local residents depend on introduced species for income. Biosecurity at ports—inspections, heat treatment of wood packaging, and dog teams trained to detect contraband fruit—functions as prevention insurance whose benefits are statistically invisible until a failure triggers a costly outbreak. Climate change alters the map of risk: warmer winters may allow insect pests to overwinter farther north, while storms damage infrastructure that once isolated fragile habitats. Ethical debates arise when managers propose controversial tools such as gene drives or toxic bait drops near human settlements. Indigenous knowledge holders sometimes highlight seasonal indicators of ecosystem stress that standardized surveys miss. From a reading-comprehension standpoint, the passage models how scientists weigh uncertainty, cite comparative studies across archipelagos, and acknowledge trade-offs between rapid action and precautionary delay.",
           {
-            q: "Heat acclimation is said to —",
+            q: "Islands are portrayed as vulnerable because —",
             options: [
-              { v: "A", text: "expand plasma volume and adjust sweating threshold" },
-              { v: "B", text: "eliminate sweating" },
-              { v: "C", text: "reduce oxygen use to zero" },
-              { v: "D", text: "replace training entirely" }
+              { v: "A", text: "endemic species often have small populations and low diversity" },
+              { v: "B", text: "they have no ports" },
+              { v: "C", text: "invasive species never arrive" },
+              { v: "D", text: "eradication always fails instantly" }
             ],
             correct: "A"
           },
           {
-            q: "Next lecture will address —",
+            q: "Biosecurity at ports is compared to —",
             options: [
-              { v: "A", text: "lactate misconceptions" },
-              { v: "B", text: "plant taxonomy only" },
-              { v: "C", text: "music theory" },
-              { v: "D", text: "campus parking fines only" }
+              { v: "A", text: "prevention insurance with invisible benefits until failure" },
+              { v: "B", text: "a tourist tax" },
+              { v: "C", text: "a music festival" },
+              { v: "D", text: "a classroom quiz" }
             ],
             correct: "A"
           }
@@ -3715,24 +3742,24 @@ ORDER BY avg_score DESC;"></textarea>
 
       EN_LISTENING_POOLS.toeic.push(
         lpair(
-          toeicCall1 + " " + toeicCall2,
+          "MEMORANDUM\nTo: Regional Operations Managers\nFrom: Elena Park, VP Supply Chain\nDate: March 12\nSubject: Q2 Inventory and Vendor Performance\n\nWe are entering the second quarter with tighter lead times on semiconductor components and elevated freight rates on the transpacific lane. Please note three immediate priorities. First, freeze any non-critical purchase orders above fifty thousand dollars until the centralized review on March twentieth. Second, activate the alternate routing through Vancouver for SKUs listed in Appendix A; although per-container cost is eight percent higher, customer service data show a twelve percent reduction in late penalties. Third, escalate to my office any vendor proposing unilateral contract amendments referencing force majeure without documented disruption evidence. Finance will publish weekly cash-conversion metrics every Monday; plants should reconcile warehouse snapshots by Wednesday close. HR-partners will host optional webinars on supplier negotiation tone and documentation standards, as recent audits flagged inconsistent email trails. Legal reminds everyone that forward-looking statements must not be shared with external partners. We recognise that these controls add administrative steps; they are designed to protect margin while we onboard two backup suppliers in Malaysia. Thank you for the weekend work many teams contributed during the pilot scan in Detroit; the error rate on pick lists dropped measurably.",
           {
-            q: "The Jakarta delay was tied to —",
+            q: "What is the main purpose of the memorandum?",
             options: [
-              { v: "A", text: "customs documentation issues" },
-              { v: "B", text: "a marketing campaign" },
-              { v: "C", text: "a software launch" },
-              { v: "D", text: "holiday office closure only" }
+              { v: "A", text: "Announce Q2 supply constraints and required actions" },
+              { v: "B", text: "Cancel all vendor contracts" },
+              { v: "C", text: "Promote a gala event" },
+              { v: "D", text: "Hire new executives" }
             ],
             correct: "A"
           },
           {
-            q: "The final agreed action includes —",
+            q: "Purchase orders above fifty thousand dollars should —",
             options: [
-              { v: "A", text: "airlifting two hundred units with client approval by deadline" },
-              { v: "B", text: "cancelling the retail launch" },
-              { v: "C", text: "doing nothing" },
-              { v: "D", text: "removing compliance archiving" }
+              { v: "A", text: "be frozen until centralized review" },
+              { v: "B", text: "be doubled" },
+              { v: "C", text: "ignore approval" },
+              { v: "D", text: "route only to HR" }
             ],
             correct: "A"
           }
@@ -3740,24 +3767,24 @@ ORDER BY avg_score DESC;"></textarea>
       );
       EN_LISTENING_POOLS.toeic.push(
         lpair(
-          toeicCall2 + " " + toeicCall1,
+          "Quarterly Business Review — Excerpt for Training Purposes\n\nThe Asia-Pacific branch reported a four percent year-over-year revenue increase, driven by renewals in the enterprise software suite and attach-rate growth for premium support. Operating margin compressed slightly due to currency headwinds and higher cloud-hosting fees. Customer satisfaction scores improved in Taiwan and Singapore after we localised the onboarding portal and added chat support in Traditional Chinese. Conversely, the Australia retail pilot underperformed expectations; foot traffic rose, yet basket size fell, suggesting pricing sensitivity. Marketing proposes a bundled promotion with the loyalty programme in May, pending compliance review. Human resources highlights that voluntary turnover among engineers ticked up in Bangalore; retention interviews cite workload spikes during release windows. We will pilot a rotating on-call cap and clearer sprint commitments. Risk notes heightened phishing attempts spoofing the CFO signature; all staff must complete the refreshed security module by month end. Facilities will relocate the Seoul sales floor to a LEED-certified tower in July, with IT coordinating VPN stress tests beforehand. Leadership emphasises that cross-border teams should document decisions in the shared wiki to reduce duplicated meetings. These themes illustrate typical TOEIC-style workplace communication: goals, metrics, problems, and action items embedded in formal prose.",
           {
-            q: "Proposal one for engineering turnover caps —",
+            q: "Asia-Pacific revenue change year-over-year was —",
             options: [
-              { v: "A", text: "consecutive on-call weeks at two" },
-              { v: "B", text: "all hiring" },
-              { v: "C", text: "wellness days at zero" },
-              { v: "D", text: "compliance updates" }
+              { v: "A", text: "a four percent increase" },
+              { v: "B", text: "a ten percent decrease" },
+              { v: "C", text: "flat" },
+              { v: "D", text: "not stated" }
             ],
             correct: "A"
           },
           {
-            q: "Sites must submit retention plans within —",
+            q: "Operating margin was affected by —",
             options: [
-              { v: "A", text: "ten business days" },
-              { v: "B", text: "one day" },
-              { v: "C", text: "one year" },
-              { v: "D", text: "no deadline" }
+              { v: "A", text: "currency and higher cloud-hosting fees" },
+              { v: "B", text: "only marketing" },
+              { v: "C", text: "retail pilot success" },
+              { v: "D", text: "Taiwan satisfaction drops" }
             ],
             correct: "A"
           }
@@ -3765,36 +3792,36 @@ ORDER BY avg_score DESC;"></textarea>
       );
       EN_LISTENING_POOLS.toeic.push(
         lpair(
-          toeicCall1 + " " + toeicCall1,
+          "Internal Announcement — Customer Experience Transformation\nOver the next eighteen months, we will consolidate three legacy CRM platforms into a single cloud instance to reduce duplicate records and shorten case resolution time. Phase one focuses on data hygiene: each department must appoint a steward to validate contact fields before migration weekend in August. Phase two introduces AI-assisted routing for tier-one inquiries; agents will supervise suggestions and log corrections so models improve responsibly. Phase three integrates the warranty lookup tool used by field technicians. Change management includes bilingual job aids, office hours with the vendor, and sandbox practice for team leads. Finance approved a contingency budget for overtime during cutover weekends. We expect temporary slowdowns in reporting dashboards; executives will receive PDF snapshots until APIs stabilise. Ethics and privacy councils reviewed data residency requirements for EU accounts; those tenants remain on the Frankfurt region stack. Sales worries that pipeline visibility could blur during the transition; we will maintain read-only exports weekly. The programme steering committee meets Thursdays and publishes minutes in the transformation channel. Success metrics include first-contact resolution rate, average handle time, and employee satisfaction on the quarterly pulse survey.",
           {
-            q: "Priya's question concerned —",
+            q: "Phase one emphasises —",
             options: [
-              { v: "A", text: "splitting a container to protect a launch date" },
-              { v: "B", text: "canceling HR training" },
-              { v: "C", text: "music licensing" },
-              { v: "D", text: "tax holidays" }
+              { v: "A", text: "data hygiene with departmental stewards" },
+              { v: "B", text: "deleting all CRM data" },
+              { v: "C", text: "closing EU accounts" },
+              { v: "D", text: "removing AI routing" }
             ],
             correct: "A"
           },
           {
-            q: "The team emphasises archiving recordings for —",
+            q: "EU tenant data will —",
             options: [
-              { v: "A", text: "compliance" },
-              { v: "B", text: "entertainment" },
-              { v: "C", text: "personal blogs" },
-              { v: "D", text: "deleting evidence" }
+              { v: "A", text: "remain on the Frankfurt region stack" },
+              { v: "B", text: "move to an unspecified country" },
+              { v: "C", text: "be published publicly" },
+              { v: "D", text: "be deleted without review" }
             ],
             correct: "A"
           }
         )
       );
 
-      // TOEIC 視覺題：避免本機路徑破圖，統一掛線上可用圖片
+      // TOEIC 視覺題：補齊所有題目的 img 屬性
       EN_READING_POOLS.toeic.forEach(function (b, i) {
-        if (!b.imageUrl) b.imageUrl = "Part 7 模擬圖片區塊 " + (i + 1);
+        if (!b.img) b.img = "https://picsum.photos/id/" + (80 + i) + "/600/400";
       });
       EN_LISTENING_POOLS.toeic.forEach(function (b, i) {
-        if (!b.imageUrl) b.imageUrl = "Listening 模擬圖片區塊 " + (i + 1);
+        if (!b.img) b.img = "https://picsum.photos/id/" + (90 + i) + "/600/400";
       });
     })();
 
@@ -3802,18 +3829,18 @@ ORDER BY avg_score DESC;"></textarea>
     const TOEIC_PART1_POOL = [
       {
         stem: "Look at the photograph. Where is this scene most likely taking place?",
-        imageUrl: "Part 1 - Airport Check-in",
+        img: "https://picsum.photos/id/237/400/300",
         options: [
-          { v: "A", text: "At a hospital operating room" },
-          { v: "B", text: "At an airport check-in area" },
-          { v: "C", text: "At a farmer's market stall" },
-          { v: "D", text: "At a concert hall stage" }
+          { v: "A", text: "At a dog park with people walking pets" },
+          { v: "B", text: "At an airport check-in area with travelers" },
+          { v: "C", text: "At a farmer's market stall with produce" },
+          { v: "D", text: "At a concert hall stage with musicians" }
         ],
         correct: "B"
       },
       {
         stem: "Look at the photograph. What are the people probably doing?",
-        imageUrl: "Part 1 - Business Meeting",
+        img: "https://picsum.photos/id/1/400/300",
         options: [
           { v: "A", text: "Installing solar panels on a roof" },
           { v: "B", text: "Conducting a team meeting around a whiteboard" },
@@ -3824,7 +3851,7 @@ ORDER BY avg_score DESC;"></textarea>
       },
       {
         stem: "Look at the photograph. What is the main focus of the activity shown?",
-        imageUrl: "Part 1 - Warehouse Logistics",
+        img: "https://picsum.photos/id/20/400/300",
         options: [
           { v: "A", text: "Loading cargo onto a forklift in a warehouse" },
           { v: "B", text: "Teaching a cooking class in a home kitchen" },
@@ -3835,7 +3862,7 @@ ORDER BY avg_score DESC;"></textarea>
       },
       {
         stem: "Look at the photograph. When might this situation occur?",
-        imageUrl: "Part 1 - Morning Commute",
+        img: "https://picsum.photos/id/30/400/300",
         options: [
           { v: "A", text: "During a morning commute rush at a ticket gate" },
           { v: "B", text: "During a midnight astronomy class indoors" },
@@ -3846,7 +3873,7 @@ ORDER BY avg_score DESC;"></textarea>
       },
       {
         stem: "Look at the photograph. What does the signage in the image most likely indicate?",
-        imageUrl: "Part 1 - Road Detour Sign",
+        img: "https://picsum.photos/id/40/400/300",
         options: [
           { v: "A", text: "A construction detour for motorists" },
           { v: "B", text: "A permanent museum exhibit" },
@@ -3857,7 +3884,7 @@ ORDER BY avg_score DESC;"></textarea>
       },
       {
         stem: "Look at the photograph. Who would most likely work in this setting?",
-        imageUrl: "Part 1 - Hotel Reception",
+        img: "https://picsum.photos/id/50/400/300",
         options: [
           { v: "A", text: "Marine biologists on a diving vessel" },
           { v: "B", text: "Hospitality staff at a hotel reception desk" },
@@ -3868,7 +3895,7 @@ ORDER BY avg_score DESC;"></textarea>
       },
       {
         stem: "Look at the photograph. What equipment visible suggests the industry involved?",
-        imageUrl: "Part 1 - Commercial Kitchen",
+        img: "https://picsum.photos/id/60/400/300",
         options: [
           { v: "A", text: "Microscopes suggest a research laboratory" },
           { v: "B", text: "Ovens suggest a commercial bakery or restaurant kitchen" },
@@ -3879,7 +3906,7 @@ ORDER BY avg_score DESC;"></textarea>
       },
       {
         stem: "Look at the photograph. What weather condition fits the scene best?",
-        imageUrl: "Part 1 - Outdoor Delivery",
+        img: "https://picsum.photos/id/70/400/300",
         options: [
           { v: "A", text: "Heavy snow blocking the windows" },
           { v: "B", text: "Clear daylight suitable for outdoor delivery" },
@@ -4003,6 +4030,7 @@ ORDER BY avg_score DESC;"></textarea>
           return {
             label: englishExamLabel() + " · 隨機預覽",
             readingPassage: rb.passage,
+            readingImg: rb.img,
             readingQs: rb.questions.slice(0, 3),
             listeningScript: lb.script,
             listeningQs: lb.quizzes,
@@ -4064,6 +4092,20 @@ ORDER BY avg_score DESC;"></textarea>
         if (old) old.remove();
         return;
       }
+      // 如果 imageUrl 是有效的圖片 URL，渲染真正的 <img> 標籤
+      if (imageUrl.startsWith('http://') || imageUrl.startsWith('https://')) {
+        var img = old || document.createElement("img");
+        img.id = imageId;
+        img.src = imageUrl;
+        img.alt = altText || "TOEIC Image";
+        img.style.maxWidth = "100%";
+        img.style.borderRadius = "8px";
+        img.style.marginBottom = "15px";
+        img.style.boxShadow = "0 4px 10px rgba(0,0,0,0.1)";
+        if (!old) anchorEl.parentNode.insertBefore(img, anchorEl);
+        return;
+      }
+      // 否則，保持原有的文字顯示邏輯（用於非圖片內容）
       var box = old || document.createElement("div");
       box.id = imageId;
       box.setAttribute("role", "img");
@@ -4111,7 +4153,7 @@ ORDER BY avg_score DESC;"></textarea>
         $("#readingNavHint").textContent = "長篇閱讀 · 同一文章 4 題 · 按「隨機換篇」可再抽題庫";
       }
       $("#readingPassage").textContent = enReadingBundle.passage;
-      renderOptionalImage($("#readingPassage"), "readingPassageImage", enReadingBundle.imageUrl, "Reading reference image");
+      renderOptionalImage($("#readingPassage"), "readingPassageImage", enReadingBundle.img, "Reading reference image");
       $("#readingSingleBlock").style.display = "none";
       $("#readingMultiBlock").style.display = "block";
       $("#readingPrev").style.display = "none";
@@ -4123,7 +4165,7 @@ ORDER BY avg_score DESC;"></textarea>
         var p = document.createElement("p");
         p.style.fontWeight = "600";
         p.style.marginTop = i ? "1rem" : "0";
-        p.textContent = i + 1 + ". " + q.q;
+        p.textContent = (i + 1) + ". " + q.q;
         wrap.appendChild(p);
         var div = document.createElement("div");
         div.className = "mcq-options";
@@ -4151,7 +4193,7 @@ ORDER BY avg_score DESC;"></textarea>
         $("#readingRandomBtn").style.display = "none";
         $("#readingNavHint").textContent = "長篇讀解（真實題庫）第 " + (readingIdx + 1) + " / " + qs.length + " 題";
         $("#readingPassage").textContent = longPack.readingPassage;
-        renderOptionalImage($("#readingPassage"), "readingPassageImage", longPack.imageUrl, "Reading reference image");
+        renderOptionalImage($("#readingPassage"), "readingPassageImage", longPack.img, "Reading reference image");
         $("#readingQuestion").textContent = curQ.q;
         renderMcqOptions("readingOptions", curQ.options, "read_opt");
         $("#readingResult").className = "result-msg";
@@ -4196,9 +4238,13 @@ ORDER BY avg_score DESC;"></textarea>
         englishExamLabel() +
         " · 長篇 Lecture／對話（約 2–3 分鐘 TTS）· 「上一題／下一題」切換同稿小題或換新稿";
       var w = enListeningBundle.script.split(/\s+/).filter(Boolean).length;
-      $("#listenTtsText").textContent =
-        "【練習模式】文稿播放中不顯示全文。本稿約 " + w + " 詞。主題隨題庫隨機抽出，非固定例句。";
-      renderOptionalImage($("#listenTtsText"), "listeningPassageImage", enListeningBundle.imageUrl, "Listening reference image");
+      $("#listenTtsText").innerHTML = `
+        <details class="transcript-hidden">
+          <summary>👁️ 顯示聽力原文 (建議答題後再查看)</summary>
+          <div id="transcriptContent" style="padding-top: 0.5rem;">${enListeningBundle.script}</div>
+        </details>
+      `;
+      renderOptionalImage($("#listenTtsText"), "listeningPassageImage", enListeningBundle.img, "Listening reference image");
       resetListenPlayer();
       listenDurationSec = Math.max(120, Math.min(220, Math.round(w / 2.2)));
       renderEnListenQuiz();
@@ -4213,8 +4259,13 @@ ORDER BY avg_score DESC;"></textarea>
         if (listeningIdx >= lq.length) listeningIdx = 0;
         var LQ = lq[listeningIdx];
         $("#listeningNavHint").textContent = "長篇聽解（真實題庫）第 " + (listeningIdx + 1) + " / " + lq.length + " 題";
-        $("#listenTtsText").textContent = longPack.listeningScript;
-        renderOptionalImage($("#listenTtsText"), "listeningPassageImage", longPack.imageUrl, "Listening reference image");
+        $("#listenTtsText").innerHTML = `
+          <details class="transcript-hidden">
+            <summary>👁️ 顯示聽力原文 (建議答題後再查看)</summary>
+            <div id="transcriptContent" style="padding-top: 0.5rem;">${longPack.listeningScript}</div>
+          </details>
+        `;
+        renderOptionalImage($("#listenTtsText"), "listeningPassageImage", longPack.img, "Listening reference image");
         $("#listenQuizQ").textContent = LQ.q;
         renderMcqOptions("listenQuizOpts", LQ.options, "listen_quiz");
         $("#listenQuizResult").className = "result-msg";
@@ -4225,7 +4276,12 @@ ORDER BY avg_score DESC;"></textarea>
       var arr = LANG_DATA[currentLang].listeningQuestions;
       var L = arr[listeningIdx];
       $("#listeningNavHint").textContent = "第 " + (listeningIdx + 1) + " / " + arr.length + " 題（播放與本題同步）";
-      $("#listenTtsText").textContent = L.tts;
+      $("#listenTtsText").innerHTML = `
+        <details class="transcript-hidden">
+          <summary>👁️ 顯示聽力原文 (建議答題後再查看)</summary>
+          <div id="transcriptContent" style="padding-top: 0.5rem;">${L.tts}</div>
+        </details>
+      `;
       renderOptionalImage($("#listenTtsText"), "listeningPassageImage", L.imageUrl, "Listening reference image");
       $("#listenQuizQ").textContent = L.quizQ;
       renderMcqOptions("listenQuizOpts", L.quizOptions, "listen_quiz");
@@ -4435,6 +4491,38 @@ ORDER BY avg_score DESC;"></textarea>
             { front: "plausible", back: "貌似合理的" },
             { front: "intrinsic", back: "內在的；固有的" },
             { front: "paradigm", back: "典範；模式" }
+          ]
+        },
+        {
+          id: "toefl_2000_liwenqing",
+          label: "托福必背 2000 詞 (李文勍)",
+          words: [
+            { front: "ubiquitous", back: "無所不在的；普遍存在的" },
+            { front: "mitigate", back: "減輕；緩和" },
+            { front: "candid", back: "坦率的；直率的" },
+            { front: "consequential", back: "重要的；有重大影響的" },
+            { front: "ephemeral", back: "短暫的；轉瞬即逝的" },
+            { front: "conscientious", back: "認真的；盡責的" },
+            { front: "gregarious", back: "群居的；愛交際的" },
+            { front: "ameliorate", back: "改善；改良" },
+            { front: "paradigm", back: "典範；範例" },
+            { front: "laudable", back: "值得讚揚的；可嘉的" }
+          ]
+        },
+        {
+          id: "toefl_7000_20days",
+          label: "20 天搞定托福 7000 單詞",
+          words: [
+            { front: "ubiquitous", back: "無所不在的" },
+            { front: "mitigate", back: "減輕；緩和" },
+            { front: "candid", back: "坦率的" },
+            { front: "consequential", back: "重要的" },
+            { front: "ephemeral", back: "短暫的" },
+            { front: "conscientious", back: "認真的" },
+            { front: "gregarious", back: "愛交際的" },
+            { front: "ameliorate", back: "改善" },
+            { front: "paradigm", back: "典範" },
+            { front: "laudable", back: "值得讚揚的" }
           ]
         },
         {
@@ -5200,8 +5288,9 @@ ORDER BY avg_score DESC;"></textarea>
         bar.innerHTML = DEFAULT_LANG_TABS_HTML;
       } else if (toeicMode === "lr") {
         bar.innerHTML =
-          '<button type="button" class="tab-btn active" role="tab" data-panel="reading" aria-selected="true">🖼📄 照片描述／短文閱讀</button>' +
-          '<button type="button" class="tab-btn" role="tab" data-panel="listening" aria-selected="false">🎧 聽力特訓</button>' +
+          '<button type="button" class="tab-btn active" role="tab" data-panel="vocab" aria-selected="true">📝 核心單字</button>' +
+          '<button type="button" class="tab-btn" role="tab" data-panel="reading" aria-selected="false">📖 閱讀實戰</button>' +
+          '<button type="button" class="tab-btn" role="tab" data-panel="listening" aria-selected="false">🎧 聽力精聽</button>' +
           '<button type="button" class="tab-btn tab-mock-exam" role="tab" data-panel="mock-exam" aria-selected="false">🏆 模擬考</button>';
       } else {
         bar.innerHTML =
@@ -5217,7 +5306,7 @@ ORDER BY avg_score DESC;"></textarea>
         else if (next === "reading") renderReadingQuestion();
         else if (next === "listening") renderListeningQuestion();
         else if (next === "speaking" || next === "writing") refreshEnglishSpeakWritePrompts();
-        else if (next === "video-hub") renderVideoHub();
+        else if (next === "vocab") renderVocabFlash();
         else if (next === "mock-exam" && mockPhase === "welcome") {
           var wx = getCurrentMockExam();
           $("#mockWelcomeTitle").textContent = wx.label || "全真長篇模考";
@@ -5231,7 +5320,7 @@ ORDER BY avg_score DESC;"></textarea>
       if (englishExam !== "toeic") {
         return panel === "grammar" || panel === "reading" || panel === "listening" || panel === "speaking" || panel === "writing";
       }
-      if (toeicMode === "lr") return panel === "reading" || panel === "listening";
+      if (toeicMode === "lr") return panel === "vocab" || panel === "reading" || panel === "listening";
       return panel === "speaking" || panel === "writing";
     }
 
@@ -5259,7 +5348,7 @@ ORDER BY avg_score DESC;"></textarea>
       if (!toeicPart1Current) pickToeicPart1();
       block.style.display = "block";
       $("#toeicPart1Stem").textContent = toeicPart1Current.stem;
-      renderOptionalImage($("#toeicPart1Stem"), "toeicPart1Image", toeicPart1Current.imageUrl, "TOEIC Part 1 image");
+      renderOptionalImage($("#toeicPart1Stem"), "toeicPart1Image", toeicPart1Current.img, "TOEIC Part 1 image");
       renderMcqOptions("toeicPart1Options", toeicPart1Current.options, "toeic_p1");
       var r = $("#toeicPart1Result");
       if (r) {
@@ -6431,6 +6520,7 @@ ORDER BY avg_score DESC;"></textarea>
     function renderMockReadingStep() {
       const ex = getCurrentMockExam();
       $("#mockReadingPassage").textContent = ex.readingPassage;
+      renderOptionalImage($("#mockReadingPassage"), "mockReadingImage", ex.readingImg, "Mock reading image");
       const q = ex.readingQs[mockReadingIdx];
       $("#mockReadingQ").textContent = q.q;
       renderMcqOptions("mockReadingOpts", q.options, "mock_read_sel");
@@ -6446,8 +6536,12 @@ ORDER BY avg_score DESC;"></textarea>
       $("#mockListenQuizWrap").style.display = "block";
       mockListenPlayed = false;
       $("#mockListenNotes").value = "";
-      $("#mockListenScriptHint").textContent =
-        "請按播放鍵聽取長篇音檔。題目與選項已先顯示，可邊聽邊作答（建議先看題幹）。";
+      $("#mockListenScriptHint").innerHTML = `
+        <details class="transcript-hidden">
+          <summary>👁️ 顯示聽力原文 (建議答題後再查看)</summary>
+          <div id="transcriptContent" style="padding-top: 0.5rem;">${ex.listeningScript}</div>
+        </details>
+      `;
       const q1 = ex.listeningQs[0];
       const q2 = ex.listeningQs[1];
       $("#mockListenQ1").textContent = "1. " + q1.q;
@@ -6950,7 +7044,12 @@ ORDER BY avg_score DESC;"></textarea>
         $("#mockListenPlay").textContent = "▶";
         mockListenPlayed = true;
         $("#mockListenQuizWrap").classList.remove("mock-hidden");
-        $("#mockListenScriptHint").textContent = "音檔播放完畢，請核對答案後按 Next。";
+        $("#mockListenScriptHint").innerHTML = `
+          <details class="transcript-hidden">
+            <summary>👁️ 顯示聽力原文 (建議答題後再查看)</summary>
+            <div id="transcriptContent" style="padding-top: 0.5rem;">音檔播放完畢，請核對答案後按 Next。</div>
+          </details>
+        `;
         updateMockWizardProgress();
       });
     });
