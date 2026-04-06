@@ -1089,6 +1089,81 @@
       margin-bottom: 0.5rem;
     }
 
+    .sub-panel-title {
+      font-size: 1rem;
+      color: var(--navy);
+      margin: 0 0 0.5rem;
+      padding-bottom: 0.35rem;
+      border-bottom: 2px solid var(--mustard);
+    }
+
+    .im-quiz-block {
+      border: 2px solid var(--navy);
+      border-radius: 12px;
+      padding: 1rem;
+      background: linear-gradient(135deg, #fff 0%, #f7fafc 100%);
+    }
+
+    .im-quiz-badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--navy);
+      background: var(--mustard);
+      padding: 0.25rem 0.65rem;
+      border-radius: 999px;
+      margin-bottom: 0.75rem;
+    }
+
+    .im-quiz-prompt {
+      font-weight: 600;
+      line-height: 1.55;
+      margin: 0 0 1rem;
+      color: var(--navy);
+    }
+
+    .im-quiz-ref {
+      margin-top: 1rem;
+      padding: 1rem;
+      background: #0d1f33;
+      color: #e8eef5;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      line-height: 1.5;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .vocab-resource-hint a {
+      color: var(--navy);
+      font-weight: 600;
+      text-decoration: underline;
+      text-decoration-color: var(--mustard);
+    }
+
+    .im-note-section {
+      margin-bottom: 1.75rem;
+    }
+
+    .im-note-section h4 {
+      font-size: 0.95rem;
+      color: var(--navy);
+      margin-bottom: 0.75rem;
+    }
+
+    .admission-tag {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: var(--navy);
+      background: rgba(253, 184, 19, 0.35);
+      padding: 0.15rem 0.45rem;
+      border-radius: 4px;
+      margin-bottom: 0.35rem;
+    }
+
     /* ========== Responsive ========== */
     @media (max-width: 900px) {
       .app {
@@ -1154,12 +1229,12 @@
           </li>
           <li>
             <button type="button" class="nav-item" data-mode="exam" data-lang="" aria-pressed="false">
-              <span class="nav-icon" aria-hidden="true">🎓</span> 考研專區
+              <span class="nav-icon" aria-hidden="true">🎓</span> 資管考研戰情室
             </button>
           </li>
           <li>
             <button type="button" class="nav-item" data-mode="mind" data-lang="" aria-pressed="false">
-              <span class="nav-icon" aria-hidden="true">💡</span> 學習心法專區
+              <span class="nav-icon" aria-hidden="true">💡</span> 多語天才心法
             </button>
           </li>
         </ul>
@@ -1178,7 +1253,7 @@
         <div class="strategy-grid">
           <article class="strategy-card">
             <h3>總目標 · North Star</h3>
-            <p>大四推甄前<strong>托福 90+</strong>、<strong>雅思 6.5+</strong>，並爭取<strong>美國或日本雙聯學位</strong>申請，以國際視野銜接研究所與職涯。</p>
+            <p><strong>托福 90+</strong>、<strong>雅思 6.5+</strong>、<strong>雙聯學位申請</strong>；以檢定成績與多語能力支撐跨國升學與職涯銜接。</p>
             <span class="tag">TOEFL 90+ · IELTS 6.5+</span>
           </article>
           <article class="strategy-card">
@@ -1187,9 +1262,9 @@
             <span class="tag">A2 → B1</span>
           </article>
           <article class="strategy-card">
-            <h3>專業戰線 · Grad Track</h3>
-            <p><strong>資管所考研</strong>：MIS 觀念、資料庫、申論與演算法／SQL 並進，與語言能力形成「雙引擎」備戰節奏。</p>
-            <span class="tag">MIS 考研</span>
+            <h3>專業戰線 · IM Grad</h3>
+            <p><strong>資管所考研筆試與推甄準備</strong>：MIS／資料結構／資料庫／網路與 OS 核心觀念，與語言能力形成「雙引擎」備戰節奏。</p>
+            <span class="tag">考研 · 推甄</span>
           </article>
         </div>
       </section>
@@ -1206,15 +1281,15 @@
           <button type="button" class="tab-btn" role="tab" data-panel="video-hub" aria-selected="false">影音學習</button>
           <button type="button" class="tab-btn tab-mock-exam" role="tab" data-panel="mock-exam" aria-selected="false">🏆 全真模考</button>
         </div>
-        <!-- 考研模式 Tabs -->
+        <!-- 資管考研戰情室 Tabs -->
         <div class="tabs-bar" id="tabsExam" role="tablist" style="display: none;">
-          <button type="button" class="tab-btn active" role="tab" data-panel="exam-flash" aria-selected="true">核心觀念閃卡</button>
-          <button type="button" class="tab-btn" role="tab" data-panel="exam-essay" aria-selected="false">申論題模擬</button>
-          <button type="button" class="tab-btn" role="tab" data-panel="exam-code" aria-selected="false">演算法與 SQL</button>
+          <button type="button" class="tab-btn active" role="tab" data-panel="exam-notes" aria-selected="true">📝 重點筆記庫</button>
+          <button type="button" class="tab-btn" role="tab" data-panel="exam-admission" aria-selected="false">📊 推甄專區</button>
+          <button type="button" class="tab-btn" role="tab" data-panel="exam-bank" aria-selected="false">💻 考研題庫</button>
         </div>
-        <!-- 學習心法模式（單一面板） -->
+        <!-- 多語天才心法 -->
         <div class="tabs-bar" id="tabsMind" role="tablist" style="display: none;">
-          <button type="button" class="tab-btn active" role="tab" data-panel="learning-mind" aria-selected="true">💡 心法與雲端資源</button>
+          <button type="button" class="tab-btn active" role="tab" data-panel="learning-mind" aria-selected="true">💡 Polyglot · 心法與雲端</button>
         </div>
 
         <div class="panel-area" id="panelArea">
@@ -1226,6 +1301,7 @@
               <select id="vocabBookSelect" aria-label="選擇詞書"></select>
             </div>
             <p class="hint">點擊卡片翻面；依詞書分類動態載入詞條，可用按鈕切換上一張／下一張。</p>
+            <p class="hint vocab-resource-hint" id="vocabResourceHint" style="display: none;" aria-live="polite"></p>
             <div class="flash-scene">
               <div class="flash-card-wrap">
                 <div class="flash-card" id="vocabFlashCard" tabindex="0" aria-label="單字閃卡，點擊翻面">
@@ -1474,69 +1550,88 @@
             </div>
           </section>
 
-          <!-- ===== 學習心法專區 ===== -->
+          <!-- ===== 多語天才心法 ===== -->
           <section class="panel" id="panel-learning-mind" role="tabpanel" style="display: none;">
-            <h3>學習心法 · 元學習與雲端資料</h3>
-            <p class="video-hub-intro">以下連結包含 TED／MIT 公開課與你提供的 Google Drive 資料夾，於新分頁開啟。</p>
+            <h3>多語天才心法 · Polyglot Secrets</h3>
+            <p class="video-hub-intro">元學習、多語策略、TED／MIT 與你提供的雲端備份；於新分頁開啟。</p>
             <div id="mindHubRoot"></div>
           </section>
 
-          <!-- ===== 考研：閃卡 ===== -->
-          <section class="panel" id="panel-exam-flash" role="tabpanel" style="display: none;">
-            <h3>核心觀念閃卡（MIS / 資料庫）</h3>
-            <p class="hint">點擊卡片或「翻面」檢視名詞解釋。</p>
-            <div class="flash-scene">
-              <div class="flash-card-wrap">
-                <div class="flash-card" id="examFlashCard" tabindex="0">
-                  <div class="flash-face flash-front" id="examFlashFront">—</div>
-                  <div class="flash-face flash-back" id="examFlashBack">—</div>
-                </div>
-              </div>
-              <div class="flash-nav">
-                <button type="button" class="btn btn-outline" id="examFlashPrev">上一張</button>
-                <button type="button" class="btn btn-accent" id="examFlashFlip">翻面</button>
-                <button type="button" class="btn btn-outline" id="examFlashNext">下一張</button>
-              </div>
-            </div>
+          <!-- ===== 資管考研：重點筆記庫 ===== -->
+          <section class="panel" id="panel-exam-notes" role="tabpanel" style="display: none;">
+            <h3>📝 重點筆記庫 · IM Core</h3>
+            <p class="video-hub-intro">整合 MIS、資料結構、資料庫、OS／網路等核心考科之筆記與攻略連結（含 HackMD、機構整理與雲端資料）。</p>
+            <div id="imNotesRoot"></div>
           </section>
 
-          <!-- ===== 考研：申論 ===== -->
-          <section class="panel" id="panel-exam-essay" role="tabpanel" style="display: none;">
-            <h3>申論題模擬</h3>
-            <div class="panel-block">
-              <p style="font-weight: 600;" id="examEssayTitle">—</p>
-              <p class="hint" id="examEssayBody">—</p>
+          <!-- ===== 資管考研：推甄專區 ===== -->
+          <section class="panel" id="panel-exam-admission" role="tabpanel" style="display: none;">
+            <h3>📊 推甄專區 · 面試與備審</h3>
+            <p class="video-hub-intro">Dcard 心得、考古平台與部落格攻略精選；點卡片於新分頁閱讀。</p>
+            <div id="imAdmissionRoot"></div>
+          </section>
+
+          <!-- ===== 資管考研：題庫（隨機）＋ 申論／IDE ===== -->
+          <section class="panel" id="panel-exam-bank" role="tabpanel" style="display: none;">
+            <h3>💻 考研題庫 · 隨機抽題</h3>
+            <p class="hint">每次載入與按「下一題」皆從大型陣列 <code>IM_EXAM_BANK</code> 隨機抽題；可先作答再對照參考解答。</p>
+            <div class="panel-block im-quiz-block">
+              <div class="im-quiz-badge" id="imQuizBadge">—</div>
+              <p id="imQuizPrompt" class="im-quiz-prompt">—</p>
+              <label class="lbl" for="imQuizAnswerArea">作答區（名詞解釋請用條列；演算法請寫步驟或虛擬碼）</label>
+              <textarea id="imQuizAnswerArea" class="input-area" rows="8" placeholder="在此輸入你的答案…"></textarea>
+              <div class="btn-row">
+                <button type="button" class="btn btn-outline" id="imQuizRevealBtn">顯示參考解答</button>
+                <button type="button" class="btn btn-accent" id="imQuizNextBtn">🎲 下一題（隨機）</button>
+              </div>
+              <pre class="im-quiz-ref" id="imQuizReference" hidden>—</pre>
             </div>
             <div class="panel-block">
+              <h4 class="sub-panel-title">名詞閃卡複習（MIS／資料庫）</h4>
+              <p class="hint">與題庫互補；點擊卡片翻面。</p>
+              <div class="flash-scene">
+                <div class="flash-card-wrap">
+                  <div class="flash-card" id="examFlashCard" tabindex="0">
+                    <div class="flash-face flash-front" id="examFlashFront">—</div>
+                    <div class="flash-face flash-back" id="examFlashBack">—</div>
+                  </div>
+                </div>
+                <div class="flash-nav">
+                  <button type="button" class="btn btn-outline" id="examFlashPrev">上一張</button>
+                  <button type="button" class="btn btn-accent" id="examFlashFlip">翻面</button>
+                  <button type="button" class="btn btn-outline" id="examFlashNext">下一張</button>
+                </div>
+              </div>
+            </div>
+            <div class="panel-block">
+              <h4 class="sub-panel-title">申論題模擬 · 計時</h4>
+              <p style="font-weight: 600;" id="examEssayTitle">—</p>
+              <p class="hint" id="examEssayBody">—</p>
               <p>計時：<span class="essay-timer" id="essayTimerDisplay">00:00</span>
                 <span class="btn-row" style="display: inline-flex; margin-left: 0.75rem; vertical-align: middle;">
                   <button type="button" class="btn btn-accent" id="essayTimerStart">開始計時</button>
                   <button type="button" class="btn btn-outline" id="essayTimerReset">重置</button>
                 </span>
               </p>
+              <label class="lbl" for="examEssayArea">作答區</label>
+              <textarea id="examEssayArea" class="input-area" rows="10" placeholder="請在此練習申論作答…"></textarea>
             </div>
             <div class="panel-block">
-              <label class="lbl" for="examEssayArea">作答區</label>
-              <textarea id="examEssayArea" class="input-area" rows="12" placeholder="請在此練習申論作答…"></textarea>
-            </div>
-          </section>
-
-          <!-- ===== 考研：Code ===== -->
-          <section class="panel" id="panel-exam-code" role="tabpanel" style="display: none;">
-            <h3>演算法與 SQL 練習區</h3>
-            <p class="hint">深色區塊模擬 IDE，可練習虛擬碼、資料結構觀念或 SQL。</p>
-            <label class="lbl" for="ideEditor">練習編輯器</label>
-            <div class="ide-wrap">
-              <div class="ide-bar">
-                <span class="ide-dot r"></span><span class="ide-dot y"></span><span class="ide-dot g"></span>
-                <span>practice.sql / scratch.pad</span>
-              </div>
-              <textarea id="ideEditor" class="ide-editor" spellcheck="false" placeholder="-- 範例 SQL
+              <h4 class="sub-panel-title">演算法與 SQL 草稿區</h4>
+              <p class="hint">深色區塊模擬 IDE，可與上方隨機題對照練習。</p>
+              <label class="lbl" for="ideEditor">練習編輯器</label>
+              <div class="ide-wrap">
+                <div class="ide-bar">
+                  <span class="ide-dot r"></span><span class="ide-dot y"></span><span class="ide-dot g"></span>
+                  <span>practice.sql / pseudocode.pad</span>
+                </div>
+                <textarea id="ideEditor" class="ide-editor" spellcheck="false" placeholder="-- 範例 SQL
 SELECT student_id, AVG(score) AS avg_score
 FROM grades
 GROUP BY student_id
 HAVING AVG(score) &gt;= 60
 ORDER BY avg_score DESC;"></textarea>
+              </div>
             </div>
           </section>
         </div>
@@ -3471,10 +3566,19 @@ ORDER BY avg_score DESC;"></textarea>
       });
     }
 
-    /** 學習心法 + 雲端連結 */
+    /** 多語天才心法 + 雲端連結 */
     const MIND_MEDIA_RESOURCES = [
       {
-        category: "💡 學習心法 · TED / 元學習",
+        category: "🌐 Polyglot · 多語學習（新）",
+        items: [
+          { title: "會四國六語只兩年｜單語母語者的逆襲", url: "https://b23.tv/qfUcDCs" },
+          { title: "16 歲英國多語者：如何快速學會任何外語", url: "https://b23.tv/BCTaHAe" },
+          { title: "語言專家：快速學外語的 5 個關鍵方法", url: "https://b23.tv/aDQXCy5" },
+          { title: "反常方法學會 18 種語言｜100 年前真人實驗", url: "https://b23.tv/OkMRQOD" }
+        ]
+      },
+      {
+        category: "💡 元學習 · TED / MIT",
         items: [
           { title: "如何在六個月內學會任何一門外語（TEDx）", url: "https://b23.tv/BIvb2hU" },
           { title: "多語言天才的唯一秘訣（中英+文稿）", url: "https://b23.tv/R5RafaT" },
@@ -3486,9 +3590,10 @@ ORDER BY avg_score DESC;"></textarea>
         ]
       },
       {
-        category: "☁️ Google Drive 雲端資料（你提供的連結）",
+        category: "☁️ Google Drive · 雲端備份",
         items: [
-          { title: "資料夾總覽", url: "https://drive.google.com/drive/folders/16z251J_E5qPAUDLbgRJO3YS8KFth2kl4" },
+          { title: "考研／推甄資料夾（新）", url: "https://drive.google.com/drive/folders/1RsGoZWCZqBZqmavjuaWhDN_xo705VmHv" },
+          { title: "語言學習資料夾總覽", url: "https://drive.google.com/drive/folders/16z251J_E5qPAUDLbgRJO3YS8KFth2kl4" },
           { title: "雲端檔案 1", url: "https://drive.google.com/file/d/1GCTXAFysuPzqghLxdMdkBkHPrdrYi4pC/view?usp=drivesdk" },
           { title: "雲端檔案 2", url: "https://drive.google.com/file/d/16KZa_GqNxi_lQml59zMvqWi5TF6-jcnL/view?usp=drivesdk" },
           { title: "雲端檔案 3", url: "https://drive.google.com/file/d/1GcaYcsBHEern0YYPFpKXXVC35TLyyh_9/view?usp=drivesdk" },
@@ -3525,8 +3630,60 @@ ORDER BY avg_score DESC;"></textarea>
     const WORD_BOOKS = {
       en: [
         {
+          id: "ielts_zhenjing_6600",
+          label: "雅思｜《詞彙真經》6600 帶背（精講）",
+          resourceUrl: "https://b23.tv/bOYnqMj",
+          resourceNote: "21 天精講帶背完整版",
+          words: [
+            { front: "meticulous", back: "一絲不苟的；過分注意細節的" },
+            { front: "ubiquitous", back: "無所不在的；十分普遍的" },
+            { front: "paradigm", back: "典範；思維模式" },
+            { front: "coherent", back: "連貫一致的；條理清晰的" },
+            { front: "plausible", back: "貌似合理的；花言巧語的" }
+          ]
+        },
+        {
+          id: "ielts_zhenjing_audio",
+          label: "雅思｜詞彙真經 6600（音頻磨耳朵）",
+          resourceUrl: "https://b23.tv/JCJQmuH",
+          resourceNote: "真人發音音頻版",
+          words: [
+            { front: "scrutinise / scrutinize", back: "細查；仔細檢視" },
+            { front: "repercussion", back: "（常複數）後果；反響" },
+            { front: "tenuous", back: "薄弱的；含糊的" },
+            { front: "intrinsic", back: "內在的；固有的" },
+            { front: "detrimental", back: "有害的；不利的" }
+          ]
+        },
+        {
+          id: "ielts_8000_18h",
+          label: "雅思｜18 小時搞定 8000 詞",
+          resourceUrl: "https://b23.tv/K1hP0Xz",
+          resourceNote: "高頻詞串講",
+          words: [
+            { front: "hypothesis", back: "假設；前提" },
+            { front: "empirical", back: "經驗的；實證的" },
+            { front: "anomaly", back: "異常；不規則" },
+            { front: "conundrum", back: "難題；謎" },
+            { front: "pragmatic", back: "務實的；實用主義的" }
+          ]
+        },
+        {
+          id: "toeic_cindy",
+          label: "多益｜Cindy 零碎時間單字串講",
+          resourceUrl: "https://b23.tv/d4w5M2p",
+          resourceNote: "商務情境單字",
+          words: [
+            { front: "deadline", back: "截止期限" },
+            { front: "invoice", back: "發票；開立發票" },
+            { front: "reimbursement", back: "報銷；補償" },
+            { front: "procurement", back: "採購" },
+            { front: "compliance", back: "合規；遵守" }
+          ]
+        },
+        {
           id: "toefl_core",
-          label: "托福核心詞彙",
+          label: "托福核心詞彙（內建練習）",
           words: [
             { front: "hypothesis", back: "假設；前提" },
             { front: "coherent", back: "連貫的；一致的" },
@@ -3548,6 +3705,7 @@ ORDER BY avg_score DESC;"></textarea>
         }
       ],
       ko: [
+        { id: "ko_jp_30d_n3", label: "韓語｜30 天學日語 · N3 必備 1500 詞（日韓雙語例句）", resourceUrl: "https://b23.tv/YAt6hQY", resourceNote: "適合聽寫", words: [{ front: "습관", back: "習慣" }, { front: "목표", back: "目標" }, { front: "복습", back: "複習" }, { front: "어휘", back: "詞彙" }, { front: "문법", back: "文法" }] },
         { id: "yonsei_1", label: "延世韓國語 第1冊", words: [{ front: "안녕하세요", back: "您好（正式問候）" }, { front: "감사합니다", back: "謝謝" }, { front: "죄송합니다", back: "對不起" }] },
         { id: "yonsei_2", label: "延世韓國語 第2冊", words: [{ front: "날씨가 어때요?", back: "天氣如何？" }, { front: "약속", back: "約定" }, { front: "취미", back: "嗜好" }] },
         { id: "yonsei_3", label: "延世韓國語 第3冊", words: [{ front: "습관", back: "習慣" }, { front: "목표", back: "目標" }, { front: "복습", back: "複習" }] },
@@ -3559,11 +3717,17 @@ ORDER BY avg_score DESC;"></textarea>
         { id: "topik_adv", label: "TOPIK 高級詞彙", words: [{ front: "궁극적", back: "終極的" }, { front: "논지", back: "論旨" }, { front: "함의", back: "含義" }] }
       ],
       es: [
+        { id: "es_7d_4000", label: "西語｜7 天 4000 高頻詞（硬核記憶）", resourceUrl: "https://b23.tv/i5h6DQR", resourceNote: "高頻詞速成", words: [{ front: "acuerdo", back: "協議；同意" }, { front: "reunión", back: "會議" }, { front: "plazo", back: "期限" }, { front: "cumplimiento", back: "履行；合規" }, { front: "proveedor", back: "供應商" }] },
+        { id: "es_4500_phrase", label: "西語｜4500 詞彙短語・語境背詞", resourceUrl: "https://b23.tv/1XqnJly", resourceNote: "附素材", words: [{ front: "en cambio", back: "相反地；另一方面" }, { front: "sin embargo", back: "然而" }, { front: "por lo tanto", back: "因此" }, { front: "a pesar de", back: "儘管" }, { front: "en consecuencia", back: "結果；因此" }] },
+        { id: "es_3500_shadow", label: "西語｜3500 詞短句・影子帶讀", resourceUrl: "https://b23.tv/K6HVxvj", resourceNote: "睡前磨耳朵", words: [{ front: "matiz", back: "細微差別" }, { front: "sustentar", back: "支撐；支持（論點）" }, { front: "matices", back: "細微差異（複數）" }, { front: "redacción", back: "寫作；文稿" }, { front: "oralidad", back: "口語性；口頭表達" }] },
         { id: "es_1000", label: "入门必背1000词", words: [{ front: "hola", back: "你好" }, { front: "gracias", back: "謝謝" }, { front: "biblioteca", back: "圖書館" }] },
         { id: "dele_b2", label: "DELE B2", words: [{ front: "asimismo", back: "同樣地；此外" }, { front: "repercución", back: "影響；反響" }, { front: "supuesto", back: "假設；當然" }] },
-        { id: "dele_c1", label: "DELE C1", words: [{ front: "ubiquitous", back: "無所不在的（西語常見對應：ubicuo）" }, { front: "sine qua non", back: "必要條件（拉丁借詞）" }, { front: "matiz", back: "細微差別；色調" }] }
+        { id: "dele_c1", label: "DELE C1", words: [{ front: "ubicuo", back: "無所不在的" }, { front: "sine qua non", back: "必要條件（拉丁借詞）" }, { front: "matiz", back: "細微差別；色調" }] }
       ],
       ja: [
+        { id: "n4_sleep_1000", label: "日語｜N4 考試詞彙・圖像記憶（近 1000 詞）", resourceUrl: "https://b23.tv/TeqO3ZT", resourceNote: "睡前磨耳朵", words: [{ front: "準備", back: "じゅんび（準備）" }, { front: "約束", back: "やくそく（約定）" }, { front: "無理", back: "むり（勉強、不可能）" }, { front: "世話", back: "せわ（照顧、幫忙）" }, { front: "関係", back: "かんけい（關係）" }] },
+        { id: "jp_15000_cat", label: "日語｜15000 詞分類記憶（影片版）", resourceUrl: "https://b23.tv/HhYy7YE", resourceNote: "睡前分類背詞", words: [{ front: "職場", back: "しょくば（職場）" }, { front: "残業", back: "ざんぎょう（加班）" }, { front: "会議", back: "かいぎ（會議）" }, { front: "給料", back: "きゅうりょう（薪資）" }, { front: "転職", back: "てんしょく（轉職）" }] },
+        { id: "jp_n5n1_japasta", label: "日語｜N5–N1 じゃぱすた系統教學", resourceUrl: "https://b23.tv/jG2B8Is", resourceNote: "文字・詞彙・文法・聽力", words: [{ front: "授業", back: "じゅぎょう（上課）" }, { front: "試験", back: "しけん（考試）" }, { front: "文法", back: "ぶんぽう（文法）" }, { front: "語彙", back: "ごい（詞彙）" }, { front: "聴解", back: "ちょうかい（聽解）" }] },
         { id: "gojuon", label: "五十音（示例）", words: [{ front: "あ", back: "あ行母音 a" }, { front: "か", back: "ka 行" }, { front: "さ", back: "sa 行" }] },
         { id: "minna_begin", label: "大家的日語 初級", words: [{ front: "はじめまして", back: "初次見面" }, { front: "よろしく", back: "請多關照" }, { front: "がんばります", back: "我會加油" }] },
         { id: "minna_mid", label: "大家的日語 中級", words: [{ front: "〜に違いない", back: "一定…；肯定…" }, { front: "一方で", back: "另一方面" }, { front: "要するに", back: "總之" }] },
@@ -3571,6 +3735,9 @@ ORDER BY avg_score DESC;"></textarea>
         { id: "jlpt_n1", label: "N1 必背", words: [{ front: "憂慮", back: "憂慮（ゆうりょ）" }, { front: "著しい", back: "顯著的（いちじるしい）" }, { front: "推移", back: "推移（すいい）" }] }
       ],
       de: [
+        { id: "de_21d_8000", label: "德語｜21 天背完 8000 詞（德英對照）", resourceUrl: "https://b23.tv/jiy5aWP", resourceNote: "高頻詞串聯", words: [{ front: "die Auswirkung", back: "影響；後果" }, { front: "zunehmend", back: "日益增加的" }, { front: "die Grafik", back: "圖表" }, { front: "zusammenfassen", back: "總結" }, { front: "die Meinung", back: "意見" }] },
+        { id: "de_100_stories", label: "德語｜100 篇故事・口語聽力單字", resourceUrl: "https://b23.tv/K66NUQ1", resourceNote: "A1–B2 反覆背誦", words: [{ front: "die Geschichte", back: "故事；歷史" }, { front: "erzählen", back: "敘述" }, { front: "die Übung", back: "練習" }, { front: "alltäglich", back: "日常的" }, { front: "die Aussprache", back: "發音" }] },
+        { id: "de_en_dual_1000", label: "德語｜英德一起學 A1→B2（千集）", resourceUrl: "https://b23.tv/j6HLLr2", resourceNote: "雙語對照入門到中高", words: [{ front: "trotzdem", back: "儘管如此" }, { front: "hingegen", back: "相反地" }, { front: "sich bemühen", back: "努力；致力" }, { front: "unter Berücksichtigung", back: "考慮到…" }, { front: "die Voraussetzung", back: "前提" }] },
         { id: "goethe_b1", label: "歌德 B1", words: [{ front: "die Meinung", back: "意見" }, { front: "trotzdem", back: "儘管如此" }, { front: "sich bemühen", back: "努力；致力" }] },
         { id: "goethe_b2", label: "歌德 B2", words: [{ front: "die Auswirkung", back: "影響；後果" }, { front: "hingegen", back: "相反地" }, { front: "unter Berücksichtigung", back: "考慮到…" }] },
         { id: "testdaf_3", label: "德福 3 分必背", words: [{ front: "die Grafik", back: "圖表" }, { front: "zunehmend", back: "日益增加的" }, { front: "zusammenfassen", back: "總結" }] }
@@ -3580,15 +3747,22 @@ ORDER BY avg_score DESC;"></textarea>
     /** B 站影音資源（網格卡片動態渲染） */
     const VIDEO_RESOURCES = [
       {
-        category: "🇬🇧 雅思 IELTS",
+        category: "🇬🇧 雅思 IELTS · 聽說讀寫",
         items: [
           { title: "Simon 全 100 集（聽說讀寫，中字）", url: "https://b23.tv/T32GdaW" },
           { title: "Simon 寫作全集 2026（寫作觀點庫／範文）", url: "https://b23.tv/dbI1f1T" },
           { title: "Tiffani 口語 0→9 雙語字幕", url: "https://b23.tv/Vy0qimF" },
-          { title: "雅思詞彙真經 21 天 6600 詞", url: "https://b23.tv/AUvGl1R" },
           { title: "劍雅 1–19 聽力合集", url: "https://b23.tv/IcRIiif" },
           { title: "雅思閱讀真題合集", url: "https://b23.tv/8HF3Z4y" },
           { title: "6 小時雅思口語速成", url: "https://b23.tv/4y3UUGJ" }
+        ]
+      },
+      {
+        category: "📚 雅思／英語 · 單字帶背（新）",
+        items: [
+          { title: "雅思詞彙真經 6600 詞（完結精講帶背）", url: "https://b23.tv/bOYnqMj" },
+          { title: "雅思詞彙真經 6600（音頻磨耳朵・真人發音）", url: "https://b23.tv/JCJQmuH" },
+          { title: "18 小時搞定雅思英語 8000 詞", url: "https://b23.tv/K1hP0Xz" }
         ]
       },
       {
@@ -3604,57 +3778,69 @@ ORDER BY avg_score DESC;"></textarea>
         ]
       },
       {
-        category: "🇯🇵 日語 Japanese",
+        category: "💼 多益 TOEIC · 單字",
+        items: [{ title: "Cindy 陪你零碎時間背多益單字（串講）", url: "https://b23.tv/d4w5M2p" }]
+      },
+      {
+        category: "🇯🇵 日語 Japanese · 單字／教程",
         items: [
-          { title: "零基礎日語 · 新標日 0–N4（高考／考研基礎）", url: "https://b23.tv/63EHbw6" },
-          { title: "Shadowing 日本語を話そう 影子跟讀全系列", url: "https://b23.tv/8b7oK93" },
+          { title: "近 1000 個 N4 單字・圖像記憶合集", url: "https://b23.tv/TeqO3ZT" },
+          { title: "15000 日語單詞分類記憶（影片版）", url: "https://b23.tv/HhYy7YE" },
+          { title: "N5–N1 じゃぱすた系統教程", url: "https://b23.tv/jG2B8Is" },
+          { title: "零基礎日語 · 新標日 0–N4", url: "https://b23.tv/63EHbw6" },
+          { title: "Shadowing 日本語を話そう 影子跟讀", url: "https://b23.tv/8b7oK93" },
           { title: "新標日 0 到 N1 入門教程", url: "https://b23.tv/AZyCvLW" },
-          { title: "逆轉裁判學日語", url: "https://b23.tv/DScSgbZ" },
-          { title: "N5~N2 日語語法詳解", url: "https://b23.tv/Fb7YPIr" }
+          { title: "逆轉裁判學日語", url: "https://b23.tv/DScSgbZ" }
         ]
       },
       {
         category: "🇰🇷 韓語 Korean · TOPIK",
         items: [
+          { title: "30 天韓語學日語 · N3 必備 1500 詞（日韓雙語例句）", url: "https://b23.tv/YAt6hQY" },
           { title: "韓語 0–TOPIK6 百集教程", url: "https://b23.tv/0F2rCLn" },
-          { title: "0 基礎學韓語 入門到精通（長時單片）", url: "https://b23.tv/n7EfOjq" },
+          { title: "0 基礎學韓語 入門到精通", url: "https://b23.tv/n7EfOjq" },
           { title: "TOPIK 初級單字全攻略", url: "https://b23.tv/U5dCQX0" },
           { title: "KoreanClass101 韓語 800+ 集", url: "https://b23.tv/hm9MgXw" }
         ]
       },
       {
-        category: "🇪🇸 西班牙語 Spanish",
+        category: "🇪🇸 西班牙語 Spanish · 單字",
         items: [
+          { title: "7 天背完 4000 高頻詞", url: "https://b23.tv/i5h6DQR" },
+          { title: "4500 詞彙短語・語境背詞", url: "https://b23.tv/1XqnJly" },
+          { title: "3500 詞短句・影子帶讀", url: "https://b23.tv/K6HVxvj" },
           { title: "情景化西語 · 中西字幕口語", url: "https://b23.tv/VSVq2HP" },
-          { title: "Laura 老師零基礎西語", url: "https://b23.tv/PDuB7P0" },
-          { title: "西班牙語初級課程 129 集完整版", url: "https://b23.tv/eekSeOY" }
+          { title: "Laura 老師零基礎西語", url: "https://b23.tv/PDuB7P0" }
         ]
       },
       {
-        category: "🇩🇪 德語 German",
+        category: "🇩🇪 德語 German · 單字／聽讀",
         items: [
-          { title: "德語外刊精讀 2022 下半年（明鏡／南德等）", url: "https://b23.tv/AOnVRfv" },
-          { title: "21 天背完 8000 詞（德英對照）", url: "https://b23.tv/baWPSz3" },
+          { title: "德語外刊精讀 2022 下半年", url: "https://b23.tv/AOnVRfv" },
+          { title: "21 天背完 8000 詞（德英對照・新連結）", url: "https://b23.tv/jiy5aWP" },
+          { title: "100 篇德語故事・口語聽力 A1–B2", url: "https://b23.tv/K66NUQ1" },
+          { title: "英德一起學 A1→B2（千集）", url: "https://b23.tv/j6HLLr2" },
           { title: "走遍德國 0-B2 網課合集", url: "https://b23.tv/7ZnEsnR" },
           { title: "德語精聽訓練", url: "https://b23.tv/T0sYJC8" }
         ]
       },
       {
-        category: "💡 學習心法（影音學習區精選）",
+        category: "💡 Polyglot · 心法（影音區）",
         items: [
+          { title: "會四國六語只兩年｜單語母語者的逆襲", url: "https://b23.tv/qfUcDCs" },
+          { title: "16 歲英國多語者：快速學任何外語", url: "https://b23.tv/BCTaHAe" },
+          { title: "語言專家：5 個關鍵方法", url: "https://b23.tv/aDQXCy5" },
+          { title: "反常方法學 18 種語言｜100 年前實驗", url: "https://b23.tv/OkMRQOD" },
           { title: "六個月學會任何外語（TEDx）", url: "https://b23.tv/BIvb2hU" },
-          { title: "多語言天才的唯一秘訣", url: "https://b23.tv/R5RafaT" },
-          { title: "MIT 公開課：如何說話", url: "https://b23.tv/fpMMJlR" },
-          { title: "像玩遊戲一樣學會一門語言", url: "https://b23.tv/5RasS2W" },
-          { title: "自學能力與人生高度（MIT 挑戰）", url: "https://b23.tv/uWC3S2H" },
-          { title: "優秀的人如何訓練大腦", url: "https://b23.tv/feML6o9" },
-          { title: "20 小時學會任何事情", url: "https://b23.tv/CKTWBzm" }
+          { title: "20 小時學會任何事情", url: "https://b23.tv/CKTWBzm" },
+          { title: "MIT 公開課：如何說話", url: "https://b23.tv/fpMMJlR" }
         ]
       },
       {
         category: "☁️ Google Drive（雲端備份）",
         items: [
-          { title: "資料夾總覽", url: "https://drive.google.com/drive/folders/16z251J_E5qPAUDLbgRJO3YS8KFth2kl4" },
+          { title: "考研／推甄資料夾", url: "https://drive.google.com/drive/folders/1RsGoZWCZqBZqmavjuaWhDN_xo705VmHv" },
+          { title: "語言學習資料夾總覽", url: "https://drive.google.com/drive/folders/16z251J_E5qPAUDLbgRJO3YS8KFth2kl4" },
           { title: "雲端檔案 1", url: "https://drive.google.com/file/d/1GCTXAFysuPzqghLxdMdkBkHPrdrYi4pC/view?usp=drivesdk" },
           { title: "雲端檔案 2", url: "https://drive.google.com/file/d/16KZa_GqNxi_lQml59zMvqWi5TF6-jcnL/view?usp=drivesdk" },
           { title: "雲端檔案 3", url: "https://drive.google.com/file/d/1GcaYcsBHEern0YYPFpKXXVC35TLyyh_9/view?usp=drivesdk" },
@@ -3669,13 +3855,226 @@ ORDER BY avg_score DESC;"></textarea>
       { front: "ERP", back: "企業資源規劃：整合財務、供應鏈、人資等流程的套裝或模組化資訊系統。" },
       { front: "正規化（Normalization）", back: "減少資料重複與異常相依，將關聯綱要分解為良好結構的過程。" },
       { front: "ACID", back: "交易四性質：原子性、一致性、隔離性、持久性，確保資料庫交易可靠。" },
-      { front: "主鍵（Primary Key）", back: "唯一識別資料表中每一列的欄位或欄位組合，不可重複且通常不可為 NULL。" }
+      { front: "主鍵（Primary Key）", back: "唯一識別資料表中每一列的欄位或欄位組合，不可重複且通常不可為 NULL。" },
+      { front: "外部鍵（Foreign Key）", back: "指向另一表主鍵的欄位，用於維護參考完整性與表間關聯。" },
+      { front: "DDL / DML", back: "DDL：定義綱要（CREATE、ALTER）；DML：操作資料（SELECT、INSERT、UPDATE、DELETE）。" },
+      { front: "堆疊（Stack）", back: "後進先出（LIFO）的線性結構，常見於遞迴呼叫、語法剖析、Undo。" },
+      { front: "佇列（Queue）", back: "先進先出（FIFO），常見於排程、BFS、緩衝。" },
+      { front: "時間複雜度 Big-O", back: "描述輸入規模 n 增長時，演算法步驟上界；用於比較演算法效率。" }
     ];
 
     const EXAM_ESSAY = {
       title: "113 年某校資管所 — 申論題（模擬）",
       body: "請說明「數位轉型」對傳統製造業管理資訊系統（MIS）在資料治理、流程再造與資安面向的影響，並舉例一項關鍵技術與其可能風險。字數建議 600–800 字（此處為練習可不限制）。"
     };
+
+    /**
+     * 資管考研戰情室：重點筆記庫（科目 × 連結）
+     * IM_Notes_Array — 真實攻略與雲端備份
+     */
+    const IM_NOTES_ARRAY = [
+      {
+        subject: "MIS · 管理資訊系統",
+        links: [
+          {
+            title: "yclabtech｜資管研究所考古與讀書攻略",
+            url: "https://yclabtech.com/im-exam-preparation/",
+            note: "時間規劃、考科準備方向整理"
+          },
+          {
+            title: "HackMD｜資管／資訊相關筆記（社群範例）",
+            url: "https://hackmd.io/@iamalex33329/SJFPRxti3",
+            note: "可對照自己的筆記架構"
+          },
+          {
+            title: "GET 資管｜考試資訊與科目導覽",
+            url: "https://master.get.com.tw/it/MIS/screen.aspx",
+            note: "招生與考科官方整理入口"
+          },
+          {
+            title: "Google Drive｜考研／推甄資料夾（你提供的備份）",
+            url: "https://drive.google.com/drive/folders/1RsGoZWCZqBZqmavjuaWhDN_xo705VmHv",
+            note: "講義、考古、備審範本等雲端留存"
+          }
+        ]
+      },
+      {
+        subject: "資料結構與演算法",
+        links: [
+          {
+            title: "博客來考古題平台｜資訊／資管類（範例試卷）",
+            url: "https://www.daso.com.tw/exam/index?str=301E850169DB104C2C4DB85B72B39C16",
+            note: "線上瀏覽考古題"
+          },
+          {
+            title: "Daso｜單份試卷內頁（範例）",
+            url: "https://www.daso.com.tw/newExam/inside?str=54DEE1F93F8A8743519734BC031371FC",
+            note: "計時與題型練習參考"
+          },
+          {
+            title: "Pixnet｜資訊／管院考研心得整理（範例文章）",
+            url: "https://edd000036.pixnet.net/blog/posts/7120402196",
+            note: "讀書方法與資源回顧"
+          }
+        ]
+      },
+      {
+        subject: "資料庫與資訊系統實務",
+        links: [
+          {
+            title: "yclabtech｜資管考研專區（同上站內延伸）",
+            url: "https://yclabtech.com/im-exam-preparation/",
+            note: "SQL、資料庫觀念可搭配考古"
+          }
+        ]
+      },
+      {
+        subject: "作業系統／網路（計概延伸）",
+        links: [
+          {
+            title: "建議搭配：各校考古與共筆",
+            url: "https://hackmd.io/@iamalex33329/SJFPRxti3",
+            note: "OS、計概選擇與申論可併讀"
+          }
+        ]
+      }
+    ];
+
+    /**
+     * 推甄專區：面試心得、備審、跨考經驗（Dcard 等）
+     */
+    const ADMISSION_LINKS_ARRAY = [
+      { title: "Dcard｜考研板心得（範例串 1）", url: "https://www.dcard.tw/f/graduate_school/p/258472832?cid=3a754d44-028b-4020-850d-1e825937f5f9", tag: "心得" },
+      { title: "Dcard｜推甄／備審討論（範例串 2）", url: "https://www.dcard.tw/f/graduate_school/p/261238983?cid=aed73853-029d-4a65-ad6e-9f92ae40dd8b", tag: "備審" },
+      { title: "Dcard｜面試與讀書計畫（範例串 3）", url: "https://www.dcard.tw/f/graduate_school/p/258562680?cid=124e496c-d164-46b1-a7e5-0d6c9f970ada", tag: "面試" },
+      { title: "Dcard｜跨考／資管經驗（範例串 4）", url: "https://www.dcard.tw/f/graduate_school/p/260455993?cid=54cf5ee8-6ce7-40dc-8eb9-5a2d574749ff", tag: "跨考" },
+      { title: "Dcard｜書審與推薦信（範例串 5）", url: "https://www.dcard.tw/f/graduate_school/p/260343461?cid=0652acf6-0753-48df-87a7-673b9143859b", tag: "書審" },
+      { title: "Dcard｜上榜心得整理（範例串 6）", url: "https://www.dcard.tw/f/graduate_school/p/258527035?cid=5b102255-8fae-4ba8-8736-46102f33e895", tag: "心得" },
+      { title: "Dcard｜研究所話題（範例串 7）", url: "https://www.dcard.tw/f/graduate_school/p/259916805", tag: "綜合" },
+      { title: "Google Drive｜考研／推甄雲端資料", url: "https://drive.google.com/drive/folders/1RsGoZWCZqBZqmavjuaWhDN_xo705VmHv", tag: "雲端" },
+      { title: "yclabtech｜資管考研攻略站", url: "https://yclabtech.com/im-exam-preparation/", tag: "攻略" },
+      { title: "GET 資管｜招生與考科", url: "https://master.get.com.tw/it/MIS/screen.aspx", tag: "官方" }
+    ];
+
+    /**
+     * 考研題庫：名詞解釋、演算法虛擬碼、SQL／DB 觀念 — 每次 Math.random 抽一題
+     */
+    const IM_EXAM_BANK = [
+      {
+        badge: "MIS 名詞",
+        prompt: "請解釋何謂「管理資訊系統（MIS）」，並各舉一個策略層與作業層的資訊系統例子。",
+        reference:
+          "參考：MIS 為支援組織決策與日常營運的人機整合系統。策略層例：高階主管儀表板／市場預測系統；作業層例：POS、庫存管理。重點在「資料→資訊→決策」與利害關係人。"
+      },
+      {
+        badge: "MIS 名詞",
+        prompt: "什麼是 ERP？導入 ERP 常見的組織面阻力為何？",
+        reference:
+          "參考：ERP 整合財務、供應鏈、人資等流程於同一資料模型。阻力常見：部門本位、流程標準化衝突、變更管理不足、資料清理耗時、使用者訓練成本。"
+      },
+      {
+        badge: "資料庫",
+        prompt: "說明第一正規化（1NF）的目的，並舉一個違反 1NF 的欄位設計例子。",
+        reference:
+          "參考：1NF 要求每個欄位不可分割且每列唯一。反例：「電話」欄存「0911-222-333, 02-1234-5678」多值未拆表；應拆成多筆或子表。"
+      },
+      {
+        badge: "資料庫",
+        prompt: "解釋 ACID 四個性質，並說明「隔離性」在併發交易下要解決的問題。",
+        reference:
+          "參考：A 原子性、C 一致性、I 隔離性、D 持久性。隔離性要避免髒讀、不可重複讀、幻讀；依隔離等級在一致性與效能間權衡。"
+      },
+      {
+        badge: "資料結構",
+        prompt: "寫出二元搜尋樹（BST）插入一個鍵的虛擬碼（迭代或遞迴擇一）。",
+        reference:
+          "參考虛擬碼：若樹空則新建節點；否則從根比較，較小往左、較大往右，直到空子樹後插入。時間複雜度平均 O(log n)，最差 O(n)。"
+      },
+      {
+        badge: "資料結構",
+        prompt: "說明 QuickSort 的平均與最差時間複雜度，並描述最差情況如何發生。",
+        reference:
+          "參考：平均 O(n log n)；最差 O(n²)，發生在每次 pivot 極端不平衡（例如已排序且總選最小／最大為 pivot）。可隨機化 pivot 改善期望效能。"
+      },
+      {
+        badge: "資料結構",
+        prompt: "何謂「最短路徑」問題？列出 Dijkstra 適用與不適用的圖形條件。",
+        reference:
+          "參考：找兩點間邊權重和最小路徑。Dijkstra 適用非負邊權；若存在負邊需改用 Bellman-Ford 等。可用 min-heap 加速。"
+      },
+      {
+        badge: "演算法",
+        prompt: "寫出 Merge Sort 合併兩個已排序陣列的虛擬碼（merge 步驟）。",
+        reference:
+          "參考：雙指標 i,j 比較 A[i]、B[j]，較小者輸出到 C 並前進；一邊走完後將另一邊剩餘全接。整體 Merge Sort 時間 O(n log n)，空間 O(n)。"
+      },
+      {
+        badge: "演算法",
+        prompt: "解釋動態規劃與分治法的差異，並舉一個適合用 DP 的典型問題。",
+        reference:
+          "參考：DP 子問題重疊、最優子結構，以記憶化或表格避免重算；分治子問題獨立（如 merge sort）。例：LIS、背包問題、編輯距離。"
+      },
+      {
+        badge: "作業系統",
+        prompt: "什麼是 Deadlock？列出四個必要條件與一種預防策略。",
+        reference:
+          "參考：互斥、持有並等待、不可搶占、循環等待。預防：例如一次請求所有資源、允許搶占、或破壞循環等待（有序資源編號）。"
+      },
+      {
+        badge: "作業系統",
+        prompt: "說明分頁（Paging）與分段（Segmentation）在記憶體管理上的主要差異。",
+        reference:
+          "參考：分頁固定大小框，內部碎片；分段依邏輯單位可變長，外部碎片。虛擬記憶體常結合兩者概念於實務 MMU。"
+      },
+      {
+        badge: "網路",
+        prompt: "TCP 與 UDP 的主要差異？各適合哪類應用？",
+        reference:
+          "參考：TCP 連線導向、可靠、有序，適合 HTTP、FTP；UDP 無連線、低延遲、不保證傳送，適合即時串流、DNS（常見）、遊戲封包。"
+      },
+      {
+        badge: "網路",
+        prompt: "簡述 OSI 七層中 Transport 與 Network 層各負責什麼。",
+        reference:
+          "參考：Network（第3層）負責端對端路由與 IP；Transport（第4層）負責埠對埠連線、流量控制、錯誤恢復（TCP）或輕量傳輸（UDP）。"
+      },
+      {
+        badge: "SQL",
+        prompt: "寫一則 SQL：查詢「每個系所學生數」，資料表 students(dept_id, student_id)。",
+        reference:
+          "參考：SELECT dept_id, COUNT(*) AS cnt FROM students GROUP BY dept_id;"
+      },
+      {
+        badge: "SQL",
+        prompt: "解釋 INNER JOIN 與 LEFT OUTER JOIN 的結果差異。",
+        reference:
+          "參考：INNER 只保留兩表鍵匹配列；LEFT 保留左表全部列，右表無匹配則填 NULL。右表缺失時 INNER 會丟失該左表列。"
+      },
+      {
+        badge: "資料庫設計",
+        prompt: "何謂「交易隔離層級」中的 Repeatable Read？可能仍出現何種異常？",
+        reference:
+          "參考：同一交易內重複讀同範圍結果一致；部分系統仍可能有幻讀（除非 Serializable 或範圍鎖）。依 DB 實作而異。"
+      },
+      {
+        badge: "資結圖論",
+        prompt: "以虛擬碼描述 BFS 從起點 s 走訪無向圖的流程。",
+        reference:
+          "參考：佇列 Q 放入 s、標記 visited；while Q 非空：取出 u，對每個未訪鄰居 v 標記並入佇列。時間 O(V+E)。"
+      },
+      {
+        badge: "MIS 策略",
+        prompt: "什麼是「個人化（Personalization）」與「隱私權」在電商推薦系統中的權衡？",
+        reference:
+          "參考：個人化提升轉換率但蒐集行為資料可能侵害隱私；需告知同意、最小化蒐集、去識別化與法遵（如個資法／GDPR 精神）。"
+      },
+      {
+        badge: "專案管理",
+        prompt: "簡述敏捷開發中 Sprint Review 與 Retrospective 的目的差異。",
+        reference:
+          "參考：Review 對利害關係人展示增量、蒐集回饋；Retrospective 團隊內省流程改進，不對外展示功能。"
+      }
+    ];
 
     /* ---------- 全域狀態 ---------- */
     let currentMode = "lang"; // 'lang' | 'exam' | 'mind'
@@ -3691,6 +4090,8 @@ ORDER BY avg_score DESC;"></textarea>
     let enListenQuizIdx = 0;
     let vocabIndex = 0;
     let examFlashIndex = 0;
+    /** 考研題庫當前隨機題（IM_EXAM_BANK） */
+    let imQuizCurrent = null;
     /** 題庫陣列目前索引（文法 / 閱讀 / 聽力） */
     let grammarIdx = 0;
     let readingIdx = 0;
@@ -3760,7 +4161,7 @@ ORDER BY avg_score DESC;"></textarea>
     function getActiveTabPanelId() {
       if (currentMode === "exam") {
         const active = $("#tabsExam .tab-btn.active");
-        return active ? active.getAttribute("data-panel") : "exam-flash";
+        return active ? active.getAttribute("data-panel") : "exam-notes";
       }
       if (currentMode === "mind") {
         const active = $("#tabsMind .tab-btn.active");
@@ -3772,10 +4173,10 @@ ORDER BY avg_score DESC;"></textarea>
 
     function activatePanel(panelId) {
       // 語言模式 panels: vocab, grammar, reading, listening, speaking, writing, mock-exam
-      // 考研模式: exam-flash, exam-essay, exam-code
+      // 考研模式: exam-notes, exam-admission, exam-bank
       // 心法模式: learning-mind
       const langPanels = ["vocab", "grammar", "reading", "listening", "speaking", "writing", "video-hub", "mock-exam"];
-      const examPanels = ["exam-flash", "exam-essay", "exam-code"];
+      const examPanels = ["exam-notes", "exam-admission", "exam-bank"];
       const mindPanels = ["learning-mind"];
 
       $$(".panel-area .panel").forEach((p) => {
@@ -3819,6 +4220,14 @@ ORDER BY avg_score DESC;"></textarea>
       }
       if (currentMode === "lang" && panelId === "video-hub") renderVideoHub();
       if (currentMode === "mind" && panelId === "learning-mind") renderMindHub();
+      if (currentMode === "exam") {
+        if (panelId === "exam-notes") renderImNotesHub();
+        if (panelId === "exam-admission") renderAdmissionHub();
+        if (panelId === "exam-bank") {
+          renderImQuiz();
+          renderExamFlash();
+        }
+      }
     }
 
     function applyLanguageContent() {
@@ -3951,6 +4360,28 @@ ORDER BY avg_score DESC;"></textarea>
     }
 
     /* ---------- 單字 3D 閃卡 ---------- */
+    function updateVocabResourceHint() {
+      var el = $("#vocabResourceHint");
+      if (!el) return;
+      var books = WORD_BOOKS[currentLang] || WORD_BOOKS.en;
+      var id = $("#vocabBookSelect").value;
+      var book = books.find(function (b) {
+        return b.id === id;
+      });
+      if (book && book.resourceUrl) {
+        var line =
+          "📺 配套影音／帶背：<a href=\"" +
+          book.resourceUrl +
+          '" target="_blank" rel="noopener noreferrer">Bilibili 資源</a>';
+        if (book.resourceNote) line += " — " + book.resourceNote;
+        el.innerHTML = line;
+        el.style.display = "block";
+      } else {
+        el.innerHTML = "";
+        el.style.display = "none";
+      }
+    }
+
     function renderVocabFlash() {
       const deck = getActiveVocabDeck();
       if (vocabIndex >= deck.length) vocabIndex = 0;
@@ -3958,6 +4389,7 @@ ORDER BY avg_score DESC;"></textarea>
       $("#vocabFront").textContent = item.front;
       $("#vocabBack").textContent = item.back;
       $("#vocabFlashCard").classList.remove("is-flipped");
+      updateVocabResourceHint();
     }
 
     /** 影音學習：由 VIDEO_RESOURCES 產生網格 */
@@ -3985,10 +4417,100 @@ ORDER BY avg_score DESC;"></textarea>
       });
     }
 
+    /** 資管考研戰情室：重點筆記庫 */
+    function renderImNotesHub() {
+      var root = $("#imNotesRoot");
+      if (!root) return;
+      root.innerHTML = "";
+      IM_NOTES_ARRAY.forEach(function (sec) {
+        var block = document.createElement("div");
+        block.className = "im-note-section";
+        var h = document.createElement("h4");
+        h.textContent = sec.subject;
+        block.appendChild(h);
+        var grid = document.createElement("div");
+        grid.className = "video-grid";
+        sec.links.forEach(function (lnk) {
+          var a = document.createElement("a");
+          a.className = "video-card";
+          a.href = lnk.url;
+          a.target = "_blank";
+          a.rel = "noopener noreferrer";
+          a.innerHTML =
+            '<div class="vc-title">' +
+            lnk.title +
+            '</div><div class="vc-link">' +
+            lnk.url +
+            "</div>" +
+            (lnk.note ? '<p class="hint" style="margin:0.35rem 0 0;font-size:0.75rem;">' + lnk.note + "</p>" : "");
+          grid.appendChild(a);
+        });
+        block.appendChild(grid);
+        root.appendChild(block);
+      });
+    }
+
+    /** 推甄專區網格 */
+    function renderAdmissionHub() {
+      var root = $("#imAdmissionRoot");
+      if (!root) return;
+      root.innerHTML = "";
+      var grid = document.createElement("div");
+      grid.className = "video-grid";
+      ADMISSION_LINKS_ARRAY.forEach(function (it) {
+        var a = document.createElement("a");
+        a.className = "video-card";
+        a.href = it.url;
+        a.target = "_blank";
+        a.rel = "noopener noreferrer";
+        a.innerHTML =
+          '<span class="admission-tag">' +
+          (it.tag || "連結") +
+          "</span>" +
+          '<div class="vc-title">' +
+          it.title +
+          '</div><div class="vc-link">' +
+          it.url +
+          "</div>";
+        grid.appendChild(a);
+      });
+      root.appendChild(grid);
+    }
+
+    /** 考研題庫：隨機一題 */
+    function renderImQuiz() {
+      imQuizCurrent = getRandomFrom(IM_EXAM_BANK);
+      $("#imQuizBadge").textContent = imQuizCurrent.badge;
+      $("#imQuizPrompt").textContent = imQuizCurrent.prompt;
+      $("#imQuizAnswerArea").value = "";
+      var ref = $("#imQuizReference");
+      ref.textContent = imQuizCurrent.reference;
+      ref.hidden = true;
+    }
+
     $("#vocabBookSelect").addEventListener("change", function () {
       vocabIndex = 0;
       renderVocabFlash();
     });
+
+    var imRevealBtn = $("#imQuizRevealBtn");
+    if (imRevealBtn) {
+      imRevealBtn.addEventListener("click", function () {
+        var ref = $("#imQuizReference");
+        ref.hidden = !ref.hidden;
+        this.textContent = ref.hidden ? "顯示參考解答" : "隱藏參考解答";
+      });
+    }
+    var imNextBtn = $("#imQuizNextBtn");
+    if (imNextBtn) {
+      imNextBtn.addEventListener("click", function () {
+        renderImQuiz();
+        var rb = $("#imQuizRevealBtn");
+        if (rb) rb.textContent = "顯示參考解答";
+        var ref = $("#imQuizReference");
+        if (ref) ref.hidden = true;
+      });
+    }
 
     function flipVocabCard() {
       $("#vocabFlashCard").classList.toggle("is-flipped");
@@ -4964,17 +5486,18 @@ ORDER BY avg_score DESC;"></textarea>
           applyLanguageContent();
           openTab("vocab");
         } else if (mode === "mind") {
-          $("#mainTitle").textContent = "💡 學習心法專區";
-          $("#mainDesc").textContent = "TED、元學習、MIT 公開課與你提供的 Google Drive 雲端連結。";
+          $("#mainTitle").textContent = "💡 多語天才心法";
+          $("#mainDesc").textContent =
+            "Polyglot 策略、元學習、TED／MIT，以及雲端備份與 B 站精選；於新分頁開啟。";
           openTab("learning-mind");
         } else {
-          $("#mainTitle").textContent = "🎓 資管考研";
-          $("#mainDesc").textContent = "管理資訊系統與資料庫核心觀念、申論與程式/SQL 練習。";
+          $("#mainTitle").textContent = "🎓 資管考研戰情室 · IM Grad Center";
+          $("#mainDesc").textContent =
+            "重點筆記庫、推甄攻略連結、隨機考研題庫（MIS／資結／資料庫／OS／網路），並附申論計時與 SQL 草稿區。";
           $("#examEssayTitle").textContent = EXAM_ESSAY.title;
           $("#examEssayBody").textContent = EXAM_ESSAY.body;
           examFlashIndex = 0;
-          renderExamFlash();
-          openTab("exam-flash");
+          openTab("exam-notes");
         }
       });
     });
