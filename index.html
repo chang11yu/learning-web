@@ -1164,6 +1164,85 @@
       margin-bottom: 0.35rem;
     }
 
+    .im-track-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.75rem 1rem;
+      padding: 1rem 1.1rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #0a2240 0%, #143a66 100%);
+      border: 3px solid var(--mustard);
+      border-radius: 12px;
+      box-shadow: 0 4px 14px rgba(10, 34, 64, 0.2);
+    }
+
+    .im-track-bar .im-track-label {
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--mustard);
+      width: 100%;
+      margin: 0;
+    }
+
+    .im-track-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .im-track-btn {
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 700;
+      padding: 0.55rem 1rem;
+      border-radius: 999px;
+      border: 2px solid rgba(255, 255, 255, 0.35);
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+      cursor: pointer;
+      transition: background 0.15s, border-color 0.15s, transform 0.1s;
+    }
+
+    .im-track-btn:hover {
+      background: rgba(253, 184, 19, 0.2);
+      border-color: var(--mustard);
+    }
+
+    .im-track-btn.active {
+      background: var(--mustard);
+      color: var(--navy);
+      border-color: var(--mustard);
+    }
+
+    .im-subject-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.5rem 0.75rem;
+      margin-top: 0.25rem;
+      width: 100%;
+    }
+
+    .im-subject-row label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.92);
+    }
+
+    .im-subject-row select {
+      min-width: 220px;
+      padding: 0.45rem 0.65rem;
+      border-radius: 8px;
+      border: 2px solid var(--mustard);
+      font-weight: 600;
+      color: var(--navy);
+      background: #fff;
+      cursor: pointer;
+    }
+
     /* ========== Responsive ========== */
     @media (max-width: 900px) {
       .app {
@@ -1181,11 +1260,142 @@
         grid-template-columns: repeat(2, 1fr);
       }
     }
+
+    /* ========== Mobile / Tablet (<= 768px): Off-canvas Sidebar + Single Column ========== */
+    .hamburger-btn {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      border: 2px solid rgba(10, 34, 64, 0.15);
+      background: rgba(255, 255, 255, 0.92);
+      color: var(--navy);
+      font-size: 1.25rem;
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(10, 34, 64, 0.10);
+      flex: 0 0 auto;
+    }
+
+    .sidebar-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 34, 64, 0.55);
+      backdrop-filter: blur(2px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+      z-index: 999;
+    }
+
+    body.sidebar-open .sidebar-backdrop {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    @media (max-width: 768px) {
+      .app {
+        flex-direction: row; /* keep main full width; sidebar becomes off-canvas */
+      }
+
+      .hamburger-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .main {
+        padding: 1rem 0.95rem 2rem;
+      }
+
+      .main-header {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.75rem;
+      }
+
+      .main-title {
+        font-size: 1.15rem;
+        line-height: 1.25;
+      }
+
+      .main-desc {
+        font-size: 0.88rem;
+      }
+
+      /* Off-canvas sidebar */
+      .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: min(86vw, 320px);
+        transform: translateX(-110%);
+        transition: transform 0.22s ease;
+        z-index: 1000;
+        border-right: 4px solid var(--mustard);
+        border-bottom: none;
+        box-shadow: 16px 0 44px rgba(10, 34, 64, 0.25);
+      }
+
+      body.sidebar-open .sidebar {
+        transform: translateX(0);
+      }
+
+      .sidebar-inner {
+        padding-bottom: 1rem;
+        overflow-y: auto;
+        max-height: 100vh;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      /* Single column grids */
+      .strategy-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .video-grid {
+        grid-template-columns: 1fr;
+      }
+
+      /* Reading passage: adaptive height + smooth touch scroll */
+      .reading-scroll-passage {
+        max-height: calc(100vh - 320px);
+        min-height: 44vh;
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior: contain;
+      }
+
+      /* Flashcards: fit mobile width while keeping 3D flip smooth */
+      .flash-card-wrap {
+        max-width: 100%;
+        height: 190px;
+      }
+
+      .flash-face {
+        padding: 1rem;
+      }
+
+      .flash-front {
+        font-size: 1.05rem;
+      }
+
+      .flash-back {
+        font-size: 0.92rem;
+      }
+
+      /* Mock exam start button: less oversized on mobile */
+      .btn-start-exam {
+        width: 100%;
+        padding: 0.9rem 1.25rem;
+        font-size: 1.05rem;
+      }
+    }
   </style>
 </head>
 <body>
   <div class="app">
-    <aside class="sidebar" aria-label="主選單">
+    <aside class="sidebar" id="sidebar" aria-label="主選單">
       <div class="sidebar-inner">
         <div class="logo">
           Varsity Lingo
@@ -1243,17 +1453,41 @@
 
     <main class="main">
       <header class="main-header">
+        <button type="button" class="hamburger-btn" id="sidebarToggleBtn" aria-label="開啟選單" aria-controls="sidebar" aria-expanded="false">
+          ☰
+        </button>
         <h1 class="main-title" id="mainTitle">🇺🇸 英文特訓</h1>
         <p class="main-desc" id="mainDesc">美式常春藤風格學習儀表板 — 單字、文法、閱讀、聽力、口說、寫作一站整合。</p>
       </header>
+
+      <!-- 多益：聽讀 L&R 與說寫 S&W 為不同測驗（僅英文模式＋側欄選多益時顯示） -->
+      <div id="toeicModeBar" class="im-track-bar" style="display: none; margin: 0 0 1rem;" aria-label="TOEIC 測驗類型">
+        <p class="im-track-label">TOEIC · 聽讀／說寫分流</p>
+        <div class="im-track-buttons">
+          <button type="button" class="im-track-btn active" id="toeicLRBtn" data-toeic-split="lr" aria-pressed="true">
+            🎧📖 聽力與閱讀測驗（L&amp;R）
+          </button>
+          <button type="button" class="im-track-btn" id="toeicSWBtn" data-toeic-split="sw" aria-pressed="false">
+            🗣✍️ 口說與寫作測驗（S&amp;W）
+          </button>
+        </div>
+        <p class="hint" style="width:100%;margin:0.35rem 0 0;color:rgba(255,255,255,0.85);font-size:0.78rem;">
+          L&amp;R 與 S&amp;W 為獨立考試；切換後上方分頁會重排，口說／寫作題庫亦與聽讀分離載入。
+        </p>
+      </div>
 
       <!-- 置頂戰略計畫（兩種模式皆顯示，強化目標感） -->
       <section class="strategy-dashboard" aria-label="戰略儀表板">
         <h2>📌 戰略儀表板 · Study Command Center</h2>
         <div class="strategy-grid">
           <article class="strategy-card">
+            <h3>學習者 · Learner Profile</h3>
+            <p><strong>1134538　張芷瑜（Chang Chih-yu）</strong><br />國立嘉義大學　資訊管理學系</p>
+            <span class="tag">NCYU MIS</span>
+          </article>
+          <article class="strategy-card">
             <h3>總目標 · North Star</h3>
-            <p><strong>托福 90+</strong>、<strong>雅思 6.5+</strong>、<strong>雙聯學位申請</strong>；以檢定成績與多語能力支撐跨國升學與職涯銜接。</p>
+            <p><strong>托福 90+</strong>、<strong>雅思 6.5+</strong>，並成功申請<strong>美國／日本雙聯學位</strong>；以檢定與多語能力銜接跨國升學與職涯。</p>
             <span class="tag">TOEFL 90+ · IELTS 6.5+</span>
           </article>
           <article class="strategy-card">
@@ -1263,7 +1497,7 @@
           </article>
           <article class="strategy-card">
             <h3>專業戰線 · IM Grad</h3>
-            <p><strong>資管所考研筆試與推甄準備</strong>：MIS／資料結構／資料庫／網路與 OS 核心觀念，與語言能力形成「雙引擎」備戰節奏。</p>
+            <p><strong>資管所考研筆試與推甄</strong>：科技組／管理組考科分流、閃卡與隨機題庫；影音區已含「資管考研攻略」連結（高點、TKB 懶人包、Dcard、HackMD）。</p>
             <span class="tag">考研 · 推甄</span>
           </article>
         </div>
@@ -1336,6 +1570,16 @@
             <h3>閱讀實戰</h3>
             <span class="reading-exam-badge" id="readingExamBadge" style="display: none;">—</span>
             <p class="quiz-nav-hint" id="readingNavHint">—</p>
+            <div class="panel-block" id="toeicPart1Block" style="display: none;">
+              <label class="lbl">TOEIC L&amp;R · Part 1 照片描述（選擇題）</label>
+              <p id="toeicPart1Stem" class="im-quiz-prompt">—</p>
+              <div class="mcq-options" id="toeicPart1Options"></div>
+              <div class="btn-row">
+                <button type="button" class="btn btn-outline" id="toeicPart1Submit">送出 Part 1</button>
+                <button type="button" class="btn btn-accent" id="toeicPart1Next">🔄 換一組照片題</button>
+              </div>
+              <div class="result-msg" id="toeicPart1Result"></div>
+            </div>
             <div class="panel-block">
               <div class="reading-scroll-passage" id="readingPassage">—</div>
             </div>
@@ -1401,6 +1645,10 @@
           <!-- ===== 語言：口說 ===== -->
           <section class="panel" id="panel-speaking" role="tabpanel">
             <h3>口說特訓（真實錄音）</h3>
+            <p class="hint">英文檢定題目由題庫隨機抽出（IELTS／TOEFL／TOEIC S&amp;W 分庫）；可按「換一題」重新抽題。</p>
+            <div class="btn-row" style="margin-bottom: 0.75rem;">
+              <button type="button" class="btn btn-accent" id="speakRandomPromptBtn">🔄 隨機換口說題</button>
+            </div>
             <p class="hint">請允許瀏覽器使用麥克風。錄音停止後會自動產生可回放的音訊播放器。</p>
             <div class="panel-block">
               <p>題目提示：<strong id="speakPrompt">—</strong></p>
@@ -1456,7 +1704,7 @@
                 <div class="player-card">
                   <div class="player-row">
                     <button type="button" class="play-toggle" id="mockListenPlay" aria-label="播放聽力">▶</button>
-                    <span style="font-size:0.85rem;opacity:0.9;">全程約 2 分鐘以上 · 播畢後作答</span>
+                    <span style="font-size:0.85rem;opacity:0.9;">全程約 2 分鐘以上 · 題目已先顯示，可邊聽邊作答</span>
                   </div>
                   <div class="tts-text-box" id="mockListenScriptHint" style="font-size:0.8rem;">請按播放開始（考試中不顯示全文稿）。</div>
                 </div>
@@ -1531,6 +1779,9 @@
           <!-- ===== 語言：寫作（含 52 活用句型側欄） ===== -->
           <section class="panel" id="panel-writing" role="tabpanel">
             <h3>寫作實戰</h3>
+            <div class="btn-row" style="margin-bottom: 0.75rem;">
+              <button type="button" class="btn btn-accent" id="writingRandomPromptBtn">🔄 隨機換寫作題</button>
+            </div>
             <p class="hint" id="writingPrompt">—</p>
             <div class="writing-layout panel-block">
               <div>
@@ -1574,7 +1825,24 @@
           <!-- ===== 資管考研：題庫（隨機）＋ 申論／IDE ===== -->
           <section class="panel" id="panel-exam-bank" role="tabpanel" style="display: none;">
             <h3>💻 考研題庫 · 隨機抽題</h3>
-            <p class="hint">每次載入與按「下一題」皆從大型陣列 <code>IM_EXAM_BANK</code> 隨機抽題；可先作答再對照參考解答。</p>
+            <div class="im-track-bar" role="group" aria-label="資管所入學組別">
+              <p class="im-track-label">Track · 考科分組</p>
+              <div class="im-track-buttons">
+                <button type="button" class="im-track-btn active" id="imTrackTechBtn" data-im-track="tech" aria-pressed="true">
+                  💻 科技組（Tech Track）
+                </button>
+                <button type="button" class="im-track-btn" id="imTrackMgmtBtn" data-im-track="management" aria-pressed="false">
+                  📊 管理組（Management Track）
+                </button>
+              </div>
+              <div class="im-subject-row">
+                <label for="imSubjectFilter">篩選科目</label>
+                <select id="imSubjectFilter" aria-label="依科目篩選題庫與閃卡"></select>
+              </div>
+            </div>
+            <p class="hint">
+              題庫 <code>IM_EXAM_BANK</code> 與閃卡 <code>IM_FLASHCARDS_ARRAY</code> 皆含 <code>track</code>／<code>subject</code> 標籤；切換組別與科目後，<strong>🔄 隨機換題</strong>僅從篩選後的陣列抽題。
+            </p>
             <div class="panel-block im-quiz-block">
               <div class="im-quiz-badge" id="imQuizBadge">—</div>
               <p id="imQuizPrompt" class="im-quiz-prompt">—</p>
@@ -1582,13 +1850,13 @@
               <textarea id="imQuizAnswerArea" class="input-area" rows="8" placeholder="在此輸入你的答案…"></textarea>
               <div class="btn-row">
                 <button type="button" class="btn btn-outline" id="imQuizRevealBtn">顯示參考解答</button>
-                <button type="button" class="btn btn-accent" id="imQuizNextBtn">🎲 下一題（隨機）</button>
+                <button type="button" class="btn btn-accent" id="imQuizNextBtn">🔄 隨機換題</button>
               </div>
               <pre class="im-quiz-ref" id="imQuizReference" hidden>—</pre>
             </div>
             <div class="panel-block">
-              <h4 class="sub-panel-title">名詞閃卡複習（MIS／資料庫）</h4>
-              <p class="hint">與題庫互補；點擊卡片翻面。</p>
+              <h4 class="sub-panel-title">名詞閃卡複習（依組別／科目篩選）</h4>
+              <p class="hint">與題庫相同篩選條件；點擊卡片翻面，上一張／下一張僅在篩選後的閃卡內循環。</p>
               <div class="flash-scene">
                 <div class="flash-card-wrap">
                   <div class="flash-card" id="examFlashCard" tabindex="0">
@@ -1638,6 +1906,7 @@ ORDER BY avg_score DESC;"></textarea>
       </div>
     </main>
   </div>
+  <div class="sidebar-backdrop" id="sidebarBackdrop" aria-hidden="true"></div>
 
   <script>
     /* ========================================================================
@@ -1833,7 +2102,7 @@ ORDER BY avg_score DESC;"></textarea>
         ],
         listeningQuestions: [
           {
-            tts: "The quick brown fox jumps over the lazy dog. Varsity athletes balance training with coursework, often meeting at dawn for practice before lectures begin.",
+            tts: "Varsity athletes balance training with coursework, often meeting at dawn for practice before lectures begin; coaches track attendance because morning sessions set the tone for weekly performance reviews.",
             quizQ: "According to the audio, when do varsity athletes often practice?",
             quizOptions: [
               { v: "A", text: "At midnight" },
@@ -2376,7 +2645,7 @@ ORDER BY avg_score DESC;"></textarea>
       ja: {
         label: "長文模考（日文 · JLPT/留學取向）",
         readingPassage:
-          "近年、大学教育ではハイブリッド学習やオンライン教材の導入が進み、学習ログの可視化が教員と学生の対話を支えています。一方で、数値に現れにくい批判的思考や協働的な議論を軽視しないカリキュラム設計が求められます。本稿では、短い動画や自動採点が基礎理解の効率化に寄与しつつ、対面のゼミで応用力を育てるモデルに焦点を当てます。アクセシビリティの観点からは、字幕や柔軟な期限設定が多様な学習者を支援しますが、学習目標の明示と質の高いフィードバックが成果を左右します。長期的な調査によれば、デジタルツール単体より、計画的な復習やメタ認知の訓練と組み合わせたときに継続的な成績向上が観察されます。国際化が進む学部では英語で授業を受ける学生が増え、ライティングやスピーキング支援の重要性も高まっています。生成AIの利用が広がる一方で、根拠を評価し不確実性に対処する力は依然として人間の指導と対話が中心です。教育技術は教育観を増幅する道具であり、教員研修や授業設計への投資なしに導入だけでは効果は限定的です。図書館のグループ学習室は今月からオンライン予約が必須となり、深夜の開館時間も拡大されました。学生には週次で学習時間を記録し、過小評価されがちな準備時間を可視化することが推奨されます。カウンセリング室では、不安管理とタスク細分化のワークショップが金曜午後に開催され、参加は任意です。来学期の履修登録は来週月曜午前九時に開始し、人気講座はすぐに埋まるため、代替科目を二つ用意しておくことが奨励されています。定員超過の場合はキャンセル待ちに登録し、毎朝ポータルを確認してください。以上のように、デジタルと対面を統合した支援体制が、現代のキャンパス学習を形作っています。卒業後の社会では、曖昧な課題に対し証拠を統合し、他者と協働しながら解決策を模索する力が問われます。大学はその基盤をどのように育成するかが、今後の評価の焦点となるでしょう。",
+          "近年、大学教育ではハイブリッド学習やオンライン教材の導入が進み、学習ログの可視化が教員と学生の対話を支えています。しかし、数値に現れやすい行動（クリック数、提出回数）だけを追うと、批判的思考や協働的な議論といった「測りにくい力」が後景に退くという懸念もあります。そこで注目されるのが、対面のゼミや演習を「応用の場」として守りつつ、基礎知識の確認や反復練習をオンラインに任せる設計です。例えば、短い動画で概念を押さえ、授業では資料を比較して根拠の強さを検討する。あるいは、反対意見を想定しながら自分の主張を組み立て、言い換えや要約を互いに添削する。こうした活動は、単に正誤を当てるだけでは鍛えにくい読解と表現の持久力を要求します。\n\nアクセシビリティの観点からは、字幕、可変の提出期限、画面読み上げに配慮した教材が、障害の有無を越えて多様な学習者を支援します。ただし、配慮が学習目標を曖昧にするのではなく、目標を明示したうえで到達までの道筋を増やすことが重要です。長期的な調査によれば、デジタルツールを「任意の補助」として置くよりも、週次の復習計画、自己評価の質問（何が分かり、何が曖昧か）と組み合わせたときに継続的な成績向上が観察されます。国際化が進む学部では英語で授業を受ける学生も増え、ライティングやスピーキング支援の重要性も高まっていますが、生成AIの普及により「根拠を評価し、不確実性に対処しながら説明する力」がより問われるようになりました。\n\nさらに、学習環境そのものも変化しています。図書館のグループ学習室は今月からオンライン予約が必須となり、深夜の開館時間も拡大されました。学生には週次で学習時間を記録し、過小評価されがちな準備時間を可視化することが推奨されます。カウンセリング室では、不安管理とタスク細分化のワークショップが金曜午後に開催され、参加は任意です。来学期の履修登録は来週月曜午前九時に開始し、人気講座はすぐに埋まるため、代替科目を二つ用意しておくことが奨励されています。定員超過の場合はキャンセル待ちに登録し、毎朝ポータルを確認してください。\n\n以上のように、教育技術は教育観を増幅する道具であり、導入それ自体が目的ではありません。卒業後の社会では、曖昧な課題に対し証拠を統合し、他者と協働しながら解決策を模索する力が問われます。大学はその基盤をどのように育成するかが、今後の評価の焦点となるでしょう。",
         readingQs: [
           {
             q: "筆者が最も強調しているのはどれか。",
@@ -2410,7 +2679,7 @@ ORDER BY avg_score DESC;"></textarea>
           }
         ],
         listeningScript:
-          "皆さんこんにちは。学習スキル講座、第三回目を始めます。今日は期末直前だけでなく学期全体を見通した時間管理についてお話しします。まず、週間スケジュールを単なるToDoリストではなく注意の予算と考えてください。認知負荷の研究では、九十分集中して短い休憩を挟むブロックが、細切れのマルチタスクより成果が高いとされています。次に、自分の高エネルギー帯を把握しましょう。午前中に頭が冴えるなら、読解の重い科目をそこに配置し、雑務は後ろに回します。第三に、余白の日を一つ確保してください。予定を詰め込みすぎると、一つの課題の遅れで全体が崩れます。第四に、オフィスアワーには具体的な質問やアウトラインを持参し、曖昧な相談は避けましょう。第五に、学習グループは開始時刻と役割分担を決め、終わりの定義を共有してください。第六に、計画と実績のログを取り、感覚ではなくデータで調整します。第七に、カレンダーとタスク管理はシンプルに保ち、学期の途中でツールを替えないこと。第八に、睡眠は記憶の固定に不可欠で、削るほどテスト成績が下がることがあります。第九に、やる気が落ちたら最初の一歩を小さくし、難しい段落に十分集中するだけでも前進です。第十に、月一回は計画を見直し、中間試験週とプロジェクト週でペースが違うことを忘れないでください。最後に、来週月曜午前九時から来学期の履修登録が始まり、人気講座はすぐ満席になるので代替を二つ用意し、キャンセル待ちに入った方は毎朝ポータルを確認してください。ライティングセンターは非同期フィードバックも開始しました。本日は以上です。来週もよろしくお願いします。",
+          "（学内アナウンス）皆さん、こんにちは。学習スキル講座・第三回を始めます。今日は期末直前の詰め込みではなく、学期全体を見通した時間管理についてお話しします。まず、週間スケジュールを単なるToDoリストではなく「注意の予算」と考えてください。認知負荷の研究では、九十分ほど集中し短い休憩を挟むブロックが、細切れのマルチタスクより成果が高いとされています。次に、自分の高エネルギー帯を把握しましょう。午前中に頭が冴えるなら、読解の重い科目、例えば論文の要旨読みや統計の演習をそこに配置し、メール返信や買い物などの雑務は後ろに回します。\n\n第三に、余白の日を一つ確保してください。予定を詰め込みすぎると、一つの課題が延びただけで全体が崩れます。第四に、オフィスアワーを戦略的に使いましょう。「何が分からないか分からない」状態で行くのではなく、例えば『この段落の主張と根拠の対応関係が取れない』『この式変形の前提条件が分からない』のように、具体的な質問かアウトラインを持参してください。第五に、学習グループは開始時刻と役割分担を決め、終わりの定義を共有します。司会、要約係、例題担当、時間係などを交代し、最後に「今日の結論」を三行で残すと復習が速くなります。\n\n第六に、計画と実績のログを取り、感覚ではなくデータで調整します。『今週は10時間勉強した気がする』ではなく、実際に何分、どの科目をやったかを簡単に記録してください。第七に、ツールはシンプルに。一つのカレンダー、一つのタスク受け皿に統一し、学期の途中で仕組みを頻繁に替えないこと。第八に、睡眠は記憶の固定に不可欠です。睡眠を削って勉強時間を増やすと、テスト当日の想起が落ちることがあります。第九に、やる気が落ちたら最初の一歩を小さくします。難しい段落を十分快読む、例題を一問だけ解く、要旨を二文で言い換える。ゼロより確実に前進です。\n\n第十に、月に一回は計画を見直してください。中間試験週とプロジェクト週では必要なペースが違います。最後に事務連絡です。来週月曜午前九時から来学期の履修登録が始まります。人気講座はすぐ満席になるので、代替科目を二つ用意し、キャンセル待ちに登録した方は毎朝ポータルを確認してください。図書館のグループ学習室はオンライン予約が必須になりました。ライティングセンターは今週から非同期フィードバックも開始しています。金曜午後には不安管理とタスク分解の短いワークショップがあります。参加は任意ですが、課題が重い週ほど役立ちます。\n\n本日は以上です。次回は『ノートの取り方：聞きながら構造を作る』を扱います。どうぞよろしくお願いします。",
         listeningQs: [
           {
             q: "講義で推奨されている学習ブロックの考え方に最も近いのはどれか。",
@@ -2440,7 +2709,7 @@ ORDER BY avg_score DESC;"></textarea>
       ko: {
         label: "TOPIK 取向 · 長文模考（韓文）",
         readingPassage:
-          "최근 대학 교육에서는 온라인 강의와 학습 분석 도구가 확대되면서 교수와 학생의 상호작용 방식이 빠르게 변하고 있다. 지지측은 데이터를 통해 학습 어려움을 조기에 발견할 수 있다고 주장하지만, 비판측은 측정 가능한 행동에만 초점이 맞춰질 위험을 지적한다. 효과적인 혼합 학습은 기술로 행정적 마찰을 줄이되 멘토링과 토론 같은 인간적 요소를 유지할 때 성과가 크다는 연구 결과가 누적되고 있다. 접근성 측면에서 자막과 유연한 마감은 다양한 학습자를 돕지만, 명확한 학습 목표와 질 높은 피드백이 없으면 도구만으로는 한계가 있다. 장기 추적 연구에 따르면 디지털 보조 자료는 구조화된 복습 루틴과 결합될 때 이수율 향상과 연관된다. 국제화가 진행되는 학과에서는 영어 강의와 논술 지원 수요가 늘고 있으며, 쓰기 센터와 말하기 연습 공간의 역할이 커지고 있다. 인공지능 도구가 확산되더라도 근거 평가와 불확실성에 대응하는 능력은 여전히 교육적 대화를 통해 길러져야 한다. 기술은 교육 철학을 증폭시키는 매개이며, 교수 설계와 교원 연수 투자 없이 소프트웨어만 도입하는 것은 지속 가능한 개선으로 이어지기 어렵다. 도서관 그룹 스터디룸은 이번 달부터 온라인 예약이 필수이며, 야간 개관 시간이 연장되었다. 학생들은 매주 학습 시간을 기록하여 과소평가되기 쉬운 준비 시간을 가시화할 것을 권장받는다. 상담실에서는 불안 관리와 과제 세분화 워크숍이 금요 오후에 열리며 참여는 자율이다. 다음 학기 수강 신청은 다음 주 월요일 오전 아홉 시에 시작되며, 인기 과목은 빠르게 마감되므로 대체 과목 두 개를 미리 준비하고, 대기 명단에 올랐다면 매일 아침 포털을 확인해야 한다. 졸업 후 직장과 시민 생활에서는 모호한 문제에 증거를 통합하고 협력하여 해법을 찾는 역량이 요구된다. 대학은 이러한 역량의 토대를 어떻게 설계할 것인가가 앞으로의 평가 초점이 될 것이다.",
+          "최근 대학 교육은 온라인 강의와 학습 분석 도구가 확산되면서 수업 방식이 빠르게 바뀌고 있다. 데이터를 활용하면 학습 곤란을 조기에 발견할 수 있지만, 클릭 수나 제출 횟수처럼 ‘측정 가능한 행동’만을 성과로 착각할 위험도 있다. 연구는 기술이 행정적 마찰을 줄이는 데 쓰이고, 토론·멘토링·피드백 같은 인간적 요소가 유지될 때 혼합 학습의 효과가 커진다고 말한다. 또한 자막, 유연한 마감, 접근성 설계는 다양한 학습자를 돕지만 목표와 평가 기준이 명확하지 않으면 도구만으로는 한계가 있다. 장기 추적 연구에서는 주간 복습 루틴, 계획-실행 기록, 자기 점검 질문을 함께 운영한 집단에서 성취가 더 안정적으로 나타났다. 한편 국제화로 인해 영어 강의와 논술 지원 수요가 늘고, 글쓰기 센터·발표 연습 공간의 역할이 커지고 있다. 다음 학기 수강 신청은 다음 주 월요일 오전 9시에 시작되며 인기 과목은 빨리 마감되므로 대체 과목을 미리 준비하고, 대기 명단이면 매일 아침 포털을 확인해야 한다. 결국 대학이 길러야 할 역량은 모호한 문제를 근거로 설명하고 협력하여 해결하는 힘이며, 기술은 그 역량을 키우는 설계가 있을 때 비로소 의미가 있다.",
         readingQs: [
           {
             q: "글의 중심 내용으로 가장 적절한 것은?",
@@ -2474,7 +2743,7 @@ ORDER BY avg_score DESC;"></textarea>
           }
         ],
         listeningScript:
-          "안녕하세요. 학습 전략 워크숍 세 번째 시간입니다. 오늘은 기말 직전이 아니라 학기 전체의 시간 관리를 다룹니다. 먼저 주간 일정을 할 일 목록이 아니라 주의력 예산으로 보세요. 인지 부하 연구에 따르면 아홉십 분 집중과 짧은 휴식의 블록이 잦은 멀티태스킹보다 낫습니다. 다음으로 본인의 고에너지 시간대를 파악하세요. 오전에 맑다면 읽기 부담이 큰 과목을 그때 배치하십시오. 셋째, 완충용 하루를 남겨 두세요. 넷째, 오피스 아워에는 구체적인 질문이나 개요를 가져가십시오. 다섯째, 스터디 그룹은 시작 시각과 역할을 정하고 끝의 기준을 공유하세요. 여섯째, 계획과 실제를 기록해 감이 아니라 데이터로 조정합니다. 일곱째, 도구는 단순하게, 학기 중간에 바꾸지 마세요. 여덟째, 수면은 기억 고착에 필수입니다. 아홉째, 의욕이 떨어지면 첫걸음을 작게 하세요. 열째, 한 달에 한 번 계획을 재검토하세요. 마지막으로 다음 주 월요일 오전 아홉 시 다음 학기 수강 신청이 시작되며 인기 과목은 빨리 찹니다. 대기 명단이면 매일 아침 포털을 확인하십시오. 금요 오후 상담실에서 불안 관리 워크숍이 열립니다. 감사합니다. 다음 주에 뵙겠습니다.",
+          "여러분 안녕하십니까. 지금부터 ‘학습 전략 워크숍’ 세 번째 시간을 시작하겠습니다. 오늘 주제는 기말고사 직전에 몰아서 하는 공부가 아니라, 학기 전체를 기준으로 시간을 운영하는 방법입니다. 먼저 주간 일정을 할 일 목록이 아니라 ‘주의력 예산’으로 보십시오. 인지 부하 연구에서는 90분 집중 + 짧은 휴식의 블록이 잦은 멀티태스킹보다 성과가 높다고 보고합니다. 다음으로 고에너지 시간대를 찾으세요. 아침에 집중이 잘 된다면 읽기 부담이 큰 과목이나 논술 초안을 그 시간에 배치하고, 이메일 처리나 단순 과제는 오후로 미루는 편이 좋습니다.\n\n셋째, 완충용 시간을 남겨 두십시오. 일정이 꽉 차 있으면 작은 지연이 전체 계획을 무너뜨립니다. 넷째, 교수 면담 시간에는 구체적인 질문을 준비하세요. 예를 들어 ‘이 단락의 주장-근거 연결이 이해되지 않는다’, ‘이 그래프에서 핵심 변수가 무엇인지 모르겠다’처럼 범위를 좁혀 오면 도움을 받기 쉽습니다. 다섯째, 스터디 그룹은 시작 시간, 역할, 종료 기준을 합의해야 합니다. 요약 담당, 문제 풀이 담당, 시간 담당을 돌아가며 맡고 마지막에 오늘의 결론을 두세 문장으로 남겨 보세요.\n\n여섯째, 계획과 실제를 기록해 감이 아니라 데이터로 조정합니다. ‘열심히 했다’가 아니라 어느 날 몇 분을 어떤 과목에 썼는지 간단히 적는 것만으로도 현실적인 학습량이 보입니다. 일곱째, 디지털 도구는 하나의 캘린더와 하나의 할 일함으로 단순화하고, 학기 중간에 시스템을 자주 바꾸지 마세요. 여덟째, 수면은 기억 고착에 필수입니다. 수면을 줄여 확보한 시간이 오히려 시험 당일 회상을 떨어뜨릴 수 있습니다. 아홉째, 의욕이 떨어지면 첫걸음을 작게 만드세요. 어려운 글을 10분만 구조화해서 읽기, 핵심 용어만 표시하기, 도입부 한 문장만 요약하기처럼요.\n\n열째, 한 달에 한 번은 계획을 재검토하십시오. 중간고사 주간과 팀프로젝트 주간은 속도가 다릅니다. 이제 간단한 공지입니다. 다음 학기 수강 신청은 다음 주 월요일 오전 9시에 시작됩니다. 인기 과목은 빨리 마감되므로 대체 과목 두 개를 미리 정해 두고, 대기 명단에 올랐다면 매일 아침 포털을 확인하십시오. 또한 오늘 오후 2시에는 학생상담센터에서 ‘불안 관리와 과제 쪼개기’ 짧은 워크숍이 열립니다. 참여는 자율이지만, 시험 기간에 특히 도움이 됩니다.\n\n마지막으로, 오늘 워크숍 내용을 뉴스 형식으로 한 문장으로 정리해 보겠습니다. ‘학기 전체를 내다보고, 집중 블록과 완충 시간을 확보하며, 기록을 통해 계획을 조정하라.’ 이상입니다. 다음 시간에 뵙겠습니다.",
         listeningQs: [
           {
             q: "강의에서 권장하는 집중 방식에 가장 가까운 것은?",
@@ -2504,7 +2773,7 @@ ORDER BY avg_score DESC;"></textarea>
       es: {
         label: "DELE 取向 · 長文模考（西文）",
         readingPassage:
-          "En las últimas décadas, la enseñanza universitaria ha incorporado plataformas digitales, analíticas de aprendizaje y retroalimentación automática que prometen personalización a gran escala. Los defensores sostienen que los datos ayudan a detectar dificultades antes y a adaptar recursos; los críticos advierten que medir solo lo fácilmente cuantificable puede desplazar el debate ético, la creatividad y el trabajo colaborativo. La investigación sugiere que los modelos híbridos más efectivos combinan mentoría humana con tecnología que reduce fricciones logísticas. Los videos breves pueden trasladar conceptos básicos fuera del aula y reservar el tiempo presencial para aplicación y discusión. Persisten desafíos: brecha digital, carga docente al rediseñar cursos y privacidad cuando se registran interacciones detalladas. Varias políticas exigen transparencia y limitan el uso de terceros. Los estudios longitudinales muestran que las mejoras en permanencia son mayores cuando los complementos digitales van acompañados de rutinas de estudio claras y resultados de aprendizaje explícitos. En carreras lectoras intensivas, la anotación colaborativa y los archivos compartidos profundizan la lectura crítica si se enseña a interrogar fuentes. En cursos cuantitativos, la práctica adaptativa puede asemejarse a tutoría inmediata. La tecnología amplía la filosofía pedagógica existente; sin diseño instruccional ni formación del profesorado, el software solo rara vez produce cambios duraderos. La internacionalización aumenta la demanda de apoyo para escribir y hablar en inglés u otras lenguas. Los asistentes de IA pueden ayudar a redactar, pero las tareas auténticas siguen siendo necesarias para evaluar síntesis y manejo de la incertidumbre. La transferencia del aprendizaje falla si los cursos no conectan principios abstractos con escenarios concretos; por eso proliferan los casos, las microprácticas y las evaluaciones por proyectos. El diseño inclusivo beneficia a muchos: los subtítulos ayudan también a estudiantes de segunda lengua y los plazos flexibles pueden apoyar a cuidadores sin confundir estándares si las expectativas son claras. La biblioteca amplía horario nocturno y exige reserva en línea para salas de grupo. Se recomienda registrar semanalmente el tiempo real de estudio. Los talleres de ansiedad y fragmentación de tareas son opcionales los viernes por la tarde. La matrícula del próximo semestre abre el lunes próximo a las nueve de la mañana; los cursos populares se llenan pronto, así que prepare dos alternativas y, si está en lista de espera, revise el portal cada mañana. El éxito futuro dependerá de si los graduados transfieren habilidades a entornos laborales y cívicos donde los problemas son ambiguos y la cooperación es esencial.",
+          "En las últimas décadas, la enseñanza universitaria ha incorporado plataformas digitales, analíticas de aprendizaje y retroalimentación automática que prometen personalización a gran escala. Los defensores sostienen que los datos ayudan a detectar dificultades antes y a adaptar recursos; los críticos advierten que medir solo lo fácilmente cuantificable puede desplazar el debate ético, la creatividad y el trabajo colaborativo. En realidad, las ventajas y los riesgos dependen menos del software en sí que de la forma en que se integra en el currículo. Un mismo panel de métricas puede servir para ofrecer tutorías tempranas o para etiquetar a estudiantes sin comprender su contexto.\n\nLa investigación en pedagogía comparada sugiere que los modelos híbridos más efectivos combinan mentoría humana con tecnología que reduce fricciones logísticas. Los videos breves pueden trasladar conceptos básicos fuera del aula y reservar el tiempo presencial para discusión, práctica y retroalimentación. No obstante, este enfoque exige un rediseño cuidadoso: si el contenido en línea se percibe como “extra”, muchos alumnos lo abandonan; si se vuelve obligatorio sin orientación, se transforma en carga. Por eso, varios programas han adoptado rutinas explícitas: antes de clase, un cuestionario de bajo riesgo; durante la clase, un ejercicio de aplicación; después, una breve reflexión escrita que conecte el tema con un caso real.\n\nPersisten desafíos estructurales. La brecha digital no se limita a tener o no un dispositivo: incluye la estabilidad de conexión, el espacio físico para estudiar y el tiempo disponible. La carga docente también aumenta cuando se rediseñan cursos, se depuran bancos de preguntas y se revisan datos de participación. A esto se suma la privacidad cuando se registran interacciones detalladas. Por ello, algunas universidades exigen avisos de transparencia, restringen el intercambio con terceros y establecen periodos de retención de datos. Estas políticas no son un mero trámite legal: condicionan la confianza del estudiante y, por tanto, su participación.\n\nLos estudios longitudinales muestran que las mejoras en permanencia son mayores cuando los complementos digitales van acompañados de resultados de aprendizaje explícitos y rutinas de estudio claras. En carreras con lectura intensiva, la anotación colaborativa y los archivos compartidos profundizan la lectura crítica si se enseña a interrogar fuentes: distinguir hechos y opiniones, evaluar la calidad del dato, detectar supuestos. En cursos cuantitativos, la práctica adaptativa puede asemejarse a una tutoría inmediata, siempre que el sistema explique por qué una respuesta es incorrecta y no solo marque un error. La tecnología, por tanto, amplía la filosofía pedagógica existente; sin diseño instruccional ni formación del profesorado, el software rara vez produce cambios duraderos.\n\nLa internacionalización añade presión: crece la demanda de apoyo para escribir y hablar en otras lenguas, y los centros de escritura atienden tanto a estudiantes locales como internacionales. Los asistentes de IA pueden ayudar a redactar, pero las tareas auténticas siguen siendo necesarias para evaluar síntesis y manejo de la incertidumbre. La transferencia del aprendizaje falla si los cursos no conectan principios abstractos con escenarios concretos; por eso proliferan los casos, las microprácticas y las evaluaciones por proyectos. El diseño inclusivo beneficia a muchos: los subtítulos ayudan a estudiantes de segunda lengua y los plazos flexibles pueden apoyar a cuidadores, siempre que las expectativas sean claras.\n\nEn la vida cotidiana del campus, incluso las reglas administrativas influyen: la biblioteca amplía horario nocturno y exige reserva en línea para salas de grupo; se recomienda registrar semanalmente el tiempo real de estudio; hay talleres opcionales de ansiedad y fragmentación de tareas los viernes por la tarde. Finalmente, la matrícula del próximo semestre abre el lunes próximo a las nueve de la mañana; los cursos populares se llenan pronto, así que conviene preparar dos alternativas y, si se está en lista de espera, revisar el portal cada mañana. El éxito futuro dependerá de si los graduados transfieren habilidades a entornos laborales y cívicos donde los problemas son ambiguos y la cooperación es esencial.",
         readingQs: [
           {
             q: "¿Qué temen los críticos respecto al uso intensivo de analíticas?",
@@ -2538,7 +2807,7 @@ ORDER BY avg_score DESC;"></textarea>
           }
         ],
         listeningScript:
-          "Buenas tardes. Bienvenidos al taller tres de gestión del tiempo académico. Hoy hablamos del semestre completo, no solo de la cram session final. Primero, vean su calendario como un presupuesto de atención: bloques de noventa minutos con pausas cortas suelen vencer al multitarea constante. Segundo, mapeen sus horas de mayor energía y reserven ahí la lectura densa. Tercero, dejen un día colchón para absorber retrasos. Cuarto, en horas de consulta traigan una pregunta concreta o un esquema, no una petición vaga. Quinto, en grupos de estudio acuerden hora de inicio, roles y qué significa terminar. Sexto, lleven un registro de plan versus realidad. Séptimo, simplifiquen herramientas digitales y no cambien de sistema a mitad de curso. Octavo, el sueño es esencial para consolidar memoria. Noveno, si falta motivación, reduzcan el primer paso a diez minutos enfocados. Décimo, revisen el plan cada mes. El centro de orientación ofrecerá coaching los viernes por la tarde y el centro de escritura dará retroalimentación asíncrona. Antes de cerrar: la matrícula de seminarios de honores de primavera abre el lunes próximo a las nueve de la mañana; quienes estén en lista de espera deben revisar el portal cada mañana porque suelen liberarse plazas. Gracias y nos vemos la próxima semana.",
+          "Buenas tardes. Bienvenidos al taller tres de gestión del tiempo académico. Hoy hablamos del semestre completo, no solo de la semana previa a los finales. Para empezar, vean su calendario como un presupuesto de atención: si lo gastan en interrupciones, no queda energía para leer, resolver problemas o redactar. En muchos estudios, bloques de noventa minutos con pausas cortas superan al multitarea constante, incluso cuando el multitarea “se siente” productivo.\n\nSegundo, identifiquen sus horas de mayor energía. Si rinden mejor por la mañana, reserven ese tramo para lectura densa o para escribir un primer borrador; dejen tareas ligeras (correos, trámites, ordenar archivos) para más tarde. Tercero, dejen un día colchón por semana para absorber retrasos. Los estudiantes que programan cada minuto suelen colapsar cuando un trabajo se alarga. Cuarto, usen las horas de consulta con intención: traigan una pregunta concreta o un esquema, por ejemplo, ‘no entiendo la relación entre esta hipótesis y este dato’ o ‘no sé cómo delimitar el argumento en la introducción’.\n\nQuinto, si estudian en grupo, acuerden hora de inicio, roles y qué significa terminar. Un buen grupo rota funciones: alguien resume, alguien formula preguntas, alguien controla el tiempo y alguien verifica ejemplos. Sexto, lleven un registro de plan versus realidad. No es para castigarse, sino para ajustar expectativas: descubrirán cuánto tiempo requiere realmente una lectura o un problema largo. Séptimo, simplifiquen herramientas digitales: un calendario y una bandeja de tareas; eviten cambiar de sistema a mitad del semestre.\n\nOctavo, el sueño es esencial para consolidar memoria. Reducir sueño para ganar horas suele bajar el rendimiento. Noveno, si falta motivación, reduzcan el primer paso a diez minutos enfocados: leer un párrafo difícil y anotar dos ideas, revisar un gráfico y escribir una frase de interpretación, o completar un ejemplo corto. Décimo, revisen el plan cada mes, porque el ritmo cambia entre semanas de exámenes, semanas de proyectos y semanas de presentaciones.\n\nAvisos finales: el centro de orientación ofrecerá coaching los viernes por la tarde y el centro de escritura dará retroalimentación asíncrona para quienes no puedan asistir. La biblioteca ha ampliado el horario nocturno, pero las salas de estudio en grupo requieren reserva en línea. Y, antes de cerrar, recuerden que la matrícula de seminarios de honores de primavera abre el lunes próximo a las nueve de la mañana; quienes estén en lista de espera deben revisar el portal cada mañana porque suelen liberarse plazas. Gracias y nos vemos la próxima semana.",
         listeningQs: [
           {
             q: "Según el taller, ¿qué se recomienda sobre bloques de estudio?",
@@ -2569,7 +2838,7 @@ ORDER BY avg_score DESC;"></textarea>
       de: {
         label: "TestDaF/歌德取向 · 長文模考（德文）",
         readingPassage:
-          "In den letzten Jahrzehnten haben digitale Lernplattformen, Lernanalysen und automatisches Feedback die Hochschullehre stark verändert. Befürworter argumentieren, Daten helfen, Schwierigkeiten früh zu erkennen und Angebote anzupassen. Kritiker warnen, dass ein Übermaß an Messbarkeit kreative, ethische und kooperative Dimensionen verdrängen könnte. Studien legen nahe, dass hybride Modelle dann am wirksamsten sind, wenn menschliche Mentoring-Anteile erhalten bleiben und Technik vor allem logistische Hürden abbaut. Kurze Videos können Grundlagen außerhalb der Präsenzzeit vermitteln und Seminarstunden für Anwendung und Diskussion freisetzen. Herausforderungen bleiben: digitale Spaltung, Mehrbelastung bei Curriculumsredesign und Datenschutz bei detaillierten Interaktionsprotokollen. Viele Hochschulen fordern Transparenz und begrenzen Drittanbieter. Längsschnittdaten zeigen, dass Abschlussquoten stärker steigen, wenn digitale Ergänzungen mit klaren Lernzielen und strukturierten Wiederholungsroutinen einhergehen. In leseintensiven Fächern vertiefen kollaborative Annotationen das Quellenverständnis, wenn Studierende methodisch geschult sind. In quantitativen Kursen kann adaptives Üben schnelles Korrektivfeedback liefern. Technologie verstärkt vorhandene didaktische Konzepte; ohne instructional design und Lehrendenfortbildung bleiben Softwarekäufe oft wirkungslos. Internationalisierung erhöht den Bedarf an Schreib- und Sprechtrainings. KI-Hilfen können Entwürfe unterstützen, authentische Prüfaufgaben bleiben jedoch nötig, um Syntheseleistung und Umgang mit Unsicherheit zu beurteilen. Transfer gelingt häufiger, wenn abstrakte Prinzipien mit konkreten Szenarien verknüpft werden; deshalb nehmen Fallstudien und Portfolioelemente zu. Inklusives Design nützt vielen: Untertitel helfen auch Zweitsprachlerinnen, flexible Fristen können Familien unterstützen, sofern Erwartungen klar kommuniziert werden. Die Bibliothek verlängert nächtliche Öffnungszeiten und verpflichtet zur Online-Reservierung von Gruppenräumen. Wöchentliche Protokolle der effektiven Lernzeit werden empfohlen. Workshops zu Stressmanagement und Aufgabenzerlegung finden freitagnachmittags statt. Die Einschreibung für das nächste Semester beginnt nächsten Montag um neun Uhr; beliebte Kurse sind schnell voll, daher zwei Alternativen planen und bei Wartelisten täglich das Portal prüfen. Langfristig zählt, ob Absolventinnen und Absolventen Kompetenzen in berufliche und zivile Kontexte übertragen können, in denen Probleme unscharf sind und Zusammenarbeit entscheidet.",
+          "In den letzten Jahrzehnten haben digitale Lernplattformen, Lernanalysen und automatisches Feedback die Hochschullehre stark verändert. Befürworter argumentieren, Daten helfen, Schwierigkeiten früh zu erkennen und Angebote zu personalisieren. Kritiker warnen jedoch, dass ein Übermaß an Messbarkeit kreative, ethische und kooperative Dimensionen verdrängen könnte: Was leicht gezählt werden kann, gilt plötzlich als wichtig, während das, was sich schwer quantifizieren lässt, aus dem Blick gerät. Entscheidend ist daher weniger das Tool als die didaktische Einbettung. Ein Dashboard kann als Einladung zu frühzeitiger Beratung dienen – oder als Etikettierung, die die Situation einzelner Studierender ignoriert.\n\nStudien legen nahe, dass hybride Modelle dann am wirksamsten sind, wenn menschliche Mentoring-Anteile erhalten bleiben und Technik vor allem logistische Hürden abbaut. Kurze Videos können Grundlagen außerhalb der Präsenzzeit vermitteln und Seminarstunden für Anwendung und Diskussion freisetzen. Aber das funktioniert nicht automatisch: Wenn Online-Teile als „zusätzlich“ wahrgenommen werden, sinkt die Teilnahme; wenn sie verpflichtend sind, aber ohne Anleitung, steigen Frust und Abbruch. Viele Programme steuern daher mit klaren Routinen: Vor der Sitzung ein niedrigschwelliger Quiz, in der Sitzung ein Transfer-Problem, danach eine kurze schriftliche Reflexion, die den Stoff mit einem konkreten Fall verbindet.\n\nHerausforderungen bleiben: digitale Spaltung, Mehrbelastung bei Curriculumsredesign und Datenschutz bei detaillierten Interaktionsprotokollen. Einige Hochschulen verlangen Transparenzhinweise, begrenzen Drittanbieter und definieren Löschfristen. Solche Regeln sind nicht bloß juristische Formalität, sondern Voraussetzung für Vertrauen. Längsschnittdaten zeigen, dass Abschlussquoten stärker steigen, wenn digitale Ergänzungen mit klaren Lernzielen und strukturierten Wiederholungsroutinen einhergehen. In leseintensiven Fächern vertiefen kollaborative Annotationen das Quellenverständnis, wenn Studierende methodisch geschult sind: Belege prüfen, Gegenargumente erkennen, Begriffe präzise definieren. In quantitativen Kursen kann adaptives Üben schnelles Korrektivfeedback liefern, solange erklärt wird, warum eine Lösung falsch ist, statt nur ein rotes Kreuz zu setzen.\n\nTechnologie verstärkt vorhandene didaktische Konzepte; ohne instructional design und Lehrendenfortbildung bleiben Softwarekäufe oft wirkungslos. Internationalisierung erhöht den Bedarf an Schreib- und Sprechtrainings, und die Diskussion um KI-Hilfen verschärft die Frage nach authentischen Prüfaufgaben: Bewertet werden muss weiterhin die Fähigkeit, Evidenz zu synthetisieren, Unsicherheit zu benennen und präzise zu argumentieren. Transfer gelingt häufiger, wenn abstrakte Prinzipien mit konkreten Szenarien verknüpft werden; deshalb nehmen Fallstudien, Praxisprojekte und Portfolioelemente zu. Inklusives Design nützt vielen: Untertitel helfen auch Zweitsprachlerinnen, flexible Fristen können Familien unterstützen, sofern Erwartungen klar kommuniziert werden.\n\nAuch der Campus-Alltag wirkt auf Lernverhalten: Die Bibliothek verlängert nächtliche Öffnungszeiten und verpflichtet zur Online-Reservierung von Gruppenräumen. Wöchentliche Protokolle der effektiven Lernzeit werden empfohlen, und Workshops zu Stressmanagement und Aufgabenzerlegung finden freitagnachmittags statt. Die Einschreibung für das nächste Semester beginnt nächsten Montag um neun Uhr; beliebte Kurse sind schnell voll, daher zwei Alternativen planen und bei Wartelisten täglich das Portal prüfen. Langfristig zählt, ob Absolventinnen und Absolventen Kompetenzen in berufliche und zivile Kontexte übertragen können, in denen Probleme unscharf sind und Zusammenarbeit entscheidet.",
         readingQs: [
           {
             q: "Was befürchten Kritiker bezüglich starker Nutzung von Lernanalysen?",
@@ -2603,7 +2872,7 @@ ORDER BY avg_score DESC;"></textarea>
           }
         ],
         listeningScript:
-          "Guten Tag, willkommen zur dritten Sitzung unseres Zeitmanagement-Workshops. Heute geht es um das ganze Semester, nicht nur um Lernen in der Prüfungswoche. Betrachten Sie Ihren Wochenplan als Aufmerksamkeitsbudget: Neunzigminutenblöcke mit kurzen Pausen schlagen ständiges Multitasking. Ordnen Sie anspruchsvolle Leseaufgaben Ihren energiereichsten Stunden zu. Planen Sie Puffertage ein. Sprechstunden nutzen Sie mit konkreten Fragen oder Gliederungen. In Lerngruppen vereinbaren Sie Startzeit, Rollen und ein klares Fertigkeitskriterium. Protokollieren Sie Plan und Realität. Halten Sie digitale Tools schlank und wechseln Sie nicht mitten im Semester. Schlaf ist für die Konsolidierung unverzichtbar. Fehlt Motivation, verkleinern Sie den ersten Schritt auf zehn fokussierte Minuten. Überprüfen Sie monatlich Ihren Plan. Das Beratungszentrum bietet freitagnachmittags Drop-in-Coaching, das Schreibzentrum asynchrones Feedback. Zum Schluss: Die Einschreibung für Frühlings-Seminare beginnt nächsten Montag um neun Uhr; bei Wartelisten bitte täglich das Portal prüfen, weil Plätze oft frei werden. Danke und bis nächste Woche.",
+          "Guten Tag, willkommen zur dritten Sitzung unseres Zeitmanagement-Workshops. Heute geht es um das ganze Semester, nicht nur um Lernen in der Prüfungswoche. Betrachten Sie Ihren Wochenplan als Aufmerksamkeitsbudget: Neunzigminutenblöcke mit kurzen Pausen schlagen ständiges Multitasking, selbst wenn Multitasking sich „aktiv“ anfühlt. Notieren Sie daher zuerst Ihre energie­reichsten Stunden. Wenn Sie morgens konzentrierter sind, legen Sie dorthin anspruchsvolle Leseaufgaben oder die erste Fassung eines Textes; Routineaufgaben wie E-Mails oder Ablage können später folgen.\n\nZweitens: Planen Sie Puffertage ein. Wer jeden Slot verplant, verliert den ganzen Plan, sobald eine Aufgabe länger dauert. Drittens: Nutzen Sie Sprechstunden mit konkreten Fragen oder einer Gliederung – nicht mit einem diffusen „Ich komme nicht weiter“. Viertens: In Lerngruppen vereinbaren Sie Startzeit, Rollen und ein klares Fertigkeitskriterium. Eine Person fasst zusammen, eine stellt Rückfragen, eine kontrolliert die Zeit, und am Ende halten Sie die wichtigsten Ergebnisse in drei Sätzen fest.\n\nFünftens: Protokollieren Sie Plan und Realität. Das ist keine Selbstkontrolle aus Schuldgefühl, sondern ein Werkzeug für realistische Kapazität. Sechstens: Halten Sie digitale Tools schlank und wechseln Sie nicht mitten im Semester das System. Ein Kalender, eine Aufgabenliste, klare Prioritäten. Siebtens: Schlaf ist für die Konsolidierung unverzichtbar; wer Schlaf kürzt, verschiebt Probleme oft nur auf den Prüfungstag. Achtens: Fehlt Motivation, verkleinern Sie den ersten Schritt auf zehn fokussierte Minuten – ein schwieriger Absatz, eine Grafik, ein Beispiel. Neuntens: Überprüfen Sie monatlich Ihren Plan, weil das Tempo des Semesters wechselt.\n\nZum Schluss einige Hinweise: Das Beratungszentrum bietet freitagnachmittags Drop-in-Coaching, das Schreibzentrum asynchrones Feedback. Die Bibliothek hat verlängerte Öffnungszeiten, Gruppenräume müssen online reserviert werden. Und: Die Einschreibung für Frühlings-Seminare beginnt nächsten Montag um neun Uhr; bei Wartelisten bitte täglich das Portal prüfen, weil Plätze oft frei werden. Danke und bis nächste Woche.",
         listeningQs: [
           {
             q: "Was empfiehlt der Workshop zu Lernblöcken?",
@@ -2658,11 +2927,11 @@ ORDER BY avg_score DESC;"></textarea>
 
     (function initEnglishPools() {
       var ieltsP1 =
-        "Urbanisation has reshaped public health systems in ways that are easy to overlook when policymakers focus only on hospital capacity. As cities densify, infectious disease dynamics change: proximity accelerates transmission during outbreaks, yet the same concentration also enables rapid vaccination campaigns and specialist care within shorter travel times. Chronic disease profiles shift as well. Sedentary commuting, longer work hours, and food environments rich in ultra-processed products correlate with higher rates of hypertension and diabetes, even when national GDP is rising. Environmental stressors compound the burden. Air quality violations disproportionately affect low-income neighbourhoods located near industrial corridors, producing asthma clusters that show up in emergency admissions long before they appear in headline economic statistics. Mental health services strain under similar patterns of inequality: wait times lengthen where community counselling is underfunded, while private providers concentrate in districts where residents can pay out of pocket. Despite these challenges, cities remain laboratories for intervention. Pilot programmes that combine green infrastructure, safe cycling networks, and subsidised preventive screenings have demonstrated measurable reductions in cardiovascular risk within five-year windows. Digital triage tools, when governed transparently, can route patients earlier and reduce overcrowding in emergency departments. The central lesson for IELTS-style analytical reading is that urban health outcomes are not determined by a single sector; they emerge from interactions among transport planning, housing policy, labour regulation, and clinical capacity. Critics warn that smart-city narratives sometimes overpromise technology fixes while underinvesting in primary care workforces. Supporters counter that integrated data can reveal hotspots earlier, provided privacy safeguards and community consent are treated as design requirements rather than afterthoughts. Funding debates often pit hospital construction against upstream prevention, yet longitudinal evidence suggests the highest returns appear when governments sequence investments: stabilise sanitation and vaccination coverage first, then expand specialty centres, and continuously fund public health surveillance that can detect novel risks before they become crises.";
+        "Urbanisation has reshaped public health systems in ways that are easy to overlook when policymakers focus only on hospital capacity. As cities densify, infectious disease dynamics change: proximity accelerates transmission during outbreaks, yet the same concentration also enables rapid vaccination campaigns and specialist care within shorter travel times. Chronic disease profiles shift as well. Sedentary commuting, longer work hours, and food environments rich in ultra-processed products correlate with higher rates of hypertension and diabetes, even when national GDP is rising. Environmental stressors compound the burden. Air quality violations disproportionately affect low-income neighbourhoods located near industrial corridors, producing asthma clusters that show up in emergency admissions long before they appear in headline economic statistics. Mental health services strain under similar patterns of inequality: wait times lengthen where community counselling is underfunded, while private providers concentrate in districts where residents can pay out of pocket.\n\nDespite these challenges, cities remain laboratories for intervention. Pilot programmes that combine green infrastructure, safe cycling networks, and subsidised preventive screenings have demonstrated measurable reductions in cardiovascular risk within five-year windows. The mechanism is not mysterious: shaded streets reduce heat stress, safer crossings encourage walking, and routine screenings detect problems before they become expensive crises. Yet successful programmes share a less visible feature: governance. Transport planners, housing agencies, and clinics must share goals and budgets. When each department optimises its own targets, efforts fragment. For example, a city may invest in a new bike lane but fail to address theft or poor lighting, causing adoption to stagnate. Conversely, when policing, lighting, and community outreach are designed together, behavioural change is more likely.\n\nDigital tools can help if they are governed transparently. Digital triage systems, when paired with clear consent notices, can route patients earlier and reduce overcrowding in emergency departments. Remote monitoring for chronic conditions can catch deterioration in time to adjust medication. However, critics argue that a naive “smart city” narrative can overpromise technology fixes while underinvesting in primary care workforces. Data do not compensate for a shortage of nurses, translators, and community health workers who know local contexts. Supporters counter that integrated data can reveal hotspots earlier, provided privacy safeguards and community consent are treated as design requirements rather than afterthoughts.\n\nFunding debates often pit hospital construction against upstream prevention, yet longitudinal evidence suggests the highest returns appear when governments sequence investments rather than choose a single winner. Stabilise sanitation and vaccination coverage first; expand specialty centres next; and continuously fund public health surveillance that can detect novel risks before they become crises. Urban health outcomes are therefore not determined by one sector; they emerge from interactions among transport planning, housing policy, labour regulation, and clinical capacity. The IELTS reader should notice how the passage builds a qualified thesis: it acknowledges trade-offs, cites multiple mechanisms, and repeatedly links outcomes to coordinated policy rather than to a single “silver bullet.”";
       var ieltsP2 =
-        "Public funding for the arts remains one of the most polarising items in municipal budgets, yet its economic justification is stronger than anecdote suggests. Festivals and museums anchor tourism spend: visitors pay for lodging, dining, and retail in surrounding districts, producing tax receipts that rarely appear under the culture line item in spreadsheets. Beyond consumption, creative industries incubate small businesses. Independent studios hire sound engineers, fabricators, and legal services; game developers contract translators; theatre companies commission local writers. These linkages explain why several mid-sized cities now treat arts infrastructure as workforce development rather than ornament. Opponents argue that subsidies distort markets and benefit elites who attend gala openings. Proponents respond with targeted programmes: free student matinees, mobile libraries, and community choirs that report higher civic participation in follow-up surveys. A further layer involves soft power and city branding. When a metropolis becomes known for reliable film festivals or design biennials, it attracts remote workers and international students who might otherwise choose a capital with a narrower cultural menu. Equity concerns persist. If venues cluster in renovated waterfront districts while peripheral neighbourhoods lack basic rehearsal space, cultural policy can deepen spatial divides. Planners increasingly require grant recipients to host workshops in underserved wards and to publish accessibility metrics. From an academic reading perspective, the passage illustrates how claims must be weighed against counterclaims, how evidence ranges from fiscal multipliers to qualitative participation data, and how recommendations must acknowledge trade-offs between excellence-oriented flagship projects and grassroots inclusion.";
+        "Public funding for the arts remains one of the most polarising items in municipal budgets, yet its economic justification is stronger than anecdote suggests. Festivals and museums anchor tourism spend: visitors pay for lodging, dining, and retail in surrounding districts, producing tax receipts that rarely appear under the culture line item in spreadsheets. Beyond consumption, creative industries incubate small businesses. Independent studios hire sound engineers, fabricators, and legal services; game developers contract translators; theatre companies commission local writers. These linkages explain why several mid-sized cities now treat arts infrastructure as workforce development rather than ornament.\n\nOpponents argue that subsidies distort markets and benefit elites who attend gala openings. They also worry about opportunity costs: every dollar spent on a theatre renovation is a dollar not spent on housing or sanitation. Proponents respond that the choice is not purely aesthetic versus essential; cultural programmes can be designed to meet social objectives. Targeted initiatives include free student matinees aligned to school curricula, mobile libraries that rotate through transit-poor districts, and community choirs that report higher civic participation in follow-up surveys. Some cities pair grants with apprenticeship requirements so young technicians learn lighting, carpentry, or digital editing—skills that transfer into advertising and media jobs.\n\nA further layer involves soft power and city branding. When a metropolis becomes known for reliable film festivals or design biennials, it attracts remote workers and international students who might otherwise choose a capital with a narrower cultural menu. Businesses also cite “quality of life” when deciding where to open satellite offices. Yet branding carries risk: if flagship venues cluster in renovated waterfront districts while peripheral neighbourhoods lack basic rehearsal space, cultural policy can deepen spatial divides. To address this, planners increasingly require grant recipients to host workshops in underserved wards, publish accessibility metrics, and reserve a share of programming for community partnerships.\n\nFrom an academic reading perspective, the passage illustrates how claims must be weighed against counterclaims and how evidence ranges from fiscal multipliers to qualitative participation data. It also shows that recommendations must acknowledge trade-offs between excellence-oriented flagship projects and grassroots inclusion. A reader should track how the author shifts from economic arguments to equity criteria, signalling that “success” is multi-dimensional rather than a single balance-sheet number.";
       var ieltsP3 =
-        "The transition away from coal-fired electricity illustrates how climate policy, engineering constraints, and labour politics intertwine. Grid operators cannot simply swap fuels without addressing baseload stability, storage, and transmission bottlenecks. Meanwhile, communities that depended on mining and plant jobs demand retraining funds and early retirement packages that match the pace of plant closures. International supply chains add another wrinkle: countries that retire domestic coal may import manufactured goods whose embedded emissions remain invisible on national ledgers unless border adjustments or supplier standards are enforced. Advocates of carbon pricing argue that predictable price signals spur innovation in turbines, batteries, and hydrogen electrolysis. Skeptics note that vulnerable households face higher energy bills unless revenues are recycled through rebates. Legal scholars highlight litigation risk when governments change rules mid-project, potentially chilling private investment. Technological optimists point to steep cost curves for solar and wind, while systems analysts emphasise that variability requires flexible demand, storage, and cross-regional interconnectors. The IELTS reader should notice how authors qualify certainty: modal verbs, contrastive connectors, and lists of preconditions signal nuance rather than slogans.";
+        "The transition away from coal-fired electricity illustrates how climate policy, engineering constraints, and labour politics intertwine. Grid operators cannot simply swap fuels without addressing baseload stability, storage, and transmission bottlenecks. Coal plants historically provided steady output; replacing them with variable renewables requires either storage, flexible demand, or stronger interconnectors across regions. Meanwhile, communities that depended on mining and plant jobs demand retraining funds and early retirement packages that match the pace of closures. If transition policy ignores livelihoods, political backlash can stall projects even when emissions targets are popular in national surveys.\n\nInternational supply chains add another wrinkle. Countries that retire domestic coal may import manufactured goods whose embedded emissions remain invisible on national ledgers unless border adjustments or supplier standards are enforced. Advocates of carbon pricing argue that predictable price signals spur innovation in turbines, batteries, and hydrogen electrolysis. Skeptics note that vulnerable households face higher energy bills unless revenues are recycled through rebates or tiered tariffs. Legal scholars highlight litigation risk when governments change rules mid-project, potentially chilling private investment. In response, some jurisdictions use long-term contracts for clean power paired with explicit review clauses that balance stability and accountability.\n\nTechnological optimists point to steep cost curves for solar and wind, but systems analysts emphasise that variability is a planning problem, not merely a price problem. A grid needs reserves for cloudy weeks and calm evenings; storage helps but has material constraints, and new transmission lines often face permitting delays. Demand flexibility—shifting industrial loads, incentivising off-peak charging, and modernising building efficiency—can reduce the scale of storage required. Yet these programmes depend on consumer trust and on rules that protect privacy and prevent unfair penalties.\n\nThe broader lesson is that decarbonisation is a sequence of interdependent decisions: engineering choices influence labour outcomes; labour politics shape permitting; and international trade can hide or reveal emissions depending on accounting rules. For IELTS-style reading, notice how authors qualify certainty: modal verbs, contrastive connectors, and lists of preconditions signal nuance rather than slogans. The passage repeatedly treats trade-offs as unavoidable and asks the reader to evaluate proposals not as pure ideals but as designs that must work under real constraints.";
       var toeflP1 =
         "In the past two decades, university teaching and learning have been reshaped by digital tools that promise personalization at scale. Learning management systems, automated feedback on quizzes, and analytics dashboards now sit alongside traditional lectures and seminars. Proponents argue that data-rich environments can help instructors identify struggling students earlier and tailor resources to individual needs. Critics, however, warn that an overreliance on metrics may reduce education to easily measurable behaviors, sidelining creativity, ethical reasoning, and collaborative discussion. A synthesis emerging from educational research suggests that the most effective blended models preserve human mentorship while using technology to remove logistical friction. For example, short, targeted videos can deliver foundational content outside class, freeing seminar time for debate and application. Yet implementation challenges remain: unequal access to devices and bandwidth, instructor workload associated with redesigning courses, and student privacy concerns when platforms collect fine-grained interaction data. Policies at several institutions now require transparency notices and limit third-party data sharing, reflecting a growing awareness that pedagogical innovation must be paired with governance. Longitudinal studies further indicate that gains in completion rates are strongest when digital supplements are paired with structured study routines and clear learning outcomes rather than deployed as optional add-ons. In reading-intensive fields such as history and literature, faculty report that annotation tools and shared digital archives deepen close reading when students are trained to interrogate sources collaboratively. By contrast, in quantitative courses, adaptive homework systems can provide immediate corrective feedback that resembles one-on-one tutoring at a fraction of the cost. The central insight across contexts is that technology amplifies existing instructional philosophies rather than replacing them. Institutions that invest in faculty development and instructional design teams tend to see more sustained improvement than those that purchase software without curricular integration. As global mobility increases, English-medium programs and international partnerships place additional pressure on language support services, motivating investments in writing centers and speaking studios that combine peer tutoring with speech recognition practice. Looking forward, artificial intelligence assistants may assist with drafting and summarization, but assessment experts emphasize the continued need for authentic tasks that reveal a student's ability to synthesize evidence, acknowledge uncertainty, and communicate with precision. Researchers who study transfer of learning note that students often perform well on immediate tests yet struggle to apply ideas in new domains unless courses explicitly build bridges between abstract principles and concrete scenarios. Professional schools have responded with case-based curricula, while undergraduate programs increasingly embed micro-internships and community partnerships. Assessment redesigns—moving from single high-stakes exams toward portfolios and project milestones—aim to align evaluation with these richer goals. Nevertheless, resource constraints mean that large introductory courses may still depend on multiple-choice instruments, sparking debate about validity and fairness. Accessibility offices likewise highlight that inclusive design benefits all learners: captions benefit second-language users as well as deaf students, and flexible deadlines can support caregivers without lowering standards when expectations are communicated clearly. The interplay between policy, pedagogy, and platform design will continue to define the next chapter of higher education worldwide. Ultimately, the measure of success will not be the novelty of the platform but whether graduates can transfer skills to workplaces and civic life where problems are ill-defined and cooperation across differences is essential.";
       var toeflP2 =
@@ -3088,6 +3357,121 @@ ORDER BY avg_score DESC;"></textarea>
         )
       });
 
+      var toeicPart7A =
+        "════ TOEIC Reading · Part 7 · SET A (MULTIPLE TEXTS) ════\n\n" +
+        "--- MESSAGE BOARD POSTING ---\n" +
+        "From: HR – Training Desk\nDate: April 2\nSubject: Mandatory Cyber-Drill\n\n" +
+        "All regional offices must complete the quarterly phishing simulation by April 9. " +
+        "Employees who score below eighty percent will receive a thirty-minute micro-learning module before badge reactivation. " +
+        "Managers: please stagger team sessions to avoid help-desk congestion. Questions should be logged in ticket category CYBER-DRILL-2026.\n\n" +
+        "--- E-MAIL (FOLLOW-UP) ---\n" +
+        "To: All Branch Leads\nFrom: IT Security – Luna Okada\nRe: Drill results dashboard\n\n" +
+        "The executive dashboard will refresh every two hours during the drill window. If your site shows zero participation after noon local time, escalate to the duty officer cellphone listed in the appendix. " +
+        "Do not forward raw click-through logs to clients; scrub identifiers before any external share. Backup authentication kiosks will open in lobby B only at Building 7.\n\n" +
+        "--- NOTICE (RECEPTION) ---\n" +
+        "Badge reprinting services pause between eleven thirty and thirteen hundred on April 5 for firmware upgrades. Temporary visitors must carry paper clearance forms issued by security.";
+      var toeicPart7B =
+        "════ TOEIC Reading · Part 7 · SET B (TRIPLE PASSAGES) ════\n\n" +
+        "--- ADVERTISEMENT ---\n" +
+        "HarborLite Airways – Spring Corporate Fare\nBook four round trips in Premium Economy between Seoul and San Francisco by May 1 and receive a complimentary lounge pass bundle. " +
+        "Corporate tax IDs must be validated in the invoicing portal; personal miles cannot be pooled for this promotion.\n\n" +
+        "--- PASSENGER LETTER ---\n" +
+        "Dear Customer Relations,\nI attempted to merge two PNRs after a schedule change, but the website timed out. " +
+        "Case ID 448812 shows an open refund that has not posted to my corporate card after fourteen business days. Please advise whether the amount will clear before our audit freeze on the twenty-second.\n\n" +
+        "--- REPLY DRAFT (INTERNAL) ---\n" +
+        "Finance confirms batch settlement runs Tuesdays; if the ticket was split-funded, partial credits may lag one cycle. Offer goodwill voucher tier B only if delay exceeds SLA by five days.";
+
+      EN_READING_POOLS.toeic.push({
+        passage: toeicPart7A,
+        questions: q4(
+          {
+            q: "According to the postings, employees who score below eighty percent must —",
+            options: [
+              { v: "A", text: "complete a micro-learning module before badge reactivation" },
+              { v: "B", text: "cancel all client meetings" },
+              { v: "C", text: "forward logs to clients" },
+              { v: "D", text: "skip the drill" }
+            ],
+            correct: "A"
+          },
+          {
+            q: "IT Security instructs branch leads to escalate when —",
+            options: [
+              { v: "A", text: "zero participation is shown after noon local time" },
+              { v: "B", text: "the CEO visits the site" },
+              { v: "C", text: "lounge passes are issued" },
+              { v: "D", text: "badges are reprinted" }
+            ],
+            correct: "A"
+          },
+          {
+            q: "The reception notice indicates that on April 5 —",
+            options: [
+              { v: "A", text: "badge reprinting pauses during a fixed midday window" },
+              { v: "B", text: "all visitors may enter without clearance" },
+              { v: "C", text: "drill results are published" },
+              { v: "D", text: "Premium Economy fares end" }
+            ],
+            correct: "A"
+          },
+          {
+            q: "The word 'scrub' in the e-mail is closest in meaning to —",
+            options: [
+              { v: "A", text: "remove or mask sensitive details" },
+              { v: "B", text: "publish immediately" },
+              { v: "C", text: "encrypt hardware" },
+              { v: "D", text: "print badges" }
+            ],
+            correct: "A"
+          }
+        )
+      });
+      EN_READING_POOLS.toeic.push({
+        passage: toeicPart7B,
+        questions: q4(
+          {
+            q: "The promotion requires corporate buyers to —",
+            options: [
+              { v: "A", text: "validate tax IDs in the invoicing portal" },
+              { v: "B", text: "pool personal miles freely" },
+              { v: "C", text: "book only domestic flights" },
+              { v: "D", text: "skip lounge access" }
+            ],
+            correct: "A"
+          },
+          {
+            q: "The customer complaint primarily concerns —",
+            options: [
+              { v: "A", text: "a refund that has not posted within expected business days" },
+              { v: "B", text: "lounge Wi-Fi speed" },
+              { v: "C", text: "lost luggage" },
+              { v: "D", text: "visa denial" }
+            ],
+            correct: "A"
+          },
+          {
+            q: "Finance notes that partial credits may lag when —",
+            options: [
+              { v: "A", text: "the ticket was split-funded" },
+              { v: "B", text: "the passenger used only cash" },
+              { v: "C", text: "corporate tax ID is missing" },
+              { v: "D", text: "lounge passes expired" }
+            ],
+            correct: "A"
+          },
+          {
+            q: "Goodwill voucher tier B may be offered if —",
+            options: [
+              { v: "A", text: "delay exceeds SLA by five days" },
+              { v: "B", text: "the passenger never complained" },
+              { v: "C", text: "audit freeze is cancelled" },
+              { v: "D", text: "batch settlement moves to Fridays" }
+            ],
+            correct: "A"
+          }
+        )
+      });
+
       var tedStyle1 =
         "This lecture opens with a deceptively simple question about motivation. The speaker argues that many organisations communicate from the outside in: they describe what they make, how it is engineered, and expect customers to infer why it matters. Inspired movements, by contrast, begin with purpose. The speaker uses historical examples where belief preceded product adoption, noting that early supporters often accept imperfection because they identify with a mission. The middle section contrasts short-term manipulation—price cuts, fear-based messaging, aspirational hype—with leadership that clarifies values even when products are still imperfect. A case from consumer electronics illustrates how narrative coherence can accelerate ecosystem growth, while fragmented messaging confuses developers and partners. The speaker cautions that authenticity cannot be manufactured; stakeholders compare public statements with hiring practices and supplier contracts. Toward the end, the talk addresses failure: teams that lose sight of why they exist begin optimising metrics that reward volume over trust. Questions from the audience raise issues about scale, regulation, and global cultural differences in how purpose is expressed. The speaker concludes that sustainable innovation pairs technical excellence with transparent storytelling, and that educators should train students to examine assumptions behind slogans rather than memorising buzzwords. This paraphrased talk-style script is designed for IELTS listening practice: it is structured, argumentative, and rich in signal words such as however, by contrast, and consequently.";
       var tedStyle2 =
@@ -3332,7 +3716,207 @@ ORDER BY avg_score DESC;"></textarea>
           }
         )
       );
+
+      // TOEIC 視覺題：避免本機路徑破圖，統一掛線上可用圖片
+      EN_READING_POOLS.toeic.forEach(function (b, i) {
+        if (!b.imageUrl) b.imageUrl = "https://placehold.co/600x400/0A2240/FDB813?text=TOEIC+Part7+" + (i + 1);
+      });
+      EN_LISTENING_POOLS.toeic.forEach(function (b, i) {
+        if (!b.imageUrl) b.imageUrl = "https://placehold.co/600x400/0A2240/FDB813?text=TOEIC+Listening+" + (i + 1);
+      });
     })();
+
+    /** TOEIC L&R · Part 1 照片描述風格（隨機一組） */
+    const TOEIC_PART1_POOL = [
+      {
+        stem: "Look at the photograph. Where is this scene most likely taking place?",
+        imageUrl: "https://placehold.co/600x400/0A2240/FDB813?text=Airport+Check-in",
+        options: [
+          { v: "A", text: "At a hospital operating room" },
+          { v: "B", text: "At an airport check-in area" },
+          { v: "C", text: "At a farmer's market stall" },
+          { v: "D", text: "At a concert hall stage" }
+        ],
+        correct: "B"
+      },
+      {
+        stem: "Look at the photograph. What are the people probably doing?",
+        imageUrl: "https://placehold.co/600x400/0A2240/FDB813?text=Business+Meeting",
+        options: [
+          { v: "A", text: "Installing solar panels on a roof" },
+          { v: "B", text: "Conducting a team meeting around a whiteboard" },
+          { v: "C", text: "Harvesting rice in a field" },
+          { v: "D", text: "Repairing a submarine engine" }
+        ],
+        correct: "B"
+      },
+      {
+        stem: "Look at the photograph. What is the main focus of the activity shown?",
+        imageUrl: "https://placehold.co/600x400/0A2240/FDB813?text=Warehouse+Logistics",
+        options: [
+          { v: "A", text: "Loading cargo onto a forklift in a warehouse" },
+          { v: "B", text: "Teaching a cooking class in a home kitchen" },
+          { v: "C", text: "Painting a mural on a bridge" },
+          { v: "D", text: "Grooming pets at a veterinary clinic" }
+        ],
+        correct: "A"
+      },
+      {
+        stem: "Look at the photograph. When might this situation occur?",
+        imageUrl: "https://placehold.co/600x400/0A2240/FDB813?text=Morning+Commute",
+        options: [
+          { v: "A", text: "During a morning commute rush at a ticket gate" },
+          { v: "B", text: "During a midnight astronomy class indoors" },
+          { v: "C", text: "During a beach volleyball final" },
+          { v: "D", text: "During a forest camping night hike" }
+        ],
+        correct: "A"
+      },
+      {
+        stem: "Look at the photograph. What does the signage in the image most likely indicate?",
+        imageUrl: "https://placehold.co/600x400/0A2240/FDB813?text=Road+Detour+Sign",
+        options: [
+          { v: "A", text: "A construction detour for motorists" },
+          { v: "B", text: "A permanent museum exhibit" },
+          { v: "C", text: "A historical battlefield monument" },
+          { v: "D", text: "A deep-sea diving certification shop" }
+        ],
+        correct: "A"
+      },
+      {
+        stem: "Look at the photograph. Who would most likely work in this setting?",
+        imageUrl: "https://placehold.co/600x400/0A2240/FDB813?text=Hotel+Reception",
+        options: [
+          { v: "A", text: "Marine biologists on a diving vessel" },
+          { v: "B", text: "Hospitality staff at a hotel reception desk" },
+          { v: "C", text: "Lumberjack crews in a forest camp" },
+          { v: "D", text: "Coal miners underground" }
+        ],
+        correct: "B"
+      },
+      {
+        stem: "Look at the photograph. What equipment visible suggests the industry involved?",
+        imageUrl: "https://placehold.co/600x400/0A2240/FDB813?text=Commercial+Kitchen",
+        options: [
+          { v: "A", text: "Microscopes suggest a research laboratory" },
+          { v: "B", text: "Ovens suggest a commercial bakery or restaurant kitchen" },
+          { v: "C", text: "Harps suggest a symphony orchestra pit" },
+          { v: "D", text: "Tractors suggest deep-sea fishing" }
+        ],
+        correct: "B"
+      },
+      {
+        stem: "Look at the photograph. What weather condition fits the scene best?",
+        imageUrl: "https://placehold.co/600x400/0A2240/FDB813?text=Outdoor+Delivery",
+        options: [
+          { v: "A", text: "Heavy snow blocking the windows" },
+          { v: "B", text: "Clear daylight suitable for outdoor delivery" },
+          { v: "C", text: "Fog dense enough to ground all flights" },
+          { v: "D", text: "Hurricane rainfall flooding the lobby" }
+        ],
+        correct: "B"
+      }
+    ];
+
+    /**
+     * 口說／寫作題庫：依檢定分六個陣列，方便擴充（OOP 組織）
+     * 全域 getExamSpeakWrite(key) 與實例方法皆為隨機抽取。
+     */
+    class ExamPromptRepository {
+      constructor() {
+        this.ieltsSpeaking = [
+          "IELTS Part 2: Describe a website or app that helps you study languages. You should say what it does, how often you use it, and how it changed your habits.",
+          "IELTS Part 2: Describe a mentor or teacher who influenced your academic plans. Explain when you met them, what advice they gave, and why it still matters.",
+          "IELTS Part 2: Describe a city you would like to live in for a dual-degree program. Include climate, transport, and why English practice opportunities matter there.",
+          "IELTS Part 3 follow-up style (record 45 seconds): Do you think standardized tests measure creativity? Give reasons and one example from your major in MIS.",
+          "IELTS Part 2: Describe a group assignment that taught you communication skills. Mention the conflict, your role, and the measurable outcome.",
+          "IELTS Part 3: To what extent should universities teach AI literacy to business majors? Argue two sides briefly then state your view.",
+          "IELTS Part 2: Describe a presentation you delivered under time pressure. Include preparation steps, technology used, and audience feedback.",
+          "IELTS Part 2: Talk about a library or coworking space where you prepare exams. Describe layout, noise level, and one productivity habit."
+        ];
+        this.ieltsWriting = [
+          { prompt: "IELTS Task 2 / Academic: Some argue that universities should prioritize STEM over humanities. To what extent do you agree? Write at least 250 words with examples from technology and society.", limitMin: 40, targetWords: 250 },
+          { prompt: "IELTS Task 2: International students should live with host families instead of student dormitories. Discuss both views and give your opinion (≥250 words).", limitMin: 40, targetWords: 250 },
+          { prompt: "IELTS Task 2: Governments should fund free public Wi-Fi in all cities. Do the benefits outweigh the drawbacks? Support with cases of education and commerce.", limitMin: 40, targetWords: 250 },
+          { prompt: "IELTS Task 2: Remote internships are less valuable than on-site ones. How far do you agree? Reference teamwork and mentorship (≥250 words).", limitMin: 40, targetWords: 250 },
+          { prompt: "IELTS Task 2: Plastic packaging should be taxed heavily. Discuss economic and environmental trade-offs with concrete examples.", limitMin: 40, targetWords: 250 },
+          { prompt: "IELTS Task 1 mixed skill warm-up: Summarize in prose how three charts (tuition inflation, enrolment abroad, scholarship awards) might correlate; then state one policy implication (≥200 words).", limitMin: 35, targetWords: 200 },
+          { prompt: "IELTS Task 2: News literacy should be a compulsory university course. Argue for or against, citing misinformation incidents and classroom design.", limitMin: 40, targetWords: 250 },
+          { prompt: "IELTS Task 2: Large language models reduce the need for foreign-language classrooms. Critically evaluate this claim for graduate applicants.", limitMin: 40, targetWords: 250 }
+        ];
+        this.toeflSpeaking = [
+          "TOEFL Independent: Would you rather take open-book exams with strict time limits or closed-book exams with more time? Explain with an example from your coursework.",
+          "TOEFL Independent: Your university plans to remove printed textbooks. Do you support the change? Address cost, eye strain, and access equity.",
+          "TOEFL Independent: Should first-year students be required to live on campus? Use reasons and details about community and independence.",
+          "TOEFL Integrated-style summary: Summarize how a reading passage and a lecture might disagree about mandatory internships; speak for 45 seconds.",
+          "TOEFL Independent: Is it better to study one subject deeply each day or several subjects in rotation? Reference spaced repetition research.",
+          "TOEFL Independent: Should governments fund study-abroad scholarships for STEM students only? Give reasons and one counterargument.",
+          "TOEFL Independent: Do you prefer asynchronous video lectures or live seminars for quantitative subjects? Justify with examples.",
+          "TOEFL Independent: Describe a technical problem you solved in a team. Who did what, and what tool helped most?"
+        ];
+        this.toeflWriting = [
+          { prompt: "TOEFL Integrated writing style: Summarize how the lecture challenges three claims in a reading about smart cities; include specific contrasts (recommended 280–320 words).", limitMin: 28, targetWords: 300 },
+          { prompt: "TOEFL Independent: Do you agree that social media helps activism more than it harms privacy? Support with two reasons and one caveat (≥300 words).", limitMin: 28, targetWords: 300 },
+          { prompt: "TOEFL Independent: Universities should cap international enrolment to protect local students. Agree or disagree with examples from housing and language support.", limitMin: 28, targetWords: 300 },
+          { prompt: "TOEFL Independent: Older workers should mentor younger colleagues in hybrid offices. Explain benefits and how to structure mentorship hours.", limitMin: 28, targetWords: 300 },
+          { prompt: "TOEFL Integrated: Compare reading vs lecture positions on carbon tariffs for imports; explain which side is more convincing to a policy analyst.", limitMin: 28, targetWords: 300 },
+          { prompt: "TOEFL Independent: Should coding be required for all business undergraduates? Discuss MIS curriculum trade-offs.", limitMin: 28, targetWords: 300 },
+          { prompt: "TOEFL Independent: Gamified apps improve motivation for vocabulary acquisition. Evaluate the claim using your own study habits.", limitMin: 28, targetWords: 300 },
+          { prompt: "TOEFL Independent: Describe policies universities should adopt to keep generative AI use ethical in coursework (≥300 words).", limitMin: 28, targetWords: 300 }
+        ];
+        this.toeicSpeaking = [
+          "TOEIC Speaking – Read a text description aloud: Summarize in your own spoken English the posted notice about fire drill procedures, then add one clarifying detail you would request from HR.",
+          "TOEIC Speaking – Describe the image: You see logistics workers scanning cartons beside a loading dock. Describe the scene, then propose one operational change to reduce shipment errors.",
+          "TOEIC Speaking – Describe the image: A product team is video conferencing with overseas partners. Describe posture, screens, and collaboration tools visible, then suggest how to improve meeting equity across time zones.",
+          "TOEIC Speaking – Problem solving: Your office Wi-Fi fails during a client demo. Explain the immediate steps you would take and whom you would contact, speaking for at least 45 seconds.",
+          "TOEIC Speaking – Describe the image: Commuters boarding a train with digital timetable boards. Describe the setting, then propose one customer-service improvement the transit firm could pilot.",
+          "TOEIC Speaking – Describe the image: Chefs plating dishes in an open kitchen. Describe workflow, then recommend one food-safety training topic for new hires.",
+          "TOEIC Speaking – Problem solving: A vendor sent components with wrong HS codes, delaying customs. Outline your spoken response to the supplier and one preventive control.",
+          "TOEIC Speaking – Describe the image: Technicians calibrating lab equipment. Describe safety gear and tools, then suggest one documentation habit that aids audits."
+        ];
+        this.toeicWriting = [
+          { prompt: "TOEIC Writing – E-mail response: Your manager e-mailed: \"Please confirm whether you can host the vendor audit on Thursday at 9 a.m. or propose two alternatives.\" Write a professional reply (≥80 words) addressing availability, room booking, and required files.", limitMin: 15, targetWords: 90 },
+          { prompt: "TOEIC Writing – E-mail response: HR requests you to acknowledge completion of anti-harassment training and report any scheduling conflicts. Reply professionally with confirmation and, if needed, one alternative slot (≥80 words).", limitMin: 15, targetWords: 90 },
+          { prompt: "TOEIC Writing – E-mail response: A client asks for a revised quotation because currency shifted five percent. Apologize briefly, explain you will recalculate by COB, and list two line items you need from them.", limitMin: 15, targetWords: 90 },
+          { prompt: "TOEIC Writing – E-mail response: IT announces VPN maintenance Saturday 01:00–04:00. Reply that you will save work offline and ask whether SAP access will require reauthentication.", limitMin: 15, targetWords: 80 },
+          { prompt: "TOEIC Writing – E-mail response: Facilities needs a volunteer floor warden list by Friday. Reply to accept or decline politely and nominate a colleague if you decline.", limitMin: 15, targetWords: 85 },
+          { prompt: "TOEIC Writing – E-mail response: Finance rejected your travel reimbursement for missing receipts. Request a partial approval path and list documents you can now attach.", limitMin: 15, targetWords: 90 },
+          { prompt: "TOEIC Writing – E-mail response: Marketing invites you to beta-test the new customer portal. Accept, propose two usability metrics you will observe, and ask about data privacy.", limitMin: 15, targetWords: 90 },
+          { prompt: "TOEIC Writing – E-mail response: Your teammate is sick; the steering committee deck is due tonight. Offer to consolidate slides, specify sections you will own, and request the latest data dump link.", limitMin: 15, targetWords: 95 }
+        ];
+      }
+      pickFrom(arr) {
+        return getRandomFrom(arr);
+      }
+      getRandomSpeaking(exam) {
+        if (exam === "ielts") return this.pickFrom(this.ieltsSpeaking);
+        if (exam === "toeic") return this.pickFrom(this.toeicSpeaking);
+        return this.pickFrom(this.toeflSpeaking);
+      }
+      getRandomWriting(exam) {
+        var w =
+          exam === "ielts" ? this.pickFrom(this.ieltsWriting) : exam === "toeic" ? this.pickFrom(this.toeicWriting) : this.pickFrom(this.toeflWriting);
+        return { prompt: w.prompt, limitMin: w.limitMin, targetWords: w.targetWords };
+      }
+      /** key: ielts_speak | ielts_write | toefl_speak | toefl_write | toeic_speak | toeic_write */
+      getRandomQuestion(key) {
+        var map = {
+          ielts_speak: this.ieltsSpeaking,
+          ielts_write: this.ieltsWriting,
+          toefl_speak: this.toeflSpeaking,
+          toefl_write: this.toeflWriting,
+          toeic_speak: this.toeicSpeaking,
+          toeic_write: this.toeicWriting
+        };
+        var pool = map[key];
+        if (!pool) return null;
+        var item = this.pickFrom(pool);
+        if (key.indexOf("_write") >= 0) return { prompt: item.prompt, limitMin: item.limitMin, targetWords: item.targetWords };
+        return item;
+      }
+    }
+
+    const examPromptRepo = new ExamPromptRepository();
 
     /** 英檢模考當次隨機題組（按 Start Exam 產生） */
     window.__mockEnSession = null;
@@ -3343,16 +3927,17 @@ ORDER BY avg_score DESC;"></textarea>
         var rb = getRandomFrom(EN_READING_POOLS[englishExam]);
         var lb = getRandomFrom(EN_LISTENING_POOLS[englishExam]);
         if (rb && lb) {
+          var wPack = examPromptRepo.getRandomWriting(englishExam);
           return {
             label: englishExamLabel() + " · 隨機預覽",
             readingPassage: rb.passage,
             readingQs: rb.questions.slice(0, 3),
             listeningScript: lb.script,
             listeningQs: lb.quizzes,
-            speakingTopic: "Describe a challenge you overcame in academic or professional settings and what you learned.",
-            writingPrompt:
-              "To what extent do you agree that structured study plans matter more than talent? Support your view with reasons and examples.",
-            writingLimitMin: 30
+            speakingTopic: examPromptRepo.getRandomSpeaking(englishExam),
+            writingPrompt: wPack.prompt,
+            writingLimitMin: wPack.limitMin,
+            writingTargetWords: wPack.targetWords
           };
         }
       }
@@ -3400,12 +3985,52 @@ ORDER BY avg_score DESC;"></textarea>
       return enListeningBundle;
     }
 
+    function renderOptionalImage(anchorEl, imageId, imageUrl, altText) {
+      if (!anchorEl || !anchorEl.parentNode) return;
+      var old = $("#" + imageId);
+      if (!imageUrl) {
+        if (old) old.remove();
+        return;
+      }
+      var img = old || document.createElement("img");
+      img.id = imageId;
+      img.src = imageUrl;
+      img.alt = altText || "exam image";
+      img.style.maxWidth = "100%";
+      img.style.borderRadius = "8px";
+      img.style.margin = "15px 0";
+      if (!old) anchorEl.parentNode.insertBefore(img, anchorEl);
+    }
+
+    function getGeneralLongReadingSet() {
+      if (currentLang === "en") return null;
+      var pack = MOCK_EXAM_BY_LANG[currentLang];
+      if (!pack || !pack.readingQs || !pack.readingQs.length) return null;
+      return pack;
+    }
+
+    function getGeneralLongListeningSet() {
+      if (currentLang === "en") return null;
+      var pack = MOCK_EXAM_BY_LANG[currentLang];
+      if (!pack || !pack.listeningQs || !pack.listeningQs.length) return null;
+      return pack;
+    }
+
     function renderEnglishReadingPanel() {
+      if (englishExam === "toeic" && toeicMode === "sw") return;
       if (!enReadingBundle) pickEnglishReadingBundle();
       $("#readingExamBadge").style.display = "inline-block";
       $("#readingExamBadge").textContent = englishExamLabel();
-      $("#readingNavHint").textContent = "長篇閱讀 · 同一文章 4 題 · 按「隨機換篇」可再抽題庫";
+      if (englishExam === "toeic" && toeicMode === "lr") {
+        $("#readingNavHint").textContent =
+          "TOEIC L&R：Part 1 照片描述（選擇）＋ Part 7 風格多段文本 · 共 4 題 · 「隨機換篇」重抽閱讀組";
+        renderToeicPart1Panel();
+      } else {
+        $("#toeicPart1Block").style.display = "none";
+        $("#readingNavHint").textContent = "長篇閱讀 · 同一文章 4 題 · 按「隨機換篇」可再抽題庫";
+      }
       $("#readingPassage").textContent = enReadingBundle.passage;
+      renderOptionalImage($("#readingPassage"), "readingPassageImage", enReadingBundle.imageUrl, "Reading reference image");
       $("#readingSingleBlock").style.display = "none";
       $("#readingMultiBlock").style.display = "block";
       $("#readingPrev").style.display = "none";
@@ -3432,6 +4057,27 @@ ORDER BY avg_score DESC;"></textarea>
     }
 
     function renderNonEnglishReadingPanel() {
+      var longPack = getGeneralLongReadingSet();
+      if (longPack) {
+        var qs = longPack.readingQs || [];
+        if (readingIdx >= qs.length) readingIdx = 0;
+        var curQ = qs[readingIdx];
+        $("#readingExamBadge").style.display = "none";
+        $("#readingSingleBlock").style.display = "block";
+        $("#readingMultiBlock").style.display = "none";
+        $("#readingPrev").style.display = "inline-flex";
+        $("#readingNext").style.display = "inline-flex";
+        $("#readingRandomBtn").style.display = "none";
+        $("#readingNavHint").textContent = "長篇讀解（真實題庫）第 " + (readingIdx + 1) + " / " + qs.length + " 題";
+        $("#readingPassage").textContent = longPack.readingPassage;
+        renderOptionalImage($("#readingPassage"), "readingPassageImage", longPack.imageUrl, "Reading reference image");
+        $("#readingQuestion").textContent = curQ.q;
+        renderMcqOptions("readingOptions", curQ.options, "read_opt");
+        $("#readingResult").className = "result-msg";
+        $("#readingResult").textContent = "";
+        $("#readingResult").classList.remove("show");
+        return;
+      }
       $("#readingExamBadge").style.display = "none";
       $("#readingSingleBlock").style.display = "block";
       $("#readingMultiBlock").style.display = "none";
@@ -3442,6 +4088,7 @@ ORDER BY avg_score DESC;"></textarea>
       var r = arr[readingIdx];
       $("#readingNavHint").textContent = "第 " + (readingIdx + 1) + " / " + arr.length + " 題";
       $("#readingPassage").textContent = r.passage;
+      renderOptionalImage($("#readingPassage"), "readingPassageImage", r.imageUrl, "Reading reference image");
       $("#readingQuestion").textContent = r.q;
       renderMcqOptions("readingOptions", r.options, "read_opt");
       $("#readingResult").className = "result-msg";
@@ -3470,6 +4117,7 @@ ORDER BY avg_score DESC;"></textarea>
       var w = enListeningBundle.script.split(/\s+/).filter(Boolean).length;
       $("#listenTtsText").textContent =
         "【練習模式】文稿播放中不顯示全文。本稿約 " + w + " 詞。主題隨題庫隨機抽出，非固定例句。";
+      renderOptionalImage($("#listenTtsText"), "listeningPassageImage", enListeningBundle.imageUrl, "Listening reference image");
       resetListenPlayer();
       listenDurationSec = Math.max(120, Math.min(220, Math.round(w / 2.2)));
       renderEnListenQuiz();
@@ -3478,10 +4126,26 @@ ORDER BY avg_score DESC;"></textarea>
     }
 
     function renderNonEnglishListeningPanel() {
+      var longPack = getGeneralLongListeningSet();
+      if (longPack) {
+        var lq = longPack.listeningQs || [];
+        if (listeningIdx >= lq.length) listeningIdx = 0;
+        var LQ = lq[listeningIdx];
+        $("#listeningNavHint").textContent = "長篇聽解（真實題庫）第 " + (listeningIdx + 1) + " / " + lq.length + " 題";
+        $("#listenTtsText").textContent = longPack.listeningScript;
+        renderOptionalImage($("#listenTtsText"), "listeningPassageImage", longPack.imageUrl, "Listening reference image");
+        $("#listenQuizQ").textContent = LQ.q;
+        renderMcqOptions("listenQuizOpts", LQ.options, "listen_quiz");
+        $("#listenQuizResult").className = "result-msg";
+        $("#listenQuizResult").textContent = "";
+        resetListenPlayer();
+        return;
+      }
       var arr = LANG_DATA[currentLang].listeningQuestions;
       var L = arr[listeningIdx];
       $("#listeningNavHint").textContent = "第 " + (listeningIdx + 1) + " / " + arr.length + " 題（播放與本題同步）";
       $("#listenTtsText").textContent = L.tts;
+      renderOptionalImage($("#listenTtsText"), "listeningPassageImage", L.imageUrl, "Listening reference image");
       $("#listenQuizQ").textContent = L.quizQ;
       renderMcqOptions("listenQuizOpts", L.quizOptions, "listen_quiz");
       $("#listenQuizResult").className = "result-msg";
@@ -3778,8 +4442,25 @@ ORDER BY avg_score DESC;"></textarea>
         ]
       },
       {
-        category: "💼 多益 TOEIC · 單字",
-        items: [{ title: "Cindy 陪你零碎時間背多益單字（串講）", url: "https://b23.tv/d4w5M2p" }]
+        category: "💼 多益 TOEIC · 聽讀 L&R / 說寫 S&W",
+        items: [
+          { title: "ETS｜TOEIC L&R 測驗簡介與題型", url: "https://www.ets.org/toeic/test-takers/lr/about.html" },
+          { title: "ETS｜TOEIC Speaking & Writing 內容說明", url: "https://www.ets.org/toeic/test-takers/sw/about.html" },
+          { title: "Engoo｜免費 TOEIC 線上程度測驗（範例平台）", url: "https://engoo.com.tw/app/materials/toeic/toeic-test" },
+          { title: "VoiceTube｜多益主題文章與練習", url: "https://www.voicetube.com/" },
+          { title: "Cindy 多益單字串講（Bilibili）", url: "https://b23.tv/d4w5M2p" },
+          { title: "CLN 企業語言學習網（資源文章區）", url: "https://www.cln.com.tw/" }
+        ]
+      },
+      {
+        category: "🎓 資管考研攻略 · 簡章與共筆",
+        items: [
+          { title: "高點｜2026 資管所考科／招生整理（GET Master）", url: "https://master.get.com.tw/it/MIS/module.aspx" },
+          { title: "TKB 大碩｜研究所／資管考情入口", url: "https://www.tkbgo.com.tw/" },
+          { title: "批踢踢 graduate 板（考研心得串）", url: "https://www.ptt.cc/bbs/graduate/index.html" },
+          { title: "HackMD 資管筆記範例索引", url: "https://hackmd.io/@iamalex33329/SJFPRxti3" },
+          { title: "Dcard｜英文檢定板（TOEIC 心得搜尋）", url: "https://www.dcard.tw/f/english_test" }
+        ]
       },
       {
         category: "🇯🇵 日語 Japanese · 單字／教程",
@@ -3849,18 +4530,82 @@ ORDER BY avg_score DESC;"></textarea>
       }
     ];
 
-    /** 考研：MIS / 資料庫閃卡、考古題 */
-    const EXAM_FLASH = [
-      { front: "MIS（管理資訊系統）", back: "支援組織決策與營運的人機整合系統，透過資料蒐集、處理與傳遞提升效能。" },
-      { front: "ERP", back: "企業資源規劃：整合財務、供應鏈、人資等流程的套裝或模組化資訊系統。" },
-      { front: "正規化（Normalization）", back: "減少資料重複與異常相依，將關聯綱要分解為良好結構的過程。" },
-      { front: "ACID", back: "交易四性質：原子性、一致性、隔離性、持久性，確保資料庫交易可靠。" },
-      { front: "主鍵（Primary Key）", back: "唯一識別資料表中每一列的欄位或欄位組合，不可重複且通常不可為 NULL。" },
-      { front: "外部鍵（Foreign Key）", back: "指向另一表主鍵的欄位，用於維護參考完整性與表間關聯。" },
-      { front: "DDL / DML", back: "DDL：定義綱要（CREATE、ALTER）；DML：操作資料（SELECT、INSERT、UPDATE、DELETE）。" },
-      { front: "堆疊（Stack）", back: "後進先出（LIFO）的線性結構，常見於遞迴呼叫、語法剖析、Undo。" },
-      { front: "佇列（Queue）", back: "先進先出（FIFO），常見於排程、BFS、緩衝。" },
-      { front: "時間複雜度 Big-O", back: "描述輸入規模 n 增長時，演算法步驟上界；用於比較演算法效率。" }
+    /**
+     * 組別與可選科目（下拉選單資料來源）
+     * tech：科技組｜management：管理組
+     */
+    const IM_TRACK_SUBJECT_OPTIONS = {
+      tech: [
+        { value: "mis", label: "管理資訊系統（MIS）" },
+        { value: "ds", label: "資料結構（Data Structures）" },
+        { value: "db", label: "資料庫（Database）" },
+        { value: "cs", label: "計算機概論（Computer Science）" },
+        { value: "osnet", label: "作業系統／網路（OS / Network）" },
+        { value: "sad", label: "系統分析與設計（SAD）" }
+      ],
+      management: [
+        { value: "mis", label: "管理資訊系統（MIS）" },
+        { value: "statistics", label: "統計學（Statistics）" },
+        { value: "economics", label: "經濟學（Economics）" },
+        { value: "accounting", label: "會計學（Accounting）" }
+      ]
+    };
+
+    /**
+     * 名詞閃卡題庫（含 track、subject 標籤，供 filter）
+     * IM_Flashcards_Array — 與考研題庫共用組別／科目篩選邏輯
+     */
+    const IM_FLASHCARDS_ARRAY = [
+      { track: "tech", subject: "mis", front: "MIS（管理資訊系統）", back: "支援組織決策與營運的人機整合系統；考研常考「資料—資訊—決策」鏈與組織層級（作業／知識／策略）。" },
+      { track: "tech", subject: "mis", front: "ERP", back: "企業資源規劃：財務、供應鏈、人資等模組共用主檔；導入重點含主檔淨化、流程標準化與變更管理。" },
+      { track: "tech", subject: "mis", front: "CRM／SCM", back: "CRM 管理客戶生命週期與銷售漏斗；SCM 協調採購、庫存與物流，與 ERP 常整合。" },
+      { track: "tech", subject: "mis", front: "BI 與 ETL", back: "ETL 自各系統抽取／轉換／載入至資料倉儲；BI 儀表板支援 OLAP 與視覺化決策。" },
+      { track: "tech", subject: "mis", front: "資訊治理（IT Governance）", back: "架構與政策確保 IT 與風險、法遵對齊；常見框架 COBIT、ITIL 精神入題。" },
+      { track: "tech", subject: "ds", front: "堆疊（Stack）", back: "LIFO；遞迴、DFS、語法剖析常用；典型操作 push／pop。" },
+      { track: "tech", subject: "ds", front: "佇列（Queue）", back: "FIFO；BFS、排程、緩衝；雙端佇列 Deque 可優化單調佇列題。" },
+      { track: "tech", subject: "ds", front: "二元樹／BST", back: "左子 < 根 < 右子（BST）；中序走訪得排序序；平衡樹 AVL／RB 維持高度 O(log n)。" },
+      { track: "tech", subject: "ds", front: "雜湊表（Hash Table）", back: "平均 O(1) 查詢；碰撞處理：chaining 或 open addressing；負載因子影響效能。" },
+      { track: "tech", subject: "ds", front: "圖 Graph 表示法", back: "鄰接矩陣適合稠密圖；鄰接串列適合稀疏圖；權重圖邊存 cost。" },
+      { track: "tech", subject: "db", front: "正規化 1NF–3NF", back: "1NF 原子性；2NF 消除部分相依；3NF 消除遞移相依；BCNF 更嚴格候選鍵條件。" },
+      { track: "tech", subject: "db", front: "ACID", back: "原子性、一致性、隔離性、持久性；交易 scheduler／lock 實作影響隔離層級表現。" },
+      { track: "tech", subject: "db", front: "索引 B+ Tree", back: "葉節點鏈結利於範圍查詢；聚簇索引決定資料實體排序；過多索引拖慢寫入。" },
+      { track: "tech", subject: "db", front: "交易隔離與幻讀", back: "RR 可能幻讀；Serializable 最嚴；MVCC 以版本鏈降低讀寫互擋。" },
+      { track: "tech", subject: "db", front: "關聯代數／SQL", back: "σ π ⋈ 對應 WHERE、SELECT、JOIN；考研愛考重請執行順序與除法、聚合。" },
+      { track: "tech", subject: "cs", front: "CPU 管線（Pipeline）", back: "指令分階段交疊執行；資料相依與控制相依可能造成 hazard 與 bubble。" },
+      { track: "tech", subject: "cs", front: "快取記憶體", back: "利用時間／空間局部性；miss rate、associativity、write policy 影響延遲。" },
+      { track: "tech", subject: "cs", front: "時間複雜度 Big-O", back: "描述輸入規模 n 增長時步驟上界；比較漸進效率與平均／最差情境。" },
+      { track: "tech", subject: "cs", front: "數位邏輯與布林代數", back: "K-map 化簡、De Morgan；組合邏輯 vs 序向邏輯（clock、flip-flop）。" },
+      { track: "tech", subject: "cs", front: "虛擬記憶體（Virtual Memory）", back: "分頁／分段結合磁碟 swap；MMU 邏輯轉實體位址；Thrashing 與工作集。" },
+      { track: "tech", subject: "osnet", front: "TCP 三向交握", back: "SYN → SYN-ACK → ACK；關閉含 FIN／TIME_WAIT；與可靠傳輸、流量與擁塞控制搭配。" },
+      { track: "tech", subject: "osnet", front: "UDP 與即時應用", back: "無連線、不保序；適合即時串流、DNS（常見）；應用層自行處理遺失。" },
+      { track: "tech", subject: "osnet", front: "IP／CIDR", back: "無類別網域路由彙縮路由表；子網切割與主機位計算為計概常客。" },
+      { track: "tech", subject: "osnet", front: "行程 vs 執行緒", back: "行程資源隔離；執行緒共享位址空間；上下文切換成本與同步議題不同。" },
+      { track: "tech", subject: "osnet", front: "死鎖四條件", back: "互斥、持有並等待、不可搶占、循環等待；銀行家演算法為經典 avoidance 範例。" },
+      { track: "tech", subject: "sad", front: "SDLC", back: "規劃、分析、設計、建置、測試、維護；與敏捷迭代並存於實務。" },
+      { track: "tech", subject: "sad", front: "DFD 平衡規則", back: "上層與下層資料流一致；外部實體與資料儲存命名對齊。" },
+      { track: "tech", subject: "sad", front: "UML 使用案例圖", back: "演員／使用案例／關聯；extend 與 include 語意為口試陷阱。" },
+      { track: "tech", subject: "sad", front: "結構化 vs OO 分析", back: "前者重資料流分解；後者重物件、封裝、繼承、多型。" },
+      { track: "tech", subject: "sad", front: "需求可追蹤性", back: "需求編號連結設計與測試；支援變更影響分析。" },
+      { track: "management", subject: "mis", front: "Porter 五力分析", back: "競爭強度、潛在进入、替代、買方與供方議價力；IT 改變進入障礙與搜尋成本。" },
+      { track: "management", subject: "mis", front: "交易成本理論（TCT）", back: "市場 vs 層級；資產專屬性高時垂直整合或長約可能較省交易成本。" },
+      { track: "management", subject: "mis", front: "策略對齊（Strategic Alignment）", back: "IT 投資與企業競爭策略一致；常以治理委員會與專案組合管理實踐。" },
+      { track: "management", subject: "mis", front: "商業模式圖（BMC）", back: "價值主張、區隔、通路、關係、營收、資源、活動、夥伴、成本。" },
+      { track: "management", subject: "mis", front: "個資與法遵", back: "最小化、目的限制、告知同意；個資法與 GDPR 精神常入推甄。" },
+      { track: "management", subject: "statistics", front: "中央極限定理（CLT）", back: "樣本平均大樣本近似常態；區間估計與檢定之前提討論。" },
+      { track: "management", subject: "statistics", front: "ANOVA", back: "多組平均比較；F 統計量；需檢查變異同質。" },
+      { track: "management", subject: "statistics", front: "卡方檢定", back: "適合度或獨立性；期望次數過小需處理。" },
+      { track: "management", subject: "statistics", front: "迴歸與 R²", back: "OLS 係數；R² 解釋力；注意共線性。" },
+      { track: "management", subject: "statistics", front: "無母數檢定", back: "常態假設不成立時；Wilcoxon、Mann-Whitney 等。" },
+      { track: "management", subject: "economics", front: "供需與均衡", back: "價格調整至供需相交；區分點移動與線平移。" },
+      { track: "management", subject: "economics", front: "價格彈性", back: "Ed=(ΔQ/Q)/(ΔP/P)；與總收入變動關係常考。" },
+      { track: "management", subject: "economics", front: "剩餘與無謂損失", back: "課稅與價格下限／上限可能產生無謂損失。" },
+      { track: "management", subject: "economics", front: "完全競爭", back: "眾多廠商、同質產品；長期 P=MC，經濟利潤趨零。" },
+      { track: "management", subject: "economics", front: "壟斷性競爭／寡占", back: "差異化與賽局；折彎需求曲線、勾結風險。" },
+      { track: "management", subject: "accounting", front: "借貸分錄", back: "資產、費用借方增加；負債、權益、收入貸方增加。" },
+      { track: "management", subject: "accounting", front: "T-帳與試算表", back: "彙計餘額；平衡不排除漏記或錯科目。" },
+      { track: "management", subject: "accounting", front: "損益表", back: "期間收入減費用得淨利；連結保留盈餘。" },
+      { track: "management", subject: "accounting", front: "存貨 FIFO／平均", back: "物價變動下方法影響銷貨成本與毛利。" },
+      { track: "management", subject: "accounting", front: "折舊與調整分錄", back: "直線法、餘額遞減；期末應計、預付等調整。" }
     ];
 
     const EXAM_ESSAY = {
@@ -3945,7 +4690,13 @@ ORDER BY avg_score DESC;"></textarea>
      */
     const ADMISSION_LINKS_ARRAY = [
       { title: "Dcard｜考研板心得（範例串 1）", url: "https://www.dcard.tw/f/graduate_school/p/258472832?cid=3a754d44-028b-4020-850d-1e825937f5f9", tag: "心得" },
-      { title: "Dcard｜推甄／備審討論（範例串 2）", url: "https://www.dcard.tw/f/graduate_school/p/261238983?cid=aed73853-029d-4a65-ad6e-9f92ae40dd8b", tag: "備審" },
+      { title: "Dcard｜推甄／備審討論", url: "https://www.dcard.tw/f/graduate_school/p/261238983", tag: "備審" },
+      { title: "Dcard｜考研話題（258426281）", url: "https://www.dcard.tw/f/graduate_school/p/258426281", tag: "考研" },
+      { title: "Dcard｜上榜／準備心得（258562180）", url: "https://www.dcard.tw/f/graduate_school/p/258562180", tag: "心得" },
+      { title: "Dcard｜考試／推甄討論（258715553）", url: "https://www.dcard.tw/f/graduate_school/p/258715553", tag: "綜合" },
+      { title: "Dcard｜研究所準備（261203674）", url: "https://www.dcard.tw/f/graduate_school/p/261203674", tag: "準備" },
+      { title: "Dcard｜跨領域／心得（241587396）", url: "https://www.dcard.tw/f/graduate_school/p/241587396", tag: "跨考" },
+      { title: "Dcard｜考研經驗（258378371）", url: "https://www.dcard.tw/f/graduate_school/p/258378371", tag: "心得" },
       { title: "Dcard｜面試與讀書計畫（範例串 3）", url: "https://www.dcard.tw/f/graduate_school/p/258562680?cid=124e496c-d164-46b1-a7e5-0d6c9f970ada", tag: "面試" },
       { title: "Dcard｜跨考／資管經驗（範例串 4）", url: "https://www.dcard.tw/f/graduate_school/p/260455993?cid=54cf5ee8-6ce7-40dc-8eb9-5a2d574749ff", tag: "跨考" },
       { title: "Dcard｜書審與推薦信（範例串 5）", url: "https://www.dcard.tw/f/graduate_school/p/260343461?cid=0652acf6-0753-48df-87a7-673b9143859b", tag: "書審" },
@@ -3957,122 +4708,280 @@ ORDER BY avg_score DESC;"></textarea>
     ];
 
     /**
-     * 考研題庫：名詞解釋、演算法虛擬碼、SQL／DB 觀念 — 每次 Math.random 抽一題
+     * 考研模擬題庫：每題含 track（組別）、subject（科目），與閃卡共用篩選
      */
     const IM_EXAM_BANK = [
       {
+        track: "tech",
+        subject: "mis",
         badge: "MIS 名詞",
         prompt: "請解釋何謂「管理資訊系統（MIS）」，並各舉一個策略層與作業層的資訊系統例子。",
         reference:
           "參考：MIS 為支援組織決策與日常營運的人機整合系統。策略層例：高階主管儀表板／市場預測系統；作業層例：POS、庫存管理。重點在「資料→資訊→決策」與利害關係人。"
       },
       {
+        track: "tech",
+        subject: "mis",
         badge: "MIS 名詞",
         prompt: "什麼是 ERP？導入 ERP 常見的組織面阻力為何？",
         reference:
           "參考：ERP 整合財務、供應鏈、人資等流程於同一資料模型。阻力常見：部門本位、流程標準化衝突、變更管理不足、資料清理耗時、使用者訓練成本。"
       },
       {
+        track: "management",
+        subject: "mis",
+        badge: "MIS 名詞",
+        prompt: "說明「資訊系統策略與企業策略對齊（Strategic Alignment）」的意義，並舉一個衡量對齊與否的指標或做法。",
+        reference:
+          "參考：確保 IT 投資與企業競爭策略一致（如成本領導 vs 差異化）。可透過專案組合審查、IT 治理委員會、Balanced Scorecard 連結 IT 指標與營運結果。"
+      },
+      {
+        track: "tech",
+        subject: "db",
         badge: "資料庫",
         prompt: "說明第一正規化（1NF）的目的，並舉一個違反 1NF 的欄位設計例子。",
         reference:
           "參考：1NF 要求每個欄位不可分割且每列唯一。反例：「電話」欄存「0911-222-333, 02-1234-5678」多值未拆表；應拆成多筆或子表。"
       },
       {
+        track: "tech",
+        subject: "db",
         badge: "資料庫",
         prompt: "解釋 ACID 四個性質，並說明「隔離性」在併發交易下要解決的問題。",
         reference:
           "參考：A 原子性、C 一致性、I 隔離性、D 持久性。隔離性要避免髒讀、不可重複讀、幻讀；依隔離等級在一致性與效能間權衡。"
       },
       {
+        track: "tech",
+        subject: "ds",
         badge: "資料結構",
         prompt: "寫出二元搜尋樹（BST）插入一個鍵的虛擬碼（迭代或遞迴擇一）。",
         reference:
           "參考虛擬碼：若樹空則新建節點；否則從根比較，較小往左、較大往右，直到空子樹後插入。時間複雜度平均 O(log n)，最差 O(n)。"
       },
       {
+        track: "tech",
+        subject: "ds",
         badge: "資料結構",
         prompt: "說明 QuickSort 的平均與最差時間複雜度，並描述最差情況如何發生。",
         reference:
           "參考：平均 O(n log n)；最差 O(n²)，發生在每次 pivot 極端不平衡（例如已排序且總選最小／最大為 pivot）。可隨機化 pivot 改善期望效能。"
       },
       {
+        track: "tech",
+        subject: "ds",
         badge: "資料結構",
         prompt: "何謂「最短路徑」問題？列出 Dijkstra 適用與不適用的圖形條件。",
         reference:
           "參考：找兩點間邊權重和最小路徑。Dijkstra 適用非負邊權；若存在負邊需改用 Bellman-Ford 等。可用 min-heap 加速。"
       },
       {
+        track: "tech",
+        subject: "ds",
         badge: "演算法",
         prompt: "寫出 Merge Sort 合併兩個已排序陣列的虛擬碼（merge 步驟）。",
         reference:
           "參考：雙指標 i,j 比較 A[i]、B[j]，較小者輸出到 C 並前進；一邊走完後將另一邊剩餘全接。整體 Merge Sort 時間 O(n log n)，空間 O(n)。"
       },
       {
+        track: "tech",
+        subject: "ds",
         badge: "演算法",
         prompt: "解釋動態規劃與分治法的差異，並舉一個適合用 DP 的典型問題。",
         reference:
           "參考：DP 子問題重疊、最優子結構，以記憶化或表格避免重算；分治子問題獨立（如 merge sort）。例：LIS、背包問題、編輯距離。"
       },
       {
+        track: "tech",
+        subject: "cs",
         badge: "作業系統",
         prompt: "什麼是 Deadlock？列出四個必要條件與一種預防策略。",
         reference:
           "參考：互斥、持有並等待、不可搶占、循環等待。預防：例如一次請求所有資源、允許搶占、或破壞循環等待（有序資源編號）。"
       },
       {
+        track: "tech",
+        subject: "cs",
         badge: "作業系統",
         prompt: "說明分頁（Paging）與分段（Segmentation）在記憶體管理上的主要差異。",
         reference:
           "參考：分頁固定大小框，內部碎片；分段依邏輯單位可變長，外部碎片。虛擬記憶體常結合兩者概念於實務 MMU。"
       },
       {
+        track: "tech",
+        subject: "osnet",
         badge: "網路",
         prompt: "TCP 與 UDP 的主要差異？各適合哪類應用？",
         reference:
           "參考：TCP 連線導向、可靠、有序，適合 HTTP、FTP；UDP 無連線、低延遲、不保證傳送，適合即時串流、DNS（常見）、遊戲封包。"
       },
       {
+        track: "tech",
+        subject: "osnet",
         badge: "網路",
         prompt: "簡述 OSI 七層中 Transport 與 Network 層各負責什麼。",
         reference:
           "參考：Network（第3層）負責端對端路由與 IP；Transport（第4層）負責埠對埠連線、流量控制、錯誤恢復（TCP）或輕量傳輸（UDP）。"
       },
       {
+        track: "tech",
+        subject: "db",
         badge: "SQL",
         prompt: "寫一則 SQL：查詢「每個系所學生數」，資料表 students(dept_id, student_id)。",
         reference:
           "參考：SELECT dept_id, COUNT(*) AS cnt FROM students GROUP BY dept_id;"
       },
       {
+        track: "tech",
+        subject: "db",
         badge: "SQL",
         prompt: "解釋 INNER JOIN 與 LEFT OUTER JOIN 的結果差異。",
         reference:
           "參考：INNER 只保留兩表鍵匹配列；LEFT 保留左表全部列，右表無匹配則填 NULL。右表缺失時 INNER 會丟失該左表列。"
       },
       {
+        track: "tech",
+        subject: "db",
         badge: "資料庫設計",
         prompt: "何謂「交易隔離層級」中的 Repeatable Read？可能仍出現何種異常？",
         reference:
           "參考：同一交易內重複讀同範圍結果一致；部分系統仍可能有幻讀（除非 Serializable 或範圍鎖）。依 DB 實作而異。"
       },
       {
+        track: "tech",
+        subject: "ds",
         badge: "資結圖論",
         prompt: "以虛擬碼描述 BFS 從起點 s 走訪無向圖的流程。",
         reference:
           "參考：佇列 Q 放入 s、標記 visited；while Q 非空：取出 u，對每個未訪鄰居 v 標記並入佇列。時間 O(V+E)。"
       },
       {
+        track: "tech",
+        subject: "mis",
         badge: "MIS 策略",
         prompt: "什麼是「個人化（Personalization）」與「隱私權」在電商推薦系統中的權衡？",
         reference:
           "參考：個人化提升轉換率但蒐集行為資料可能侵害隱私；需告知同意、最小化蒐集、去識別化與法遵（如個資法／GDPR 精神）。"
       },
       {
+        track: "tech",
+        subject: "sad",
+        badge: "SAD",
+        prompt: "說明結構化分析中「資料流程圖（DFD）」與「ER Model」在系統開發階段的分工差異。",
+        reference:
+          "參考：DFD 強調資料流與處理邏輯（需求／邏輯層）；ER Model 強調資料實體與關係（概念資料模型），兩者銜接至資料庫綱要設計。"
+      },
+      {
+        track: "tech",
+        subject: "sad",
+        badge: "SAD",
+        prompt: "何謂「可行性分析」？請列出三類可行性並各一句話說明。",
+        reference:
+          "參考：技術可行性（現有技術能否達成）、經濟可行性（成本效益與預算）、作業可行性（組織流程與使用者接受度）。"
+      },
+      {
+        track: "tech",
+        subject: "cs",
+        badge: "計概",
+        prompt: "CPU 與記憶體之速度差距下，快取（Cache）與暫存器扮演的角色為何？",
+        reference:
+          "參考：暫存器最快、容量最小；多層 Cache 利用局部性（時間／空間）降低平均記憶體存取延遲，彌補 CPU 與 DRAM 速度差。"
+      },
+      {
+        track: "tech",
+        subject: "sad",
         badge: "專案管理",
         prompt: "簡述敏捷開發中 Sprint Review 與 Retrospective 的目的差異。",
         reference:
           "參考：Review 對利害關係人展示增量、蒐集回饋；Retrospective 團隊內省流程改進，不對外展示功能。"
+      },
+      {
+        track: "management",
+        subject: "statistics",
+        badge: "統計學",
+        prompt: "解釋「信賴區間」與「假設檢定中的 p-value」在決策上的不同角色。",
+        reference:
+          "參考：信賴區間給出參數可能範圍並呈現不確定性；p-value 衡量在 H0 下觀察到極端資料的機率。兩者可並用，但單看 p-value 易忽略效果量與實務意義。"
+      },
+      {
+        track: "management",
+        subject: "statistics",
+        badge: "統計學",
+        prompt: "何謂「型一錯誤」與「型二錯誤」？若降低顯著水準 α，對兩類錯誤有何影響？",
+        reference:
+          "參考：型一：誤拒真實 H0；型二：未拒錯誤 H0。降低 α 通常減少型一、但可能增加型二（在樣本數固定下）。"
+      },
+      {
+        track: "management",
+        subject: "economics",
+        badge: "經濟學",
+        prompt: "解釋「機會成本」並舉考研準備時間配置的一例。",
+        reference:
+          "參考：選擇某活動所放棄的次佳選項價值。例：多讀一小時統計，機會成本可能是放棄的一小時演算法練習。"
+      },
+      {
+        track: "management",
+        subject: "economics",
+        badge: "經濟學",
+        prompt: "供需法則下，若某補習課程價格上升，短期內需求量與供給量通常如何變化（其他條件不變）？",
+        reference:
+          "參考：價格↑ → 需求量沿需求曲線減少；供給量沿供給曲線增加。均衡點由供需交點決定，敘述時注意「需求量／供給量」與「需求／供給整條線移動」之區別。"
+      },
+      {
+        track: "management",
+        subject: "economics",
+        badge: "經濟學",
+        prompt: "什麼是「需求價格彈性」？若 |Ed|<1，降價對總收入有何影響？",
+        reference:
+          "參考：需求量變動百分比／價格變動百分比。|Ed|<1 為缺乏彈性，降價會使總收入下降（因量增不足以抵銷價跌）。"
+      },
+      {
+        track: "management",
+        subject: "accounting",
+        badge: "會計學",
+        prompt: "資產負債表的基本恒等式為何？並說明「保留盈餘」在權益中的意義。",
+        reference:
+          "參考：資產＝負債＋權益。保留盈餘為累積淨利減股利後留在公司部分，連結損益表與權益變動。"
+      },
+      {
+        track: "management",
+        subject: "accounting",
+        badge: "會計學",
+        prompt: "簡述直線法折舊的計算邏輯，並說明為何需要提列折舊。",
+        reference:
+          "參考：（成本－殘值）／耐用年數，每期認列相同費用。固定資產效益跨期，依配合原則將成本分攤至受益期間。"
+      },
+      {
+        track: "management",
+        subject: "accounting",
+        badge: "會計學",
+        prompt: "現金流量表中「營業活動現金流量」與損益表淨利可能差異很大的原因為何？請舉兩例。",
+        reference:
+          "參考：非現金費用（折舊）、應收應付變動、資本支出不屬營業活動等。淨利採應計基礎，與實際收付現金未必同步。"
+      },
+      {
+        track: "tech",
+        subject: "osnet",
+        badge: "OS／網路",
+        prompt: "說明 Round-Trip Time（RTT）的組成因子，並舉一個降低雲端 API 延遲的工程做法。",
+        reference:
+          "參考：RTT 含傳播延遲、序列化、佇列、處理與回應時間。可用 CDN、邊緣節點、連線池、較近 region、gRPC/HTTP2 多工等降低觀測延遲。"
+      },
+      {
+        track: "management",
+        subject: "economics",
+        badge: "市場結構",
+        prompt: "比較「完全競爭」與「壟斷性競爭」下，廠商長期經濟利潤與產品差異化策略的差異。",
+        reference:
+          "參考：完全競爭長期 P=MC=min ATC、經濟利潤趨零、產品同質；壟斷性競爭有差異化，需求曲線右下傾斜，長期切線與 ATC 相切，經濟利潤趨零但仍需行銷與創新維持差異。"
+      },
+      {
+        track: "management",
+        subject: "accounting",
+        badge: "分錄",
+        prompt: "賒購存貨時，應作何分錄？若期後以現金償還應付帳款，又應如何記帳？",
+        reference:
+          "參考：賒購：借 存貨、貸 應付帳款。償還：借 應付帳款、貸 現金。"
       }
     ];
 
@@ -4081,6 +4990,12 @@ ORDER BY avg_score DESC;"></textarea>
     let currentLang = "en";
     /** 英檢分類：ielts | toefl | toeic（與側欄下拉同步） */
     let englishExam = "toefl";
+    /** 多益分流：lr＝聽讀；sw＝口說寫作（獨立測驗） */
+    let toeicMode = "lr";
+    /** 英文寫作目標字數（由題庫 task 覆寫，供字數列使用） */
+    let enWritingTargetWords = 80;
+    /** 當前 TOEIC Part 1 小题 */
+    let toeicPart1Current = null;
     /** 英文練習：當前隨機抽中的閱讀包／聽力稿 */
     let enReadingBundle = null;
     let enListeningBundle = null;
@@ -4092,6 +5007,10 @@ ORDER BY avg_score DESC;"></textarea>
     let examFlashIndex = 0;
     /** 考研題庫當前隨機題（IM_EXAM_BANK） */
     let imQuizCurrent = null;
+    /** 資管考研：科技組 tech／管理組 management */
+    let imTrack = "tech";
+    /** 科目篩選：all 或 IM_TRACK_SUBJECT_OPTIONS 內之 value */
+    let imSubjectFilter = "all";
     /** 題庫陣列目前索引（文法 / 閱讀 / 聽力） */
     let grammarIdx = 0;
     let readingIdx = 0;
@@ -4099,7 +5018,9 @@ ORDER BY avg_score DESC;"></textarea>
 
     /** 全真模考狀態 */
     let mockPhase = "welcome"; // welcome | wizard | result
-    let mockWizardStep = 0; // 0 read, 1 listen, 2 speak, 3 write
+    let mockWizardStep = 0; // 兼容：由 mockSteps / mockStepIdx 控制顯示與進度
+    let mockSteps = [];
+    let mockStepIdx = 0;
     let mockReadingIdx = 0;
     let mockAnswers = { read: [], listen: [], speakAi: 0, writeAi: 0 };
     let mockListenPlayed = false;
@@ -4129,6 +5050,117 @@ ORDER BY avg_score DESC;"></textarea>
 
     const $ = (sel) => document.querySelector(sel);
     const $$ = (sel) => document.querySelectorAll(sel);
+
+    /** 預設英文模式完整分頁（非多益或多益重建還原用） */
+    const DEFAULT_LANG_TABS_HTML =
+      '<button type="button" class="tab-btn active" role="tab" data-panel="vocab" aria-selected="true">單字</button>' +
+      '<button type="button" class="tab-btn" role="tab" data-panel="grammar" aria-selected="false">文法</button>' +
+      '<button type="button" class="tab-btn" role="tab" data-panel="reading" aria-selected="false">閱讀</button>' +
+      '<button type="button" class="tab-btn" role="tab" data-panel="listening" aria-selected="false">聽力</button>' +
+      '<button type="button" class="tab-btn" role="tab" data-panel="speaking" aria-selected="false">口說</button>' +
+      '<button type="button" class="tab-btn" role="tab" data-panel="writing" aria-selected="false">寫作</button>' +
+      '<button type="button" class="tab-btn" role="tab" data-panel="video-hub" aria-selected="false">影音學習</button>' +
+      '<button type="button" class="tab-btn tab-mock-exam" role="tab" data-panel="mock-exam" aria-selected="false">🏆 全真模考</button>';
+
+    function getAllowedLangPanels() {
+      if (currentLang !== "en" || englishExam !== "toeic") {
+        return ["vocab", "grammar", "reading", "listening", "speaking", "writing", "video-hub", "mock-exam"];
+      }
+      if (toeicMode === "lr") return ["reading", "listening", "mock-exam"];
+      return ["speaking", "writing"];
+    }
+
+    function syncToeicModeBar() {
+      var bar = $("#toeicModeBar");
+      if (!bar) return;
+      var lr = $("#toeicLRBtn");
+      var sw = $("#toeicSWBtn");
+      var show = currentLang === "en" && englishExam === "toeic";
+      bar.style.display = show ? "block" : "none";
+      if (show && lr && sw) {
+        lr.classList.toggle("active", toeicMode === "lr");
+        sw.classList.toggle("active", toeicMode === "sw");
+        lr.setAttribute("aria-pressed", toeicMode === "lr" ? "true" : "false");
+        sw.setAttribute("aria-pressed", toeicMode === "sw" ? "true" : "false");
+      }
+    }
+
+    function rebuildLangTabs() {
+      var bar = $("#tabsLang");
+      if (!bar || currentMode !== "lang") return;
+      var keep = getActiveTabPanelId();
+      if (currentLang !== "en" || englishExam !== "toeic") {
+        bar.innerHTML = DEFAULT_LANG_TABS_HTML;
+      } else if (toeicMode === "lr") {
+        bar.innerHTML =
+          '<button type="button" class="tab-btn active" role="tab" data-panel="reading" aria-selected="true">🖼📄 照片描述／短文閱讀</button>' +
+          '<button type="button" class="tab-btn" role="tab" data-panel="listening" aria-selected="false">🎧 聽力特訓</button>' +
+          '<button type="button" class="tab-btn tab-mock-exam" role="tab" data-panel="mock-exam" aria-selected="false">🏆 模擬考</button>';
+      } else {
+        bar.innerHTML =
+          '<button type="button" class="tab-btn active" role="tab" data-panel="speaking" aria-selected="true">🗣 口說實戰</button>' +
+          '<button type="button" class="tab-btn" role="tab" data-panel="writing" aria-selected="false">✍️ 寫作練習</button>';
+      }
+      var allowed = getAllowedLangPanels();
+      var next = allowed.indexOf(keep) >= 0 ? keep : allowed[0];
+      switchTabBar(bar, next);
+      activatePanel(next);
+      if (currentLang === "en" && panelNeedsRenderAfterRebuild(next)) {
+        if (next === "grammar") renderGrammarQuestion();
+        else if (next === "reading") renderReadingQuestion();
+        else if (next === "listening") renderListeningQuestion();
+        else if (next === "speaking" || next === "writing") refreshEnglishSpeakWritePrompts();
+        else if (next === "video-hub") renderVideoHub();
+        else if (next === "mock-exam" && mockPhase === "welcome") {
+          var wx = getCurrentMockExam();
+          $("#mockWelcomeTitle").textContent = wx.label || "全真長篇模考";
+        }
+      }
+    }
+
+    function panelNeedsRenderAfterRebuild(panel) {
+      if (panel === "video-hub" || panel === "mock-exam") return true;
+      if (currentLang !== "en") return false;
+      if (englishExam !== "toeic") {
+        return panel === "grammar" || panel === "reading" || panel === "listening" || panel === "speaking" || panel === "writing";
+      }
+      if (toeicMode === "lr") return panel === "reading" || panel === "listening";
+      return panel === "speaking" || panel === "writing";
+    }
+
+    function refreshEnglishSpeakWritePrompts() {
+      if (currentLang !== "en") return;
+      $("#speakPrompt").textContent = examPromptRepo.getRandomSpeaking(englishExam);
+      var w = examPromptRepo.getRandomWriting(englishExam);
+      $("#writingPrompt").textContent = w.prompt;
+      enWritingTargetWords = w.targetWords || 80;
+      updateWordCount();
+    }
+
+    function pickToeicPart1() {
+      toeicPart1Current = getRandomFrom(TOEIC_PART1_POOL);
+      return toeicPart1Current;
+    }
+
+    function renderToeicPart1Panel() {
+      var block = $("#toeicPart1Block");
+      if (!block) return;
+      if (englishExam !== "toeic" || toeicMode !== "lr") {
+        block.style.display = "none";
+        return;
+      }
+      if (!toeicPart1Current) pickToeicPart1();
+      block.style.display = "block";
+      $("#toeicPart1Stem").textContent = toeicPart1Current.stem;
+      renderOptionalImage($("#toeicPart1Stem"), "toeicPart1Image", toeicPart1Current.imageUrl, "TOEIC Part 1 image");
+      renderMcqOptions("toeicPart1Options", toeicPart1Current.options, "toeic_p1");
+      var r = $("#toeicPart1Result");
+      if (r) {
+        r.className = "result-msg";
+        r.textContent = "";
+        r.classList.remove("show");
+      }
+    }
 
     /* ---------- Sidebar & Tabs 切換 ---------- */
     function setSidebarActive(btn) {
@@ -4214,6 +5246,7 @@ ORDER BY avg_score DESC;"></textarea>
         if (mockPhase === "welcome") {
           var wx = getCurrentMockExam();
           $("#mockWelcomeTitle").textContent = wx.label || "全真長篇模考";
+          updateMockWelcomeCopy();
           showMockView("welcome");
         } else if (mockPhase === "wizard") showMockView("wizard");
         else showMockView("result");
@@ -4224,6 +5257,9 @@ ORDER BY avg_score DESC;"></textarea>
         if (panelId === "exam-notes") renderImNotesHub();
         if (panelId === "exam-admission") renderAdmissionHub();
         if (panelId === "exam-bank") {
+          populateImSubjectSelect();
+          syncImTrackButtons();
+          examFlashIndex = 0;
           renderImQuiz();
           renderExamFlash();
         }
@@ -4245,6 +5281,7 @@ ORDER BY avg_score DESC;"></textarea>
         enReadingBundle = null;
         enListeningBundle = null;
         enListenQuizIdx = 0;
+        toeicPart1Current = null;
       }
 
       // 單字閃卡（詞書下拉）
@@ -4255,15 +5292,35 @@ ORDER BY avg_score DESC;"></textarea>
       grammarIdx = 0;
       readingIdx = 0;
       listeningIdx = 0;
-      renderGrammarQuestion();
-      renderReadingQuestion();
-      renderListeningQuestion();
-      resetListenPlayer();
 
       populateSentencePatterns();
 
-      // 口說
-      $("#speakPrompt").textContent = d.speaking;
+      if (currentLang === "en") {
+        if (englishExam !== "toeic") toeicMode = "lr";
+        syncToeicModeBar();
+        rebuildLangTabs();
+      } else {
+        var langBar = $("#tabsLang");
+        if (langBar) {
+          langBar.innerHTML = DEFAULT_LANG_TABS_HTML;
+          switchTabBar(langBar, "vocab");
+          activatePanel("vocab");
+        }
+        syncToeicModeBar();
+        renderGrammarQuestion();
+        renderReadingQuestion();
+        renderListeningQuestion();
+        resetListenPlayer();
+      }
+
+      // 口說／寫作：英文由題庫隨機；其他語系沿用 LANG_DATA
+      if (currentLang === "en") {
+        refreshEnglishSpeakWritePrompts();
+      } else {
+        $("#speakPrompt").textContent = d.speaking;
+        $("#writingPrompt").textContent = d.writing.prompt;
+        enWritingTargetWords = d.writing.targetWords || 80;
+      }
       $("#audioPlaybackSlot").innerHTML = "";
       $("#recStatus").textContent = "待機中";
       $("#recStatus").classList.remove("recording");
@@ -4272,13 +5329,14 @@ ORDER BY avg_score DESC;"></textarea>
       $("#aiScoreResult").textContent = "";
       $("#aiScoreResult").classList.remove("show");
 
-      // 寫作
-      $("#writingPrompt").textContent = d.writing.prompt;
       $("#writingArea").value = "";
       updateWordCount();
       $("#writingResult").className = "result-msg neutral";
       $("#writingResult").textContent = "";
       $("#writingResult").classList.remove("show");
+
+      // 模考首頁文案需依語系/考試分流同步更新
+      updateMockWelcomeCopy();
     }
 
     function renderMcqOptions(containerId, options, name) {
@@ -4306,6 +5364,7 @@ ORDER BY avg_score DESC;"></textarea>
     }
 
     function renderGrammarQuestion() {
+      if (currentLang === "en" && englishExam === "toeic" && toeicMode === "sw") return;
       if (currentLang === "en") {
         renderEnglishGrammarPanel();
         return;
@@ -4321,6 +5380,7 @@ ORDER BY avg_score DESC;"></textarea>
     }
 
     function renderReadingQuestion() {
+      if (currentLang === "en" && englishExam === "toeic" && toeicMode === "sw") return;
       if (currentLang === "en") {
         renderEnglishReadingPanel();
         return;
@@ -4329,6 +5389,7 @@ ORDER BY avg_score DESC;"></textarea>
     }
 
     function renderListeningQuestion() {
+      if (currentLang === "en" && englishExam === "toeic" && toeicMode === "sw") return;
       if (currentLang === "en") {
         renderEnglishListeningPanel();
         return;
@@ -4477,15 +5538,85 @@ ORDER BY avg_score DESC;"></textarea>
       root.appendChild(grid);
     }
 
-    /** 考研題庫：隨機一題 */
+    function getImExamFiltered() {
+      return IM_EXAM_BANK.filter(function (q) {
+        if (q.track !== imTrack) return false;
+        if (imSubjectFilter !== "all" && q.subject !== imSubjectFilter) return false;
+        return true;
+      });
+    }
+
+    function getImFlashFiltered() {
+      return IM_FLASHCARDS_ARRAY.filter(function (c) {
+        if (c.track !== imTrack) return false;
+        if (imSubjectFilter !== "all" && c.subject !== imSubjectFilter) return false;
+        return true;
+      });
+    }
+
+    function populateImSubjectSelect() {
+      var sel = $("#imSubjectFilter");
+      if (!sel) return;
+      var opts = IM_TRACK_SUBJECT_OPTIONS[imTrack];
+      var prev = imSubjectFilter;
+      sel.innerHTML = "";
+      var allOpt = document.createElement("option");
+      allOpt.value = "all";
+      allOpt.textContent = "全部科目";
+      sel.appendChild(allOpt);
+      opts.forEach(function (o) {
+        var opt = document.createElement("option");
+        opt.value = o.value;
+        opt.textContent = o.label;
+        sel.appendChild(opt);
+      });
+      var valid = prev === "all" || opts.some(function (o) {
+        return o.value === prev;
+      });
+      imSubjectFilter = valid ? prev : "all";
+      sel.value = imSubjectFilter;
+    }
+
+    function syncImTrackButtons() {
+      var tech = $("#imTrackTechBtn");
+      var mgmt = $("#imTrackMgmtBtn");
+      if (tech) {
+        tech.classList.toggle("active", imTrack === "tech");
+        tech.setAttribute("aria-pressed", imTrack === "tech" ? "true" : "false");
+      }
+      if (mgmt) {
+        mgmt.classList.toggle("active", imTrack === "management");
+        mgmt.setAttribute("aria-pressed", imTrack === "management" ? "true" : "false");
+      }
+    }
+
+    /** 考研題庫：隨機一題（僅從篩選後陣列抽取） */
     function renderImQuiz() {
-      imQuizCurrent = getRandomFrom(IM_EXAM_BANK);
+      var pool = getImExamFiltered();
+      var ref = $("#imQuizReference");
+      var rb = $("#imQuizRevealBtn");
+      if (!pool.length) {
+        imQuizCurrent = null;
+        $("#imQuizBadge").textContent = "—";
+        $("#imQuizPrompt").textContent =
+          "此組別與科目篩選下尚無題目。請切換「科技組／管理組」或將科目改為「全部科目」。";
+        $("#imQuizAnswerArea").value = "";
+        if (ref) {
+          ref.textContent = "";
+          ref.hidden = true;
+        }
+        if (rb) rb.textContent = "顯示參考解答";
+        return;
+      }
+      imQuizCurrent = getRandomFrom(pool);
       $("#imQuizBadge").textContent = imQuizCurrent.badge;
       $("#imQuizPrompt").textContent = imQuizCurrent.prompt;
       $("#imQuizAnswerArea").value = "";
-      var ref = $("#imQuizReference");
-      ref.textContent = imQuizCurrent.reference;
-      ref.hidden = true;
+      if (ref) {
+        ref.textContent = imQuizCurrent.reference;
+        ref.hidden = true;
+      }
+      if (rb) rb.textContent = "顯示參考解答";
     }
 
     $("#vocabBookSelect").addEventListener("change", function () {
@@ -4496,6 +5627,7 @@ ORDER BY avg_score DESC;"></textarea>
     var imRevealBtn = $("#imQuizRevealBtn");
     if (imRevealBtn) {
       imRevealBtn.addEventListener("click", function () {
+        if (!imQuizCurrent) return;
         var ref = $("#imQuizReference");
         ref.hidden = !ref.hidden;
         this.textContent = ref.hidden ? "顯示參考解答" : "隱藏參考解答";
@@ -4509,6 +5641,40 @@ ORDER BY avg_score DESC;"></textarea>
         if (rb) rb.textContent = "顯示參考解答";
         var ref = $("#imQuizReference");
         if (ref) ref.hidden = true;
+      });
+    }
+
+    function onImTrackOrSubjectChange() {
+      examFlashIndex = 0;
+      renderImQuiz();
+      renderExamFlash();
+    }
+
+    var imTrackTechBtn = $("#imTrackTechBtn");
+    var imTrackMgmtBtn = $("#imTrackMgmtBtn");
+    if (imTrackTechBtn) {
+      imTrackTechBtn.addEventListener("click", function () {
+        imTrack = "tech";
+        imSubjectFilter = "all";
+        populateImSubjectSelect();
+        syncImTrackButtons();
+        onImTrackOrSubjectChange();
+      });
+    }
+    if (imTrackMgmtBtn) {
+      imTrackMgmtBtn.addEventListener("click", function () {
+        imTrack = "management";
+        imSubjectFilter = "all";
+        populateImSubjectSelect();
+        syncImTrackButtons();
+        onImTrackOrSubjectChange();
+      });
+    }
+    var imSubjectFilterEl = $("#imSubjectFilter");
+    if (imSubjectFilterEl) {
+      imSubjectFilterEl.addEventListener("change", function () {
+        imSubjectFilter = this.value || "all";
+        onImTrackOrSubjectChange();
       });
     }
 
@@ -4544,12 +5710,14 @@ ORDER BY avg_score DESC;"></textarea>
     });
 
     $("#readingPrev").addEventListener("click", () => {
-      const n = LANG_DATA[currentLang].readingQuestions.length;
+      const longPack = currentLang !== "en" ? getGeneralLongReadingSet() : null;
+      const n = longPack ? longPack.readingQs.length : LANG_DATA[currentLang].readingQuestions.length;
       readingIdx = (readingIdx - 1 + n) % n;
       renderReadingQuestion();
     });
     $("#readingNext").addEventListener("click", () => {
-      const n = LANG_DATA[currentLang].readingQuestions.length;
+      const longPack = currentLang !== "en" ? getGeneralLongReadingSet() : null;
+      const n = longPack ? longPack.readingQs.length : LANG_DATA[currentLang].readingQuestions.length;
       readingIdx = (readingIdx + 1) % n;
       renderReadingQuestion();
     });
@@ -4567,7 +5735,8 @@ ORDER BY avg_score DESC;"></textarea>
         }
         return;
       }
-      const n = LANG_DATA[currentLang].listeningQuestions.length;
+      const longPack = getGeneralLongListeningSet();
+      const n = longPack ? longPack.listeningQs.length : LANG_DATA[currentLang].listeningQuestions.length;
       listeningIdx = (listeningIdx - 1 + n) % n;
       renderListeningQuestion();
     });
@@ -4584,7 +5753,8 @@ ORDER BY avg_score DESC;"></textarea>
         }
         return;
       }
-      const n = LANG_DATA[currentLang].listeningQuestions.length;
+      const longPack = getGeneralLongListeningSet();
+      const n = longPack ? longPack.listeningQs.length : LANG_DATA[currentLang].listeningQuestions.length;
       listeningIdx = (listeningIdx + 1) % n;
       renderListeningQuestion();
     });
@@ -4637,7 +5807,8 @@ ORDER BY avg_score DESC;"></textarea>
         return;
       }
       const ans = getCheckedValue("read_opt");
-      const correct = LANG_DATA[currentLang].readingQuestions[readingIdx].correct;
+      const longPack = currentLang !== "en" ? getGeneralLongReadingSet() : null;
+      const correct = longPack ? longPack.readingQs[readingIdx].correct : LANG_DATA[currentLang].readingQuestions[readingIdx].correct;
       if (!ans) {
         box.className = "result-msg err show";
         box.textContent = "請選擇一個選項。";
@@ -4657,6 +5828,7 @@ ORDER BY avg_score DESC;"></textarea>
       readingRandomBtn.addEventListener("click", function () {
         if (currentLang !== "en") return;
         pickEnglishReadingBundle();
+        if (englishExam === "toeic" && toeicMode === "lr") pickToeicPart1();
         renderEnglishReadingPanel();
       });
     }
@@ -4778,7 +5950,11 @@ ORDER BY avg_score DESC;"></textarea>
           ? enListeningBundle &&
             enListeningBundle.quizzes[enListenQuizIdx] &&
             enListeningBundle.quizzes[enListenQuizIdx].correct
-          : LANG_DATA[currentLang].listeningQuestions[listeningIdx].quizCorrect;
+          : (function () {
+              var longPack = getGeneralLongListeningSet();
+              if (longPack) return longPack.listeningQs[listeningIdx].correct;
+              return LANG_DATA[currentLang].listeningQuestions[listeningIdx].quizCorrect;
+            })();
       const box = $("#listenQuizResult");
       if (!ans) {
         box.className = "result-msg err show";
@@ -4893,7 +6069,7 @@ ORDER BY avg_score DESC;"></textarea>
     }
 
     function updateWordCount() {
-      const target = LANG_DATA[currentLang].writing.targetWords;
+      const target = currentLang === "en" ? enWritingTargetWords : LANG_DATA[currentLang].writing.targetWords;
       const n = countWords($("#writingArea").value);
       const el = $("#wordCountDisplay");
       el.textContent = "字數：" + n + " / 目標 " + target;
@@ -4915,9 +6091,18 @@ ORDER BY avg_score DESC;"></textarea>
         "<strong>模擬 AI 批改</strong><br/>結構完整度：良好。建議加強過渡句與結論呼應主題。詞彙可再替換 2–3 個更精準的動詞。此為前端模擬，非真實模型。";
     });
 
-    /* ---------- 考研閃卡 ---------- */
+    /* ---------- 考研閃卡（IM_FLASHCARDS_ARRAY + 組別／科目 filter） ---------- */
     function renderExamFlash() {
-      const item = EXAM_FLASH[examFlashIndex];
+      var deck = getImFlashFiltered();
+      if (!deck.length) {
+        $("#examFlashFront").textContent = "（此組別與科目下尚無閃卡）";
+        $("#examFlashBack").textContent = "請切換組別或改選「全部科目」。";
+        $("#examFlashCard").classList.remove("is-flipped");
+        return;
+      }
+      if (examFlashIndex >= deck.length) examFlashIndex = 0;
+      if (examFlashIndex < 0) examFlashIndex = 0;
+      const item = deck[examFlashIndex];
       $("#examFlashFront").textContent = item.front;
       $("#examFlashBack").textContent = item.back;
       $("#examFlashCard").classList.remove("is-flipped");
@@ -4932,12 +6117,16 @@ ORDER BY avg_score DESC;"></textarea>
     });
     $("#examFlashPrev").addEventListener("click", function (e) {
       e.stopPropagation();
-      examFlashIndex = (examFlashIndex - 1 + EXAM_FLASH.length) % EXAM_FLASH.length;
+      var deck = getImFlashFiltered();
+      if (!deck.length) return;
+      examFlashIndex = (examFlashIndex - 1 + deck.length) % deck.length;
       renderExamFlash();
     });
     $("#examFlashNext").addEventListener("click", function (e) {
       e.stopPropagation();
-      examFlashIndex = (examFlashIndex + 1) % EXAM_FLASH.length;
+      var deck = getImFlashFiltered();
+      if (!deck.length) return;
+      examFlashIndex = (examFlashIndex + 1) % deck.length;
       renderExamFlash();
     });
 
@@ -5002,18 +6191,82 @@ ORDER BY avg_score DESC;"></textarea>
       $("#mockViewResult").classList.toggle("mock-hidden", which !== "result");
     }
 
+    function updateMockWelcomeCopy() {
+      var el = $("#mockWelcomeSub");
+      if (!el) return;
+      var steps = getMockStepsForCurrentMode ? getMockStepsForCurrentMode() : [];
+      var hasR = steps.indexOf("reading") >= 0;
+      var hasL = steps.indexOf("listening") >= 0;
+      var hasS = steps.indexOf("speaking") >= 0;
+      var hasW = steps.indexOf("writing") >= 0;
+      if (hasR && hasL && !hasS && !hasW) {
+        el.textContent =
+          "本測驗僅包含【閱讀】與【聽力】。閱讀（長文捲動）→ 聽力（2+ 分鐘 TTS + 筆記；題目先顯示可邊聽邊作答）。";
+      } else if (!hasR && !hasL && hasS && hasW) {
+        el.textContent =
+          "本測驗僅包含【口說】與【寫作】。口說（錄音作答）→ 寫作（限時完成）→ 結算。";
+      } else {
+        el.textContent =
+          "閱讀（長文捲動）→ 聽力（2+ 分鐘 TTS + 筆記；題目先顯示可邊聽邊作答）→ 口說 → 寫作。依側欄語系載入對應題本。";
+      }
+    }
+
     function updateMockWizardProgress() {
-      const sub = mockWizardStep === 0 ? mockReadingIdx / 3 : mockWizardStep === 1 ? (mockListenPlayed ? 0.5 : 0) + 0.25 : mockWizardStep / 4;
-      const pct = Math.min(100, Math.round(((mockWizardStep + sub) / 4) * 100));
+      const ex = getCurrentMockExam();
+      const stepType = mockSteps[mockStepIdx] || "reading";
+      const nRead = ex && ex.readingQs ? ex.readingQs.length : 3;
+      const nListen = ex && ex.listeningQs ? ex.listeningQs.length : 2;
+      const hasSpeak = mockSteps.indexOf("speaking") >= 0;
+      const hasWrite = mockSteps.indexOf("writing") >= 0;
+      const totalQ = nRead + nListen + (hasSpeak ? 1 : 0) + (hasWrite ? 1 : 0);
+
+      function stageName(t) {
+        if (t === "reading") return "閱讀";
+        if (t === "listening") return "聽力";
+        if (t === "speaking") return "口說";
+        if (t === "writing") return "寫作";
+        return "結算";
+      }
+      function countAnsweredListen() {
+        var a = mockAnswers && mockAnswers.listen ? mockAnswers.listen : [];
+        var c = 0;
+        for (var i = 0; i < a.length; i++) if (a[i]) c++;
+        return c;
+      }
+
+      // overall index is 1-based: answered so far + current position inside this stage
+      var answeredRead = mockAnswers && mockAnswers.read ? mockAnswers.read.length : 0;
+      var answeredListen = countAnsweredListen();
+      var answeredSpeak = mockAnswers && mockAnswers.speakAi ? 1 : 0;
+      var answeredWrite = mockAnswers && mockAnswers.writeAi ? 1 : 0;
+
+      var currentOverall = 1;
+      if (stepType === "reading") {
+        currentOverall = Math.min(totalQ, answeredRead + 1);
+      } else if (stepType === "listening") {
+        currentOverall = Math.min(totalQ, nRead + answeredListen + 1);
+      } else if (stepType === "speaking") {
+        currentOverall = Math.min(totalQ, nRead + nListen + 1);
+      } else if (stepType === "writing") {
+        currentOverall = Math.min(totalQ, nRead + nListen + (hasSpeak ? 1 : 0) + 1);
+      } else {
+        currentOverall = totalQ;
+      }
+
+      var doneOverall = answeredRead + answeredListen + answeredSpeak + answeredWrite;
+      var pct = totalQ ? Math.min(100, Math.round((doneOverall / totalQ) * 100)) : 0;
       $("#mockWizardPct").textContent = pct + "%";
       $("#mockWizardProgressFill").style.width = pct + "%";
-      $("#mockWizardStepLabel").textContent = "Step " + (mockWizardStep + 1) + " / 4";
+      $("#mockWizardStepLabel").textContent =
+        "目前階段: " + stageName(stepType) + "（第 " + currentOverall + "/" + totalQ + " 題） | 總進度: " + pct + "%";
     }
 
     function resetMockExamToWelcome() {
       window.__mockEnSession = null;
       mockPhase = "welcome";
       mockWizardStep = 0;
+      mockSteps = [];
+      mockStepIdx = 0;
       mockReadingIdx = 0;
       mockListenPlayed = false;
       mockAnswers = { read: [], listen: [null, null], speakAi: 0, writeAi: 0 };
@@ -5049,14 +6302,15 @@ ORDER BY avg_score DESC;"></textarea>
 
     function enterMockListening() {
       const ex = getCurrentMockExam();
-      mockWizardStep = 1;
       $("#mockStepReading").classList.add("mock-hidden");
       $("#mockStepListening").classList.remove("mock-hidden");
-      $("#mockListenQuizWrap").classList.add("mock-hidden");
+      // 致命錯誤修復：進入聽力階段就「立刻顯示題目與選項」，讓使用者邊聽邊作答
+      $("#mockListenQuizWrap").classList.remove("mock-hidden");
+      $("#mockListenQuizWrap").style.display = "block";
       mockListenPlayed = false;
       $("#mockListenNotes").value = "";
       $("#mockListenScriptHint").textContent =
-        "請按播放鍵聽取長篇音檔（語速 0.9、高品質語音分段停頓）。全程約 2 分鐘以上，可邊聽邊於下方筆記。";
+        "請按播放鍵聽取長篇音檔。題目與選項已先顯示，可邊聽邊作答（建議先看題幹）。";
       const q1 = ex.listeningQs[0];
       const q2 = ex.listeningQs[1];
       $("#mockListenQ1").textContent = "1. " + q1.q;
@@ -5133,37 +6387,59 @@ ORDER BY avg_score DESC;"></textarea>
 
     $("#mockWriteArea").addEventListener("input", updateMockWordCount);
 
-    $("#mockStartBtn").addEventListener("click", function () {
+    function getMockStepsForCurrentMode() {
+      // 真實檢定分流：
+      // 1) 四技能：TOEFL / IELTS / 韓文 / 西文 / 德文
+      // 2) 聽讀：日文 JLPT / TOEIC L&R
+      // 3) 說寫：TOEIC S&W
+      if (currentLang === "en") {
+        if (englishExam === "toeic") {
+          return toeicMode === "lr" ? ["reading", "listening", "result"] : ["speaking", "writing", "result"];
+        }
+        if (englishExam === "toefl" || englishExam === "ielts") {
+          return ["reading", "listening", "speaking", "writing", "result"];
+        }
+      }
+      if (currentLang === "ko" || currentLang === "es" || currentLang === "de") {
+        return ["reading", "listening", "speaking", "writing", "result"];
+      }
+      return ["reading", "listening", "result"]; // ja
+    }
+
+    function startMockExam() {
+      mockSteps = getMockStepsForCurrentMode();
+      mockStepIdx = 0;
+      mockWizardStep = 0;
+      mockPhase = "wizard";
+
+      mockReadingIdx = 0;
+      mockListenPlayed = false;
+      mockAnswers = { read: [], listen: [null, null], speakAi: 0, writeAi: 0 };
+
+      // 英文模式：鎖定本次隨機題本，避免步驟切換導致說寫題被換掉
       if (currentLang === "en") {
         var rb = getRandomFrom(EN_READING_POOLS[englishExam] || EN_READING_POOLS.toefl);
         var lb = getRandomFrom(EN_LISTENING_POOLS[englishExam] || EN_LISTENING_POOLS.toefl);
-        if (rb && lb) {
+        var _w = examPromptRepo.getRandomWriting(englishExam);
+        if (rb && lb && _w) {
           window.__mockEnSession = {
             label: englishExamLabel() + " · 全真長篇模考",
             readingPassage: rb.passage,
             readingQs: rb.questions.slice(0, 3),
             listeningScript: lb.script,
             listeningQs: lb.quizzes,
-            speakingTopic:
-              "Describe a challenge you overcame in academic or professional settings and what you learned.",
-            writingPrompt:
-              "To what extent do you agree that structured study plans matter more than talent? Support your view with reasons and examples.",
-            writingLimitMin: 30
+            speakingTopic: examPromptRepo.getRandomSpeaking(englishExam),
+            writingPrompt: _w.prompt,
+            writingLimitMin: _w.limitMin,
+            writingTargetWords: _w.targetWords
           };
+        } else {
+          window.__mockEnSession = null;
         }
       } else {
         window.__mockEnSession = null;
       }
-      mockPhase = "wizard";
-      mockWizardStep = 0;
-      mockReadingIdx = 0;
-      mockAnswers = { read: [], listen: [null, null], speakAi: 0, writeAi: 0 };
-      mockListenPlayed = false;
-      $("#mockListenQuizWrap").classList.add("mock-hidden");
-      $("#mockStepReading").classList.remove("mock-hidden");
-      $("#mockStepListening").classList.add("mock-hidden");
-      $("#mockStepSpeaking").classList.add("mock-hidden");
-      $("#mockStepWriting").classList.add("mock-hidden");
+
       if (mockPrepTimerId) {
         clearInterval(mockPrepTimerId);
         mockPrepTimerId = null;
@@ -5176,11 +6452,329 @@ ORDER BY avg_score DESC;"></textarea>
         clearInterval(mockWriteTimerId);
         mockWriteTimerId = null;
       }
+      speechSynth.cancel();
+
+      // 先把所有步驟隱藏，顯示第一個步驟
+      $("#mockListenQuizWrap").classList.add("mock-hidden");
+      $("#mockStepReading").classList.add("mock-hidden");
+      $("#mockStepListening").classList.add("mock-hidden");
+      $("#mockStepSpeaking").classList.add("mock-hidden");
+      $("#mockStepWriting").classList.add("mock-hidden");
+
       var ex0 = getCurrentMockExam();
       $("#mockWelcomeTitle").textContent = ex0.label || "全真長篇模考";
       showMockView("wizard");
-      renderMockReadingStep();
+
+      var first = mockSteps[mockStepIdx] || "reading";
+      if (first === "reading") {
+        $("#mockStepReading").classList.remove("mock-hidden");
+        renderMockReadingStep();
+      } else if (first === "listening") {
+        enterMockListening();
+      } else if (first === "speaking") {
+        enterMockSpeaking();
+      } else if (first === "writing") {
+        enterMockWriting();
+      } else {
+        showMockResult();
+      }
+    }
+
+    function showMockResult() {
+      // 僅負責「結算」：根據 currentLang / 英檢選擇顯示不同量尺與文字
+      mockPhase = "result";
+      showMockView("result");
+
+      var exF = getCurrentMockExam();
+      var nRead = exF && exF.readingQs ? exF.readingQs.length : 3;
+      var nListen = exF && exF.listeningQs ? exF.listeningQs.length : 2;
+
+      var readCorrect = 0;
+      for (var i = 0; i < nRead; i++) {
+        if (mockAnswers.read[i] === exF.readingQs[i].correct) readCorrect++;
+      }
+      var listenCorrect = 0;
+      for (var j = 0; j < nListen; j++) {
+        if (mockAnswers.listen[j] === exF.listeningQs[j].correct) listenCorrect++;
+      }
+
+      var readScore = Math.round((readCorrect / Math.max(1, nRead)) * 30);
+      var listenScore = Math.round((listenCorrect / Math.max(1, nListen)) * 30);
+      var speakScore = mockAnswers.speakAi || 20;
+      var writeScore = mockAnswers.writeAi || 18;
+
+      var bars = $("#mockSkillBars");
+      var radarWrap = $("#mockRadarSvg") ? $("#mockRadarSvg").closest(".radar-wrap") : null;
+      bars.innerHTML = "";
+      bars.style.display = "none";
+      if (radarWrap) radarWrap.style.display = "none";
+      $("#mockEtsFeedback").innerHTML = "";
+      $("#mockCefr").textContent = "";
+
+      function clamp(n, a, b) {
+        return Math.max(a, Math.min(b, n));
+      }
+      function toIeltsBand(total120) {
+        if (total120 >= 105) return 7.5;
+        if (total120 >= 95) return 7.0;
+        if (total120 >= 88) return 6.5;
+        if (total120 >= 80) return 6.0;
+        if (total120 >= 72) return 5.5;
+        return 5.0;
+      }
+      function toIeltsLabel(band) {
+        return band.toFixed(1).replace(".0", "") + " / 9.0";
+      }
+      function toeicLrScore(readPct, listenPct) {
+        return clamp(10 + Math.round((readPct * 0.45 + listenPct * 0.55) * 980), 10, 990);
+      }
+      function jlptFromPct(pct) {
+        if (pct >= 0.85) return 1;
+        if (pct >= 0.7) return 2;
+        if (pct >= 0.55) return 3;
+        if (pct >= 0.4) return 4;
+        return 5;
+      }
+      function topikFromPct(pct) {
+        if (pct >= 0.85) return { stage: "II", level: 6 };
+        if (pct >= 0.7) return { stage: "II", level: 5 };
+        if (pct >= 0.55) return { stage: "II", level: 4 };
+        if (pct >= 0.4) return { stage: "I", level: 3 };
+        return { stage: "I", level: 2 };
+      }
+      function ceFromPct(pct) {
+        if (pct >= 0.83) return "B2";
+        if (pct >= 0.65) return "B1";
+        if (pct >= 0.5) return "A2";
+        return "A1";
+      }
+
+      // 1) TOEFL
+      if (currentLang === "en" && englishExam === "toefl") {
+        var total = Math.min(120, readScore + listenScore + speakScore + writeScore);
+        $("#mockTotalScore").textContent = total + " / 120";
+        $("#mockCefr").textContent = "CEFR：" + totalToCefr(total);
+        $("#mockResultSummary").textContent = "預估 TOEFL iBT 總分（前端示範），請以官方/人工批改為準。";
+
+        bars.style.display = "block";
+        [
+          { k: "閱讀 Reading", v: readScore },
+          { k: "聽力 Listening", v: listenScore },
+          { k: "口說 Speaking", v: speakScore },
+          { k: "寫作 Writing", v: writeScore }
+        ].forEach(function (row) {
+          var pct = Math.round((row.v / 30) * 100);
+          bars.innerHTML +=
+            '<div class="skill-row"><span>' +
+            row.k +
+            '</span><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:' +
+            pct +
+            '%"></div></div><span>' +
+            row.v +
+            "</span></div>";
+        });
+
+        if (radarWrap) {
+          radarWrap.style.display = "block";
+          drawRadar($("#mockRadarSvg"), [readScore, listenScore, speakScore, writeScore]);
+        }
+        $("#mockEtsFeedback").innerHTML =
+          "<h4>詳細評估建議（TOEFL）</h4><ul>" +
+          "<li>閱讀/聽力：補足指代與轉折的錯因。</li>" +
+          "<li>口說/寫作：先結構再例證。</li>" +
+          "</ul>";
+        return;
+      }
+
+      // 2) IELTS
+      if (currentLang === "en" && englishExam === "ielts") {
+        var total2 = Math.min(120, readScore + listenScore + speakScore + writeScore);
+        var band = toIeltsBand(total2);
+        $("#mockTotalScore").textContent = toIeltsLabel(band);
+        $("#mockCefr").textContent = "IELTS Band Scale (0–9)";
+        $("#mockResultSummary").textContent = "預估 IELTS Band（前端示範），請以官方分數為準。";
+
+        bars.style.display = "block";
+        [
+          { k: "閱讀 Reading", v: readScore },
+          { k: "聽力 Listening", v: listenScore },
+          { k: "口說 Speaking", v: speakScore },
+          { k: "寫作 Writing", v: writeScore }
+        ].forEach(function (row) {
+          var pct = Math.round((row.v / 30) * 100);
+          bars.innerHTML +=
+            '<div class="skill-row"><span>' +
+            row.k +
+            '</span><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:' +
+            pct +
+            '%"></div></div><span>' +
+            row.v +
+            "</span></div>";
+        });
+        if (radarWrap) radarWrap.style.display = "none";
+
+        $("#mockEtsFeedback").innerHTML =
+          "<h4>詳細評估建議（IELTS）</h4><ul>" +
+          "<li>閱讀/聽力：強化段落功能定位與關鍵字。</li>" +
+          "<li>口說/寫作：練習「觀點→理由→例子」。</li>" +
+          "</ul>";
+        return;
+      }
+
+      // 3) TOEIC L&R
+      if (currentLang === "en" && englishExam === "toeic" && toeicMode === "lr") {
+        var readPct = readCorrect / Math.max(1, nRead);
+        var listenPct = listenCorrect / Math.max(1, nListen);
+        var toeicTotal = toeicLrScore(readPct, listenPct);
+        $("#mockTotalScore").textContent = toeicTotal + " / 990";
+        $("#mockCefr").textContent = "TOEIC L&R Scale (10–990)";
+        $("#mockResultSummary").textContent =
+          "預估 TOEIC L&R（前端示範）。聽力階段請邊聽邊看題幹，再選答案。";
+
+        bars.style.display = "block";
+        [
+          { k: "閱讀 Reading", v: readScore },
+          { k: "聽力 Listening", v: listenScore }
+        ].forEach(function (row) {
+          var pct = Math.round((row.v / 30) * 100);
+          bars.innerHTML +=
+            '<div class="skill-row"><span>' +
+            row.k +
+            '</span><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:' +
+            pct +
+            '%"></div></div><span>' +
+            row.v +
+            "</span></div>";
+        });
+        if (radarWrap) radarWrap.style.display = "none";
+
+        $("#mockEtsFeedback").innerHTML =
+          "<h4>下一步建議（TOEIC L&R）</h4><ul>" +
+          "<li>Part 7：先標段落功能。</li>" +
+          "<li>聽力：題幹→關鍵詞→選項。</li>" +
+          "</ul>";
+        return;
+      }
+
+      // 4) TOEIC S&W
+      if (currentLang === "en" && englishExam === "toeic" && toeicMode === "sw") {
+        var speakToeic = clamp(Math.round((speakScore / 30) * 200), 0, 200);
+        var writeToeic = clamp(Math.round((writeScore / 30) * 200), 0, 200);
+        var totalSw = speakToeic + writeToeic;
+        $("#mockTotalScore").textContent = totalSw + " / 400";
+        $("#mockCefr").textContent = "TOEIC S&W (Speaking/ Writing 0–200)";
+        $("#mockResultSummary").textContent =
+          "預估 TOEIC S&W（前端示範）。口說：描述照片＋提出解決方案；寫作：回覆電子郵件。";
+
+        bars.style.display = "block";
+        [
+          { k: "口說 Speaking", v: speakToeic },
+          { k: "寫作 Writing", v: writeToeic }
+        ].forEach(function (row) {
+          var pct = Math.round((row.v / 200) * 100);
+          bars.innerHTML +=
+            '<div class="skill-row"><span>' +
+            row.k +
+            '</span><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:' +
+            pct +
+            '%"></div></div><span>' +
+            row.v +
+            "</span></div>";
+        });
+        if (radarWrap) radarWrap.style.display = "none";
+
+        $("#mockEtsFeedback").innerHTML =
+          "<h4>下一步建議（TOEIC S&W）</h4><ul>" +
+          "<li>Speaking：場景→問題→方案。</li>" +
+          "<li>Writing：回覆骨架（回覆→確認→下一步）。</li>" +
+          "</ul>";
+        return;
+      }
+
+      // 5) JLPT
+      if (currentLang === "ja") {
+        var pctJa = (readCorrect / Math.max(1, nRead)) * 0.6 + (listenCorrect / Math.max(1, nListen)) * 0.4;
+        var lvJa = jlptFromPct(pctJa);
+        var pass = pctJa >= 0.7 ? "合格" : "待加強";
+        $("#mockTotalScore").textContent = "預估等級：JLPT N" + lvJa + " " + pass;
+        $("#mockCefr").textContent = "";
+        $("#mockResultSummary").textContent = "JLPT 模擬結果（前端示範）。本模式不含口說/寫作。";
+        $("#mockEtsFeedback").innerHTML =
+          "<h4>備考建議（JLPT）</h4><ul>" +
+          "<li>閱讀：指代與段落功能。</li>" +
+          "<li>聽解：轉折/數字/時間。</li>" +
+          "</ul>";
+        return;
+      }
+
+      // 6) TOPIK
+      if (currentLang === "ko") {
+        var pctKo = (readCorrect / Math.max(1, nRead)) * 0.5 + (listenCorrect / Math.max(1, nListen)) * 0.5;
+        var lvKo = topikFromPct(pctKo);
+        $("#mockTotalScore").textContent = "預估等級：TOPIK " + lvKo.stage + " (" + lvKo.level + "級)";
+        $("#mockCefr").textContent = "";
+        $("#mockResultSummary").textContent = "TOPIK 模擬結果（前端示範）。本模式不含口說/寫作。";
+        $("#mockEtsFeedback").innerHTML =
+          "<h4>備考建議（TOPIK）</h4><ul>" +
+          "<li>閱讀：主張/理由/例子。</li>" +
+          "<li>聽解：跟題幹問句聽關鍵詞。</li>" +
+          "</ul>";
+        return;
+      }
+
+      // 7) DELE / Goethe：CEFR
+      if (currentLang === "es" || currentLang === "de") {
+        var pctCe = (readCorrect / Math.max(1, nRead)) * 0.55 + (listenCorrect / Math.max(1, nListen)) * 0.45;
+        var ce = ceFromPct(pctCe);
+        var name = currentLang === "es" ? "DELE" : "Goethe/TestDaF";
+        $("#mockTotalScore").textContent = "預估等級：" + ce;
+        $("#mockCefr").textContent = "CEFR（" + name + "）";
+        $("#mockResultSummary").textContent = name + " 模擬結果（前端示範），依閱讀與聽解推估 CEFR。";
+        $("#mockEtsFeedback").innerHTML =
+          "<h4>備考建議（CEFR）</h4><ul>" +
+          "<li>閱讀：題幹→段落資訊對應。</li>" +
+          "<li>聽解：轉折/對比關鍵字。</li>" +
+          "</ul>";
+        return;
+      }
+
+      $("#mockTotalScore").textContent = "—";
+      $("#mockResultSummary").textContent = "模考示範：未匹配語種。";
+    }
+
+    $("#mockStartBtn").addEventListener("click", function () {
+      startMockExam();
     });
+
+    /* ---------- Mobile sidebar toggle ---------- */
+    (function initMobileSidebar() {
+      var btn = $("#sidebarToggleBtn");
+      var backdrop = $("#sidebarBackdrop");
+      var sidebar = $("#sidebar");
+      if (!btn || !sidebar) return;
+
+      function close() {
+        document.body.classList.remove("sidebar-open");
+        btn.setAttribute("aria-expanded", "false");
+      }
+      function open() {
+        document.body.classList.add("sidebar-open");
+        btn.setAttribute("aria-expanded", "true");
+      }
+      btn.addEventListener("click", function () {
+        if (document.body.classList.contains("sidebar-open")) close();
+        else open();
+      });
+      if (backdrop) backdrop.addEventListener("click", close);
+
+      // 點選側欄項目後自動收起（手機）
+      sidebar.addEventListener("click", function (e) {
+        var isNav = e.target && (e.target.closest(".nav-item") || e.target.closest("select") || e.target.closest("button"));
+        if (!isNav) return;
+        // 只在窄螢幕收起
+        if (window.matchMedia && window.matchMedia("(max-width: 768px)").matches) close();
+      });
+    })();
 
     $("#mockReadingNext").addEventListener("click", function () {
       const ans = getCheckedValue("mock_read_sel");
@@ -5194,7 +6788,12 @@ ORDER BY avg_score DESC;"></textarea>
         mockReadingIdx++;
         renderMockReadingStep();
       } else {
-        enterMockListening();
+        mockStepIdx++;
+        mockWizardStep = mockStepIdx; // 兼容進度條顯示
+        const nextType = mockSteps[mockStepIdx];
+        if (nextType === "listening") enterMockListening();
+        else if (nextType === "result") showMockResult();
+        else enterMockListening();
       }
     });
 
@@ -5214,7 +6813,7 @@ ORDER BY avg_score DESC;"></textarea>
         $("#mockListenPlay").textContent = "▶";
         mockListenPlayed = true;
         $("#mockListenQuizWrap").classList.remove("mock-hidden");
-        $("#mockListenScriptHint").textContent = "音檔播放完畢，請作答。";
+        $("#mockListenScriptHint").textContent = "音檔播放完畢，請核對答案後按 Next。";
         updateMockWizardProgress();
       });
     });
@@ -5227,7 +6826,12 @@ ORDER BY avg_score DESC;"></textarea>
         return;
       }
       mockAnswers.listen = [a1, a2];
-      enterMockSpeaking();
+      mockStepIdx++;
+      mockWizardStep = mockStepIdx;
+      const nextType = mockSteps[mockStepIdx];
+      if (nextType === "speaking") enterMockSpeaking();
+      else if (nextType === "result") showMockResult();
+      else showMockResult();
     });
 
     $("#mockRecStart").addEventListener("click", async function () {
@@ -5291,7 +6895,12 @@ ORDER BY avg_score DESC;"></textarea>
 
     $("#mockSpeakNext").addEventListener("click", function () {
       if (!mockAnswers.speakAi) mockAnswers.speakAi = 18 + Math.floor(Math.random() * 8);
-      enterMockWriting();
+      mockStepIdx++;
+      mockWizardStep = mockStepIdx;
+      const nextType = mockSteps[mockStepIdx];
+      if (nextType === "writing") enterMockWriting();
+      else if (nextType === "result") showMockResult();
+      else enterMockWriting();
     });
 
     function totalToCefr(n) {
@@ -5336,6 +6945,10 @@ ORDER BY avg_score DESC;"></textarea>
       var words = text ? text.split(/\s+/).filter(Boolean).length : 0;
       if (/[\u3040-\u30ff\u3400-\u9fff\uac00-\ud7af]/.test(text)) words = text.replace(/\s/g, "").length;
       mockAnswers.writeAi = Math.min(30, Math.round(12 + Math.min(18, words / 15) + Math.random() * 4));
+
+      // 結算統一交由 showMockResult（依 currentLang / 英檢模式顯示不同標準）
+      showMockResult();
+      return;
 
       var exF = getCurrentMockExam();
       var nRead = exF.readingQs ? exF.readingQs.length : 3;
@@ -5457,19 +7070,82 @@ ORDER BY avg_score DESC;"></textarea>
     if (englishExamSelectEl) {
       englishExamSelectEl.addEventListener("change", function () {
         englishExam = this.value || "toefl";
+        if (englishExam !== "toeic") toeicMode = "lr";
         if (currentLang === "en") {
-          enGrammarRandom = null;
-          enReadingBundle = null;
-          enListeningBundle = null;
-          enListenQuizIdx = 0;
-          renderGrammarQuestion();
-          renderReadingQuestion();
-          renderListeningQuestion();
+          applyLanguageContent();
+        } else {
+          syncToeicModeBar();
         }
+        updateMockWelcomeCopy();
         if (currentMode === "lang" && getActiveTabPanelId() === "mock-exam" && mockPhase === "welcome") {
           var wx = getCurrentMockExam();
           $("#mockWelcomeTitle").textContent = wx.label || "全真長篇模考";
         }
+      });
+    }
+
+    var toeicLRBtnEl = $("#toeicLRBtn");
+    var toeicSWBtnEl = $("#toeicSWBtn");
+    if (toeicLRBtnEl) {
+      toeicLRBtnEl.addEventListener("click", function () {
+        if (englishExam !== "toeic" || currentLang !== "en") return;
+        toeicMode = "lr";
+        applyLanguageContent();
+        updateMockWelcomeCopy();
+      });
+    }
+    if (toeicSWBtnEl) {
+      toeicSWBtnEl.addEventListener("click", function () {
+        if (englishExam !== "toeic" || currentLang !== "en") return;
+        toeicMode = "sw";
+        applyLanguageContent();
+        updateMockWelcomeCopy();
+      });
+    }
+
+    var toeicPart1Submit = $("#toeicPart1Submit");
+    if (toeicPart1Submit) {
+      toeicPart1Submit.addEventListener("click", function () {
+        if (!toeicPart1Current) return;
+        var ans = getCheckedValue("toeic_p1");
+        var box = $("#toeicPart1Result");
+        if (!ans) {
+          box.className = "result-msg err show";
+          box.textContent = "請選擇一個選項。";
+          return;
+        }
+        if (ans === toeicPart1Current.correct) {
+          box.className = "result-msg ok show";
+          box.textContent = "答對了！";
+        } else {
+          box.className = "result-msg err show";
+          box.textContent = "答錯了，正確答案為 " + toeicPart1Current.correct + "。";
+        }
+      });
+    }
+    var toeicPart1Next = $("#toeicPart1Next");
+    if (toeicPart1Next) {
+      toeicPart1Next.addEventListener("click", function () {
+        pickToeicPart1();
+        renderToeicPart1Panel();
+      });
+    }
+
+    var speakRand = $("#speakRandomPromptBtn");
+    if (speakRand) {
+      speakRand.addEventListener("click", function () {
+        if (currentLang !== "en") return;
+        $("#speakPrompt").textContent = examPromptRepo.getRandomSpeaking(englishExam);
+      });
+    }
+    var writeRand = $("#writingRandomPromptBtn");
+    if (writeRand) {
+      writeRand.addEventListener("click", function () {
+        if (currentLang !== "en") return;
+        var w = examPromptRepo.getRandomWriting(englishExam);
+        $("#writingPrompt").textContent = w.prompt;
+        enWritingTargetWords = w.targetWords || 80;
+        updateWordCount();
       });
     }
 
@@ -5484,7 +7160,7 @@ ORDER BY avg_score DESC;"></textarea>
         if (mode === "lang") {
           currentLang = this.getAttribute("data-lang") || "en";
           applyLanguageContent();
-          openTab("vocab");
+          openTab(getAllowedLangPanels()[0]);
         } else if (mode === "mind") {
           $("#mainTitle").textContent = "💡 多語天才心法";
           $("#mainDesc").textContent =
@@ -5505,7 +7181,9 @@ ORDER BY avg_score DESC;"></textarea>
     /* ---------- 初始化 ---------- */
     renderVideoHub();
     applyLanguageContent();
-    openTab("vocab");
+    if (currentLang !== "en" || englishExam !== "toeic") {
+      openTab("vocab");
+    }
   </script>
 </body>
 </html>
